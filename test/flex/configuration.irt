@@ -1,0 +1,53 @@
+
+desc 'Flex::Configuration responds to all public methods'
+methods =  [ # regular methods from class
+             :configure,
+             # data methods
+             :base_uri, :result_extenders, :logger, :variables, :flex_models, :config_file, :flex_dir,
+             :http_client, :http_client_options, :debug, :debug_to_curl, :raise_proc]
+
+defined, not_defined = methods.partition {|k| Flex::Configuration.respond_to?(k)}
+defined
+_eql?( methods )
+
+
+desc 'block set variables'
+Flex::Configuration.configure do |conf|
+  conf.base_uri = 'http://something:123'
+end
+Flex::Configuration.base_uri
+_eql?( "http://something:123" )
+
+
+desc 'direct set variables'
+Flex::Configuration.test = false
+Flex::Configuration.test
+_eql?( false )
+
+
+desc 'new configuration object'
+Flex::Configuration.configure do |conf|
+  conf.custom = 23
+  conf.base_uri = 'http://other_host:9200'
+end
+
+
+desc 'custom arg accessor'
+Flex::Configuration.custom
+_eql?( 23 )
+
+
+desc 'modified configuration'
+Flex::Configuration.base_uri
+_eql?( 'http://other_host:9200' )
+
+
+desc 'add custom configuration with accessor'
+Flex::Configuration.new_custom = 3
+_eql?( 3 )
+
+
+desc 'custom option is in object'
+Flex::Configuration.new_custom
+_eql?( 3 )
+

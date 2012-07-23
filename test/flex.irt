@@ -1,0 +1,143 @@
+desc 'check version'
+Flex::VERSION
+_eql?( "0.1" )
+
+desc 'Flex responds to all public methods'
+methods =  [ # api methods from yaml
+             :indices_exists, :create_index, :put_index, :post_index, :get_settings, :put_mapping, :get_mapping, :delete_mapping,
+             :delete_index, :delete_by_query, :bulk, :count, :stats, :store, :put_store, :post_store, :remove, :get, :multi_get,
+             # utility_methods
+             :configuration, :config, :search, :slim_search, :HEAD, :GET, :PUT, :POST, :DELETE, :json2yaml, :yaml2json,
+             :process_bulk, :import_collection, :delete_collection,
+             # other methods
+             :exist? ]
+defined, not_defined = methods.partition {|k| Flex.respond_to?(k)}
+defined
+_eql?( methods )
+
+
+desc 'create index with PUT (explicit index)'
+Flex.delete_index(:index => INDEX_NAME) if Flex.exist?(:index => INDEX_NAME)
+Flex.put_index(:index => INDEX_NAME)
+_eql?( {"ok"=>true, "acknowledged"=>true} )
+
+
+# in the irt_helper.rb we set the default index to INDEX_NAME and Flex.reload! so we don't need to pass any explicit index
+
+desc 'create index with PUT'
+Flex.delete_index if Flex.exist?
+Flex.put_index
+_eql?( {"ok"=>true, "acknowledged"=>true} )
+
+
+desc "index #{INDEX_NAME} exist"
+Flex.exist?
+_eql?( true )
+
+
+desc "index #{unexistent = 'flex_unexistent_index'} doesn't exist'"
+Flex.exist?(:index => unexistent)
+_eql?( false )
+
+
+desc 'create_index with POST (explicit index)'
+Flex.delete_index(:index => TMP_INDEX_NAME) if Flex.exist?(:index => TMP_INDEX_NAME)
+Flex.post_index(:index => TMP_INDEX_NAME)
+_eql?( {"ok"=>true, "acknowledged"=>true} )
+Flex.delete_index(:index => TMP_INDEX_NAME)
+
+
+desc 'get_settings'
+Flex.get_settings
+_eql?( {"flex_test_index"=>{"settings"=>{"index.number_of_replicas"=>"1", "index.number_of_shards"=>"5", "index.version.created"=>"190299"}}} )
+
+
+desc 'put_mapping'
+Flex.put_mapping(:type       => 'type1',
+                 :properties => {'test1' => {'type' => 'string'} })
+_eql?( {"ok"=>true, "acknowledged"=>true} )
+
+
+desc 'check mapping'
+Flex.get_mapping
+_eql?( {"flex_test_index"=>{"type1"=>{"properties"=>{"test1"=>{"type"=>"string"}}}}} )
+
+
+desc 'delete_mapping'
+Flex.delete_mapping(:type => 'type1')
+_eql?( {"ok"=>true} )
+
+
+desc 'delete_index'
+Flex.delete_index
+_eql?( {"ok"=>true, "acknowledged"=>true} )
+
+
+desc 'check delete_index'
+Flex.exist?
+_eql?( false )
+
+
+desc 'store'
+Flex.store(:type => 'type1', :id => 1, :data => {'a'=>2, 'b'=>3})
+_eql?( {"ok"=>true, "_index"=>"flex_test_index", "_type"=>"type1", "_id"=>"1", "_version"=>1} )
+
+
+desc 'get'
+Flex.get(:type => 'type1', :id => 1)
+_eql?( {"_index"=>"flex_test_index", "_type"=>"type1", "_id"=>"1", "_version"=>1, "exists"=>true, "_source"=>{"a"=>2, "b"=>3}} )
+
+
+desc 'count (may fail in test, but it\'s ok)'
+Flex.count :type => 'type1'
+_eql?( {"count"=>1, "_shards"=>{"total"=>5, "successful"=>5, "failed"=>0}} )
+
+
+desc 'remove'
+Flex.remove(:type => 'type1', :id => 1)
+_eql?( {"ok"=>true, "found"=>true, "_index"=>"flex_test_index", "_type"=>"type1", "_id"=>"1", "_version"=>2} )
+
+
+desc 'check remove'
+Flex.get(:type => 'type1', :id => 1, :raise => false)
+_eql?( nil )
+
+
+desc 'delete_by_query'
+# in Patron the :data option is not working, since currently patron cannot send data with a DELETE request
+Flex.store(:type => 'type1', :id => 1, :data => {'a'=>2, 'myfield'=>'pippo'})
+Flex.delete_by_query :type => 'type1', :params => {:q => 'myfield:pippo'}
+_eql?( {"ok"=>true, "_indices"=>{"flex_test_index"=>{"_shards"=>{"total"=>5, "successful"=>5, "failed"=>0}}}} )
+
+
+desc 'strict_existence doesn\'t affect exist'
+Flex.get(:type => 'type1', :id => 1, :raise => false)
+_eql?( nil )
+
+
+desc 'json2yaml'
+struct = {:a => {:b => [3,4,5]}}
+yaml = Flex.json2yaml MultiJson.encode(struct)
+_eql? <<EOS
+---
+a:
+  b:
+  - 3
+  - 4
+  - 5
+EOS
+
+desc 'yaml2json'
+Flex.yaml2json(yaml)
+_eql?( "{\"a\":{\"b\":[3,4,5]}}" )
+
+
+desc "exist with HEAD"
+Flex.HEAD "/#{INDEX_NAME}"
+# empty result object
+_eql?( true )
+
+desc "doesn't exist with HEAD'"
+Flex.HEAD "/unexistent_flex_index"
+_eql?( false )
+

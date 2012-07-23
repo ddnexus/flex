@@ -1,0 +1,108 @@
+# These methods are available as Flex.<method> variable_hash
+# you can get the updated full reference and usage example of these methods
+# by just doing in the console:
+# >> puts Flex.info
+
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-indices-exists.html
+indices_exists: &exist
+  - HEAD
+  - /<<index>>
+
+# aliased
+exist?: *exist
+
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-create-index.html
+create_index: &create
+  - PUT
+  - /<<index>>
+  - settings:
+      number_of_shards: <<number_of_shards= 5 >>
+      number_of_replicas: <<number_of_replicas= 1 >>
+
+# aliased
+put_index: *create
+
+post_index:
+  - POST
+  - /<<index>>
+  - settings:
+      number_of_shards: <<number_of_shards= 5 >>
+      number_of_replicas: <<number_of_replicas= 1 >>
+
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-get-settings.html
+get_settings:
+  - GET
+  - /<<index>>/_settings
+
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-put-mapping.html
+put_mapping:
+  - PUT
+  - /<<index>>/<<type>>/_mapping
+  - <<type>>:
+      properties: <<properties>>
+
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-get-mapping.html
+get_mapping:
+  - GET
+  - /<<index>>/<<type>>/_mapping
+
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-delete-mapping.html
+delete_mapping:
+  - DELETE
+  - /<<index>>/<<type>>
+
+# http://www.elasticsearch.org/guide/reference/api/delete.html
+delete_index:
+  - DELETE
+  - /<<index>>
+
+# http://www.elasticsearch.org/guide/reference/api/delete-by-query.html
+delete_by_query:
+  - DELETE
+  - /<<index>>/<<type>>/_query
+  # pass :data variable query if you need
+
+# http://www.elasticsearch.org/guide/reference/api/bulk.html
+bulk:
+  - POST
+  - /_bulk
+  - << lines >>
+
+# http://www.elasticsearch.org/guide/reference/api/count.html
+count:
+  - GET
+  - /<<index>>/<<type>>/_count
+  # pass :data structure if you need
+
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-stats.html
+stats:
+  - GET
+  - /<<index>>/_stats/<<end_point= ~ >>
+
+# You must pass the :data variable
+store: &store
+  - PUT
+  - /<<index>>/<<type>>/<<id>>
+
+# alias for symmetry with post_store
+put_store: *store
+
+# id is set by ES; you must pass :data
+post_store:
+  - POST
+  - /<<index>>/<<type>>
+
+remove:
+  - DELETE
+  - /<<index>>/<<type>>/<<id>>
+
+# http://www.elasticsearch.org/guide/reference/api/get.html
+get:
+  - GET
+  - /<<index>>/<<type>>/<<id>>
+
+# http://www.elasticsearch.org/guide/reference/api/multi-get.html
+multi_get:
+  - GET
+  - /<<index>>/<<type>>/_mget
+  - ids: << ids >>

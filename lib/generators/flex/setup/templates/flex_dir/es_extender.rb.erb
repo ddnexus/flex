@@ -1,0 +1,17 @@
+# see the detailed Extenders documentation at https://github.com/ddnexus/flex/wiki/Extenders
+
+module <%= @extender_name  %>
+
+  # set this method to restrict this extender to certain types of results
+  # see the other Flex extenders for reference (https://github.com/ddnexus/flex/tree/master/lib/flex/result)
+  def self.should_extend?(response)
+    false
+  end
+
+  # adds your methods
+
+  def an_extending_method
+    # self is the structure returned by ES
+  end
+
+end

@@ -1,0 +1,19 @@
+# Add here your search queries
+# see the detailed Source documentation at https://github.com/ddnexus/flex/wiki/Sources
+
+
+# ANCHORS litheral key: it will not be used as template
+# you can store here fragments of queries to reuse in the templates below
+ANCHORS:
+  -
+
+# this is a a basic template loaded in your class <%= @class_name %>
+# it defines the 'q' tag. You can check its usage from the rails console by just typing:
+# >> puts <%= @class_name %>.flex.info
+# You can eventually restrict the info to a single method by pasing its name:
+# >> puts <%= @class_name %>.flex.info :search
+# see the detailed doc for this feature at https://github.com/ddnexus/flex/wiki/Selfdoc
+search:
+- query:
+    query_string: <<q= "*">>
+
