@@ -55,7 +55,7 @@ module Flex
       lines = args[:collection].map do |d|
                 # skips indexing for objects that return nil as the indexed_json or are not flex_indexable?
                 unless action == 'delete'
-                  next if d.respond_to?(:flex_indexable?) && !d.flex_flex_indexable?
+                  next if d.respond_to?(:flex_indexable?) && !d.flex_indexable?
                   json = get_json(d) || next
                 end
                 m = {}

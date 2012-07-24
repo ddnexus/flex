@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name                      = 'flex'
   s.summary                   = 'Ruby Client for ElasticSearch'
   s.description               = <<-desc
-Flex is a complete ruby client for ElasticSearch. It introduces a new way to send any kind of request (not just search queries) to the ES server, and to manage any kind of response. You can transparently integrate it with ActiveRecord and MongoId models with or without automatic synchronization, with or without Rails. It is fast and efficient, easy to use and customize.
+Flex is an innovative ruby client for ElasticSearch. With Flex your code will be clean, easy to write and read, and very short: "poetic-short". Flex is fast and efficient, easy to use and customize, and offers ActiveRecord, MongoId and Rails integration.
   desc
   s.homepage                  = 'http://github.com/ddnexus/flex'
   s.authors                   = ["Domizio Demichelis"]
