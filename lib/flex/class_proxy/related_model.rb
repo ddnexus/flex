@@ -1,6 +1,6 @@
 module Flex
-  module RelatedModel
-    class ClassProxy
+  module ClassProxy
+    class RelatedModel
 
       attr_reader :host_class
 
@@ -8,7 +8,7 @@ module Flex
         @host_class = host_class
       end
 
-      include RelatedModel::ClassSync
+      include ModelSync
 
       alias_method :full_sync, :sync
 

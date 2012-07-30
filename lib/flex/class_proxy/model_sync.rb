@@ -1,6 +1,6 @@
 module Flex
-  module RelatedModel
-    module ClassSync
+  module ClassProxy
+    module ModelSync
 
       def self.included(base)
         base.class_eval do
@@ -12,7 +12,7 @@ module Flex
         @synced = synced
         host_class.class_eval do
           raise NotImplementedError, "the class #{self} must implement :after_save and :after_destroy callbacks" \
-                  unless respond_to?(:after_save) && respond_to?(:after_destroy)
+                unless respond_to?(:after_save) && respond_to?(:after_destroy)
           after_save    { flex.sync }
           after_destroy { flex.sync }
         end

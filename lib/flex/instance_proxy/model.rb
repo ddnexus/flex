@@ -1,6 +1,6 @@
 module Flex
-  module Model
-    class InstanceProxy < RelatedModel::InstanceProxy
+  module InstanceProxy
+    class Model < Base
 
       # indexes the document
       # usually called from after_save, you can eventually call it explicitly for example from another callback
@@ -65,21 +65,21 @@ module Flex
       end
 
       def is_parent?
-        @is_parent ||= Manager.parent_types.include?(type)
+        @is_parent ||= ModelManager.parent_types.include?(type)
       end
 
       def metainfo
         @metainfo ||= begin
-                        meta = { :index => index, :type => type, :id => id }
-                        params = {}
-                        params[:routing] = routing if routing
-                        params[:parent]  = parent_instance.id if is_child?
-                        meta.merge!(:params => params) unless params.empty?
-                        meta
-                      end
+          meta = { :index => index, :type => type, :id => id }
+          params = {}
+          params[:routing] = routing if routing
+          params[:parent]  = parent_instance.id if is_child?
+          meta.merge!(:params => params) unless params.empty?
+          meta
+        end
       end
 
-    private
+      private
 
       BASE62_DIGITS = %w(0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z)
 

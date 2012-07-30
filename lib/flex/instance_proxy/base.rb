@@ -1,6 +1,7 @@
 module Flex
-  module RelatedModel
-    class InstanceProxy
+  module InstanceProxy
+
+    class Base
       attr_reader :instance, :class_flex
 
       def initialize(instance)
