@@ -1,15 +1,15 @@
 module Flex
-  module Model
-    class ClassProxy < Flex::ClassProxy
+  module ClassProxy
+    class Model < Base
 
-      include RelatedModel::ClassSync
+      include ModelSync
 
       attr_reader :parent_association, :parent_child_map
 
       def initialize(base)
         super
         variables.add :index => Configuration.variables[:index],
-                      :type  => Manager.class_name_to_type(host_class.name)
+                      :type  => ModelManager.class_name_to_type(host_class.name)
       end
 
       def index
@@ -30,7 +30,7 @@ module Flex
 
       def parent(parent_association, map)
         @parent_association = parent_association
-        Manager.parent_types |= map.keys.map(&:to_s)
+        ModelManager.parent_types |= map.keys.map(&:to_s)
         self.type = map.values.map(&:to_s)
         @parent_child_map = map
         @is_child         = true

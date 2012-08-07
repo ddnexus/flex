@@ -3,13 +3,13 @@ module Flex
 
     def self.included(base)
       base.class_eval do
-        class << self; attr_reader :flex end
-        @flex ||= Flex::Model::ClassProxy.new(base)
+        @flex ||= ClassProxy::Model.new(base)
+        def self.flex; @flex end
       end
     end
 
     def flex
-      @flex ||= InstanceProxy.new(self)
+      @flex ||= InstanceProxy::Model.new(self)
     end
 
     def flex_source
