@@ -12,7 +12,7 @@ module Flex
         response = ::RestClient::Request.new( args ).execute
         extend_response(response, url)
 
-      rescue ::RestClient::ExceptionWithResponse, ::RestClient::RequestFailed => e
+      rescue ::RestClient::ExceptionWithResponse => e
         extend_response(e.response, url)
       end
 
