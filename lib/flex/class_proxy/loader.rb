@@ -17,7 +17,7 @@ module Flex
         if source.nil? || source != /\n/
           paths = [ "#{Configuration.flex_dir}/#{source}.yml",
                     "#{Configuration.flex_dir}/#{ModelManager.class_name_to_type(host_class.name)}.yml",
-                    source ]
+                    source.to_s ]
           source = paths.find {|p| File.exist?(p)}
         end
         raise ArgumentError, "expected a string (got #{source.inspect})." \
