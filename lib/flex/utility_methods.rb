@@ -1,11 +1,6 @@
 module Flex
   module UtilityMethods
 
-    def configuration
-      Configuration
-    end
-    alias_method :config, :configuration
-
     # Anonymous search query: please, consider to use named templates for better performances and programming style
     # data can be a JSON string that will be passed as is, or a YAML string (that will be converted into a ruby hash)
     # or a hash. It can contain interpolation tags as usual.
