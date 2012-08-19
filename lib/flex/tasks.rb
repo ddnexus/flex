@@ -110,7 +110,7 @@ module Flex
                                          'Please, use CONFIG_FILE=/path/to/index.yml ' +
                                          'or set the Flex::Configuration.config_file properly' \
                           unless File.exist?(@indices_yaml)
-                    ModelManager.indices(@indices_yaml)
+                    Manager.indices(@indices_yaml)
                   end
     end
 

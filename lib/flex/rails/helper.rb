@@ -8,7 +8,7 @@ module Flex
         Flex::Configuration.logger = ::Rails.logger
         # we need to reload the flex API methods with the new variables
         Flex.reload!
-        Flex::ModelManager.init
+        Flex::Manager.init_models
       end
 
     end

@@ -1,4 +1,4 @@
-# These methods are available as Flex.<method> variable_hash
+# These methods are available as Flex.<method>(variable_hash)
 # you can get the updated full reference and usage example of these methods
 # by just doing in the console:
 # >> puts Flex.info

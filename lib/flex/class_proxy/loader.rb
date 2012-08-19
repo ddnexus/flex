@@ -16,7 +16,7 @@ module Flex
       def load_source_for(klass, source, source_vars)
         if source.nil? || source != /\n/
           paths = [ "#{Configuration.flex_dir}/#{source}.yml",
-                    "#{Configuration.flex_dir}/#{ModelManager.class_name_to_type(host_class.name)}.yml",
+                    "#{Configuration.flex_dir}/#{Manager.class_name_to_type(host_class.name)}.yml",
                     source.to_s ]
           source = paths.find {|p| File.exist?(p)}
         end
