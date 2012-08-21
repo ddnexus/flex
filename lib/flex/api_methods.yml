@@ -87,7 +87,7 @@ store: &store
 # alias for symmetry with post_store
 put_store: *store
 
-# id is set by ES; you must pass :data
+# id is assigned by ES; you must pass :data
 post_store:
   - POST
   - /<<index>>/<<type>>
