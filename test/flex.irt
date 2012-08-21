@@ -7,7 +7,7 @@ methods =  [ # api methods from yaml
              :indices_exists, :create_index, :put_index, :post_index, :get_settings, :put_mapping, :get_mapping, :delete_mapping,
              :delete_index, :delete_by_query, :bulk, :count, :stats, :store, :put_store, :post_store, :remove, :get, :multi_get,
              # utility_methods
-             :configuration, :config, :search, :slim_search, :HEAD, :GET, :PUT, :POST, :DELETE, :json2yaml, :yaml2json,
+             :search, :slim_search, :HEAD, :GET, :PUT, :POST, :DELETE, :json2yaml, :yaml2json,
              :process_bulk, :import_collection, :delete_collection,
              # other methods
              :exist? ]

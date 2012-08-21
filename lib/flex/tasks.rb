@@ -93,7 +93,7 @@ module Flex
   private
 
     def indices
-      indices = ENV['INDEX'] || ENV['INDICES'] || struct.keys
+      indices = ENV['INDICES'] || struct.keys
       indices = eval(indices) if indices.is_a?(String)
       indices = [indices] unless indices.is_a?(Array)
       indices
@@ -110,15 +110,15 @@ module Flex
                                          'Please, use CONFIG_FILE=/path/to/index.yml ' +
                                          'or set the Flex::Configuration.config_file properly' \
                           unless File.exist?(@indices_yaml)
-                    ModelManager.indices(@indices_yaml)
+                    Manager.indices(@indices_yaml)
                   end
     end
 
 
     def models
       @models ||= begin
-        mods = ENV['MODEL'] || ENV['MODELS'] || Flex::Configuration.flex_models
-        raise AgrumentError, 'no class defined. Please use MODEL=AClass or MODELS=[ClassA,ClassB]' +
+        mods = ENV['MODELS'] || Flex::Configuration.flex_models
+        raise AgrumentError, 'no class defined. Please use MODELS=[ClassA,ClassB]' +
                              'or set the Flex::Configuration.flex_models properly' \
               if mods.nil? || mods.empty?
         mods = eval(mods) if mods.is_a?(String)

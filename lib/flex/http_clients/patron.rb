@@ -3,8 +3,8 @@ module Flex
     module Patron
       extend self
 
-      def request(method, path, data=nil, options={})
-        options = Utils.deep_merge_hashes(Configuration.http_client_options, options)
+      def request(method, path, data=nil)
+        options = Configuration.http_client_options
         options = options.merge(:data => data) if data
         session.request method.to_s.downcase.to_sym, path, {}, options
       rescue ::Patron::TimeoutError

@@ -27,7 +27,7 @@ require 'flex/template/slim_search'
 require 'flex/template/tags'
 require 'flex/template/info'
 
-require 'flex/model_manager'
+require 'flex/manager'
 
 require 'flex/class_proxy/base'
 require 'flex/class_proxy/loader'

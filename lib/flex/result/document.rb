@@ -23,7 +23,7 @@ module Flex
       end
 
       def mapped_class(should_raise=false)
-        @mapped_class ||= ModelManager.type_class_map["#{_index}/#{_type}"]
+        @mapped_class ||= Manager.type_class_map["#{_index}/#{_type}"]
       rescue NameError
         raise DocumentMappingError, "the '#{_index}/#{_type}' document cannot be mapped to any class." \
               if should_raise

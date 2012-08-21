@@ -3,9 +3,9 @@ module Flex
     module RestClient
       extend self
 
-      def request(method, path, data=nil, options={})
-        options = Configuration.http_client_options.merge options
-        url     = Configuration.base_uri + path
+      def request(method, path, data=nil)
+        options = Configuration.http_client_options
+        url     = Configuration.base_uri.join(path)
         args    = options.merge( :method  => method.to_s.downcase.to_sym,
                                  :url     => url,
                                  :payload => data )

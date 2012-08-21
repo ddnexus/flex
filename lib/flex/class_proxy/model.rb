@@ -9,7 +9,7 @@ module Flex
       def initialize(base)
         super
         variables.add :index => Configuration.variables[:index],
-                      :type  => ModelManager.class_name_to_type(host_class.name)
+                      :type  => Manager.class_name_to_type(host_class.name)
       end
 
       def index
@@ -30,7 +30,7 @@ module Flex
 
       def parent(parent_association, map)
         @parent_association = parent_association
-        ModelManager.parent_types |= map.keys.map(&:to_s)
+        Manager.parent_types |= map.keys.map(&:to_s)
         self.type = map.values.map(&:to_s)
         @parent_child_map = map
         @is_child         = true

@@ -1,4 +1,4 @@
-# These methods are available as Flex.<method> variable_hash
+# These methods are available as Flex.<method>(variable_hash)
 # you can get the updated full reference and usage example of these methods
 # by just doing in the console:
 # >> puts Flex.info
@@ -87,7 +87,7 @@ store: &store
 # alias for symmetry with post_store
 put_store: *store
 
-# id is set by ES; you must pass :data
+# id is assigned by ES; you must pass :data
 post_store:
   - POST
   - /<<index>>/<<type>>

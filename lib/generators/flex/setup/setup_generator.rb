@@ -2,9 +2,6 @@ require 'prompter'
 
 class Flex::SetupGenerator < Rails::Generators::Base
 
-  # more funny than vanilla thor
-  include Prompter::Methods
-
   source_root File.expand_path('../templates', __FILE__)
 
   def self.banner
@@ -12,8 +9,8 @@ class Flex::SetupGenerator < Rails::Generators::Base
   end
 
   def ask_base_name
-    @class_name = ask('Please, enter a class name for your Search class. Choose a name not defined in your app.',
-                      :default => 'FlexSearch', :hint => '[<enter>=FlexSearch]')
+    @class_name = Prompter.ask('Please, enter a class name for your Search class. Choose a name not defined in your app.',
+                               :default => 'FlexSearch', :hint => '[<enter>=FlexSearch]')
     @extender_name = "#{@class_name}Extender"
   end
 
