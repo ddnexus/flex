@@ -44,7 +44,7 @@ module Flex
                              :logger              => Logger.new(STDERR),
                              :variables           => Variables.new( :index      => nil,
                                                                     :type       => nil,
-                                                                    :no_pruning => %w[match_all] ),
+                                                                    :no_pruning => [] ),
                              :flex_models         => [],
                              :config_file         => './config/flex.yml',
                              :flex_dir            => './flex',

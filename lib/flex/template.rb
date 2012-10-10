@@ -1,4 +1,5 @@
 module Flex
+
   # Generic Flex::Template object.
   # This class represents a generic Flex::Template object. It is used as the base class by all the more specific Flex::Template::* classes.
   # You  usually don't need to instantiate this class manually, since it is usually used internally.
@@ -142,45 +143,45 @@ module Flex
           merged = @variables.deep_merge sym_vars
           vars   = process_vars(merged)
           obj    = #{stringified}
+          obj    = prune(obj)
+          obj[:path].tr_s!('/', '/')     # removes empty path segments
           obj[:vars] = vars
-          obj    = prune(obj, vars[:no_pruning])
           obj
         end
       ruby
       interpolate(*args)
     end
 
+    module PrunableObject end
+
     # prunes the branch when the leaf is nil
-    # also removes empty path segments
     # and compact.flatten the Array values
-    def prune(obj, no_pruning)
+    def prune(obj)
       case obj
       when Array
-        return if obj.empty?
+        return if obj.is_a?(PrunableObject)
         a = obj.map do |i|
-              next if i.nil?
-              prune(i, no_pruning)
+              next if i.is_a?(PrunableObject)
+              prune(i)
             end.compact.flatten
         a unless a.empty?
       when Hash
-        return if obj.empty?
+        return if obj.is_a?(PrunableObject)
+        return obj if obj.empty?
         h = {}
-        obj.each do |k, v|
-          next if v.nil?
-          v = case
-              when k == :path
-                v.gsub(/\/+/, '/')
-              when no_pruning.include?(k)
-                v
-              else
-                prune(v, no_pruning)
-              end
-          h[k] = v unless v.nil?
-        end
+        obj.each {|k, v| h[k] = prune(v)}
         h unless h.empty?
       else
         obj
       end
+    end
+
+    # extend obj with PrunableObject if it is nil or it is an empty Array or Hash
+    # called from stringified
+    def prunable(name, vars)
+      obj = vars[name]
+      return obj if vars[:no_pruning].include?(name)
+      (obj.nil? || obj == [] || obj == {}) ? obj.extend(PrunableObject) : obj
     end
 
   end
