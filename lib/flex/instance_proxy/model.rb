@@ -28,7 +28,8 @@ module Flex
 
       def parent_instance(raise=true)
         return unless is_child?
-        @parent_instance ||= instance.send(class_flex.parent_association) || raise && raise(MissingParentError, "missing parent instance for document #{instance.inspect}.")
+        @parent_instance ||= instance.send(class_flex.parent_association) || raise &&
+                               raise(MissingParentError, "missing parent instance for document #{instance.inspect}.")
       end
 
       # helper that iterates through the parent record chain
@@ -81,7 +82,7 @@ module Flex
 
       private
 
-      BASE62_DIGITS = %w(0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z)
+      BASE62_DIGITS = ('0'..'9').to_a + ('A'..'Z').to_a + ('a'..'z').to_a
 
       def create_routing
         string    = [index, type, id].join

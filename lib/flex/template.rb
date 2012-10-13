@@ -1,7 +1,8 @@
 module Flex
 
   # Generic Flex::Template object.
-  # This class represents a generic Flex::Template object. It is used as the base class by all the more specific Flex::Template::* classes.
+  # This class represents a generic Flex::Template object.
+  # It is used as the base class by all the more specific Flex::Template::* classes.
   # You  usually don't need to instantiate this class manually, since it is usually used internally.
   # For more details about templates, see the documentation.
   class Template
@@ -70,8 +71,9 @@ module Flex
 
     rescue NameError => e
       if e.name == :request
-        raise MissingHttpClientError, 'you should install the gem "patron" (recommended for performances) or "rest-client", ' +
-                                      'or provide your own http-client interface and set Flex::Configuration.http_client'
+        raise MissingHttpClientError,
+              'you should install the gem "patron" (recommended for performances) or "rest-client", ' +
+              'or provide your own http-client interface and set Flex::Configuration.http_client'
       else
         raise
       end
@@ -152,7 +154,7 @@ module Flex
       interpolate(*args)
     end
 
-    # prunes the branch when the leaf is nil
+    # prunes the branch when the leaf is a PrunableObject
     # and compact.flatten the Array values
     def prune(obj)
       case obj

@@ -94,7 +94,8 @@ module Flex
       case
       when d.respond_to?(:flex)  then d.flex.type
       when d.respond_to?(:_type) then d._type
-      when d.is_a?(Hash)         then d.delete(:_type) || d.delete('_type') || d.delete(:type) || d.delete('type')
+      when d.is_a?(Hash)         then d.delete(:_type) || d.delete('_type') ||
+                                      d.delete(:type)  || d.delete('type')
       when d.respond_to?(:type)  then d.type
       end
     end
@@ -104,7 +105,8 @@ module Flex
       when d.respond_to?(:flex) && d.flex.parent_instance(false) then d.flex.parent_instance.id
       when d.respond_to?(:_parent) then d._parent
       when d.respond_to?(:parent)  then d.parent
-      when d.is_a?(Hash)           then d.delete(:_parent) || d.delete('_parent') || d.delete(:parent) || d.delete('parent')
+      when d.is_a?(Hash)           then d.delete(:_parent) || d.delete('_parent') ||
+                                        d.delete(:parent)  || d.delete('parent')
       end
     end
 
@@ -113,13 +115,15 @@ module Flex
       when d.respond_to?(:flex) && d.flex.routing(false) then d.flex.routing
       when d.respond_to?(:_routing) then d._routing
       when d.respond_to?(:routing)  then d.routing
-      when d.is_a?(Hash)            then d.delete(:_routing) || d.delete('_routing') || d.delete(:routing) || d.delete('routing')
+      when d.is_a?(Hash)            then d.delete(:_routing) || d.delete('_routing') ||
+                                         d.delete(:routing)  || d.delete('routing')
       end
     end
 
     def get_id(d)
       case
-      when d.is_a?(Hash)      then  d.delete(:_id) || d.delete('_id') || d.delete(:id) || d.delete('id')
+      when d.is_a?(Hash)      then  d.delete(:_id) || d.delete('_id') ||
+                                    d.delete(:id)  || d.delete('id')
       when d.respond_to?(:id) then  d.id
       end
     end
