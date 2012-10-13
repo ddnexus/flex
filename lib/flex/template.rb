@@ -152,8 +152,6 @@ module Flex
       interpolate(*args)
     end
 
-    module PrunableObject end
-
     # prunes the branch when the leaf is nil
     # and compact.flatten the Array values
     def prune(obj)
@@ -174,14 +172,6 @@ module Flex
       else
         obj
       end
-    end
-
-    # extend obj with PrunableObject if it is nil or it is an empty Array or Hash
-    # called from stringified
-    def prunable(name, vars)
-      obj = vars[name]
-      return obj if vars[:no_pruning].include?(name)
-      (obj.nil? || obj == [] || obj == {}) ? obj.extend(PrunableObject) : obj
     end
 
   end

@@ -1,5 +1,8 @@
 module Flex
   class Template
+
+    module PrunableObject end
+
     module Base
 
       def process_vars(vars)
@@ -22,6 +25,14 @@ module Flex
           vars[:params][:from] = ((page - 1) * vars[:params][:size] || vars[:size] || 10).ceil
         end
         vars
+      end
+
+      # extend obj with PrunableObject if it is nil or it is an empty Array or Hash
+      # called from stringified
+      def prunable(name, vars)
+        obj = vars[name]
+        return obj if vars[:no_pruning].include?(name)
+        (obj.nil? || obj == [] || obj == {}) ? obj.extend(PrunableObject) : obj
       end
 
     end
