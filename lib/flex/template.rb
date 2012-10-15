@@ -169,7 +169,11 @@ module Flex
         return if obj.is_a?(PrunableObject)
         return obj if obj.empty?
         h = {}
-        obj.each {|k, v| h[k] = prune(v)}
+        obj.each do |k, v|
+          pruned = prune(v)
+          next if pruned.is_a?(PrunableObject)
+          h[k] = pruned
+        end
         h unless h.empty?
       else
         obj
