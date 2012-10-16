@@ -62,7 +62,7 @@ module Flex
 
         total_count      = klass.count
         successful_count = 0
-        failed           = []
+        failed_count     = 0
 
         pbar = ProgressBar.new('processing...', total_count)
         pbar.clear
@@ -72,21 +72,18 @@ module Flex
         pbar.send(:show)
 
         klass.find_in_batches(:batch_size => batch_size) do |array|
-          opts = {:index => index}.merge(options)
+          opts   = {:index => index}.merge(options)
           result = Flex.import_collection(array, opts) || next
-          f = result.failed
-          failed += f
-          successful_count += result.successful.count
+          Configuration.logger.error "[FLEX] Failed imports:\n#{result.failed.to_yaml}" unless result.failed.size == 0
+          failed_count     += result.failed.size
+          successful_count += result.successful.size
           pbar.inc(array.size)
         end
 
         pbar.finish
-        puts "Processed #{total_count}. Successful #{successful_count}. Skipped #{total_count - successful_count - failed.size}. Failed #{failed.size}."
+        puts "Processed #{total_count}. Successful #{successful_count}. Skipped #{total_count - successful_count - failed_count}. Failed #{failed_count}."
+        puts "See the log for the details about the failed import." unless failed_count == 0
 
-        if failed.size > 0
-          puts 'Failed imports:'
-          puts failed.to_yaml
-        end
       end
     end
 
