@@ -22,7 +22,8 @@ module Flex
     end
 
     def erb_process(source)
-      ERB.new(File.read(source)).result
+      varname = "_flex_#{source.hash.to_s.tr('-', '_')}"
+      ERB.new(File.read(source), nil, nil, varname).result
     end
 
     def group_array_by(ary)
