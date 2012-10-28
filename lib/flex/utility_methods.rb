@@ -61,7 +61,7 @@ module Flex
                 m['_parent']  = parent if parent
                 routing       = get_routing(d)
                 m['_routing'] = routing if routing
-                line = {action => meta.merge(m)}.to_json
+                line = MultiJson.encode({action => meta.merge(m)})
                 line << "\n#{json}" unless action == 'delete'
                 line
               end.compact
@@ -132,6 +132,7 @@ module Flex
       case
       when d.respond_to?(:flex_source) then d.flex_source
       when d.respond_to?(:to_json)     then d.to_json
+      else MultiJson.encode(d)
       end
     end
 
