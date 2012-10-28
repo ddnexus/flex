@@ -16,8 +16,6 @@ module Flex
     end
 
     def import_models
-      require 'progressbar'
-
       Configuration.http_client_options[:timeout]   = ENV['TIMEOUT'].to_i if ENV['TIMEOUT']
       Configuration.http_client_options[:timeout] ||= 20
       Configuration.debug = !!ENV['FLEX_DEBUG']
@@ -29,7 +27,7 @@ module Flex
           options[k.to_sym] = v
         end
       end
-      deleted    = []
+      deleted = []
 
       models.each do |klass|
         index = klass.flex.index
@@ -60,34 +58,19 @@ module Flex
           next
         end
 
-        total_count      = klass.count
-        successful_count = 0
-        failed_count     = 0
-
-        pbar = ProgressBar.new('processing...', total_count)
-        pbar.clear
-        pbar.bar_mark = '|'
-        puts '_' * pbar.send(:get_term_width)
-        puts "Class #{klass}: indexing #{total_count} documents in batches of #{batch_size}:\n"
-        pbar.send(:show)
+        pbar = ProgBar.new(klass.count, batch_size, "Class #{klass}: ")
 
         klass.find_in_batches(:batch_size => batch_size) do |array|
           opts   = {:index => index}.merge(options)
           result = Flex.import_collection(array, opts) || next
-          Configuration.logger.error "[FLEX] Failed imports:\n#{result.failed.to_yaml}" unless result.failed.size == 0
-          failed_count     += result.failed.size
-          successful_count += result.successful.size
-          pbar.inc(array.size)
+          pbar.process_result(result, array.size)
         end
 
         pbar.finish
-        puts "Processed #{total_count}. Successful #{successful_count}. Skipped #{total_count - successful_count - failed_count}. Failed #{failed_count}."
-        puts "See the log for the details about the failed import." unless failed_count == 0
-
       end
     end
 
-  private
+    private
 
     def indices
       indices = ENV['INDICES'] || struct.keys
@@ -135,4 +118,5 @@ module Flex
     end
 
   end
+
 end
