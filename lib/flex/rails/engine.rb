@@ -7,7 +7,7 @@ module Flex
         config.flex.variables[:index] = [self.class.name.split('::').first.underscore, ::Rails.env].join('_')
         config.flex.config_file       = ::Rails.root.join('config', 'flex.yml').to_s
         config.flex.flex_dir          = ::Rails.root.join('app', 'flex').to_s
-        end
+        config.flex.debug             = ::Rails.env.development?
       end
 
       ActiveSupport.on_load(:after_initialize) do
