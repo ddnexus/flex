@@ -8,6 +8,10 @@ Flex is a complete ruby client for [ElasticSearch](http://www.elasticsearch.org)
 * [Issues](./flex/issues)
 * [Pull Requests](./flex/pulls)
 
+## Branches
+
+There is always a next-version branch with the commits that will be merged in the next gem version. That branch may get rebased or force pushed.
+
 ## Credits
 
 Special thanks for their sponsorship to [Escalate Media](http://www.escalatemedia.com) and [Barquin International](http://www.barquin.com).
