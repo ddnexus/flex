@@ -10,7 +10,7 @@ Flex is a complete ruby client for [ElasticSearch](http://www.elasticsearch.org)
 
 ## Branches
 
-There is always a next-version branch with the commits that will be merged in the next gem version. That branch may get rebased or force pushed.
+The master branch reflects the last published gem. Then you may find a next-version branch (named after the version string), with the commits that will be merged in master just before publishing the next gem version. The next-version branch may get rebased or force pushed.
 
 ## Credits
 
