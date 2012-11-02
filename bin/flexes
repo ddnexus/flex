@@ -1,0 +1,174 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require 'flex'
+
+options  = { }
+version  = File.read(File.expand_path('../../VERSION', __FILE__)).strip
+copy     = "flexes #{version} (c) 2012 Domizio Demichelis"
+optparse = OptionParser.new do |opts|
+
+  opts.banner = <<-banner
+
+    FlexEs:
+        Flex tool to dump/load data from/to ElasticSearch.
+    Usage:
+        flexes <command> [options]
+    <command>:
+        dump   dumps the data from one or more ElasticSearch indices
+        load   loads a dumpfile
+        stats  prints the full ElasticSearch stats
+
+    Notice: The load command will load the dump-file into ElasticSearch without removing any pre-existent data.
+            If you need fresh indices, use the flex:delete_indices and flex:create_indices rake tasks from your
+            application, which will also recreate the mapping.
+  banner
+
+
+  opts.separator ''
+  opts.separator 'Common options:'
+
+  options[:file] = './flexes.dump'
+  opts.on( '-f', '--file [FILE]', "The path of the dumpfile (default: '#{options[:file]}')" ) do |f|
+    options[:file] = f
+  end
+
+  opts.separator ''
+  opts.separator 'Dump options:'
+
+  options[:index] = nil
+  opts.on( '-i', '--index [INDEX_OR_INDICES]', Array, 'The index or comma separated indices to dump (default: all indices)' ) do |i|
+    options[:index] = i
+  end
+
+  options[:type] = nil
+  opts.on( '-t', '--type [TYPE_OR_TYPES]', Array, 'The type or comma separated types to dump (default: all types)' ) do |t|
+    options[:type] = t
+  end
+
+  options[:scroll] = '5m'
+  opts.on( '-s', '--scroll [TIME]', "The ElasticSearch scroll time (default: #{options[:scroll]})" ) do |s|
+    options[:scroll] = s
+  end
+
+  options[:size] = 50
+  opts.on( '-z', '--size [SIZE]', Integer, "The chunk size to dump per shard (default: #{options[:size]} * number of shards)" ) do |z|
+    options[:size] = z
+  end
+
+  opts.separator ''
+  opts.separator 'Load options:'
+
+  options[:timeout] = 20
+  opts.on( '-o', '--timeout [SECONDS]', Integer, "The http_client timeout for bulk loading (default: #{options[:timeout]} seconds)" ) do |o|
+    options[:timeout] = o
+  end
+
+  options[:batch_size] = 1000
+  opts.on( '-b', '--batch_size [BATCH_SIZE]', Integer, "The batch size to load (default: #{options[:batch_size]})" ) do |z|
+    options[:size] = z
+  end
+
+  opts.separator ''
+  opts.separator 'Other options:'
+
+  opts.on( '-v', '--version', 'Shows the version and exits' ) do
+    puts version
+    exit
+  end
+
+  opts.on_tail( '-h', '--help', 'Displays this screen' ) do
+    puts copy
+    puts opts
+    exit
+  end
+
+end
+
+optparse.parse!
+command = ARGV.first
+exec "#{$0} -h" if command.nil?
+puts copy
+
+case command
+
+when 'dump'
+  search_t    = Flex::Template::Search.new( {:query => {:match_all => {}}},
+                                            :params => { :search_type => 'scan',
+                                                         :scroll      => options[:scroll],
+                                                         :size        => options[:size],
+                                                         :fields      => '_source,*' } )
+  scroll_t    = Flex::Template.new( :get,
+                                    '/_search/scroll',
+                                    nil,
+                                    :params => { :scroll => options[:scroll] } )
+  search_res  = search_t.render options
+  scroll_id   = search_res['_scroll_id']
+  total_hits  = search_res['hits']['total']
+  total_count = 0
+  pbar        = Flex::ProgBar.new(total_hits)
+  dump_stats  = Hash.new { |hash, key| hash[key] = Hash.new{|h,k| h[k] = 0} }
+  file_size   = 0
+  File.open(options[:file], 'wb') do |file|
+    while (result = scroll_t.render(:data => scroll_id)) do
+      break if result['hits']['hits'] == []
+      lines = result['hits']['hits'].map do |h|
+                dump_stats[h['_index']][h['_type']] += 1
+                meta = { :_index => h['_index'],
+                         :_type  => h['_type'],
+                         :_id    => h['_id'] }
+                if h.has_key?('fields')
+                  h['fields'].each do |k,v|
+                    meta[k] = v if k[0] == '_'
+                  end
+                end
+                [ MultiJson.encode({'index' => meta}),
+                  MultiJson.encode(h['_source']) ].join("\n")
+              end
+      file.puts lines.join("\n")
+      scroll_id = result['_scroll_id']
+      total_count += lines.size
+      pbar.pbar.inc(lines.size)
+    end
+    file_size = file.size
+  end
+  formatted_file_size = file_size.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse
+  pbar.pbar.finish
+  puts "\n***** WARNING: Expected document to dump: #{total_hits}, dumped: #{total_count}. *****" \
+       unless total_hits == total_count
+  puts "\nDumped #{total_count} documents to #{options[:file]} (size: #{formatted_file_size} bytes)"
+  puts dump_stats.to_yaml
+
+when 'load'
+  Flex::Configuration.http_client_options[:timeout] = options[:timeout]
+  chunk_size = options[:batch_size] * 2    # 2 lines per doc
+  lines      = ''
+  line_count = 0
+  file       = File.open(options[:file])
+  file.lines{ line_count += 1 }
+  file.rewind
+  pbar = Flex::ProgBar.new(line_count / 2, options[:batch_size])
+  file.lines do |line|
+    lines << line
+    if file.lineno % chunk_size == 0
+      result = Flex.bulk :lines => lines
+      lines  = ''
+      pbar.process_result(result, options[:batch_size])
+    end
+  end
+  # last chunk
+  unless lines == ''
+    result = Flex.bulk :lines => lines
+    pbar.process_result(result, (file.lineno % chunk_size) / 2)
+  end
+  file.close
+  pbar.finish
+
+when 'stats'
+  puts '>> puts Flex.stats.to_yaml'
+  puts Flex.stats.to_yaml
+
+else
+  puts "unknown command: #{command.inspect}"
+
+end

@@ -48,6 +48,9 @@ require 'flex/http_clients/rest_client'
 require 'flex/configuration'
 require 'flex/utility_methods'
 
+require 'progressbar'
+require 'flex/prog_bar'
+
 module Flex
 
   VERSION  = File.read(File.expand_path('../../VERSION', __FILE__)).strip

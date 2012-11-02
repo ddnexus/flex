@@ -12,7 +12,7 @@ module Flex
 
     # arrays of all the types
     def types
-      type_class_map.keys.map{|k| k.split('/').last}
+      @types ||= Configuration.flex_models.map {|m| (m.is_a?(String) ? eval("::#{m}") : m).flex.type }.flatten
     end
 
     # sets the default parent/child mappings and merges with the config_file

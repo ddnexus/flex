@@ -37,7 +37,7 @@ module Flex
       end
 
       def stringify(in_string)
-        in_string ? "\#{vars[:#{name}]}" : "vars[:#{name}]"
+        in_string ? "\#{prunable(:#{name}, vars)}" : "prunable(:#{name}, vars)"
       end
 
     end

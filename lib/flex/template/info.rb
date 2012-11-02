@@ -10,16 +10,33 @@ module Flex
           block = ''
           temp = templates[name]
           meth_call = [host_class, name].join('.')
-          block << "########## #{meth_call} ##########\n\n#{'-' * temp.class.to_s.length}\n#{temp.class}\n#{temp.to_flex(name)}\n"
+          block << <<-meth_call
+########## #{meth_call} ##########
+
+#{'-' * temp.class.to_s.length}
+#{temp.class}
+#{temp.to_flex(name)}
+meth_call
           temp.partials.each do |par_name|
             par = partials[par_name]
-            block << "#{'-' * par.class.to_s.length}\n#{par.class}\n#{par.to_flex(par_name)}\n"
+            block << <<-partial
+#{'-' * par.class.to_s.length}
+#{par.class}
+#{par.to_flex(par_name)}
+partial
           end
           block << "\nUsage:\n"
           block << usage(meth_call, temp)
           block << "\n "
           info  << block.split("\n").map{|l| '#  ' + l}.join("\n")
-          info  <<  "\ndef #{meth_call}(vars={})\n  # this is a stub, used for reference\nend\n\n\n"
+          info  <<  <<-meth
+
+def #{meth_call}(vars={})
+  ## this is a stub, used for reference
+end
+
+
+meth
         end
         info
       end
@@ -30,7 +47,8 @@ module Flex
         all_tags = temp.tags + temp.partials
         lines = all_tags.map do |t|
           comments = 'partial' if t.to_s.match(/^_/)
-          ['', t.to_s] + (temp.variables.has_key?(t) ? ["#{temp.variables[t].inspect},", comments_to_s(comments)] : ["#{t},", comments_to_s(comments, 'required')])
+          ['', t.to_s] + (temp.variables.has_key?(t) ? ["#{temp.variables[t].inspect},", comments_to_s(comments)] \
+                                                     : ["#{t},", comments_to_s(comments, 'required')])
         end
         lines.sort! { |a,b| b[3] <=> a[3] }
         lines.first[0] = meth_call

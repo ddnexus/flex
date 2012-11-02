@@ -3,11 +3,11 @@ module Flex
     class Engine < ::Rails::Engine
 
       ActiveSupport.on_load(:before_configuration) do
-        Flex::Configuration.configure do |c|
-          c.variables[:index] = [self.class.name.split('::').first.underscore, ::Rails.env].join('_')
-          c.config_file       = ::Rails.root.join('config', 'flex.yml').to_s
-          c.flex_dir          = ::Rails.root.join('app', 'flex').to_s
-        end
+        config.flex = Flex::Configuration
+        config.flex.variables[:index] = [self.class.name.split('::').first.underscore, ::Rails.env].join('_')
+        config.flex.config_file       = ::Rails.root.join('config', 'flex.yml').to_s
+        config.flex.flex_dir          = ::Rails.root.join('app', 'flex').to_s
+        config.flex.debug             = ::Rails.env.development?
       end
 
       ActiveSupport.on_load(:after_initialize) do

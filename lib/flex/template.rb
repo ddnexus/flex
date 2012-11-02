@@ -1,6 +1,8 @@
 module Flex
+
   # Generic Flex::Template object.
-  # This class represents a generic Flex::Template object. It is used as the base class by all the more specific Flex::Template::* classes.
+  # This class represents a generic Flex::Template object.
+  # It is used as the base class by all the more specific Flex::Template::* classes.
   # You  usually don't need to instantiate this class manually, since it is usually used internally.
   # For more details about templates, see the documentation.
   class Template
@@ -69,8 +71,9 @@ module Flex
 
     rescue NameError => e
       if e.name == :request
-        raise MissingHttpClientError, 'you should install the gem "patron" (recommended for performances) or "rest-client", ' +
-                                      'or provide your own http-client interface and set Flex::Configuration.http_client'
+        raise MissingHttpClientError,
+              'you should install the gem "patron" (recommended for performances) or "rest-client", ' +
+              'or provide your own http-client interface and set Flex::Configuration.http_client'
       else
         raise
       end
@@ -142,40 +145,34 @@ module Flex
           merged = @variables.deep_merge sym_vars
           vars   = process_vars(merged)
           obj    = #{stringified}
+          obj    = prune(obj)
+          obj[:path].tr_s!('/', '/')     # removes empty path segments
           obj[:vars] = vars
-          obj    = prune(obj, vars[:no_pruning])
           obj
         end
       ruby
       interpolate(*args)
     end
 
-    # prunes the branch when the leaf is nil
-    # also removes empty path segments
+    # prunes the branch when the leaf is a PrunableObject
     # and compact.flatten the Array values
-    def prune(obj, no_pruning)
+    def prune(obj)
       case obj
       when Array
-        return if obj.empty?
+        return if obj.is_a?(PrunableObject)
         a = obj.map do |i|
-              next if i.nil?
-              prune(i, no_pruning)
+              next if i.is_a?(PrunableObject)
+              prune(i)
             end.compact.flatten
         a unless a.empty?
       when Hash
-        return if obj.empty?
+        return if obj.is_a?(PrunableObject)
+        return obj if obj.empty?
         h = {}
         obj.each do |k, v|
-          next if v.nil?
-          v = case
-              when k == :path
-                v.gsub(/\/+/, '/')
-              when no_pruning.include?(k)
-                v
-              else
-                prune(v, no_pruning)
-              end
-          h[k] = v unless v.nil?
+          pruned = prune(v)
+          next if pruned.is_a?(PrunableObject)
+          h[k] = pruned
         end
         h unless h.empty?
       else
