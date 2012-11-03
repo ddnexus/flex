@@ -9,7 +9,6 @@ Flex is an innovative ruby client for ElasticSearch. With Flex your code will be
   s.homepage                  = 'http://github.com/ddnexus/flex'
   s.authors                   = ["Domizio Demichelis"]
   s.email                     = 'dd.nexus@gmail.com'
-  s.executables               = ['flexes']
   s.extra_rdoc_files          = %w[README.md]
   s.require_paths             = %w[lib]
   s.files                     = `git ls-files -z`.split("\0")
