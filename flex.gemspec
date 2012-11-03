@@ -36,7 +36,6 @@ ________________________________________________________________________________
 EOM
   s.add_runtime_dependency 'multi_json', '~> 1.3.4'
   s.add_runtime_dependency 'progressbar', '~> 0.11.0'
-  s.add_runtime_dependency 'prompter', '~> 0.1.5'
   s.add_development_dependency 'irt', '~> 1.2.10'
   s.add_development_dependency 'patron', '~> 0.4.18'
   s.add_development_dependency 'rest-client', '~> 1.6.7'
