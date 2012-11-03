@@ -106,3 +106,20 @@ multi_get:
   - GET
   - /<<index>>/<<type>>/_mget
   - ids: << ids >>
+
+# http://www.elasticsearch.org/guide/reference/api/percolate.html
+# You must pass the the query (and additional fields) as :data variable
+put_percolator:
+  - PUT
+  - /_percolator/<<index>>/<<name>>
+
+# http://www.elasticsearch.org/guide/reference/api/percolate.html
+delete_percolator:
+  - DELETE
+  - /_percolator/<<index/<<name>>
+
+# http://www.elasticsearch.org/guide/reference/api/percolate.html
+# You must pass the the document (and additional queries) as :data variable
+percolate:
+  - GET
+  - /<<index>>/<<type>>/_percolate
