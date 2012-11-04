@@ -1,0 +1,15 @@
+module Flex
+  module ClassProxy
+    module Modules
+      module Scope
+
+        def scope(name, source, source_vars=nil)
+          structure = Array.wrap(Utils.data_from_source(source))
+          template  = Template::Search.new(*structure).setup(self, name.to_s, source_vars)
+          add_template(name.to_sym, template)
+        end
+
+      end
+    end
+  end
+end
