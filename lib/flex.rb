@@ -513,6 +513,26 @@ module Flex
     ## this is a stub, used for reference
   end
 
+  #  ########## Flex.match_all ##########
+  #
+  #  --------------
+  #  Flex::Template
+  #  ---
+  #  match_all:
+  #  - GET
+  #  - /<<index>>/<<type>>/_search
+  #  - query:
+  #      match_all: {}
+  #
+  #
+  #  Usage:
+  #  Flex.match_all :index => "flex_test_index",
+  #                 :type  => nil
+  #
+  def Flex.match_all(vars={})
+    ## this is a stub, used for reference
+  end
+
   include Loader
   flex.load_source File.expand_path('../flex/api_methods.yml', __FILE__)
 

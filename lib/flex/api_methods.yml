@@ -123,3 +123,10 @@ delete_percolator:
 percolate:
   - GET
   - /<<index>>/<<type>>/_percolate
+
+# not a real API method, but handy
+match_all:
+  - GET
+  - /<<index>>/<<type>>/_search
+  - query:
+      match_all: {}
