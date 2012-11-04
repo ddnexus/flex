@@ -11,7 +11,7 @@ module Flex
              else raise ArgumentError, "expected a String or Hash instance (got #{source.inspect})"
              end
       raise ArgumentError, "the source does not decode to a Hash or String (got #{data.inspect})" \
-            unless data.is_a?(Hash) || data.is_a?(String)
+            unless data.is_a?(Hash) || data.is_a?(Array) || data.is_a?(String)
       data
     end
 
