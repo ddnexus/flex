@@ -30,8 +30,10 @@ require 'flex/template/info'
 require 'flex/manager'
 
 require 'flex/class_proxy/base'
+require 'flex/class_proxy/modules/loader'
 require 'flex/class_proxy/loader'
 require 'flex/class_proxy/model_sync'
+require 'flex/class_proxy/modules/model'
 require 'flex/class_proxy/model'
 require 'flex/class_proxy/related_model'
 

@@ -70,14 +70,12 @@ module Flex
       end
 
       def metainfo
-        @metainfo ||= begin
-                        meta = { :index => index, :type => type, :id => id }
+        @metainfo ||= ( meta = { :index => index, :type => type, :id => id }
                         params = {}
                         params[:routing] = routing if routing
                         params[:parent]  = parent_instance.id if is_child?
                         meta.merge!(:params => params) unless params.empty?
-                        meta
-                      end
+                        meta )
       end
 
       private
