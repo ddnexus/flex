@@ -47,7 +47,11 @@ module Flex
       h
     end
 
-  private
+    def load_tasks
+      load File.expand_path('../../tasks/index.rake', __FILE__)
+    end
+
+    private
 
     def deep_merge_hash(h1, h2)
       h2 ||= {}

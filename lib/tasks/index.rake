@@ -1,4 +1,3 @@
-require defined?(Rails) ? 'flex/rails' : 'flex'
 require 'flex/tasks'
 
 env = defined?(Rails) ? :environment : []
