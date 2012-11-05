@@ -78,6 +78,13 @@ module Flex
           end
         end
 
+        def scroll_search(template, vars={}, &block)
+          Flex.scroll_search(templates[template], vars) do |result|
+            res = host_class.method(:flex_result).arity == 1 ? host_class.flex_result(result) : host_class.flex_result(result, vars)
+            block.call(res)
+          end
+        end
+
         private
 
         def do_load_source(klass, source, source_vars)

@@ -100,7 +100,11 @@ module Flex
       h = {}
       h[:method] = method
       h[:path]   = path
-      h[:data]   = MultiJson.decode(encoded_data) unless encoded_data.nil?
+      h[:data]   = begin
+                     MultiJson.decode(encoded_data) unless encoded_data.nil?
+                   rescue MultiJson::DecodeError
+                     encoded_data
+                   end
       h[:result] = result if result && Configuration.debug_result
       log        = Configuration.debug_to_curl ? to_curl_string(h) : Utils.stringified_hash(h).to_yaml
       Configuration.logger.debug "[FLEX] Rendered #{caller_line}\n#{log}"

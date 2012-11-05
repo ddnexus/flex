@@ -551,4 +551,21 @@ module Flex
     flex.info *args
   end
 
+  def scroll_search(template, vars={})
+    vars = Variables.new( :params => { :search_type => 'scan',
+                                       :scroll      => '5m',
+                                       :size        => 50 } ).add(vars)
+    scroll_temp = Flex::Template.new( :get,
+                                      '/_search/scroll',
+                                      nil,
+                                      :params => { :scroll => vars[:params][:scroll] } )
+    search_res  = template.render vars
+    scroll_id   = search_res['_scroll_id']
+    while (result = scroll_temp.render(:data => scroll_id)) do
+      break if result['hits']['hits'].empty?
+      scroll_id = result['_scroll_id']
+      yield result
+    end
+  end
+
 end
