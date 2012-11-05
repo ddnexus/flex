@@ -49,12 +49,12 @@ module Flex
           templates[name] = template
           # no define_singleton_method in 1.8.7
           host_class.instance_eval <<-ruby, __FILE__, __LINE__ + 1
-          def #{name}(vars={})
-            raise ArgumentError, "#{host_class}.#{name} expects a Hash (got \#{vars.inspect})" unless vars.is_a?(Hash)
-            #{host_class.respond_to?(:preprocess_variables) && 'preprocess_variables(vars)'}
-            flex.templates[:#{name}].render(vars)
-          end
-          ruby
+            def #{name}(vars={})
+              raise ArgumentError, "#{host_class}.#{name} expects a Hash (got \#{vars.inspect})" unless vars.is_a?(Hash)
+              result = flex.templates[:#{name}].render(vars)
+              method(:flex_result).arity == 1 ? flex_result(result) : flex_result(result, vars)
+            end
+            ruby
         end
 
         # http://www.elasticsearch.org/guide/reference/api/multi-search.html
@@ -85,7 +85,7 @@ module Flex
           hash   = Utils.data_from_source(source)
           hash.delete('ANCHORS')
           hash.each do |name, structure|
-            if name.to_s =~ /^_/ # partial
+            if name.to_s[0] == '_' # partial
               partial = Template::Partial.new(structure, self)
               partials[name.to_sym] = partial
             else
