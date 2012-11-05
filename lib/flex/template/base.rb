@@ -1,7 +1,7 @@
 module Flex
   class Template
 
-    module PrunableObject end
+    class PrunableObject; end
 
     module Base
 
@@ -32,7 +32,7 @@ module Flex
       def prunable(name, vars)
         obj = vars[name]
         return obj if vars[:no_pruning].include?(name)
-        (obj.nil? || obj == [] || obj == {}) ? obj.extend(PrunableObject) : obj
+        (obj.nil? || obj == [] || obj == {}) ? PrunableObject.new : obj
       end
 
     end

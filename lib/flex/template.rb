@@ -158,15 +158,19 @@ module Flex
     # and compact.flatten the Array values
     def prune(obj)
       case obj
+      when PrunableObject
+        obj
       when Array
-        return if obj.is_a?(PrunableObject)
-        a = obj.map do |i|
-              next if i.is_a?(PrunableObject)
-              prune(i)
-            end.compact.flatten
-        a unless a.empty?
+        return obj if obj.empty?
+        ar = []
+        obj.each do |i|
+          pruned = prune(i)
+          next if pruned.is_a?(PrunableObject)
+          ar << pruned
+        end
+        a = ar.compact.flatten
+        a.empty? ? PrunableObject.new : a
       when Hash
-        return if obj.is_a?(PrunableObject)
         return obj if obj.empty?
         h = {}
         obj.each do |k, v|
@@ -174,7 +178,7 @@ module Flex
           next if pruned.is_a?(PrunableObject)
           h[k] = pruned
         end
-        h unless h.empty?
+        h.empty? ? PrunableObject.new : h
       else
         obj
       end
