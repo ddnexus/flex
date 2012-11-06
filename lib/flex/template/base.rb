@@ -1,7 +1,11 @@
 module Flex
   class Template
 
-    class PrunableObject; end
+    class PrunableObject
+      def to_s
+        ''
+      end
+    end
 
     module Base
 
