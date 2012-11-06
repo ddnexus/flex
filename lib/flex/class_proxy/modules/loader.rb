@@ -78,7 +78,8 @@ module Flex
           end
         end
 
-        def scroll_search(template, vars={}, &block)
+        # implements search_type=scan (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
+        def scan_search(template, vars={}, &block)
           template = template.is_a?(Flex::Template) ? template : templates[template]
           vars = Variables.new( :params => { :search_type => 'scan',
                                              :scroll      => '5m',
@@ -98,7 +99,8 @@ module Flex
           end
         end
 
-        def count(template, vars={})
+        # implements search_type=count (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
+        def count_search(template, vars={})
           template = template.is_a?(Flex::Template) ? template : templates[template]
           template.render Variables.new(:params => {:search_type => 'count'}).add(vars)
         end

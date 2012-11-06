@@ -553,8 +553,8 @@ module Flex
     flex.info(*args)
   end
 
-  def scroll_search(*args, &block)
-    flex.scroll_search(*args, &block)
+  def scan_search(*args, &block)
+    flex.scan_search(*args, &block)
   end
 
 
