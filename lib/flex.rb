@@ -549,7 +549,13 @@ module Flex
     true
   end
 
-  delegate :scroll_search, :info, :to => :flex
+  def info(*args)
+    flex.info(*args)
+  end
+
+  def scroll_search(*args, &block)
+    flex.scroll_search(*args, &block)
+  end
 
 
 end
