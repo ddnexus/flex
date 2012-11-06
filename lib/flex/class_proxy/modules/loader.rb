@@ -98,6 +98,11 @@ module Flex
           end
         end
 
+        def count(template, vars={})
+          template = template.is_a?(Flex::Template) ? template : templates[template]
+          template.render Variables.new(:params => {:search_type => 'count'}).add(vars)
+        end
+
         private
 
         def do_load_source(klass, source, source_vars)
