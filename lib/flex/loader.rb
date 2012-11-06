@@ -10,7 +10,7 @@ module Flex
         Flex::Loader.host_classes |= [base]
         @flex ||= ClassProxy::Loader.new(base)
         def self.flex; @flex end
-        def self.flex_result(result); result end
+         extend FlexResult
       end
     end
 

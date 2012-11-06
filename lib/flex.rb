@@ -43,6 +43,7 @@ require 'flex/instance_proxy/base'
 require 'flex/instance_proxy/model'
 require 'flex/instance_proxy/related_model'
 
+require 'flex/flex_result'
 require 'flex/loader'
 require 'flex/related_model'
 require 'flex/model'
