@@ -14,6 +14,7 @@ require 'flex/result/collection'
 require 'flex/result/document'
 require 'flex/result/source_document'
 require 'flex/result/search'
+require 'flex/result/multi_get'
 require 'flex/result/source_search'
 require 'flex/result/bulk'
 

@@ -39,6 +39,7 @@ module Flex
                              :result_extenders    => [ Flex::Result::Document,
                                                        Flex::Result::SourceDocument,
                                                        Flex::Result::Search,
+                                                       Flex::Result::MultiGet,
                                                        Flex::Result::SourceSearch,
                                                        Flex::Result::Bulk ],
                              :logger              => Logger.new(STDERR),
