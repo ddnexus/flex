@@ -158,31 +158,29 @@ module Flex
       interpolate(*args)
     end
 
-    # prunes the branch when the leaf is a PrunableObject
+    # prunes the branch when the leaf is Prunable
     # and compact.flatten the Array values
     def prune(obj)
       case obj
-      when PrunableObject
+      when Prunable, [], {}
         obj
       when Array
-        return obj if obj.empty?
         ar = []
         obj.each do |i|
           pruned = prune(i)
-          next if pruned.is_a?(PrunableObject)
+          next if pruned == Prunable
           ar << pruned
         end
         a = ar.compact.flatten
-        a.empty? ? PrunableObject.new : a
+        a.empty? ? Prunable : a
       when Hash
-        return obj if obj.empty?
         h = {}
         obj.each do |k, v|
           pruned = prune(v)
-          next if pruned.is_a?(PrunableObject)
+          next if pruned == Prunable
           h[k] = pruned
         end
-        h.empty? ? PrunableObject.new : h
+        h.empty? ? Prunable : h
       else
         obj
       end

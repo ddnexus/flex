@@ -1,9 +1,10 @@
 module Flex
   class Template
 
-    class PrunableObject
-      def to_s
-        ''
+    class Prunable
+      class << self
+        def to_s; '' end
+        alias_method :===, :==
       end
     end
 
@@ -30,12 +31,11 @@ module Flex
         vars
       end
 
-      # extend obj with PrunableObject if it is nil or it is an empty Array or Hash
-      # called from stringified
-      def prunable(name, vars)
-        obj = vars[name]
-        return obj if vars[:no_pruning].include?(name)
-        (obj.nil? || obj == [] || obj == {}) ? PrunableObject.new : obj
+      # returns Prunable if the value is nil, [], {} (called from stringified)
+      def prunable?(name, vars)
+        val = vars[name]
+        return val if vars[:no_pruning].include?(name)
+        (val.nil? || val == [] || val == {}) ? Prunable : val
       end
 
     end
