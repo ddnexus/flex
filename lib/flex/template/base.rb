@@ -16,7 +16,6 @@ module Flex
         @partials.each do |k|
           raise MissingPartialError, "undefined #{k} partial template" \
                 unless @host_flex.partials.has_key?(k)
-          next if vars[k].nil?
           vars[k] = [vars[k]] unless vars[k].is_a?(Array)
           vars[k] = vars[k].map {|v| @host_flex.partials[k].interpolate(@variables.deep_dup, v)}
         end
