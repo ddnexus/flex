@@ -10,7 +10,11 @@ module Flex
       def deep_merge!(*hashes)
         replace deep_merge(*hashes)
       end
-      alias_method :add, :deep_merge!
+
+      def add(*hashes)
+        Flex::Configuration.logger.warn "Variables#add has been deprecated in favour of Variables.deep_merge! and will be removed in a next version."
+        replace deep_merge(*hashes)
+      end
 
       def deep_dup
         Marshal.load(Marshal.dump(self))

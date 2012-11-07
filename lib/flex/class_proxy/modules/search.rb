@@ -39,7 +39,7 @@ module Flex
           template = template.is_a?(Flex::Template) ? template : templates[template]
           vars = Variables.new( :params => { :search_type => 'scan',
                                              :scroll      => '5m',
-                                             :size        => 50 } ).add(vars)
+                                             :size        => 50 } ).deep_merge!(vars)
           scroll_temp = Flex::Template.new( :get,
                                             '/_search/scroll',
                                             nil,
@@ -58,7 +58,7 @@ module Flex
         # implements search_type=count (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
         def count_search(template, vars={})
           template = template.is_a?(Flex::Template) ? template : templates[template]
-          template.render Variables.new(:params => {:search_type => 'count'}).add(vars)
+          template.render Variables.new(:params => {:search_type => 'count'}).deep_merge!(vars)
         end
 
       end

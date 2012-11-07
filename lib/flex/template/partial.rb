@@ -14,7 +14,7 @@ module Flex
           def interpolate(main_vars=Variables.new, vars={})
             sym_vars = {}
             vars.each{|k,v| sym_vars[k.to_sym] = v} # so you can pass the rails params hash
-            main_vars.add(@variables, sym_vars)
+            main_vars.deep_merge!(@variables, sym_vars)
             vars = process_vars(main_vars)
             #{stringified}
           end

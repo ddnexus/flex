@@ -24,7 +24,7 @@ module Flex
                        next unless m.flex.is_child?
                        index = m.flex.index
                        m.flex.parent_child_map.each do |parent, child|
-                         default.add index => {'mappings' => {child => {'_parent' => {'type' => parent }}}}
+                         default.deep_merge! index => {'mappings' => {child => {'_parent' => {'type' => parent }}}}
                        end
                      end
                      hash = YAML.load(Utils.erb_process(file))

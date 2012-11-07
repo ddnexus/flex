@@ -7,8 +7,8 @@ module Flex
 
       def initialize(base)
         super
-        variables.add :index => Configuration.variables[:index],
-                      :type  => Manager.class_name_to_type(host_class.name)
+        variables.deep_merge! :index => Configuration.variables[:index],
+                              :type  => Manager.class_name_to_type(host_class.name)
         @sources   = []
         @templates = {}
         @partials  = {}
