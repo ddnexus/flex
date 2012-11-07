@@ -4,7 +4,6 @@ module Flex
 
       include Modules::Model
       include Modules::Loader
-      include Modules::Scope
 
       def initialize(base)
         super
