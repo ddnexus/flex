@@ -4,9 +4,8 @@ module Flex
 
       include Base
 
-      def initialize(data, parent)
+      def initialize(data)
         @data       = data
-        @parent     = parent
         tags        = Tags.new
         stringified = tags.stringify(data)
         @partials, @tags = tags.map(&:name).partition{|n| n.to_s =~ /^_/}

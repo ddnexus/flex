@@ -113,7 +113,7 @@ module Flex
           hash.delete('ANCHORS')
           hash.each do |name, structure|
             if name.to_s[0] == '_' # partial
-              partial = Template::Partial.new(structure, self)
+              partial = Template::Partial.new(structure)
               partials[name.to_sym] = partial
             else
               template = klass.new(*structure).setup(self, name, source_vars)
