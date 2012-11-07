@@ -4,7 +4,9 @@ module Flex
     module Mergeable
 
       def deep_merge(*hashes)
-        Utils.deep_merge_hashes(self, *hashes)
+        merged = dup
+        hashes.each {|h2| merged.replace(deep_merge_hash(merged,h2))}
+        merged
       end
 
       def deep_merge!(*hashes)
@@ -18,6 +20,15 @@ module Flex
 
       def deep_dup
         Marshal.load(Marshal.dump(self))
+      end
+
+  private
+
+      def deep_merge_hash(h1, h2)
+        h2 ||= {}
+        h1.merge(h2) do |key, oldval, newval|
+          oldval.is_a?(Hash) && newval.is_a?(Hash) ? deep_merge_hash(oldval, newval) : newval
+        end
       end
 
     end

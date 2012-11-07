@@ -16,7 +16,7 @@ module Flex
           match =~ TAG_REGEXP
           t = Tag.new($1, $2)
           push t unless find{|i| i.name == t.name}
-          t.stringify(match !~ /^"/)
+          (match !~ /^"/) ? "\#{prunable?(:#{t.name}, vars)}" : "prunable?(:#{t.name}, vars)"
         end
       end
 
@@ -34,10 +34,6 @@ module Flex
         @name     = name.to_sym
         @optional = !!default
         @default  = YAML.load(default) unless default.nil?
-      end
-
-      def stringify(in_string)
-        in_string ? "\#{prunable?(:#{name}, vars)}" : "prunable?(:#{name}, vars)"
       end
 
     end
