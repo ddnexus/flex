@@ -14,12 +14,11 @@ module Flex
         missing = @tags - vars.keys
         raise ArgumentError, "required variables #{missing.inspect} missing." \
               unless missing.empty?
-        @partials.each do |k|
-          raise MissingPartialError, "undefined #{k} partial template" \
-                unless @host_flex.partials.has_key?(k)
-          next if vars[k].nil?
-          vars[k] = [vars[k]] unless vars[k].is_a?(Array)
-          vars[k] = vars[k].map {|v| @host_flex.partials[k].interpolate(@variables.deep_dup, v)}
+        @partials.each do |name|
+          next if vars[name].nil?
+          raise ArgumentError, "Array expected as :#{name} (got #{vars[name].inspect})" \
+                unless vars[name].is_a?(Array)
+          vars[name] = vars[name].map {|v| @host_flex.partials[name].interpolate(@variables.deep_dup, v)}
         end
         vars[:index] = vars[:index].join(',') if vars[:index].is_a?(Array)
         vars[:type]  = vars[:type].join(',')  if vars[:type].is_a?(Array)
