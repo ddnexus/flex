@@ -8,22 +8,23 @@ module Flex
       # you can also pass the :data=>flex_source explicitly (useful for example to override the flex_source in the model)
       def store(vars={})
         if instance.flex_indexable?
-          Flex.store metainfo.merge(:data => instance.flex_source).merge(vars)
+          vars[:data] ||= instance.flex_source
+          Flex.store metainfo.deep_merge(vars)
         else
-          Flex.remove(metainfo.merge(vars)) if Flex.get(metainfo.merge(vars.merge(:raise => false)))
+          Flex.remove metainfo.deep_merge(vars) if Flex.get metainfo.deep_merge(vars, :raise => false)
         end
       end
 
       # removes the document from the index (called from after_destroy)
       def remove(vars={})
         return unless instance.flex_indexable?
-        Flex.remove metainfo.merge(vars)
+        Flex.remove metainfo.deep_merge(vars)
       end
 
       # gets the document from ES
       def get(vars={})
         return unless instance.flex_indexable?
-        Flex.get metainfo.merge(vars)
+        Flex.get metainfo.deep_merge(vars)
       end
 
       def parent_instance(raise=true)
@@ -33,7 +34,7 @@ module Flex
       end
 
       # helper that iterates through the parent record chain
-      # record.flex.each_parent{|p| p.do_smething }
+      # record.flex.each_parent{|p| p.do_something }
       def each_parent
         pi = parent_instance
         while pi do
@@ -70,12 +71,12 @@ module Flex
       end
 
       def metainfo
-        @metainfo ||= ( meta = { :index => index, :type => type, :id => id }
-                        params = {}
-                        params[:routing] = routing if routing
-                        params[:parent]  = parent_instance.id if is_child?
-                        meta.merge!(:params => params) unless params.empty?
-                        meta )
+        meta = Variables.new( :index => index, :type => type, :id => id )
+        params = {}
+        params[:routing] = routing if routing
+        params[:parent]  = parent_instance.id if is_child?
+        meta.merge!(:params => params) unless params.empty?
+        meta
       end
 
       private
