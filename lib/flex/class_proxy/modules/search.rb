@@ -23,8 +23,11 @@ module Flex
           template.send(:do_render, variables.merge(:data => lines)) do |http_response|
             responses   = []
             es_response = MultiJson.decode(http_response.body)
-            es_response['responses'].each_with_index do |result, i|
-              responses << Result.new(templates[requests[i].first], requests[i].last, http_response, result)
+            arity = host_class.method(:flex_result).arity
+            es_response['responses'].each_with_index do |raw_result, i|
+              name, vars = requests[i]
+              result = Result.new(templates[name], vars, http_response, raw_result)
+              responses << (arity == 1 ? host_class.flex_result(result) : host_class.flex_result(result, vars))
             end
             es_response['responses'] = responses
             def es_response.responses
