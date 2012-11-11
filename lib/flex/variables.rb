@@ -3,7 +3,8 @@ module Flex
 
     include Structure::Mergeable
 
-    def initialize(hash={})
+    def initialize(hash=nil)
+      hash ||= {} # accepts an explicit nil
       replace hash
     end
 
