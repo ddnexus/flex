@@ -69,7 +69,7 @@ module Flex
               partial = Template::Partial.new(structure)
               partials[name.to_sym] = partial
             else
-              template = klass.new(*structure).setup(self, name, source_vars)
+              template = klass.new(*structure).setup(self, name.to_sym, source_vars)
               add_template(name.to_sym, template)
             end
           end

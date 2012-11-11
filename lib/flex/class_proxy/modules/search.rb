@@ -8,7 +8,7 @@ module Flex
                 if name.to_s[0] == '_'
           structure = Utils.data_from_source(source)
           structure = [structure] unless structure.is_a?(Array)
-          template  = Template::Search.new(*structure).setup(self, name.to_s, source_vars)
+          template  = Template::Search.new(*structure).setup(self, name.to_sym, source_vars)
           add_template(name.to_sym, template)
         end
 
