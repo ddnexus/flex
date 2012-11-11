@@ -4,7 +4,7 @@ module Flex
 
       include Modules::Loader
 
-      def initialize(base)
+      def initialize(base, vars={})
         super
         @sources   = []
         @templates = {}

@@ -5,7 +5,7 @@ module Flex
       include Modules::Model
       include Modules::Loader
 
-      def initialize(base)
+      def initialize(base, vars={})
         super
         variables.deep_merge! :index => Configuration.variables[:index],
                               :type  => Manager.class_name_to_type(host_class.name)
