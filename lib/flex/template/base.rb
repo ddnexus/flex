@@ -28,6 +28,9 @@ module Flex
           page = 1 unless page > 0
           vars[:params][:from] = ((page - 1) * vars[:params][:size] || vars[:size] || 10).ceil
         end
+        # so you can pass :fields => [:field_one, :field_two]
+        params = vars[:params] || {}
+        params.each{|k,v| vars[:params][k] = v.join(',') if v.is_a?(Array)}
         vars
       end
 
