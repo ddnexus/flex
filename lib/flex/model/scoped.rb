@@ -65,36 +65,37 @@ module Flex
       end
 
       # it limits the size of the query to the first document and returns it as a single document object
-      def first
+      def first(vars={})
         result = Finders.find params(:size => 1)
-        @model_class.flex_result(result, self).first
+        @model_class.flex_result(result, self.deep_merge(vars)).first
       end
 
       # it limits the size of the query to the last document and returns it as a single document object
-      def last
+      def last(vars={})
         result = Finders.find params(:from => count-1, :size => 1)
-        @model_class.flex_result(result, self).first
+        @model_class.flex_result(result, self.deep_merge(vars)).first
       end
 
       # will retrieve all documents, the results will be limited by the default :size param
       # use #scan_all if you want to really retrieve all documents (in batches)
-      def all
+      def all(vars={})
         result = Finders.find self
-        @model_class.flex_result(result, self)
+        @model_class.flex_result(result, self.deep_merge(vars))
       end
 
       # scan_search: the block will be yielded many times with an array of batched results.
       # You can pass :scroll and :size as params in order to control the action.
       # See http://www.elasticsearch.org/guide/reference/api/search/scroll.html
-      def scan_all(&block)
+      def scan_all(vars={}, &block)
+        variables = deep_merge(vars)
         template = Finders.flex.templates[:find]
-        result   = @model_class.flex.scan_search(template, self, &block)
-        @model_class.flex_result(result, self)
+        result   = @model_class.flex.scan_search(template, variables, &block)
+        @model_class.flex_result(result, variables)
       end
 
       # performs a count search on the scope
-      def count
-        result = Finders.find params(:search_type => 'count')
+      def count(vars={})
+        result = Finders.find params(:search_type => 'count').deep_merge(vars)
         result['hits']['total']
       end
 
