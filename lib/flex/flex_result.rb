@@ -1,7 +1,7 @@
 module Flex
   module FlexResult
 
-    def flex_result(result)
+    def flex_result(result, vars)
       result
     end
 

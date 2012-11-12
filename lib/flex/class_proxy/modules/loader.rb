@@ -53,7 +53,7 @@ module Flex
             def #{name}(vars={})
               raise ArgumentError, "#{host_class}.#{name} expects a Hash (got \#{vars.inspect})" unless vars.is_a?(Hash)
               result = flex.templates[:#{name}].render(vars)
-              method(:flex_result).arity == 1 ? flex_result(result) : flex_result(result, vars)
+              flex_result(result, vars)
             end
             ruby
         end

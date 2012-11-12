@@ -49,11 +49,10 @@ module Flex
                                             :params => { :scroll => vars[:params][:scroll] } )
           search_res  = template.render vars
           scroll_id   = search_res['_scroll_id']
-          arity = host_class.method(:flex_result).arity
           while (result = scroll_temp.render(:data => scroll_id)) do
             break if result['hits']['hits'].empty?
             scroll_id = result['_scroll_id']
-            res = arity == 1 ? host_class.flex_result(result) : host_class.flex_result(result, vars)
+            res = host_class.flex_result(result, vars)
             block.call res
           end
         end
