@@ -137,10 +137,12 @@ module Flex
       tags        = Tags.new
       stringified = tags.stringify(:path => @path, :data => @data)
       @partials, @tags = tags.map(&:name).partition{|n| n.to_s =~ /^_/}
-      @variables = Configuration.variables.deep_dup
-      @variables.deep_merge!(self.class.variables)
-      @variables.deep_merge!(@host_flex.variables) if @host_flex
-      @variables.deep_merge!(@source_vars, @instance_vars, tags.variables)
+      @variables = Configuration.variables.deep_dup.deep_merge(
+                     self.class.variables,
+                     @host_flex && @host_flex.variables,
+                     @source_vars,
+                     @instance_vars,
+                     tags.variables )
       instance_eval <<-ruby, __FILE__, __LINE__
         def interpolate(vars={}, strict=false)
           return {:path => path, :data => data, :vars => vars} if vars.empty? && !strict
