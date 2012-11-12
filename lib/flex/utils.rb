@@ -45,5 +45,29 @@ module Flex
       load File.expand_path('../../tasks/index.rake', __FILE__)
     end
 
+    module Delegation
+
+      extend self
+
+      def delegate(mod, *methods)
+        to = methods.pop[:to]
+
+        file, line = caller.first.split(':', 2)
+        line = line.to_i
+
+        methods.each do |method|
+          mod.module_eval(<<-method, file, line - 2)
+            def #{method}(*args, &block)                        # def method_name(*args, &block)
+              if #{to} || #{to}.respond_to?(:#{method})         #   if client || client.respond_to?(:name)
+                #{to}.__send__(:#{method}, *args, &block)       #     client.__send__(:name, *args, &block)
+              end                                               #   end
+            end                                                 # end
+          method
+        end
+
+      end
+
+    end
+
   end
 end
