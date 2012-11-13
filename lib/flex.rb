@@ -54,10 +54,6 @@ require 'flex/http_clients/rest_client'
 require 'flex/configuration'
 require 'flex/utility_methods'
 
-require 'flex/model/scoped'
-require 'flex/model/finder_methods'
-require 'flex/model/finders'
-
 require 'progressbar'
 require 'flex/prog_bar'
 
