@@ -7,7 +7,7 @@ module Flex
 
       def initialize(host_class, vars={})
         @host_class = host_class
-        @variables  = Variables.new vars
+        @variables  = Variables.new({:context => host_class}.merge(vars))
       end
     end
 

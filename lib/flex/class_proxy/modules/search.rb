@@ -23,11 +23,11 @@ module Flex
           template.send(:do_render, variables.merge(:data => lines)) do |http_response|
             responses   = []
             es_response = MultiJson.decode(http_response.body)
-            arity = host_class.method(:flex_result).arity
             es_response['responses'].each_with_index do |raw_result, i|
               name, vars = requests[i]
-              result = Result.new(templates[name], vars, http_response, raw_result)
-              responses << (arity == 1 ? host_class.flex_result(result) : host_class.flex_result(result, vars))
+              context = vars.delete(:context) || host_class
+              result     = Result.new(templates[name], vars, http_response, raw_result)
+              responses << context.flex_result(result, vars)
             end
             es_response['responses'] = responses
             def es_response.responses
@@ -39,10 +39,11 @@ module Flex
 
         # implements search_type=scan (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
         def scan_search(template, vars={}, &block)
+          context = vars.delete(:context) || host_class
           template = template.is_a?(Flex::Template) ? template : templates[template]
           vars = Variables.new( :params => { :search_type => 'scan',
                                              :scroll      => '5m',
-                                             :size        => 50 } ).deep_merge!(vars)
+                                             :size        => 50 } ).deep_merge(vars)
           scroll_temp = Flex::Template.new( :get,
                                             '/_search/scroll',
                                             nil,
@@ -52,7 +53,7 @@ module Flex
           while (result = scroll_temp.render(:data => scroll_id)) do
             break if result['hits']['hits'].empty?
             scroll_id = result['_scroll_id']
-            res = host_class.flex_result(result, vars)
+            res = context.flex_result(result, vars)
             block.call res
           end
         end
@@ -60,7 +61,7 @@ module Flex
         # implements search_type=count (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
         def count_search(template, vars={})
           template = template.is_a?(Flex::Template) ? template : templates[template]
-          template.render Variables.new(:params => {:search_type => 'count'}).deep_merge!(vars)
+          template.render Variables.new(:params => {:search_type => 'count'}).deep_merge(vars)
         end
 
       end

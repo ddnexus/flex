@@ -51,9 +51,10 @@ module Flex
           # no define_singleton_method in 1.8.7
           host_class.instance_eval <<-ruby, __FILE__, __LINE__ + 1
             def #{name}(vars={})
+              context = vars.delete(:context) || self
               raise ArgumentError, "#{host_class}.#{name} expects a Hash (got \#{vars.inspect})" unless vars.is_a?(Hash)
               result = flex.templates[:#{name}].render(vars)
-              flex_result(result, vars)
+              context.flex_result(result, vars)
             end
             ruby
         end
