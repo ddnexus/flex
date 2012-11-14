@@ -66,8 +66,9 @@ module Flex
           hash   = Utils.data_from_source(source)
           hash.delete('ANCHORS')
           hash.each do |name, structure|
+            structure = [structure] unless structure.is_a?(Array)
             if name.to_s[0] == '_' # partial
-              partial = Template::Partial.new(structure)
+              partial = Template::Partial.new(*structure)
               partials[name.to_sym] = partial
             else
               template = klass.new(*structure).setup(self, name.to_sym, source_vars)
