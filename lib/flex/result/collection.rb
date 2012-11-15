@@ -7,10 +7,12 @@ module Flex
       def setup(total_entries, variables)
         @total_entries = total_entries
         @variables     = variables
+        self
       end
 
       def per_page
-        (@variables[:per_page] || @variables[:params] && @variables[:params][:size] || 10).to_i
+        (@variables[:per_page] || @variables[:limit_value] ||
+            @variables[:params] && @variables[:params][:size] || 10).to_i
       end
 
       def total_pages
@@ -18,11 +20,7 @@ module Flex
       end
 
       def current_page
-        if @variables[:page]
-          @variables[:page].to_i
-        else
-          (per_page + (@variables[:from]||0).to_i) / per_page
-        end
+        (@variables[:page] || @variables[:current_page] || 1).to_i
       end
 
       def previous_page
