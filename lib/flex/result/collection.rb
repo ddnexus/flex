@@ -10,7 +10,7 @@ module Flex
       end
 
       def per_page
-        (@variables[:per_page] || @variables[:params] && @variables[:params][:size] || @variables[:size] || 10).to_i
+        (@variables[:per_page] || @variables[:params] && @variables[:params][:size] || 10).to_i
       end
 
       def total_pages
