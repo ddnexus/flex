@@ -56,6 +56,11 @@ delete_index:
   - DELETE
   - /<<index>>
 
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-refresh.html
+refresh_index:
+  - POST
+  - /<<index>>/_refresh
+
 # http://www.elasticsearch.org/guide/reference/api/delete-by-query.html
 delete_by_query:
   - DELETE
