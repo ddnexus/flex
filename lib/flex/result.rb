@@ -1,7 +1,8 @@
 module Flex
   class Result < ::Hash
 
-    attr_reader :template, :variables, :response
+    attr_reader :template, :response
+    attr_accessor :variables
 
     def initialize(template, variables, response, result=nil)
       @template  = template

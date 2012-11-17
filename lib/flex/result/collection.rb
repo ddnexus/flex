@@ -2,7 +2,7 @@ module Flex
   class Result
     module Collection
 
-      attr_reader :total_entries, :variables
+      attr_accessor :total_entries, :variables
 
       def setup(total_entries, variables)
         @total_entries = total_entries
