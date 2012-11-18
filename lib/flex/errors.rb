@@ -8,6 +8,7 @@ module Flex
   class ExistingIndexError     < StandardError; end
   class MissingHttpClientError < StandardError; end
   class MissingParentError     < StandardError; end
+  class MissingVariableError   < StandardError; end
 
   class HttpError < StandardError
 

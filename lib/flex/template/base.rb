@@ -11,9 +11,6 @@ module Flex
     module Base
 
       def process_vars(vars)
-        missing = @tags - vars.keys
-        raise ArgumentError, "required variables #{missing.inspect} missing." \
-              unless missing.empty?
         @partials.each do |name|
           next if vars[name].nil?
           raise ArgumentError, "Array expected as :#{name} (got #{vars[name].inspect})" \
@@ -36,9 +33,20 @@ module Flex
 
       # returns Prunable if the value is nil, [], {} (called from stringified)
       def prunable?(name, vars)
-        val = vars[name]
+        val = get_val(name, vars)
         return val if vars[:no_pruning].include?(name)
         (val.nil? || val == [] || val == {}) ? Prunable : val
+      end
+
+    private
+
+      # allows to fetch values for tag names like 'a.3.c' fetching vars[:a][3][:c]
+      def get_val(name, vars)
+        return vars[name] if vars.has_key?(name) # to make tag defaults work see Tags#variables
+        keys = name.to_s.split('.').map{|s| s =~ /^[0..9]+$/ ? s.to_i : s.to_sym}
+        keys.inject(vars, :fetch)
+      rescue NoMethodError, KeyError
+        raise MissingVariableError, "required variables #{name.inspect} missing."
       end
 
     end

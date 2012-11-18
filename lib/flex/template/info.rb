@@ -47,20 +47,32 @@ meth
         all_tags = temp.tags + temp.partials
         lines = all_tags.map do |t|
           comments = 'partial' if t.to_s.match(/^_/)
-          ['', t.to_s] + (temp.variables.has_key?(t) ? ["#{temp.variables[t].inspect},", comments_to_s(comments)] \
-                                                     : ["#{t},", comments_to_s(comments, 'required')])
+          line = ['', t.inspect]
+          line + if temp.variables.has_key?(t)
+                   ["#{temp.variables[t].inspect},", comments_to_s(comments)]
+                 else
+                   ["#{to_code(t)},", comments_to_s(comments, 'required')]
+                 end
         end
         lines.sort! { |a,b| b[3] <=> a[3] }
         lines.first[0] = meth_call
         lines.last[2].chop!
         max = lines.transpose.map { |c| c.map(&:length).max }
-        lines.map { |line| "%-#{max[0]}s :%-#{max[1]}s => %-#{max[2]}s  %s" % line }.join("\n")
+        lines.map { |line| "%-#{max[0]}s %-#{max[1]}s => %-#{max[2]}s  %s" % line }.join("\n")
       end
 
       def comments_to_s(*comments)
         comments = comments.compact
         return '' if comments == []
         "# #{comments.join(' ')}"
+      end
+
+      def to_code(name)
+        keys = name.to_s.split('.').map{|s| s =~ /^[0..9]+$/ ? s.to_i : s.to_sym}
+        code = keys.shift.to_s
+        return code if keys.empty?
+        keys.each{|k| code << "[#{k.inspect}]"}
+        code
       end
 
     end

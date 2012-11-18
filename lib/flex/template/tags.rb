@@ -2,8 +2,10 @@ module Flex
   class Template
     class Tags < Array
 
-      TAG_REGEXP = /<<\s*(\w+)\s*(?:=([^>]*))*>>/
+      TAG_REGEXP = /<<\s*([\w\.]+)\s*(?:=([^>]*))*>>/
 
+      # tag variables are the defaults defined with the tag
+      # a variable could be optional, and the default could be nil
       def variables
         tag_variables = {}
         each { |t| tag_variables[t.name] = t.default if t.default || t.optional  }
@@ -16,7 +18,7 @@ module Flex
           match =~ TAG_REGEXP
           t = Tag.new($1, $2)
           push t unless find{|i| i.name == t.name}
-          (match !~ /^"/) ? "\#{prunable?(:#{t.name}, vars)}" : "prunable?(:#{t.name}, vars)"
+          (match !~ /^"/) ? "\#{prunable?(:'#{t.name}', vars)}" : "prunable?(:'#{t.name}', vars)"
         end
       end
 
@@ -24,7 +26,7 @@ module Flex
 
     class Tag
 
-      RESERVED = [:context, :path, :data, :params, :page, :no_pruning, :raw_result, :raise]
+      RESERVED = [:context, :path, :data, :params, :no_pruning, :raw_result, :raise]
 
       attr_reader :optional, :name, :default
 
