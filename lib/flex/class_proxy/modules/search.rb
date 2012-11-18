@@ -27,7 +27,7 @@ module Flex
               name, vars = requests[i]
               context = vars.delete(:context) || host_class
               result     = Result.new(templates[name], vars, http_response, raw_result)
-              responses << context.flex_result(result, vars)
+              responses << context.flex_result(result)
             end
             es_response['responses'] = responses
             def es_response.responses
@@ -53,7 +53,7 @@ module Flex
           while (result = scroll_temp.render(:data => scroll_id)) do
             break if result['hits']['hits'].empty?
             scroll_id = result['_scroll_id']
-            res = context.flex_result(result, vars)
+            res = context.flex_result(result)
             block.call res
           end
         end

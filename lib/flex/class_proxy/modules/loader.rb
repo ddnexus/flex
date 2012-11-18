@@ -54,7 +54,7 @@ module Flex
               context = vars.delete(:context) || self
               raise ArgumentError, "#{host_class}.#{name} expects a Hash (got \#{vars.inspect})" unless vars.is_a?(Hash)
               result = flex.templates[:#{name}].render(vars)
-              context.flex_result(result, vars)
+              context.flex_result(result)
             end
             ruby
         end
