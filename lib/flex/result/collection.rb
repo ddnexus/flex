@@ -31,6 +31,14 @@ module Flex
         current_page < total_pages ? (current_page + 1) : nil
       end
 
+      def last_page?
+        total_pages == current_page
+      end
+
+      def first_page?
+        current_page == 1
+      end
+
       def offset
         per_page * (current_page - 1)
       end
