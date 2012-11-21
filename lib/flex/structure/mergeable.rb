@@ -14,7 +14,7 @@ module Flex
       end
 
       def add(*hashes)
-        Flex::Configuration.logger.warn "Variables#add has been deprecated in favour of Variables.deep_merge! and will be removed in a next version (called at: #{caller.first})"
+        Flex::Configuration.logger.warn "Flex::Variables#add has been deprecated in favour of Variables.deep_merge! and will be removed in a next version (called at: #{caller.first})"
         replace deep_merge(*hashes)
       end
 
