@@ -3,9 +3,10 @@ module Flex
 
     def self.included(base)
       base.class_eval do
-        @flex ||= ClassProxy::Model.new(base)
+        @flex ||= ClassProxy::Base.new(base)
+        @flex.extend(ClassProxy::Model).init
         def self.flex; @flex end
-        extend FlexResult
+        extend FlexResult unless respond_to?(:flex_result)
       end
     end
 

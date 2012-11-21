@@ -1,12 +1,6 @@
 module Flex
   module ClassProxy
-    class RelatedModel
-
-      attr_reader :host_class
-
-      def initialize(host_class)
-        @host_class = host_class
-      end
+    module RelatedModel
 
       include ModelSync
 

@@ -1,6 +1,6 @@
 module Flex
   module ClassProxy
-    module Modules
+    module Loader
       module Search
 
         def define_search(name, source, source_vars=nil)

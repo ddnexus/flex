@@ -26,17 +26,15 @@ require 'flex/template'
 require 'flex/template/search'
 require 'flex/template/slim_search'
 require 'flex/template/tags'
-require 'flex/template/info'
 
 require 'flex/manager'
 
 require 'flex/class_proxy/base'
-require 'flex/class_proxy/modules/search'
-require 'flex/class_proxy/modules/loader'
+require 'flex/class_proxy/loader/search'
+require 'flex/class_proxy/loader/info'
+
 require 'flex/class_proxy/loader'
 require 'flex/class_proxy/model_sync'
-require 'flex/class_proxy/modules/loader'
-require 'flex/class_proxy/modules/model'
 require 'flex/class_proxy/model'
 require 'flex/class_proxy/related_model'
 

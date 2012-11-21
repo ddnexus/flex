@@ -2,11 +2,7 @@ module Flex
   module ClassProxy
     module ModelSync
 
-      def self.included(base)
-        base.class_eval do
-          attr_accessor :synced
-        end
-      end
+      attr_accessor :synced
 
       def sync(*synced)
         @synced = synced

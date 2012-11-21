@@ -3,7 +3,8 @@ module Flex
 
     def self.included(base)
       base.class_eval do
-        @flex ||= ClassProxy::RelatedModel.new(base)
+        @flex ||= ClassProxy::Base.new(base)
+        @flex.extend(ClassProxy::RelatedModel)
         def self.flex; @flex end
       end
     end
