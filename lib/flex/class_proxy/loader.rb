@@ -53,10 +53,7 @@ module Flex
         context.instance_eval <<-ruby, __FILE__, __LINE__ + 1
           def #{name}(vars={})
             raise ArgumentError, "#{context}.#{name} expects a Hash (got \#{vars.inspect})" unless vars.is_a?(Hash)
-            context    = vars.delete(:context) || self
-            raw_result = vars.delete(:raw_result)
-            result = flex.templates[:#{name}].render(vars)
-            raw_result ? result : context.flex_result(result)
+            flex.templates[:#{name}].render(vars)
           end
           ruby
       end

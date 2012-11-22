@@ -33,7 +33,8 @@ module Flex
 
     def render(vars={})
       do_render(vars) do |response, int|
-        Result.new(self, int[:vars], response)
+        result = Result.new(self, int[:vars], response)
+        int[:vars][:raw_result] ? result : int[:vars][:context].flex_result(result)
       end
     end
 
