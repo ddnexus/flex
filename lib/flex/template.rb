@@ -138,18 +138,15 @@ module Flex
       tags        = Tags.new
       stringified = tags.stringify(:path => @path, :data => @data)
       @partials, @tags = tags.map(&:name).partition{|n| n.to_s =~ /^_/}
-      @variables = Configuration.variables.deep_dup.deep_merge(
-                     self.class.variables,
-                     @host_flex && @host_flex.variables,
-                     @source_vars,
-                     @instance_vars,
-                     tags.variables )
+      @base_variables  = Configuration.variables.deep_merge(self.class.variables)
+      @temp_variables  = Variables.new.deep_merge(@source_vars, @instance_vars, tags.variables)
       instance_eval <<-ruby, __FILE__, __LINE__
         def interpolate(vars={}, strict=false)
           return {:path => path, :data => data, :vars => vars} if vars.empty? && !strict
           sym_vars = {}
           vars.each{|k,v| sym_vars[k.to_sym] = v} # so you can pass the rails params hash
-          merged = @variables.deep_merge sym_vars
+          context_variables = vars[:context] ? vars[:context].flex.variables : @host_flex.variables
+          merged = @base_variables.deep_merge(context_variables, @temp_variables, sym_vars)
           vars   = process_vars(merged)
           obj    = #{stringified}
           obj    = prune(obj)

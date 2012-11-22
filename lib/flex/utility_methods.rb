@@ -7,12 +7,12 @@ module Flex
     # You can pass an optional hash of interpolation arguments (or query string :params).
     # See also the Flex::Template::Search documentation
     def search(data, args={})
-      Template::Search.new(data).render(args)
+      Template::Search.new(data).setup(Flex.flex).render(args)
     end
 
     # like Flex.search, but it will use the Flex::Template::SlimSearch instead
     def slim_search(data, args={})
-      Template::SlimSearch.new(data).render(args)
+      Template::SlimSearch.new(data).setup(Flex.flex).render(args)
     end
 
     %w[HEAD GET PUT POST DELETE].each do |m|

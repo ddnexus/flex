@@ -15,7 +15,7 @@ module Flex
           next if vars[name].nil?
           raise ArgumentError, "Array expected as :#{name} (got #{vars[name].inspect})" \
                 unless vars[name].is_a?(Array)
-          vars[name] = vars[name].map {|v| @host_flex.partials[name].interpolate(@variables.deep_dup, v)}
+          vars[name] = vars[name].map {|v| @host_flex.partials[name].interpolate(vars, v)}
         end
         vars[:index] = vars[:index].join(',') if vars[:index].is_a?(Array)
         vars[:type]  = vars[:type].join(',')  if vars[:type].is_a?(Array)
