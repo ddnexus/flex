@@ -46,6 +46,8 @@ module Flex
         @sources.each {|k,s,v| do_load_source(k,s,v)}
       end
 
+      private
+
       # adds a template instance and defines the template method in the host class
       def add_template(name, template)
         templates[name] = template
@@ -55,24 +57,25 @@ module Flex
             raise ArgumentError, "#{context}.#{name} expects a Hash (got \#{vars.inspect})" unless vars.is_a?(Hash)
             flex.templates[:#{name}].render(vars)
           end
-          ruby
+        ruby
       end
-
-      private
 
       def do_load_source(klass, source, source_vars)
         source = Utils.erb_process(source) unless source.match("\n") # skips non-path
         hash   = Utils.data_from_source(source)
         hash.delete('ANCHORS')
         hash.each do |name, structure|
-          structure = [structure] unless structure.is_a?(Array)
-          if name.to_s[0] == '_' # partial
-            partial = Template::Partial.new(*structure)
-            partials[name.to_sym] = partial
-          else
-            template = klass.new(*structure).setup(self, name.to_sym, source_vars)
-            add_template(name.to_sym, template)
-          end
+          define_template klass, name, structure, source_vars
+        end
+      end
+
+      def define_template(klass, name, structure, source_vars)
+        if name.to_s[0] == '_' # partial
+          partial = Template::Partial.new(*structure)
+          partials[name.to_sym] = partial
+        else
+          template = klass.new(*structure).setup(self, name.to_sym, source_vars)
+          add_template(name.to_sym, template)
         end
       end
 

@@ -6,15 +6,8 @@ module Flex
         def define_search(name, source, source_vars=nil)
           structure = Utils.data_from_source(source)
           structure = [structure] unless structure.is_a?(Array)
-          if name.to_s[0] == '_' # partial
-            partial = Template::Partial.new(*structure)
-            partials[name.to_sym] = partial
-          else
-            template = klass.new(*structure).setup(self, name.to_sym, source_vars)
-            add_template(name.to_sym, template)
-          end
+          send :define_template, Template::Search, name, structure, source_vars
         end
-
 
         # http://www.elasticsearch.org/guide/reference/api/multi-search.html
         # request may be a hash with the templates names as keys and the variable hash as value
