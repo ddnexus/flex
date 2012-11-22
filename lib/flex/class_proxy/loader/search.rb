@@ -4,12 +4,15 @@ module Flex
       module Search
 
         def define_search(name, source, source_vars=nil)
-          raise ArgumentError, %(The name :#{name} starts with "_", which is reserved to partials.) \
-                if name.to_s[0] == '_'
           structure = Utils.data_from_source(source)
           structure = [structure] unless structure.is_a?(Array)
-          template  = Template::Search.new(*structure).setup(self, name.to_sym, source_vars)
-          add_template(name.to_sym, template)
+          if name.to_s[0] == '_' # partial
+            partial = Template::Partial.new(*structure)
+            partials[name.to_sym] = partial
+          else
+            template = klass.new(*structure).setup(self, name.to_sym, source_vars)
+            add_template(name.to_sym, template)
+          end
         end
 
 
