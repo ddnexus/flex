@@ -543,7 +543,7 @@ module Flex
   extend UtilityMethods
 
   def reload!
-    flex.variables = Configuration.variables.deep_merge(flex.variables)
+    flex.variables.deep_merge! Configuration.variables
     Loader.contexts.each {|c| c.flex.reload!}
     true
   end

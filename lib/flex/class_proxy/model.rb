@@ -10,7 +10,6 @@ module Flex
         variables.deep_merge! :type  => Manager.class_name_to_type(context.name)
       end
 
-
       def parent(parent_association, map)
         @parent_association = parent_association
         Manager.parent_types |= map.keys.map(&:to_s)
