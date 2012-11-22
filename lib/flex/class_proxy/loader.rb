@@ -16,7 +16,7 @@ module Flex
       def load_source_for(klass, source, source_vars)
         if source.nil? || source !~ /\n/m
           paths = [ "#{Configuration.flex_dir}/#{source}.yml",
-                    "#{Configuration.flex_dir}/#{Manager.class_name_to_type(host_class.name)}.yml",
+                    "#{Configuration.flex_dir}/#{Manager.class_name_to_type(context.name)}.yml",
                     source.to_s ]
           source = paths.find {|p| File.exist?(p)}
         end
@@ -50,9 +50,9 @@ module Flex
       def add_template(name, template)
         templates[name] = template
         # no define_singleton_method in 1.8.7
-        host_class.instance_eval <<-ruby, __FILE__, __LINE__ + 1
+        context.instance_eval <<-ruby, __FILE__, __LINE__ + 1
           def #{name}(vars={})
-            raise ArgumentError, "#{host_class}.#{name} expects a Hash (got \#{vars.inspect})" unless vars.is_a?(Hash)
+            raise ArgumentError, "#{context}.#{name} expects a Hash (got \#{vars.inspect})" unless vars.is_a?(Hash)
             context    = vars.delete(:context) || self
             raw_result = vars.delete(:raw_result)
             result = flex.templates[:#{name}].render(vars)

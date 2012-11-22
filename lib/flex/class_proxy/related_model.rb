@@ -8,7 +8,7 @@ module Flex
 
       def sync(*synced)
         raise ArgumentError, 'You cannot flex.sync(self) a Flex::RelatedModel.' \
-              if synced.any?{|s| s == host_class}
+              if synced.any?{|s| s == context}
         full_sync
       end
 

@@ -25,7 +25,7 @@ module Flex
             es_response = MultiJson.decode(http_response.body)
             es_response['responses'].each_with_index do |raw_result, i|
               name, vars = requests[i]
-              context    = vars.delete(:context) || host_class
+              context    = vars.delete(:context) || context
               raw_result = vars.delete(:raw_result)
               result     = Result.new(templates[name], vars, http_response, raw_result)
               responses << (raw_result ? result : context.flex_result(result))
@@ -40,7 +40,7 @@ module Flex
 
         # implements search_type=scan (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
         def scan_search(template, vars={}, &block)
-          context     = vars.delete(:context) || host_class
+          context     = vars.delete(:context) || context
           raw_result  = vars.delete(:raw_result)
           template    = template.is_a?(Flex::Template) ? template : templates[template]
           vars        = Variables.new( :params => { :search_type => 'scan',

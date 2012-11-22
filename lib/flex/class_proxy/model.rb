@@ -7,7 +7,7 @@ module Flex
 
       def init
         variables.deep_merge! :index => Configuration.variables[:index],
-                              :type  => Manager.class_name_to_type(host_class.name)
+                              :type  => Manager.class_name_to_type(context.name)
       end
 
       def index

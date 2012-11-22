@@ -10,7 +10,7 @@ module Flex
             next unless templates.include?(name)
             block = ''
             temp = templates[name]
-            meth_call = [host_class, name].join('.')
+            meth_call = [context, name].join('.')
             block << <<-meth_call
   ########## #{meth_call} ##########
 

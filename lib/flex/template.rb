@@ -111,7 +111,7 @@ module Flex
     end
 
     def caller_line
-      method_name = @host_flex && @name && "#{@host_flex.host_class}.#@name"
+      method_name = @host_flex && @name && "#{@host_flex.context}.#@name"
       line = caller.find{|l| l !~ /#{LIB_PATH}/}
       ll = ''
       ll << "#{method_name} from " if method_name

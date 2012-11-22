@@ -2,12 +2,12 @@ module Flex
   module ClassProxy
     class Base
 
-      attr_reader :host_class
+      attr_reader :context
       attr_accessor :variables
 
-      def initialize(host_class, vars={})
-        @host_class = host_class
-        @variables  = Variables.new({:context => host_class}.merge(vars))
+      def initialize(context, vars={})
+        @context   = context
+        @variables = Variables.new({:context => context}.merge(vars))
       end
 
       def init; end
