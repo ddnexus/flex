@@ -61,7 +61,7 @@ module Flex
         # implements search_type=count (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
         def count_search(template, vars={})
           template = template.is_a?(Flex::Template) ? template : templates[template]
-          template.render Variables.new(:params => {:search_type => 'count'}).deep_merge(vars)
+          template.render Variables.new(:params => {:search_type => 'count'}, :raw_result => true).deep_merge(vars)
         end
 
       end
