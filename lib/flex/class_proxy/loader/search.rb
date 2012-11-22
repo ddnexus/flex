@@ -22,7 +22,7 @@ module Flex
             es_response['responses'].each_with_index do |raw_result, i|
               name, vars = requests[i]
               result     = Result.new(templates[name], vars, http_response, raw_result)
-              responses << (vars[:raw_result] ? result : vars[:context].flex_result(result))
+              responses << result.to_flex_result
             end
             es_response['responses'] = responses
             def es_response.responses
@@ -34,20 +34,24 @@ module Flex
 
         # implements search_type=scan (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
         def scan_search(template, vars={}, &block)
-          template    = template.is_a?(Flex::Template) ? template : templates[template]
-          vars        = Variables.new( :params => { :search_type => 'scan',
-                                                    :scroll      => '5m',
-                                                    :size        => 50 } ).deep_merge(vars)
+          scroll      = '5m'
+          search_vars = Variables.new( :params     => { :search_type => 'scan',
+                                                        :scroll      => scroll,
+                                                        :size        => 50 },
+                                       :raw_result => true ).deep_merge(vars)
+          scroll_vars = Variables.new( :params     => { :scroll => scroll },
+                                       :raw_result => true ).deep_merge(vars)
+          search_temp = template.is_a?(Flex::Template) ? template : templates[template]
           scroll_temp = Flex::Template.new( :get,
                                             '/_search/scroll',
                                             nil,
-                                            :params => { :scroll => vars[:params][:scroll] } )
-          search_res  = template.render vars
+                                            scroll_vars )
+          search_res  = search_temp.render search_vars
           scroll_id   = search_res['_scroll_id']
           while (result = scroll_temp.render(:data => scroll_id)) do
             break if result['hits']['hits'].empty?
             scroll_id = result['_scroll_id']
-            block.call result
+            block.call result.to_flex_result(force=true)
           end
         end
 
