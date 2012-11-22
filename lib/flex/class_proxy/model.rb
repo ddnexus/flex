@@ -7,8 +7,7 @@ module Flex
       include IndexType
 
       def init
-        variables.deep_merge! :index => Configuration.variables[:index],
-                              :type  => Manager.class_name_to_type(context.name)
+        variables.deep_merge! :type  => Manager.class_name_to_type(context.name)
       end
 
 
