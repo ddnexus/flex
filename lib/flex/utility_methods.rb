@@ -83,7 +83,7 @@ module Flex
   private
 
     def perform(*args)
-      Template.new(*args).render
+      Template.new(*args).setup(Flex.flex).render
     end
 
     def get_index(d)
