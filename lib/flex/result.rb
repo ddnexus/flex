@@ -15,5 +15,10 @@ module Flex
       end
     end
 
+    def to_flex_result(force=false)
+      return self if variables[:context].nil? || variables[:raw_result] &&! force
+      variables[:context].flex_result(self)
+    end
+
   end
 end

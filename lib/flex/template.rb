@@ -33,8 +33,7 @@ module Flex
 
     def render(vars={})
       do_render(vars) do |response, int|
-        result = Result.new(self, int[:vars], response)
-        int[:vars][:raw_result] ? result : int[:vars][:context].flex_result(result)
+        Result.new(self, int[:vars], response).to_flex_result
       end
     end
 
@@ -145,7 +144,7 @@ module Flex
           return {:path => path, :data => data, :vars => vars} if vars.empty? && !strict
           sym_vars = {}
           vars.each{|k,v| sym_vars[k.to_sym] = v} # so you can pass the rails params hash
-          context_variables = vars[:context] ? vars[:context].flex.variables : @host_flex.variables
+          context_variables = vars[:context] ? vars[:context].flex.variables : (@host_flex && @host_flex.variables)
           merged = @base_variables.deep_merge(context_variables, @temp_variables, sym_vars)
           vars   = process_vars(merged)
           obj    = #{stringified}
