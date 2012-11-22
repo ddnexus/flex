@@ -544,7 +544,7 @@ module Flex
 
   def reload!
     flex.variables = Configuration.variables.deep_merge(flex.variables)
-    Loader.host_classes.each {|c| c.flex.reload!}
+    Loader.contexts.each {|c| c.flex.reload!}
     true
   end
 

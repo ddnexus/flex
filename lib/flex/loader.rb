@@ -2,12 +2,12 @@ module Flex
   module Loader
 
     extend self
-    attr_accessor :host_classes
-    @host_classes = []
+    attr_accessor :contexts
+    @contexts = []
 
     def self.included(context)
       context.class_eval do
-        Flex::Loader.host_classes |= [context]
+        Flex::Loader.contexts |= [context]
         @flex ||= ClassProxy::Base.new(context)
         @flex.extend(ClassProxy::Loader).init
         def self.flex; @flex end
