@@ -33,6 +33,7 @@ require 'flex/class_proxy/base'
 require 'flex/class_proxy/loader/search'
 require 'flex/class_proxy/loader/info'
 
+require 'flex/class_proxy/index_type'
 require 'flex/class_proxy/loader'
 require 'flex/class_proxy/model_sync'
 require 'flex/class_proxy/model'
