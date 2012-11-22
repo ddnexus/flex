@@ -10,18 +10,21 @@ module Flex
         end
 
         # http://www.elasticsearch.org/guide/reference/api/multi-search.html
-        # request may be a hash with the templates names as keys and the variable hash as value
-        # or you can also use an array of arrays.
+        # requests can be an array of arrays: [[:template1, variable_hash1], [template2, variable_hash2]]
+        # or a hash {:template1 => variable_hash1, template2 => variable_hash2}
         # The variables are an hash of variables that will be used to render the msearch template
+        # the array of result is at <result>.responses
         def multi_search(requests, variables={})
+          requests = requests.map { |name, vars| [name, vars] } if requests.is_a?(Hash)
           lines    = requests.map { |name, vars| templates[name].to_msearch(vars) }.join()
-          template = Template.new('GET', '/<<index>>/<<type>>/_msearch')
+          template = Template.new('GET', '/<<index>>/<<type>>/_msearch') # no setup flex so raw_result
           template.send(:do_render, variables.merge(:data => lines)) do |http_response|
             responses   = []
             es_response = MultiJson.decode(http_response.body)
             es_response['responses'].each_with_index do |raw_result, i|
               name, vars = requests[i]
-              result     = Result.new(templates[name], vars, http_response, raw_result)
+              int = templates[name].interpolate(vars)
+              result = Result.new(templates[name], int[:vars], http_response, raw_result)
               responses << result.to_flex_result
             end
             es_response['responses'] = responses
