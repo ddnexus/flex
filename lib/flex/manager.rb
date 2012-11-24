@@ -21,10 +21,28 @@ module Flex
       @indices ||= ( default = {}.extend Structure::Mergeable
                      Configuration.flex_models.each do |m|
                        m = eval"::#{m}" if m.is_a?(String)
-                       next unless m.flex.is_child?
-                       index = m.flex.index
-                       m.flex.parent_child_map.each do |parent, child|
-                         default.deep_merge! index => {'mappings' => {child => {'_parent' => {'type' => parent }}}}
+                       if m.flex.is_child?
+                         index = m.flex.index
+                         m.flex.parent_child_map.each do |parent, child|
+                           default.deep_merge! index => {'mappings' => {child => {'_parent' => {'type' => parent}}}}
+                         end
+                       end
+                       # support for flex-persistence attribute :properties, :analyzed and :not_analyzed
+                       if defined?(Flex::StoredModel) && m.include?(Flex::StoredModel)
+                         index = m.flex.index
+                         type  = m.flex.type
+                         props = {}
+                         m.attributes.each do |name, attr|
+                           options     = attr.send(:options)
+                           props[name] = case
+                                         when options.has_key?(:properties)
+                                           Utils.stringified_hash attr.send(:options)[:properties]
+                                         when options[:not_analyzed] || !options[:analyzed]
+                                           {'type' => 'string', 'index' => 'not_analyzed'}
+                                         end
+                         end
+                         default.deep_merge! index => {'mappings' => {type => {'properties' => props}}} \
+                           unless props.empty?
                        end
                      end
                      hash = YAML.load(Utils.erb_process(file))
