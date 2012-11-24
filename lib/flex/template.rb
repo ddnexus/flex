@@ -13,7 +13,7 @@ module Flex
       Variables.new
     end
 
-    attr_reader :method, :path, :data, :variables, :tags, :partials
+    attr_reader :method, :path, :data, :variables, :tags, :partials, :name
 
     def initialize(method, path, data=nil, vars=nil)
       @method = method.to_s.upcase
