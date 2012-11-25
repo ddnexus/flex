@@ -5,7 +5,6 @@ module Flex
 
         def define_search(name, source, source_vars=nil)
           structure = Utils.data_from_source(source)
-          structure = [structure] unless structure.is_a?(Array)
           send :define_template, Template::Search, name, structure, source_vars
         end
 
