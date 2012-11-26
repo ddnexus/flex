@@ -13,7 +13,7 @@ module Flex
       Variables.new
     end
 
-    attr_reader :method, :path, :data, :variables, :tags, :partials, :name
+    attr_reader :method, :path, :data, :tags, :partials, :name
 
     def initialize(method, path, data=nil, vars=nil)
       @method = method.to_s.upcase
@@ -50,6 +50,10 @@ module Flex
 
     def to_flex(name=nil)
       (name ? {name.to_s => to_a} : to_a).to_yaml
+    end
+
+    def variables(vars={})
+      interpolate(vars)[:vars]
     end
 
   private
