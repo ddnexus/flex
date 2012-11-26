@@ -12,19 +12,19 @@ module Flex
             temp = templates[name]
             meth_call = [context, name].join('.')
             block << <<-meth_call
-  ########## #{meth_call} ##########
+########## #{meth_call} ##########
 
-  #{'-' * temp.class.to_s.length}
-  #{temp.class}
-  #{temp.to_flex(name)}
-  meth_call
-            temp.partials.each do |par_name|
-              par = partials[par_name]
-              block << <<-partial
-  #{'-' * par.class.to_s.length}
-  #{par.class}
-  #{par.to_flex(par_name)}
-  partial
+#{'-' * temp.class.to_s.length}
+#{temp.class}
+#{temp.to_flex(name)}
+meth_call
+          temp.partials.each do |par_name|
+            par = partials[par_name]
+            block << <<-partial
+#{'-' * par.class.to_s.length}
+#{par.class}
+#{par.to_flex(par_name)}
+partial
             end
             block << "\nUsage:\n"
             block << usage(meth_call, temp)
@@ -32,12 +32,12 @@ module Flex
             info  << block.split("\n").map{|l| '#  ' + l}.join("\n")
             info  <<  <<-meth
 
-  def #{meth_call}(vars={})
-    ## this is a stub, used for reference
-  end
+def #{meth_call}(vars={})
+  ## this is a stub, used for reference
+end
 
 
-  meth
+meth
           end
           info
         end
