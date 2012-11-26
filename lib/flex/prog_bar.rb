@@ -1,7 +1,7 @@
 module Flex
   class ProgBar
 
-    attr_reader :pbar
+    attr_reader :pbar, :total_count
 
     def initialize(total_count, batch_size=nil, prefix_message=nil)
       @total_count      = total_count

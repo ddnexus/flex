@@ -45,6 +45,15 @@ module Flex
       load File.expand_path('../../tasks/index.rake', __FILE__)
     end
 
+    def env2options(*keys)
+      options = {}
+      ENV.keys.map do |k|
+        key = k.downcase.to_sym
+        options[key] = ENV[k] if keys.include?(key)
+      end
+      options
+    end
+
     def define_delegation(opts)
       file, line = caller.first.split(':', 2)
       line = line.to_i
