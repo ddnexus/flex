@@ -130,8 +130,11 @@ module Flex
 
     def get_json(d)
       case
-      when d.respond_to?(:flex_source) then d.flex_source
-      when d.respond_to?(:to_json)     then d.to_json
+      when d.respond_to?(:flex_source)
+        json = d.flex_source
+        json.is_a?(String) ? json : MultiJson.encode(json)
+      when d.respond_to?(:to_json)
+        d.to_json
       else MultiJson.encode(d)
       end
     end

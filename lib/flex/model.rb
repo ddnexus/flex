@@ -15,7 +15,7 @@ module Flex
     end
 
     def flex_source
-      attributes.reject {|k| k.to_s =~ /^_*id$/}.to_json
+      attributes.reject {|k| k.to_s =~ /^_*id$/}
     end
 
     def flex_indexable?
