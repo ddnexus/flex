@@ -76,7 +76,7 @@ module Flex
         end
 
         unless klass.respond_to?(:find_in_batches)
-          STDERR.puts "[ERROR] Class #{klass} does not respond to :find_in_batches. Skipped."
+          Configuration.logger.error "Class #{klass} does not respond to :find_in_batches. Skipped."
           next
         end
 

@@ -1,3 +1,4 @@
+require 'dye'
 require 'yaml'
 require 'ostruct'
 require 'erb'
@@ -22,6 +23,7 @@ require 'flex/variables'
 
 require 'flex/template/base'
 require 'flex/template/partial'
+require 'flex/template/logger'
 require 'flex/template'
 require 'flex/template/search'
 require 'flex/template/slim_search'

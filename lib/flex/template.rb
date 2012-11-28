@@ -8,6 +8,7 @@ module Flex
   class Template
 
     include Base
+    include Logger
 
     def self.variables
       Variables.new
@@ -82,7 +83,7 @@ module Flex
         raise
       end
     ensure
-      to_logger(path, encoded_data, result) if int && Configuration.debug && Configuration.logger.level == 0
+      log_render int, path, encoded_data, result
     end
 
     def build_path(int, vars)
@@ -98,43 +99,6 @@ module Flex
     def build_data(int, vars)
       data = vars[:data] && Utils.data_from_source(vars[:data]) || int[:data]
       (data.nil? || data.is_a?(String)) ? data : MultiJson.encode(data)
-    end
-
-    def to_logger(path, encoded_data, result)
-      h = {}
-      h[:method] = method
-      h[:path]   = path
-      h[:data]   = begin
-                     MultiJson.decode(encoded_data) unless encoded_data.nil?
-                   rescue MultiJson::DecodeError
-                     encoded_data
-                   end
-      h[:result] = result if result && Configuration.debug_result
-      log        = Configuration.debug_to_curl ? to_curl_string(h) : Utils.stringified_hash(h).to_yaml
-      Configuration.logger.debug "[FLEX] Rendered #{caller_line}\n#{log}"
-    end
-
-    def caller_line
-      method_name = @host_flex && @name && "#{@host_flex.context}.#@name"
-      line = caller.find{|l| l !~ /#{LIB_PATH}/}
-      ll = ''
-      ll << "#{method_name} from " if method_name
-      ll << "#{line}"
-      ll
-    end
-
-    def to_curl_string(h)
-      pretty = h[:path] =~ /\?/ ? '&pretty=1' : '?pretty=1'
-      curl =  %(curl -X#{method} "#{Configuration.base_uri}#{h[:path]}#{pretty}")
-      if h[:data]
-        data = if h[:data].is_a?(String)
-                 h[:data].length > 1024 ? h[:data][0,1024] + '...(truncated display)' : h[:data]
-               else
-                 MultiJson.encode(h[:data], :pretty => true)
-               end
-        curl << %( -d '\n#{data}\n')
-      end
-      curl
     end
 
     def interpolate(*args)

@@ -7,6 +7,19 @@ module Flex
 
   end
 
+  class LogStruct < Struct
+
+    # force color in console (used with jruby)
+    def color=(bool)
+      Dye.color = bool
+    end
+
+    def color
+      Dye.color?
+    end
+
+  end
+
   extend self
 
   def load_http_client
@@ -51,8 +64,12 @@ module Flex
                              :flex_dir            => './flex',
                              :http_client         => load_http_client,
                              :http_client_options => {},
-                             :debug               => false,
-                             :debug_result        => true,
-                             :debug_to_curl       => false,
+                             :log                 => LogStruct.new( :enable    => true,
+                                                                    :variables => true,
+                                                                    :request   => true,
+                                                                    :result    => true,
+                                                                    :to_curl   => false ),
                              :raise_proc          => proc{|response| response.status >= 400}
+
+
 end
