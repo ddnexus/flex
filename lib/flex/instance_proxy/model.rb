@@ -52,7 +52,7 @@ module Flex
       end
 
       def id
-        instance.id
+        instance.id.to_s
       end
 
       def routing(raise=true)
@@ -74,7 +74,7 @@ module Flex
         meta = Variables.new( :index => index, :type => type, :id => id )
         params = {}
         params[:routing] = routing if routing
-        params[:parent]  = parent_instance.id if is_child?
+        params[:parent]  = parent_instance.id.to_s if is_child?
         meta.merge!(:params => params) unless params.empty?
         meta
       end

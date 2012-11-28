@@ -35,7 +35,7 @@ module Flex
       def prunable?(name, vars)
         val = get_val(name, vars)
         return val if vars[:no_pruning].include?(name)
-        (val.nil? || val == [] || val == {}) ? Prunable : val
+        (val.nil? || val == '' || val == [] || val == {}) ? Prunable : val
       end
 
     private
