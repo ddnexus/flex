@@ -11,7 +11,7 @@ module Flex
         user_caller   = caller.find{|l| l !~ /(#{LIB_PATHS.join('|')})/}
         logger.info Dye.dye("Rendered #{template_name} from: #{user_caller}", :blue, :bold)
         return unless logger.level == ::Logger::DEBUG
-        
+
         h = {}
         if logger.debug_variables
           h[:variables] = int[:vars]
