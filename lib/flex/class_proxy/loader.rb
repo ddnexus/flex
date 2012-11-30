@@ -72,7 +72,7 @@ module Flex
       def define_template(klass, name, structure, source_vars)
         structure = [structure] unless structure.is_a?(Array)
         if name.to_s[0] == '_' # partial
-          partial = Template::Partial.new(*structure)
+          partial = Template::Partial.new(*structure).setup(name.to_sym)
           partials[name.to_sym] = partial
         else
           template = klass.new(*structure).setup(self, name.to_sym, source_vars)

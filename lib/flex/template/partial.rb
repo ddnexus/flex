@@ -4,6 +4,8 @@ module Flex
 
       include Base
 
+      attr_reader :name
+
       def initialize(data)
         @data       = data
         tags        = Tags.new
@@ -20,8 +22,13 @@ module Flex
         ruby
       end
 
-      def to_flex(name=nil)
-        {name.to_s => @data}.to_yaml
+      def setup(name=nil)
+        @name = name
+        self
+      end
+
+      def to_source
+        {@name.to_s => @data}.to_yaml
       end
 
     end

@@ -16,14 +16,14 @@ module Flex
 
 #{'-' * temp.class.to_s.length}
 #{temp.class}
-#{temp.to_flex(name)}
+#{temp.to_source}
 meth_call
           temp.partials.each do |par_name|
             par = partials[par_name]
             block << <<-partial
 #{'-' * par.class.to_s.length}
 #{par.class}
-#{par.to_flex(par_name)}
+#{par.to_source}
 partial
             end
             block << "\nUsage:\n"
@@ -45,16 +45,20 @@ meth
       private
 
         def usage(meth_call, temp)
-          all_tags = temp.tags + temp.partials
+          all_tags  = temp.tags + temp.partials
+          variables = temp.instance_eval do
+                        interpolate
+                        @base_variables.deep_merge @host_flex && @host_flex.variables, @temp_variables
+                      end
           lines = all_tags.map do |t|
-            comments = 'partial' if t.to_s.match(/^_/)
-            line = ['', t.inspect]
-            line + if temp.variables.has_key?(t)
-                     ["#{temp.variables[t].inspect},", comments_to_s(comments)]
-                   else
-                     ["#{to_code(t)},", comments_to_s(comments, 'required')]
-                   end
-          end
+                    comments = 'partial' if t.to_s[0] == '_'
+                    line = ['', t.inspect]
+                    line + if variables.has_key?(t)
+                             ["#{variables[t].inspect},", comments_to_s(comments)]
+                           else
+                             ["#{to_code(t)},", comments_to_s(comments, 'required')]
+                           end
+                  end
           lines.sort! { |a,b| b[3] <=> a[3] }
           lines.first[0] = meth_call
           lines.last[2].chop!

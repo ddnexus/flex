@@ -45,17 +45,10 @@ module Flex
       a
     end
 
-    def to_curl(vars={})
-      to_curl_string interpolate(vars, strict=true)
+    def to_source
+      {@name.to_s => to_a}.to_yaml
     end
 
-    def to_flex(name=nil)
-      (name ? {name.to_s => to_a} : to_a).to_yaml
-    end
-
-    def variables(vars={})
-      interpolate(vars)[:vars]
-    end
 
   private
 
