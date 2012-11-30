@@ -18,7 +18,7 @@ module Flex
     end
 
     def process_result(result, inc)
-      Configuration.logger.error "Failed load:\n#{result.failed.to_yaml}" unless result.failed.size == 0
+      C11n.logger.error "Failed load:\n#{result.failed.to_yaml}" unless result.failed.size == 0
       @failed_count     += result.failed.size
       @successful_count += result.successful.size
       @pbar.inc(inc)

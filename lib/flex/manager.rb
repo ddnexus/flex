@@ -7,19 +7,19 @@ module Flex
     @parent_types = []
 
     def init_models
-      Configuration.flex_models.each {|m| eval"::#{m}" if m.is_a?(String) }
+      C11n.flex_models.each {|m| eval"::#{m}" if m.is_a?(String) }
     end
 
     # arrays of all the types
     def types
-      @types ||= Configuration.flex_models.map {|m| (m.is_a?(String) ? eval("::#{m}") : m).flex.type }.flatten
+      @types ||= C11n.flex_models.map {|m| (m.is_a?(String) ? eval("::#{m}") : m).flex.type }.flatten
     end
 
     # sets the default parent/child mappings and merges with the config_file
     # returns the indices structure used for creating the indices
-    def indices(file=Configuration.config_file)
+    def indices(file=C11n.config_file)
       @indices ||= ( default = {}.extend Structure::Mergeable
-                     Configuration.flex_models.each do |m|
+                     C11n.flex_models.each do |m|
                        m = eval"::#{m}" if m.is_a?(String)
                        if m.flex.is_child?
                          index = m.flex.index
@@ -53,7 +53,7 @@ module Flex
     # maps all the index/types to the ruby class
     def type_class_map
       @type_class_map ||= ( map = {}
-                            Configuration.flex_models.each do |m|
+                            C11n.flex_models.each do |m|
                               m = eval("::#{m}") if m.is_a?(String)
                               types = m.flex.type.is_a?(Array) ? m.flex.type : [m.flex.type]
                               types.each do |t|

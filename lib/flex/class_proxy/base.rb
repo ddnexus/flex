@@ -6,7 +6,7 @@ module Flex
 
       def initialize(context, vars={})
         @variables = Variables.new({:context => context,
-                                    :index   => Configuration.variables[:index]}.merge(vars))
+                                    :index   => C11n.variables[:index]}.merge(vars))
       end
 
       def context

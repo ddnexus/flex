@@ -48,8 +48,8 @@ module Flex
     end
 
     def import_models
-      Configuration.http_client_options[:timeout] = options[:timeout]
-      Configuration.debug = options[:debug]
+      C11n.http_client_options[:timeout] = options[:timeout]
+      C11n.debug = options[:debug]
       deleted = []
       models.each do |klass|
         index = klass.flex.index
@@ -76,7 +76,7 @@ module Flex
         end
 
         unless klass.respond_to?(:find_in_batches)
-          Configuration.logger.error "Class #{klass} does not respond to :find_in_batches. Skipped."
+          C11n.logger.error "Class #{klass} does not respond to :find_in_batches. Skipped."
           next
         end
 
@@ -103,7 +103,7 @@ module Flex
     end
 
     def struct
-      @struct ||= ( @indices_yaml = options[:config_file] || Flex::Configuration.config_file
+      @struct ||= ( @indices_yaml = options[:config_file] || C11n.config_file
                     raise Errno::ENOENT, "no such file or directory #{@indices_yaml.inspect}. " +
                                          'Please, use CONFIG_FILE=/path/to/index.yml ' +
                                          'or set the Flex::Configuration.config_file properly' \
@@ -113,10 +113,10 @@ module Flex
 
 
     def models
-      @models ||= ( models = options[:models] || Flex::Configuration.flex_models
+      @models ||= ( models = options[:models] || C11n.flex_models
                     raise AgrumentError, 'no class defined. Please use MODELS=ClassA,ClassB' +
                                          'or set the Flex::Configuration.flex_models properly' \
-                          if models.empty?
+                          if models.nil? || models.empty?
                     models.map{|c| c.is_a?(String) ? eval("::#{c}") : c} )
     end
 

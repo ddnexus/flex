@@ -4,8 +4,8 @@ module Flex
       extend self
 
       def request(method, path, data=nil)
-        options = Configuration.http_client_options
-        url     = "#{Configuration.base_uri}#{path}"
+        options = C11n.http_client_options
+        url     = "#{C11n.base_uri}#{path}"
         args    = options.merge( :method  => method.to_s.downcase.to_sym,
                                  :url     => url,
                                  :payload => data )

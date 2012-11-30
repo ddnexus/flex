@@ -39,8 +39,8 @@ module Flex
       raise ArgumentError, "Array expected as :collection (got #{args[:collection].inspect})" \
             unless args[:collection].is_a?(Array)
 
-      index  = args[:index]  || Configuration.variables[:index]
-      type   = args[:type]   || Configuration.variables[:type]
+      index  = args[:index]  || C11n.variables[:index]
+      type   = args[:type]   || C11n.variables[:type]
       action = args[:action] || 'index'
 
       meta = {}

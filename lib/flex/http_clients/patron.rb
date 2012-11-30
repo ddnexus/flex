@@ -4,7 +4,7 @@ module Flex
       extend self
 
       def request(method, path, data=nil)
-        options = Configuration.http_client_options
+        options = C11n.http_client_options
         options = options.merge(:data => data) if data
         session.request method.to_s.downcase.to_sym, path, {}, options
       rescue ::Patron::TimeoutError
@@ -17,7 +17,7 @@ module Flex
         Thread.current[:flex_patron_session] ||= begin
                                                    sess                       = ::Patron::Session.new
                                                    sess.headers['User-Agent'] = "flex-#{Flex::VERSION}"
-                                                   sess.base_url              = Configuration.base_uri
+                                                   sess.base_url              = C11n.base_uri
                                                    sess
                                                  end
       end
