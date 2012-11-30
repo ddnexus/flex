@@ -22,5 +22,9 @@ module Flex
       true
     end
 
+    def flex_should_sync?(syncer)
+      true
+    end
+
   end
 end
