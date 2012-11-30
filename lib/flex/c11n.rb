@@ -14,7 +14,7 @@ module Flex
                         :flex_models      => [],
                         :config_file      => './config/flex.yml',
                         :flex_dir         => './flex',
-                        :http_client      => HttpClients::Loader.get_http_client_class.new,
+                        :http_client      => HttpClients::Loader.new_http_client,
                         :raise_proc       => proc{|response| response.status >= 400}
 
   # long form alias
