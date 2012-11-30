@@ -64,24 +64,12 @@ module Flex
       path         = build_path(int, vars)
       encoded_data = build_data(int, vars)
       response     = C11n.http_client.request(method, path, encoded_data)
-
       # used in Flex.exist?
       return response.status == 200 if method == 'HEAD'
-
       if C11n.raise_proc.call(response)
         int[:vars][:raise].is_a?(FalseClass) ? return : raise(HttpError.new(response, caller_line))
       end
-
       result = yield(response, int)
-
-    rescue NameError => e
-      if e.name == :request
-        raise MissingHttpClientError,
-              'you should install the gem "patron" (recommended for performances) or "rest-client", ' +
-              'or provide your own http-client interface and set Flex::Configuration.http_client'
-      else
-        raise
-      end
     ensure
       log_render int, path, encoded_data, result
     end

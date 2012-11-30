@@ -1,15 +1,13 @@
 module Flex
   module HttpClients
-    module RestClient
-      extend self
+    class RestClient < Base
 
       def request(method, path, data=nil)
-        options = C11n.http_client_options
-        url     = "#{C11n.base_uri}#{path}"
-        args    = options.merge( :method  => method.to_s.downcase.to_sym,
-                                 :url     => url,
-                                 :payload => data )
-        response = ::RestClient::Request.new( args ).execute
+        url  = "#{base_uri}#{path}"
+        opts = options.merge( :method  => method.to_s.downcase.to_sym,
+                              :url     => url,
+                              :payload => data )
+        response = ::RestClient::Request.new( opts ).execute
         extend_response(response, url)
 
       rescue ::RestClient::ExceptionWithResponse => e

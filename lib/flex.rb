@@ -50,8 +50,8 @@ require 'flex/loader'
 require 'flex/related_model'
 require 'flex/model'
 
-require 'flex/http_clients/patron'
-require 'flex/http_clients/rest_client'
+require 'flex/http_clients/base'
+require 'flex/http_clients/loader'
 require 'flex/c11n'
 require 'flex/utility_methods'
 

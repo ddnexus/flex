@@ -7,37 +7,8 @@ module Flex
 
   end
 
-  extend self
-
-  def load_http_client
-    if Gem::Specification.respond_to?(:find_all_by_name)
-      case
-        # terrible way to check whether a gem is available.
-        # Gem.available? was just perfect: that's probably the reason it has been deprecated!
-        # https://github.com/rubygems/rubygems/issues/176
-      when Gem::Specification::find_all_by_name('patron').any?
-        require 'patron'
-        Flex::HttpClients::Patron
-      when Gem::Specification::find_all_by_name('rest-client').any?
-        require 'rest-client'
-        Flex::HttpClients::RestClient
-      end
-    else
-      case
-      when Gem.available?('patron')
-        require 'patron'
-        Flex::HttpClients::Patron
-      when Gem.available?('rest-client')
-        require 'rest-client'
-        Flex::HttpClients::RestClient
-      end
-    end
-  end
-  private :load_http_client
-
   # cool short name
-  C11n = Struct.new :base_uri            => 'http://localhost:9200',
-                    :result_extenders    => [ Flex::Result::Document,
+  C11n = Struct.new :result_extenders    => [ Flex::Result::Document,
                                               Flex::Result::SourceDocument,
                                               Flex::Result::Search,
                                               Flex::Result::MultiGet,
@@ -50,11 +21,22 @@ module Flex
                     :flex_models         => [],
                     :config_file         => './config/flex.yml',
                     :flex_dir            => './flex',
-                    :http_client         => load_http_client,
-                    :http_client_options => {},
+                    :http_client         => HttpClients::Loader.get_http_client_class.new,
                     :raise_proc          => proc{|response| response.status >= 400}
 
   # long form alias
   Configuration = C11n
+
+  # temprary deprecation warnings
+  C11n.instance_eval do
+    def base_uri(*args)
+      logger.warn "The Flex::Configuration.base_uri setting is deprecated in favour of Flex::Configuration.http_client.base_uri, and will be removed in a next version (called at: #{caller.first})"
+      http_client.base_uri(*args)
+    end
+    def http_client_options(*args)
+      logger.warn "The Flex::Configuration.http_client_options setting is deprecated in favour of Flex::Configuration.http_client.options, and will be removed in a next version (called at: #{caller.first})"
+      http_client.options(*args)
+    end
+  end
 
 end
