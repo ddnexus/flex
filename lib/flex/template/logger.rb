@@ -6,8 +6,12 @@ module Flex
 
       def log_render(int, path, encoded_data, result)
         logger = C11n.logger
-        logger.info Dye.dye("Rendered #{caller_line}", :blue, :bold)
+
+        template_name = @host_flex && @name && "#{@host_flex.context}.#@name" || 'template'
+        user_caller   = caller.find{|l| l !~ /(#{LIB_PATHS.join('|')})/}
+        logger.info Dye.dye("Rendered #{template_name} from: #{user_caller}", :blue, :bold)
         return unless logger.level == ::Logger::DEBUG
+        
         h = {}
         if logger.debug_variables
           h[:variables] = int[:vars]
@@ -27,15 +31,6 @@ module Flex
           h[:result] = result if result
         end
         logger.debug logger.curl_format ? curl_format(h[:request]) : yaml_format(h)
-      end
-
-      def caller_line
-        method_name = @host_flex && @name && "#{@host_flex.context}.#@name"
-        line = caller.find{|l| l !~ /#{LIB_PATH}/}
-        ll = ''
-        ll << "#{method_name} from " if method_name
-        ll << "#{line}"
-        ll
       end
 
       def curl_format(h)
