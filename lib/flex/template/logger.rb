@@ -5,13 +5,14 @@ module Flex
     private
 
       def log_render(int, path, encoded_data, result)
-        log = Configuration.log
-        return unless (int && Configuration.logger.level == ::Logger::DEBUG && log.enable)
+        logger = Configuration.logger
+        logger.info Dye.dye("Rendered #{caller_line}", :blue, :bold)
+        return unless logger.level == ::Logger::DEBUG
         h = {}
-        if log.variables
+        if logger.debug_variables
           h[:variables] = int[:vars]
         end
-        if log.request
+        if logger.debug_request
           h[:request] = {}
           h[:request][:method] = method
           h[:request][:path]   = path
@@ -22,12 +23,10 @@ module Flex
                                  end
           h[:request].delete(:data) if h[:request][:data].nil?
         end
-        if log.result
+        if logger.debug_result
           h[:result] = result if result
         end
-        log_string = log.to_curl ? to_curl_string(h[:request]) : h.to_yaml
-        log_string = format(log_string) unless log.to_curl
-        Configuration.logger.debug  Dye.dye("Rendered #{caller_line}\n", :blue, :bold) + log_string
+        logger.debug logger.curl_format ? curl_format(h[:request]) : yaml_format(h)
       end
 
       def caller_line
@@ -39,7 +38,7 @@ module Flex
         ll
       end
 
-      def to_curl_string(h)
+      def curl_format(h)
         pretty = h[:path] =~ /\?/ ? '&pretty=1' : '?pretty=1'
         curl =  %(curl -X#{method} "#{Configuration.base_uri}#{h[:path]}#{pretty}")
         if h[:data]
@@ -49,13 +48,13 @@ module Flex
         curl
       end
 
-      def format(string)
-        string.split("\n").map do |l|
+      def yaml_format(hash)
+        hash.to_yaml.split("\n").map do |l|
           case l
           when /^---$/
-          when /^ /
+          when /^( |-)/
             Dye.dye(l, :blue)
-          else
+          when  /^:(variables|request|result)/
             Dye.dye(l, :magenta, :bold) + (Dye.color ? Dye.sgr(:blue) : '')
           end
         end.compact.join("\n") + "\n"
