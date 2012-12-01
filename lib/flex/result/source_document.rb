@@ -32,32 +32,6 @@ module Flex
         end
       end
 
-      # returns the _source hash with an added id (if missing))
-      def to_attributes
-        {'id' => _id}.merge(_source)
-      end
-
-      # creates an instance of a mapped or computed class, falling back to OpenStruct
-      def to_mapped
-        to(mapped_class || OpenStruct)
-      end
-
-      # experimental: creates an instance of klass out of to_attributes
-      # we should probably reset the id to the original document _id
-      # but be sure the record is read-only
-      def to(klass)
-        obj = klass.new(to_attributes)
-        case
-        when defined?(ActiveRecord::Base) && obj.is_a?(ActiveRecord::Base)
-          obj.readonly!
-        when defined?(Mongoid::Document)  && obj.is_a?(Mongoid::Document)
-          # TODO: make it readonly
-        when obj.is_a?(OpenStruct)
-          # TODO: anythig to extend?
-        end
-        obj
-      end
-
     end
   end
 end

@@ -13,20 +13,6 @@ module Flex
         result['hits']['hits'].each { |h| h.extend(SourceDocument) }
       end
 
-      # experimental
-      # returns an array of document mapped objects
-      def mapped_collection
-        @mapped_collection ||= begin
-                               docs = self['hits']['hits'].map do |h|
-                                        raise NameError, "no '_source' found in hit #{h.inspect} " \
-                                              unless h.respond_to(:to_mapped)
-                                        h.to_mapped
-                                      end
-                               docs.extend Collection
-                               docs.setup(self['hits']['total'], variables)
-                             end
-      end
-
     end
   end
 end

@@ -1,12 +1,12 @@
 module Flex
 
   # cool short name
-  C11n = OpenStruct.new :result_extenders => [ Flex::Result::Document,
-                                               Flex::Result::SourceDocument,
-                                               Flex::Result::Search,
-                                               Flex::Result::MultiGet,
-                                               Flex::Result::SourceSearch,
-                                               Flex::Result::Bulk ],
+  C11n = OpenStruct.new :result_extenders => [ Result::Document,
+                                               Result::SourceDocument,
+                                               Result::Search,
+                                               Result::MultiGet,
+                                               Result::SourceSearch,
+                                               Result::Bulk ],
                         :logger           => Logger.new(STDERR),
                         :variables        => Variables.new( :index      => nil,
                                                             :type       => nil,
