@@ -6,14 +6,16 @@ module Flex
         super('GET', "/<<index>>/<<type>>/_search", data, vars)
       end
 
-      def to_a(vars={})
-        int = interpolate(vars)
-        a = [int[:data]]
+      def to_a(*vars)
+        vars = Variables.new(*vars)
+        int  = interpolate(vars)
+        a    = [int[:data]]
         a << @instance_vars unless @instance_vars.nil?
         a
       end
 
-      def to_msearch(vars={})
+      def to_msearch(*vars)
+        vars   = Variables.new(*vars)
         int    = interpolate(vars, strict=true)
         header = {}
         header[:index] = int[:vars][:index] if int[:vars][:index]

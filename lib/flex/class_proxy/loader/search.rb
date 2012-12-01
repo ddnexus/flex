@@ -13,16 +13,16 @@ module Flex
         # or a hash {:template1 => variable_hash1, template2 => variable_hash2}
         # The variables are an hash of variables that will be used to render the msearch template
         # the array of result is at <result>.responses
-        def multi_search(requests, variables={})
+        def multi_search(requests, *variables)
           requests = requests.map { |name, vars| [name, vars] } if requests.is_a?(Hash)
           lines    = requests.map { |name, vars| templates[name].to_msearch(vars) }.join()
           template = Template.new('GET', '/<<index>>/<<type>>/_msearch') # no setup flex so raw_result
-          template.send(:do_render, variables.merge(:data => lines)) do |http_response|
+          template.send(:do_render, *variables, :data => lines) do |http_response|
             responses   = []
             es_response = MultiJson.decode(http_response.body)
             es_response['responses'].each_with_index do |raw_result, i|
               name, vars = requests[i]
-              int = templates[name].interpolate(vars)
+              int = templates[name].interpolate(vars, strict=true)
               result = Result.new(templates[name], int[:vars], http_response, raw_result)
               responses << result.to_flex_result
             end
@@ -35,14 +35,14 @@ module Flex
         end
 
         # implements search_type=scan (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
-        def scan_search(template, vars={}, &block)
+        def scan_search(template, *vars, &block)
           scroll      = '5m'
-          search_vars = Variables.new( :params     => { :search_type => 'scan',
+          search_vars = Variables.new({:params     => { :search_type => 'scan',
                                                         :scroll      => scroll,
                                                         :size        => 50 },
-                                       :raw_result => true ).deep_merge(vars)
-          scroll_vars = Variables.new( :params     => { :scroll => scroll },
-                                       :raw_result => true ).deep_merge(vars)
+                                       :raw_result => true}, *vars)
+          scroll_vars = Variables.new({:params     => { :scroll => scroll },
+                                       :raw_result => true}, *vars)
           search_temp = template.is_a?(Flex::Template) ? template : templates[template]
           scroll_temp = Flex::Template.new( :get,
                                             '/_search/scroll',
@@ -58,9 +58,9 @@ module Flex
         end
 
         # implements search_type=count (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
-        def count_search(template, vars={})
+        def count_search(template, *vars)
           template = template.is_a?(Flex::Template) ? template : templates[template]
-          template.render Variables.new(:params => {:search_type => 'count'}, :raw_result => true).deep_merge(vars)
+          template.render Variables.new({:params => {:search_type => 'count'}, :raw_result => true}, *vars)
         end
 
       end

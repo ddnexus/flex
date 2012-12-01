@@ -79,7 +79,7 @@ module Flex
   #  Usage:
   #  Flex.indices_exists :index => "flex_test_index"
   #
-  def Flex.indices_exists(vars={})
+  def Flex.indices_exists(*vars)
     ## this is a stub, used for reference
   end
 
@@ -97,7 +97,7 @@ module Flex
   #  Usage:
   #  Flex.exist? :index => "flex_test_index"
   #
-  def Flex.exist?(vars={})
+  def Flex.exist?(*vars)
     ## this is a stub, used for reference
   end
 
@@ -120,7 +120,7 @@ module Flex
   #                    :number_of_shards   => 5,
   #                    :number_of_replicas => 1
   #
-  def Flex.create_index(vars={})
+  def Flex.create_index(*vars)
     ## this is a stub, used for reference
   end
 
@@ -143,7 +143,7 @@ module Flex
   #                 :number_of_shards   => 5,
   #                 :number_of_replicas => 1
   #
-  def Flex.put_index(vars={})
+  def Flex.put_index(*vars)
     ## this is a stub, used for reference
   end
 
@@ -166,7 +166,7 @@ module Flex
   #                  :number_of_shards   => 5,
   #                  :number_of_replicas => 1
   #
-  def Flex.post_index(vars={})
+  def Flex.post_index(*vars)
     ## this is a stub, used for reference
   end
 
@@ -184,7 +184,7 @@ module Flex
   #  Usage:
   #  Flex.get_settings :index => "flex_test_index"
   #
-  def Flex.get_settings(vars={})
+  def Flex.get_settings(*vars)
     ## this is a stub, used for reference
   end
 
@@ -206,7 +206,7 @@ module Flex
   #                   :index      => "flex_test_index",
   #                   :type       => nil
   #
-  def Flex.put_mapping(vars={})
+  def Flex.put_mapping(*vars)
     ## this is a stub, used for reference
   end
 
@@ -225,7 +225,7 @@ module Flex
   #  Flex.get_mapping :index => "flex_test_index",
   #                   :type  => nil
   #
-  def Flex.get_mapping(vars={})
+  def Flex.get_mapping(*vars)
     ## this is a stub, used for reference
   end
 
@@ -244,7 +244,7 @@ module Flex
   #  Flex.delete_mapping :index => "flex_test_index",
   #                      :type  => nil
   #
-  def Flex.delete_mapping(vars={})
+  def Flex.delete_mapping(*vars)
     ## this is a stub, used for reference
   end
 
@@ -262,7 +262,7 @@ module Flex
   #  Usage:
   #  Flex.delete_index :index => "flex_test_index"
   #
-  def Flex.delete_index(vars={})
+  def Flex.delete_index(*vars)
     ## this is a stub, used for reference
   end
 
@@ -281,7 +281,7 @@ module Flex
   #  Flex.delete_by_query :index => "flex_test_index",
   #                       :type  => nil
   #
-  def Flex.delete_by_query(vars={})
+  def Flex.delete_by_query(*vars)
     ## this is a stub, used for reference
   end
 
@@ -300,7 +300,7 @@ module Flex
   #  Usage:
   #  Flex.bulk :lines => lines  # required
   #
-  def Flex.bulk(vars={})
+  def Flex.bulk(*vars)
     ## this is a stub, used for reference
   end
 
@@ -319,7 +319,7 @@ module Flex
   #  Flex.count :index => "flex_test_index",
   #             :type  => nil
   #
-  def Flex.count(vars={})
+  def Flex.count(*vars)
     ## this is a stub, used for reference
   end
 
@@ -338,7 +338,7 @@ module Flex
   #  Flex.stats :index     => "flex_test_index",
   #             :end_point => nil
   #
-  def Flex.stats(vars={})
+  def Flex.stats(*vars)
     ## this is a stub, used for reference
   end
 
@@ -358,7 +358,7 @@ module Flex
   #             :index => "flex_test_index",
   #             :type  => nil
   #
-  def Flex.store(vars={})
+  def Flex.store(*vars)
     ## this is a stub, used for reference
   end
 
@@ -378,7 +378,7 @@ module Flex
   #                 :index => "flex_test_index",
   #                 :type  => nil
   #
-  def Flex.put_store(vars={})
+  def Flex.put_store(*vars)
     ## this is a stub, used for reference
   end
 
@@ -397,7 +397,7 @@ module Flex
   #  Flex.post_store :index => "flex_test_index",
   #                  :type  => nil
   #
-  def Flex.post_store(vars={})
+  def Flex.post_store(*vars)
     ## this is a stub, used for reference
   end
 
@@ -417,7 +417,7 @@ module Flex
   #              :index => "flex_test_index",
   #              :type  => nil
   #
-  def Flex.remove(vars={})
+  def Flex.remove(*vars)
     ## this is a stub, used for reference
   end
 
@@ -437,7 +437,7 @@ module Flex
   #           :index => "flex_test_index",
   #           :type  => nil
   #
-  def Flex.get(vars={})
+  def Flex.get(*vars)
     ## this is a stub, used for reference
   end
 
@@ -458,7 +458,7 @@ module Flex
   #                 :index => "flex_test_index",
   #                 :type  => nil
   #
-  def Flex.multi_get(vars={})
+  def Flex.multi_get(*vars)
     ## this is a stub, used for reference
   end
 
@@ -477,7 +477,7 @@ module Flex
   #  Flex.put_percolator :name  => name,       # required
   #                      :index => "flex_test_index"
   #
-  def Flex.put_percolator(vars={})
+  def Flex.put_percolator(*vars)
     ## this is a stub, used for reference
   end
 
@@ -495,7 +495,7 @@ module Flex
   #  Usage:
   #  Flex.delete_percolator :name => name  # required
   #
-  def Flex.delete_percolator(vars={})
+  def Flex.delete_percolator(*vars)
     ## this is a stub, used for reference
   end
 
@@ -514,7 +514,7 @@ module Flex
   #  Flex.percolate :index => "flex_test_index",
   #                 :type  => nil
   #
-  def Flex.percolate(vars={})
+  def Flex.percolate(*vars)
     ## this is a stub, used for reference
   end
 
@@ -534,7 +534,7 @@ module Flex
   #  Flex.match_all :index => "flex_test_index",
   #                 :type  => nil
   #
-  def Flex.match_all(vars={})
+  def Flex.match_all(*vars)
     ## this is a stub, used for reference
   end
 

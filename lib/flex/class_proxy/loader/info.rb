@@ -32,7 +32,7 @@ partial
             info  << block.split("\n").map{|l| '#  ' + l}.join("\n")
             info  <<  <<-meth
 
-def #{meth_call}(vars={})
+def #{meth_call}(*vars)
   ## this is a stub, used for reference
 end
 
