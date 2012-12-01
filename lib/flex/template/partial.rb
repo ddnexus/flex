@@ -10,7 +10,7 @@ module Flex
         @data       = data
         tags        = Tags.new
         stringified = tags.stringify(data)
-        @partials, @tags = tags.map(&:name).partition{|n| n.to_s =~ /^_/}
+        @partials, @tags = tags.partial_and_tag_names
         @variables  = tags.variables
         instance_eval <<-ruby, __FILE__, __LINE__
           def interpolate(main_vars=Variables.new, vars={})

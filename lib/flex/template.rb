@@ -85,7 +85,7 @@ module Flex
     def interpolate(*args)
       tags        = Tags.new
       stringified = tags.stringify(:path => @path, :data => @data)
-      @partials, @tags = tags.map(&:name).partition{|n| n.to_s =~ /^_/}
+      @partials, @tags = tags.partial_and_tag_names
       @base_variables  = C11n.variables.deep_merge(self.class.variables)
       @temp_variables  = Variables.new.deep_merge(@source_vars, @instance_vars, tags.variables)
       instance_eval <<-ruby, __FILE__, __LINE__

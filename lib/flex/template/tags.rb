@@ -22,6 +22,10 @@ module Flex
         end
       end
 
+      def partial_and_tag_names
+        map(&:name).partition{|n| n.to_s =~ /^_/}
+      end
+
     end
 
     class Tag
