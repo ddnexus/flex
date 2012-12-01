@@ -2,14 +2,17 @@ module Flex
   class Template
     module Logger
 
+    def caller_line
+      caller.find{|l| l !~ /(#{LIB_PATHS.join('|')})/}
+    end
+
     private
 
       def log_render(int, path, encoded_data, result)
         logger = C11n.logger
 
         template_name = @host_flex && @name && "#{@host_flex.context}.#@name" || 'template'
-        user_caller   = caller.find{|l| l !~ /(#{LIB_PATHS.join('|')})/}
-        logger.info Dye.dye("Rendered #{template_name} from: #{user_caller}", :blue, :bold)
+        logger.info Dye.dye("Rendered #{template_name} from: #{caller_line}", :blue, :bold)
         return unless logger.level == ::Logger::DEBUG
 
         h = {}
