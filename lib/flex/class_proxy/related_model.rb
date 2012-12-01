@@ -4,12 +4,10 @@ module Flex
 
       include ModelSync
 
-      alias_method :full_sync, :sync
-
       def sync(*synced)
         raise ArgumentError, 'You cannot flex.sync(self) a Flex::RelatedModel.' \
               if synced.any?{|s| s == context}
-        full_sync
+        super
       end
 
     end
