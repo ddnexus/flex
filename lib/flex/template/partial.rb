@@ -13,10 +13,8 @@ module Flex
         @partials, @tags = tags.partial_and_tag_names
         @variables  = tags.variables
         instance_eval <<-ruby, __FILE__, __LINE__
-          def interpolate(main_vars=Variables.new, vars={})
-            sym_vars = {}
-            vars.each{|k,v| sym_vars[k.to_sym] = v} # so you can pass the rails params hash
-            vars = process_vars main_vars.deep_merge(@variables, sym_vars)
+          def interpolate(main_vars={}, vars={})
+            vars = process_vars Variables.new(main_vars, @variables, vars)
             #{stringified}
           end
         ruby
