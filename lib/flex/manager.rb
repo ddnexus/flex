@@ -36,7 +36,7 @@ module Flex
                            options     = attr.send(:options)
                            props[name] = case
                                          when options.has_key?(:properties)
-                                           Utils.stringified_hash attr.send(:options)[:properties]
+                                           Utils.keyfy(:to_s, attr.send(:options)[:properties])
                                          when options[:not_analyzed] || !options[:analyzed]
                                            {'type' => 'string', 'index' => 'not_analyzed'}
                                          end

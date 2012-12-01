@@ -5,7 +5,7 @@ module Flex
     def data_from_source(source)
       return unless source
       data = case source
-             when Hash              then stringified_hash(source)
+             when Hash              then keyfy(:to_s, source)
              when /^\s*\{.+\}\s*$/m then source
              when String            then YAML.load(source)
              else raise ArgumentError, "expected a String or Hash instance (got #{source.inspect})"
@@ -33,10 +33,10 @@ module Flex
       h
     end
 
-    def stringified_hash(hash)
+    def keyfy(to_what, hash)
       h = {}
       hash.each do |k,v|
-        h[k.to_s] = v.is_a?(Hash) ? stringified_hash(v) : v
+        h[k.send(to_what)] = v.is_a?(Hash) ? keyfy(to_what, v) : v
       end
       h
     end
