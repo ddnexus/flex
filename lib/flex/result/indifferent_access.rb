@@ -3,7 +3,7 @@ module Flex
     module IndifferentAccess
 
       def self.extended(result)
-        result.extend Structure::IndifferentAccess
+        result.extend Struct::IndifferentAccess
       end
 
     end

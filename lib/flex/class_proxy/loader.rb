@@ -53,9 +53,10 @@ module Flex
         templates[name] = template
         # no define_singleton_method in 1.8.7
         context.instance_eval <<-ruby, __FILE__, __LINE__ + 1
-          def #{name}(vars={})
-            raise ArgumentError, "#{context}.#{name} expects a Hash (got \#{vars.inspect})" unless vars.is_a?(Hash)
-            flex.templates[:#{name}].render(vars)
+          def #{name}(*vars)
+            raise ArgumentError, "#{context}.#{name} expects a list of Hashes, got (\#{vars.map(&:inspect).join(', ')})" \
+                  unless vars.all?{|i| i.nil? || i.is_a?(Hash)}
+            flex.templates[:#{name}].render(*vars)
           end
         ruby
       end

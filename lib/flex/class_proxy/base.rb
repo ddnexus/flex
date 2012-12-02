@@ -5,8 +5,8 @@ module Flex
       attr_accessor :variables
 
       def initialize(context, vars={})
-        @variables = Variables.new({:context => context,
-                                    :index   => C11n.variables[:index]}.merge(vars))
+        @variables = Vars.new({:context => context,
+                               :index   => C11n.variables[:index]}.merge(vars))
       end
 
       def context

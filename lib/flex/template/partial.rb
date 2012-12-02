@@ -2,8 +2,6 @@ module Flex
   class Template
     class Partial
 
-      include Base
-
       attr_reader :name
 
       def initialize(data)
@@ -14,7 +12,7 @@ module Flex
         @variables  = tags.variables
         instance_eval <<-ruby, __FILE__, __LINE__
           def interpolate(main_vars={}, vars={})
-            vars = process_vars Variables.new(main_vars, @variables, vars)
+            vars = Vars.new(main_vars, @variables, vars)
             #{stringified}
           end
         ruby
