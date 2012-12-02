@@ -17,8 +17,8 @@ module Flex
                         :http_client      => HttpClients::Loader.new_http_client,
                         :raise_proc       => proc{|response| response.status >= 400}
 
-  # long form alias
-  Configuration = C11n
+  # longer form alias
+  Configuration = Conf = C11n
 
   C11n.instance_eval do
     def configure
