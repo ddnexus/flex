@@ -14,7 +14,7 @@ module Flex
         @variables  = tags.variables
         instance_eval <<-ruby, __FILE__, __LINE__
           def interpolate(main_vars={}, vars={})
-            vars = process_vars Variables.new(main_vars, @variables, vars)
+            vars = Variables.new(main_vars, @variables, vars)
             #{stringified}
           end
         ruby

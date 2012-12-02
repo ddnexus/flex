@@ -96,7 +96,7 @@ module Flex
           return {:path => path, :data => data, :vars => vars} if vars.empty? && !strict
           context_variables = vars[:context] ? vars[:context].flex.variables : (@host_flex && @host_flex.variables)
           merged = @base_variables.deep_merge(context_variables, @temp_variables, vars)
-          vars   = process_vars(merged)
+          vars   = merged.final_process(@host_flex)
           obj    = #{stringified}
           obj    = prune(obj)
           obj[:path].tr_s!('/', '/')     # removes empty path segments

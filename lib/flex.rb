@@ -19,7 +19,10 @@ require 'flex/result/multi_get'
 require 'flex/result/source_search'
 require 'flex/result/bulk'
 
-require 'flex/variables'
+require 'flex/structure/symbolize'
+require 'flex/structure/hash'
+require 'flex/structure/array'
+require 'flex/vars'
 
 require 'flex/template/base'
 require 'flex/template/partial'
