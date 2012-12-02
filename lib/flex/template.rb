@@ -10,7 +10,7 @@ module Flex
     include Logger
 
     def self.variables
-      Variables.new
+      Vars.new
     end
 
     attr_reader :method, :path, :data, :tags, :partials, :name
@@ -21,13 +21,13 @@ module Flex
             unless %w[HEAD GET PUT POST DELETE].include?(@method)
       @path          = path =~ /^\// ? path : "/#{path}"
       @data          = Utils.data_from_source(data)
-      @instance_vars = Variables.new(*vars)
+      @instance_vars = Vars.new(*vars)
     end
 
     def setup(host_flex, name=nil, *vars)
       @host_flex   = host_flex
       @name        = name
-      @source_vars = Variables.new(*vars)
+      @source_vars = Vars.new(*vars)
       self
     end
 
@@ -38,7 +38,7 @@ module Flex
     end
 
     def to_a(*vars)
-      vars = Variables.new(*vars)
+      vars = Vars.new(*vars)
       int  = interpolate(vars)
       a    = [method, int[:path], int[:data], @instance_vars]
       2.times { a.pop if a.last.nil? }
@@ -53,7 +53,7 @@ module Flex
   private
 
     def do_render(*vars)
-      vars         = Variables.new(*vars)
+      vars         = Vars.new(*vars)
       int          = interpolate(vars, strict=true)
       path         = build_path(int, vars)
       encoded_data = build_data(int, vars)
@@ -88,10 +88,10 @@ module Flex
       stringified = tags.stringify(:path => @path, :data => @data)
       @partials, @tags = tags.partial_and_tag_names
       @base_variables  = C11n.variables.deep_merge(self.class.variables)
-      @temp_variables  = Variables.new(@source_vars, @instance_vars, tags.variables)
+      @temp_variables  = Vars.new(@source_vars, @instance_vars, tags.variables)
       instance_eval <<-ruby, __FILE__, __LINE__
         def interpolate(vars={}, strict=false)
-          vars = Variables.new(vars) unless vars.is_a?(Flex::Variables)
+          vars = Vars.new(vars) unless vars.is_a?(Flex::Vars)
           return {:path => path, :data => data, :vars => vars} if vars.empty? && !strict
           context_variables = vars[:context] ? vars[:context].flex.variables : (@host_flex && @host_flex.variables)
           merged = @base_variables.deep_merge(context_variables, @temp_variables, vars)

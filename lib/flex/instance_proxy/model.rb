@@ -71,7 +71,7 @@ module Flex
       end
 
       def metainfo
-        meta = Variables.new( :index => index, :type => type, :id => id )
+        meta = Vars.new( :index => index, :type => type, :id => id )
         params = {}
         params[:routing] = routing if routing
         params[:parent]  = parent_instance.id.to_s if is_child?

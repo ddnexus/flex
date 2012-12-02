@@ -37,12 +37,12 @@ module Flex
         # implements search_type=scan (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
         def scan_search(template, *vars, &block)
           scroll      = '5m'
-          search_vars = Variables.new({:params     => { :search_type => 'scan',
-                                                        :scroll      => scroll,
-                                                        :size        => 50 },
+          search_vars = Vars.new({:params     => { :search_type => 'scan',
+                                                   :scroll      => scroll,
+                                                   :size        => 50 },
                                        :raw_result => true}, *vars)
-          scroll_vars = Variables.new({:params     => { :scroll => scroll },
-                                       :raw_result => true}, *vars)
+          scroll_vars = Vars.new({:params     => { :scroll => scroll },
+                                  :raw_result => true}, *vars)
           search_temp = template.is_a?(Flex::Template) ? template : templates[template]
           scroll_temp = Flex::Template.new( :get,
                                             '/_search/scroll',
@@ -60,7 +60,7 @@ module Flex
         # implements search_type=count (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
         def count_search(template, *vars)
           template = template.is_a?(Flex::Template) ? template : templates[template]
-          template.render Variables.new({:params => {:search_type => 'count'}, :raw_result => true}, *vars)
+          template.render Vars.new({:params => {:search_type => 'count'}, :raw_result => true}, *vars)
         end
 
       end

@@ -7,7 +7,7 @@ module Flex
       end
 
       def to_a(*vars)
-        vars = Variables.new(*vars)
+        vars = Vars.new(*vars)
         int  = interpolate(vars)
         a    = [int[:data]]
         a << @instance_vars unless @instance_vars.nil?
@@ -15,7 +15,7 @@ module Flex
       end
 
       def to_msearch(*vars)
-        vars   = Variables.new(*vars)
+        vars   = Vars.new(*vars)
         int    = interpolate(vars, strict=true)
         header = {}
         header[:index] = int[:vars][:index] if int[:vars][:index]
