@@ -12,16 +12,18 @@ module Flex
       end
 
       def store(key, val)
-        super key.to_sym, symbolize(val)
+        super  clean_key(key), symbolize(val)
       end
       alias_method :[]=, :store
 
       def fetch(key, *rest, &block)
-        super key.to_sym, *rest, &block
+        cleaned = clean_key(key)
+        super has_key?(cleaned) ? cleaned : key.to_sym, *rest, &block
       end
 
       def [](key)
-        super key.to_sym
+        cleaned = clean_key(key)
+        super has_key?(cleaned) ? cleaned : key.to_sym
       end
 
       def deep_merge(*hashes)
@@ -45,12 +47,16 @@ module Flex
       end
 
       def try_delete(key, *rest, &block)
-        val = delete key.to_sym, *rest, &block
+        val = delete clean_key(key), *rest, &block
         val.nil? ? nil.extend(Nil) : val
       end
 
 
       private
+
+      def clean_key(key)
+        key[-1] == '!' ? key[0..-2].to_sym : key.to_sym
+      end
 
       def deep_merge_hash(h1, h2)
         h2 ||= {}

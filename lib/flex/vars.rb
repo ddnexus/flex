@@ -1,13 +1,13 @@
 module Flex
   class Vars < Structure::Hash
 
-
     alias_method :hash_new, :initialize
 
     def variables_new(*hashes)
       start = hash_new do |hash, key|
-                if key[0] == '_'
-                  hash[key] = Structure::Array.new
+                if key[-1] == '!'
+                  klass = (key[0] == '_' ? Structure::Array : Structure::Hash)
+                  hash[clean_key(key)] = klass.new
                 end
               end
       deep_merge! start, *hashes
@@ -30,9 +30,8 @@ module Flex
       end
       self[:index] = self[:index].uniq.join(',') if self[:index].is_a?(Array)
       self[:type]  = self[:type].uniq.join(',')  if self[:type].is_a?(Array)
-      self[:params] ||= Structure::Hash.new
       # so you can pass :fields => [:field_one, :field_two]
-      params = self[:params]
+      params = self[:params!]
       params.each{|k,v| self[:params][k] = v.uniq.join(',') if v.is_a?(Array)}
       if self[:page]
         self[:page] = self[:page].to_i
