@@ -53,6 +53,7 @@ module Flex
       deleted = []
       models.each do |klass|
         index = klass.flex.index
+        next unless options[:index].include?(index)
 
         if options[:force]
           unless deleted.include?(index)
