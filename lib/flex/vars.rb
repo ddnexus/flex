@@ -1,5 +1,5 @@
 module Flex
-  class Vars < Structure::Hash
+  class Vars < Struct::Hash
 
     class Prunable
       class << self
@@ -13,7 +13,7 @@ module Flex
     def variables_new(*hashes)
       start = hash_new do |hash, key|
                 if key[-1] == '!'
-                  klass = (key[0] == '_' ? Structure::Array : Structure::Hash)
+                  klass = (key[0] == '_' ? Struct::Array : Struct::Hash)
                   hash[clean_key(key)] = klass.new
                 end
               end

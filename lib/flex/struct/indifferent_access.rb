@@ -1,5 +1,5 @@
 module Flex
-  module Structure
+  module Struct
     # allows to use both Symbol or String keys to access the same values in a Hash
     module IndifferentAccess
 

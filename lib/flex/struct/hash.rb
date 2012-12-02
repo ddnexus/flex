@@ -1,5 +1,5 @@
 module Flex
-  module Structure
+  module Struct
     class Hash < ::Hash
       include Symbolize
 
@@ -74,13 +74,13 @@ module Flex
 
       def deep_dup(obj)
         case obj
-        when ::Hash, Flex::Structure::Hash
+        when ::Hash, Flex::Struct::Hash
           h = obj.dup
           h.each_pair do |k,v|
             h[k] = deep_dup(v)
           end
           h
-        when ::Array, Flex::Structure::Array
+        when ::Array, Flex::Struct::Array
           obj.map{|i| deep_dup(i)}
         else
           obj

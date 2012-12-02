@@ -18,7 +18,7 @@ module Flex
     # sets the default parent/child mappings and merges with the config_file
     # returns the indices structure used for creating the indices
     def indices(file=C11n.config_file)
-      @indices ||= ( default = {}.extend Structure::Mergeable
+      @indices ||= ( default = {}.extend Struct::Mergeable
                      C11n.flex_models.each do |m|
                        m = eval"::#{m}" if m.is_a?(String)
                        if m.flex.is_child?

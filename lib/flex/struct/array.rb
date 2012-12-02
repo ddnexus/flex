@@ -1,5 +1,5 @@
 module Flex
-  module Structure
+  module Struct
     class Array < ::Array
 
       include Symbolize

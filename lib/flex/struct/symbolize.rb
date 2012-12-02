@@ -1,19 +1,19 @@
 module Flex
-  module Structure
+  module Struct
     module Symbolize
 
       def symbolize(obj)
         case obj
-        when Flex::Structure::Hash, Flex::Structure::Array
+        when Flex::Struct::Hash, Flex::Struct::Array
           obj
         when ::Hash
-          h = Structure::Hash.new
+          h = Struct::Hash.new
           obj.each do |k,v|
             h[k.to_sym] = symbolize(v)
           end
           h
         when ::Array
-          a = Structure::Array.new
+          a = Struct::Array.new
           obj.each{|i| a << i}
           a
         else
