@@ -24,7 +24,6 @@ require 'flex/structure/hash'
 require 'flex/structure/array'
 require 'flex/vars'
 
-require 'flex/template/base'
 require 'flex/template/partial'
 require 'flex/template/logger'
 require 'flex/template'

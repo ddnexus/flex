@@ -7,7 +7,6 @@ module Flex
   # For more details about templates, see the documentation.
   class Template
 
-    include Base
     include Logger
 
     def self.variables
@@ -111,25 +110,25 @@ module Flex
     # and compact.flatten the Array values
     def prune(obj)
       case obj
-      when Prunable, [], {}
+      when Vars::Prunable, [], {}
         obj
       when Array
         ar = []
         obj.each do |i|
           pruned = prune(i)
-          next if pruned == Prunable
+          next if pruned == Vars::Prunable
           ar << pruned
         end
         a = ar.compact.flatten
-        a.empty? ? Prunable : a
+        a.empty? ? Vars::Prunable : a
       when Hash
         h = {}
         obj.each do |k, v|
           pruned = prune(v)
-          next if pruned == Prunable
+          next if pruned == Vars::Prunable
           h[k] = pruned
         end
-        h.empty? ? Prunable : h
+        h.empty? ? Vars::Prunable : h
       else
         obj
       end

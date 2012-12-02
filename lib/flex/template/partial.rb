@@ -2,8 +2,6 @@ module Flex
   class Template
     class Partial
 
-      include Base
-
       attr_reader :name
 
       def initialize(data)
