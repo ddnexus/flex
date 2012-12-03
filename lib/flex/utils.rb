@@ -33,12 +33,19 @@ module Flex
       h
     end
 
-    def keyfy(to_what, hash)
-      h = {}
-      hash.each do |k,v|
-        h[k.send(to_what)] = v.is_a?(Hash) ? keyfy(to_what, v) : v
+    def keyfy(to_what, obj)
+      case obj
+      when Hash
+        h = {}
+        obj.each do |k,v|
+          h[k.send(to_what)] = keyfy(to_what, v)
+        end
+        h
+      when Array
+        obj.map{|i| keyfy(to_what, i)}
+      else
+        obj
       end
-      h
     end
 
     def load_tasks
