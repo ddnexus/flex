@@ -60,7 +60,7 @@ module Flex
       response     = C11n.http_client.request(method, path, encoded_data)
       # used in Flex.exist?
       return response.status == 200 if method == 'HEAD'
-      if C11n.raise_proc.call(response)
+      if C11n.http_client.raise_proc.call(response)
         int[:vars][:raise].is_a?(FalseClass) ? return : raise(HttpError.new(response, caller_line))
       end
       result = yield(response, int)
