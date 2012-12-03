@@ -21,9 +21,9 @@ module Flex
       def get_value(k)
         val = fetch_val(k)
         case val
-        when Hash
+        when ::Hash
           val.extend IndifferentAccess
-        when Array
+        when ::Array
           val.each {|v| v.extend IndifferentAccess if v.is_a?(Hash)}
         end
         val
