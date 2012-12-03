@@ -68,7 +68,7 @@ module Flex
       obj, meth, methods, to = opts[:in], opts[:by], opts[:for], opts[:to]
 
       methods.each do |method|
-        obj.send meth, <<-method, file, line - 2
+        obj.send meth, <<-method, file, line - 1
           def #{method}(*args, &block)                        # def method_name(*args, &block)
             if #{to} || #{to}.respond_to?(:#{method})         #   if client || client.respond_to?(:name)
               #{to}.__send__(:#{method}, *args, &block)       #     client.__send__(:name, *args, &block)
