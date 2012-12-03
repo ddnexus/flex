@@ -29,17 +29,15 @@ module Flex
 
     def final_process(host_flex)
       # partials
-      keys.select{|k| k[0] == '_'}.each do |name|
-        next if self[name].nil? # may come from assigned values
+      keys.select{|k| k[0] == '_' && !prunable?(k)}.each do |name|
         raise ArgumentError, "Array expected as :#{name} (got #{self[name].inspect})" \
-                unless self[name].is_a?(Array)
+              unless self[name].is_a?(Array)
         self[name] = self[name].map {|v| host_flex.partials[name].interpolate(self, v)}
       end
       self[:index] = self[:index].uniq.join(',') if self[:index].is_a?(Array)
       self[:type]  = self[:type].uniq.join(',')  if self[:type].is_a?(Array)
       # so you can pass :fields => [:field_one, :field_two]
-      params = self[:params!]
-      params.each{|k,v| self[:params][k] = v.uniq.join(',') if v.is_a?(Array)}
+      self[:params!].each{|k,v| self[:params][k] = v.uniq.join(',') if v.is_a?(Array)}
       if self[:page]
         self[:page] = self[:page].to_i
         self[:page] == 1 unless self[:page] > 0
