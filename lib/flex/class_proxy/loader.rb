@@ -46,6 +46,15 @@ module Flex
         @sources.each {|k,s,v| do_load_source(k,s,v)}
       end
 
+      def wrap(*methods, &block)
+        methods = templates.keys if methods.empty?
+        methods.each do |name|
+          raise MissingTemplateMethodError, "#{name} is not a template method" \
+                unless templates.include?(name)
+          meta_context.send(:define_method, name, &block)
+        end
+      end
+
       private
 
       # adds a template instance and defines the template method in the host_class::TemplateMethods
@@ -57,8 +66,11 @@ module Flex
                 unless vars.all?{|i| i.nil? || i.is_a?(Hash)}
           flex.templates[name].render(*vars)
         end
-        meta = class << context; self; end
-        begin meta.send(:remove_method, name); rescue; end
+        begin meta_context.send(:remove_method, name); rescue; end
+      end
+
+      def meta_context
+        class << context; self; end
       end
 
       def do_load_source(klass, source, source_vars)
