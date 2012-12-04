@@ -57,6 +57,8 @@ module Flex
                 unless vars.all?{|i| i.nil? || i.is_a?(Hash)}
           flex.templates[name].render(*vars)
         end
+        meta = class << context; self; end
+        begin meta.send(:remove_method, name); rescue; end
       end
 
       def do_load_source(klass, source, source_vars)
