@@ -29,7 +29,8 @@ module Flex
 
     def final_process(host_flex)
       # partials
-      keys.select{|k| k[0] == '_' && !prunable?(k)}.each do |name|
+      keys.select{|k| k[0] == '_'}.each do |name|
+        next if self[name].nil? # may come from assigned values
         raise ArgumentError, "Array expected as :#{name} (got #{self[name].inspect})" \
               unless self[name].is_a?(Array)
         self[name] = self[name].map {|v| host_flex.partials[name].interpolate(self, v)}
