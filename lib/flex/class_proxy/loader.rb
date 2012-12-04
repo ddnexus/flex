@@ -48,17 +48,15 @@ module Flex
 
       private
 
-      # adds a template instance and defines the template method in the host class
+      # adds a template instance and defines the template method in the host_class::TemplateMethods
       def add_template(name, template)
         templates[name] = template
         # no define_singleton_method in 1.8.7
-        context.instance_eval <<-ruby, __FILE__, __LINE__ + 1
-          def #{name}(*vars)
-            raise ArgumentError, "#{context}.#{name} expects a list of Hashes, got (\#{vars.map(&:inspect).join(', ')})" \
-                  unless vars.all?{|i| i.nil? || i.is_a?(Hash)}
-            flex.templates[:#{name}].render(*vars)
-          end
-        ruby
+        context::FlexTemplateMethods.send(:define_method, name) do |*vars|
+          raise ArgumentError, "#{context}.#{name} expects a list of Hashes, got (\#{vars.map(&:inspect).join(', ')})" \
+                unless vars.all?{|i| i.nil? || i.is_a?(Hash)}
+          flex.templates[name].render(*vars)
+        end
       end
 
       def do_load_source(klass, source, source_vars)
