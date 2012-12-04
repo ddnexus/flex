@@ -65,7 +65,8 @@ module Flex
       end
       result = yield(response, int)
     ensure
-      log_render int, path, encoded_data, result
+      log_render(int, path, encoded_data, result)
+      result
     end
 
     def build_path(int, vars)

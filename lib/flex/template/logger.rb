@@ -8,16 +8,18 @@ module Flex
 
     private
 
+      def template_name
+        @host_flex && @name && "#{@host_flex.context}.#@name" || 'template'
+      end
+
       def log_render(int, path, encoded_data, result)
         logger = C11n.logger
-
-        template_name = @host_flex && @name && "#{@host_flex.context}.#@name" || 'template'
         logger.info Dye.dye("Rendered #{template_name} from: #{caller_line}", :blue, :bold)
         return unless logger.level == ::Logger::DEBUG
 
         h = {}
         if logger.debug_variables
-          h[:variables] = int[:vars]
+          h[:variables] = int[:vars] if int
         end
         if logger.debug_request
           h[:request] = {}
