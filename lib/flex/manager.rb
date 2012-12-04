@@ -29,20 +29,7 @@ module Flex
                        end
                        # support for flex-persistence attribute :properties, :analyzed and :not_analyzed
                        if defined?(Flex::StoredModel) && m.include?(Flex::StoredModel)
-                         index = m.flex.index
-                         type  = m.flex.type
-                         props = {}
-                         m.attributes.each do |name, attr|
-                           options     = attr.send(:options)
-                           props[name] = case
-                                         when options.has_key?(:properties)
-                                           Utils.keyfy(:to_s, attr.send(:options)[:properties])
-                                         when options[:not_analyzed] || !options[:analyzed]
-                                           {'type' => 'string', 'index' => 'not_analyzed'}
-                                         end
-                         end
-                         default.deep_merge! index => {'mappings' => {type => {'properties' => props}}} \
-                           unless props.empty?
+                         default.deep_merge! m.flex.get_index_mapping
                        end
                      end
                      hash = YAML.load(Utils.erb_process(file))
