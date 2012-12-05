@@ -27,13 +27,14 @@ module Flex
       replace deep_merge(*hashes)
     end
 
-    def final_process(host_flex)
-      # partials
-      keys.select{|k| k[0] == '_'}.each do |name|
-        next if self[name].nil? # may come from assigned values
-        raise ArgumentError, "Array expected as :#{name} (got #{self[name].inspect})" \
-              unless self[name].is_a?(Array)
-        self[name] = self[name].map {|v| host_flex.partials[name].interpolate(self, v)}
+    def finalize(host_flex)
+      keys.select{|k| k[0] == '_'}.each do |name| # partials
+        val = self[name]
+        next if prunable_val?(val)
+        val = [{}] if val == true
+        raise ArgumentError, "Array expected as :#{name} (got #{val.inspect})" \
+              unless val.is_a?(Array)
+        self[name] = val.map {|v| host_flex.partials[name].interpolate(self, v)}
       end
       self[:index] = self[:index].uniq.join(',') if self[:index].is_a?(Array)
       self[:type]  = self[:type].uniq.join(',')  if self[:type].is_a?(Array)
@@ -41,8 +42,8 @@ module Flex
       self[:params!].each{|k,v| self[:params][k] = v.uniq.join(',') if v.is_a?(Array)}
       if self[:page]
         self[:page] = self[:page].to_i
-        self[:page] == 1 unless self[:page] > 0
-        self[:params][:from] ||= ((self[:page] - 1) * (self[:params][:size] || 10)).ceil
+        self[:page] = 1 unless self[:page] > 0
+        self[:params][:from] ||= ((self[:page] - 1) * (self[:params][:size] || 10)).ceil unless self[:page] == 1
       else
         self[:page] = 1
       end
@@ -53,10 +54,14 @@ module Flex
     def prunable?(key)
       val = get_val(key)
       return val if self[:no_pruning].include?(key)
-      (val.nil? || val == '' || val == [] || val == {}) ? Prunable : val
+      prunable_val?(val) ? Prunable : val
     end
 
     private
+
+    def prunable_val?(val)
+      val.nil? || val == '' || val == [] || val == {} || val == false
+    end
 
     # allows to fetch values for tag names like 'a.3.c' fetching vars[:a][3][:c]
     def get_val(key)
@@ -67,8 +72,7 @@ module Flex
       raise MissingVariableError, "required variables #{key.inspect} missing."
     end
 
-
-  end
+   end
   Variables = Vars
 end
 
