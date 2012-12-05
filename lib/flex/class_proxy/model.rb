@@ -4,7 +4,7 @@ module Flex
 
       attr_reader :parent_association, :parent_child_map
       include ModelSync
-      include IndexType
+      include CommonVars
 
       def init
         variables.deep_merge! :type  => Manager.class_name_to_type(context.name)

@@ -10,6 +10,7 @@ module Flex
                         :logger           => Logger.new(STDERR),
                         :variables        => Vars.new( :index      => nil,
                                                        :type       => nil,
+                                                       :params     => {},
                                                        :no_pruning => [] ),
                         :flex_models      => [],
                         :config_file      => './config/flex.yml',

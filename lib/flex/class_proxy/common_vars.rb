@@ -1,6 +1,6 @@
 module Flex
   module ClassProxy
-    module IndexType
+    module CommonVars
 
       def index
         variables[:index]
@@ -16,6 +16,14 @@ module Flex
 
       def type=(val)
         variables[:type] = val
+      end
+
+      def params
+        variables[:params]
+      end
+
+      def params=(val)
+        variables[:params] = val
       end
 
     end
