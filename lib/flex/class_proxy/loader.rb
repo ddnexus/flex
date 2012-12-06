@@ -24,6 +24,10 @@ module Flex
             unless source.is_a?(String)
         @sources << [klass, source, source_vars]
         do_load_source(klass, source, source_vars)
+        # fixes the legacy empty stubs, which should call super instead
+        @templates.keys do |name|
+          meta_context.send(:define_method, name){|*| super }
+        end
       end
 
       # loads a Generic Template source
@@ -66,7 +70,6 @@ module Flex
                 unless vars.all?{|i| i.nil? || i.is_a?(Hash)}
           flex.templates[name].render(*vars)
         end
-        begin meta_context.send(:remove_method, name); rescue; end
       end
 
       def meta_context

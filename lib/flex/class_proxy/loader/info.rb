@@ -34,6 +34,7 @@ partial
 
 def #{meth_call}(*vars)
   ## this is a stub, used for reference
+  super
 end
 
 

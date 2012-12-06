@@ -82,6 +82,7 @@ module Flex
   #
   def Flex.indices_exists(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -100,6 +101,7 @@ module Flex
   #
   def Flex.exist?(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -123,6 +125,7 @@ module Flex
   #
   def Flex.create_index(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -146,6 +149,7 @@ module Flex
   #
   def Flex.put_index(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -169,6 +173,7 @@ module Flex
   #
   def Flex.post_index(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -187,6 +192,7 @@ module Flex
   #
   def Flex.get_settings(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -209,6 +215,7 @@ module Flex
   #
   def Flex.put_mapping(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -228,6 +235,7 @@ module Flex
   #
   def Flex.get_mapping(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -247,6 +255,7 @@ module Flex
   #
   def Flex.delete_mapping(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -265,6 +274,28 @@ module Flex
   #
   def Flex.delete_index(*vars)
     ## this is a stub, used for reference
+    super
+  end
+
+
+  #  ########## Flex.refresh_index ##########
+  #
+  #  --------------
+  #  Flex::Template
+  #  ---
+  #  refresh_index:
+  #  - POST
+  #  - /<<index>>/_refresh
+  #  -
+  #  - !ruby/hash:Flex::Vars {}
+  #
+  #
+  #  Usage:
+  #  Flex.refresh_index :index => "flex_test_index"
+  #
+  def Flex.refresh_index(*vars)
+    ## this is a stub, used for reference
+    super
   end
 
 
@@ -284,6 +315,7 @@ module Flex
   #
   def Flex.delete_by_query(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -303,6 +335,7 @@ module Flex
   #
   def Flex.bulk(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -322,6 +355,7 @@ module Flex
   #
   def Flex.count(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -341,6 +375,7 @@ module Flex
   #
   def Flex.stats(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -361,6 +396,7 @@ module Flex
   #
   def Flex.store(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -381,6 +417,7 @@ module Flex
   #
   def Flex.put_store(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -400,6 +437,7 @@ module Flex
   #
   def Flex.post_store(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -420,6 +458,7 @@ module Flex
   #
   def Flex.remove(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -440,6 +479,7 @@ module Flex
   #
   def Flex.get(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -461,6 +501,7 @@ module Flex
   #
   def Flex.multi_get(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -480,6 +521,7 @@ module Flex
   #
   def Flex.put_percolator(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -498,6 +540,7 @@ module Flex
   #
   def Flex.delete_percolator(*vars)
     ## this is a stub, used for reference
+    super
   end
 
 
@@ -517,6 +560,7 @@ module Flex
   #
   def Flex.percolate(*vars)
     ## this is a stub, used for reference
+    super
   end
 
   #  ########## Flex.match_all ##########
@@ -537,6 +581,7 @@ module Flex
   #
   def Flex.match_all(*vars)
     ## this is a stub, used for reference
+    super
   end
 
   include Loader
