@@ -98,41 +98,13 @@ module Flex
           merged = @base_variables.deep_merge(context_variables, @temp_variables, vars)
           vars   = merged.finalize(@host_flex)
           obj    = #{stringified}
-          obj    = prune(obj)
+          obj    = Vars.prune(obj, Vars::Prunable)
           obj[:path].tr_s!('/', '/')     # removes empty path segments
           obj[:vars] = vars
           obj
         end
       ruby
       interpolate(*args)
-    end
-
-    # prunes the branch when the leaf is Prunable
-    # and compact.flatten the Array values
-    def prune(obj)
-      case obj
-      when Vars::Prunable, [], {}
-        obj
-      when Array
-        ar = []
-        obj.each do |i|
-          pruned = prune(i)
-          next if pruned == Vars::Prunable
-          ar << pruned
-        end
-        a = ar.compact.flatten
-        a.empty? ? Vars::Prunable : a
-      when Hash
-        h = {}
-        obj.each do |k, v|
-          pruned = prune(v)
-          next if pruned == Vars::Prunable
-          h[k] = pruned
-        end
-        h.empty? ? Vars::Prunable : h
-      else
-        obj
-      end
     end
 
   end

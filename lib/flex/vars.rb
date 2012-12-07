@@ -8,10 +8,10 @@ module Flex
       end
     end
 
-    alias_method :hash_new, :initialize
+    PRUNABLES = [ nil, '', {}, [], false ]
 
-    def variables_new(*hashes)
-      start = hash_new do |hash, key|
+    def initialize(*hashes)
+      start = super() do |hash, key|
                 if key[-1] == '!'
                   klass = (key[0] == '_' ? Struct::Array : Struct::Hash)
                   hash[clean_key(key)] = klass.new
@@ -19,8 +19,6 @@ module Flex
               end
       deep_merge! start, *hashes
     end
-
-    alias_method :initialize, :variables_new
 
     def add(*hashes)
       Utils.deprecate 'Flex::Variables#add', 'Flex::Variables#deep_merge!'
@@ -30,7 +28,7 @@ module Flex
     def finalize(host_flex)
       keys.select{|k| k[0] == '_'}.each do |name| # partials
         val = self[name]
-        next if prunable_val?(val)
+        next if PRUNABLES.include?(val)
         val = [{}] if val == true
         raise ArgumentError, "Array expected as :#{name} (got #{val.inspect})" \
               unless val.is_a?(Array)
@@ -50,18 +48,48 @@ module Flex
       self
     end
 
+    def self.prune_blanks(obj)
+      prune(obj, *PRUNABLES) || {}
+    end
+
+    # prunes the branch when the leaf is Prunable
+    # and compact.flatten the Array values
+    def self.prune(obj, *prunables)
+      case
+      when prunables.include?(obj)
+        obj
+      when obj.is_a?(::Array)
+        return obj if obj.empty?
+        ar = []
+        obj.each do |i|
+          pruned = prune(i, *prunables)
+          next if prunables.include?(pruned)
+          ar << pruned
+        end
+        a = ar.compact.flatten
+        a.empty? ? prunables.first : a
+      when obj.is_a?(::Hash)
+        return obj if obj.empty?
+        h = {}
+        obj.each do |k, v|
+          pruned = prune(v, *prunables)
+          next if prunables.include?(pruned)
+          h[k] = pruned
+        end
+        h.empty? ? prunables.first : h
+      else
+        obj
+      end
+    end
+
     # returns Prunable if the value is nil, [], {} (called from stringified)
     def prunable?(key)
       val = get_val(key)
       return val if self[:no_pruning].include?(key)
-      prunable_val?(val) ? Prunable : val
+      PRUNABLES.include?(val) ? Prunable : val
     end
 
-    private
-
-    def prunable_val?(val)
-      val.nil? || val == '' || val == [] || val == {} || val == false
-    end
+  private
 
     # allows to fetch values for tag names like 'a.3.c' fetching vars[:a][3][:c]
     def get_val(key)
