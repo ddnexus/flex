@@ -11,13 +11,7 @@ module Flex
     PRUNABLES = [ nil, '', {}, [], false ]
 
     def initialize(*hashes)
-      start = super() do |hash, key|
-                if key[-1] == '!'
-                  klass = (key[0] == '_' ? Struct::Array : Struct::Hash)
-                  hash[clean_key(key)] = klass.new
-                end
-              end
-      deep_merge! start, *hashes
+      deep_merge! super(), *hashes
     end
 
     def add(*hashes)
@@ -93,7 +87,7 @@ module Flex
 
     # allows to fetch values for tag names like 'a.3.c' fetching vars[:a][3][:c]
     def get_val(key)
-      return self[key] if self.has_key?(key) # to make tag defaults work see Tags#variables
+      return self[key] if has_key?(key) # to make tag defaults work see Tags#variables
       keys = key.to_s.split('.').map{|s| s =~ /^[0..9]+$/ ? s.to_i : s.to_sym}
       keys.inject(self, :fetch)
     rescue NoMethodError, KeyError

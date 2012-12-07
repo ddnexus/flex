@@ -3,6 +3,15 @@ module Flex
     class Hash < ::Hash
       include Symbolize
 
+      def initialize
+        super do |hash, key|
+          if key[-1] == '!'
+            klass = (key[0] == '_' ? Array : Hash)
+            hash[clean_key(key)] = klass.new
+          end
+        end
+      end
+
       def merge(hash)
         super symbolize(hash)
       end
@@ -12,7 +21,7 @@ module Flex
       end
 
       def store(key, val)
-        super  clean_key(key), symbolize(val)
+        super clean_key(key), symbolize(val)
       end
       alias_method :[]=, :store
 
