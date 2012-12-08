@@ -24,9 +24,15 @@ module Flex
         val = self[name]
         next if PRUNABLES.include?(val)
         val = [{}] if val == true
-        raise ArgumentError, "Array expected as :#{name} (got #{val.inspect})" \
-              unless val.is_a?(Array)
-        self[name] = val.map {|v| host_flex.partials[name].interpolate(self, v)}
+        self[name] = case
+                     when name =~ /^__/ # on the fly partial
+                       Template::Partial.new(val).interpolate(self)
+                     when val.is_a?(::Array)
+                       val.map {|v| host_flex.partials[name].interpolate(self, v)}
+                     else
+                       raise ArgumentError, "Array expected as :#{name} (got #{val.inspect})" \
+                             unless val.is_a?(Array)
+                     end
       end
       self[:index] = self[:index].uniq.join(',') if self[:index].is_a?(Array)
       self[:type]  = self[:type].uniq.join(',')  if self[:type].is_a?(Array)
