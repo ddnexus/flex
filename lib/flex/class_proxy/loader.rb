@@ -25,7 +25,7 @@ module Flex
         @sources << [klass, source, source_vars]
         do_load_source(klass, source, source_vars)
         # fixes the legacy empty stubs, which should call super instead
-        @templates.keys do |name|
+        @templates.keys.each do |name|
           meta_context.send(:define_method, name){|*| super }
         end
       end
