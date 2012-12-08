@@ -23,10 +23,11 @@ module Flex
       keys.select{|k| k[0] == '_'}.each do |name| # partials
         val = self[name]
         next if PRUNABLES.include?(val)
-        val = [{}] if val == true
         self[name] = case
                      when name =~ /^__/ # on the fly partial
                        Template::Partial.new(val).interpolate(self)
+                     when val == true
+                       host_flex.partials[name].interpolate(self)
                      when val.is_a?(::Array)
                        val.map {|v| host_flex.partials[name].interpolate(self, v)}
                      else
