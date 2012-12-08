@@ -35,6 +35,8 @@ module Flex
       attr_reader :optional, :name, :default
 
       def initialize(name, default)
+        # allows passing complex defaults like <<query={query=\ '*'>>}
+        default.tr!('\\', '') if default
         raise SourceError, ":#{name} is a reserved symbol and cannot be used as a tag name" \
               if RESERVED.include?(name)
         @name     = name.to_sym
