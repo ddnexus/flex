@@ -19,22 +19,7 @@ module Flex
       replace deep_merge(*hashes)
     end
 
-    def finalize(host_flex)
-      keys.select{|k| k[0] == '_'}.each do |name| # partials
-        val = self[name]
-        next if PRUNABLES.include?(val)
-        self[name] = case
-                     when name =~ /^__/ # on the fly partial
-                       Template::Partial.new(val).interpolate(self)
-                     when val == true
-                       host_flex.partials[name].interpolate(self)
-                     when val.is_a?(::Array)
-                       val.map {|v| host_flex.partials[name].interpolate(self, v)}
-                     else
-                       raise ArgumentError, "Array expected as :#{name} (got #{val.inspect})" \
-                             unless val.is_a?(Array)
-                     end
-      end
+    def finalize
       self[:index] = self[:index].uniq.join(',') if self[:index].is_a?(Array)
       self[:type]  = self[:type].uniq.join(',')  if self[:type].is_a?(Array)
       # so you can pass :fields => [:field_one, :field_two]

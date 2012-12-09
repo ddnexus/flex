@@ -40,7 +40,7 @@ module Flex
           search_vars = Vars.new({:params     => { :search_type => 'scan',
                                                    :scroll      => scroll,
                                                    :size        => 50 },
-                                       :raw_result => true}, *vars)
+                                  :raw_result => true}, *vars)
           scroll_vars = Vars.new({:params     => { :scroll => scroll },
                                   :raw_result => true}, *vars)
           search_temp = template.is_a?(Flex::Template) ? template : templates[template]

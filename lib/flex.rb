@@ -23,6 +23,7 @@ require 'flex/result/multi_get'
 require 'flex/result/source_search'
 require 'flex/result/bulk'
 
+require 'flex/template/common'
 require 'flex/template/partial'
 require 'flex/template/logger'
 require 'flex/template'

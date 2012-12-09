@@ -73,7 +73,7 @@ module Flex
       end
 
       def meta_context
-        class << context; self; end
+        class << context; self end
       end
 
       def do_load_source(klass, source, source_vars)
@@ -88,7 +88,7 @@ module Flex
       def define_template(klass, name, structure, source_vars)
         structure = [structure] unless structure.is_a?(Array)
         if name.to_s[0] == '_' # partial
-          partial = Template::Partial.new(*structure).setup(name.to_sym)
+          partial = Template::Partial.new(*structure).setup(self, name.to_sym)
           partials[name.to_sym] = partial
         else
           template = klass.new(*structure).setup(self, name.to_sym, source_vars)

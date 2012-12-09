@@ -8,12 +8,13 @@ module Flex
   class Template
 
     include Logger
+    include Common
 
     def self.variables
       Vars.new
     end
 
-    attr_reader :method, :path, :data, :tags, :partials, :name
+    attr_reader :method, :path
 
     def initialize(method, path, data=nil, *vars)
       @method = method.to_s.upcase
@@ -22,13 +23,6 @@ module Flex
       @path          = path =~ /^\// ? path : "/#{path}"
       @data          = Utils.data_from_source(data)
       @instance_vars = Vars.new(*vars)
-    end
-
-    def setup(host_flex, name=nil, *vars)
-      @host_flex   = host_flex
-      @name        = name
-      @source_vars = Vars.new(*vars)
-      self
     end
 
     def render(*vars)
@@ -85,8 +79,8 @@ module Flex
     end
 
     def interpolate(*args)
-      tags        = Tags.new
-      stringified = tags.stringify(:path => @path, :data => @data)
+      tags             = Tags.new
+      stringified      = tags.stringify(:path => @path, :data => @data)
       @partials, @tags = tags.partial_and_tag_names
       @base_variables  = C11n.variables.deep_merge(self.class.variables)
       @temp_variables  = Vars.new(@source_vars, @instance_vars, tags.variables)
@@ -95,10 +89,10 @@ module Flex
           vars = Vars.new(vars) unless vars.is_a?(Flex::Vars)
           return {:path => path, :data => data, :vars => vars} if vars.empty? && !strict
           context_variables = vars[:context] ? vars[:context].flex.variables : (@host_flex && @host_flex.variables)
-          merged = @base_variables.deep_merge(context_variables, @temp_variables, vars)
-          vars   = merged.finalize(@host_flex)
-          obj    = #{stringified}
-          obj    = Vars.prune(obj, Vars::Prunable)
+          vars = @base_variables.deep_merge(context_variables, @temp_variables, vars).finalize
+          vars = interpolate_partials(vars)
+          obj  = #{stringified}
+          obj  = Vars.prune(obj, Vars::Prunable)
           obj[:path].tr_s!('/', '/')     # removes empty path segments
           obj[:vars] = vars
           obj
