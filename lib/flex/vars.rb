@@ -1,15 +1,6 @@
 module Flex
   class Vars < Struct::Hash
 
-    class Prunable
-      class << self
-        def to_s; '' end
-        alias_method :===, :==
-      end
-    end
-
-    PRUNABLES = [ nil, '', {}, [], false ]
-
     def initialize(*hashes)
       deep_merge! super(), *hashes
     end
@@ -34,48 +25,14 @@ module Flex
       self
     end
 
-    def self.prune_blanks(obj)
-      prune(obj, *PRUNABLES) || {}
-    end
-
-    # prunes the branch when the leaf is Prunable
-    # and compact.flatten the Array values
-    def self.prune(obj, *prunables)
-      case
-      when prunables.include?(obj)
-        obj
-      when obj.is_a?(::Array)
-        return obj if obj.empty?
-        ar = []
-        obj.each do |i|
-          pruned = prune(i, *prunables)
-          next if prunables.include?(pruned)
-          ar << pruned
-        end
-        a = ar.compact.flatten
-        a.empty? ? prunables.first : a
-      when obj.is_a?(::Hash)
-        return obj if obj.empty?
-        h = {}
-        obj.each do |k, v|
-          pruned = prune(v, *prunables)
-          next if prunables.include?(pruned)
-          h[k] = pruned
-        end
-        h.empty? ? prunables.first : h
-      else
-        obj
-      end
-    end
-
-    # returns Prunable if the value is nil, [], {} (called from stringified)
-    def prunable?(key)
+    # returns Prunable::Value if the value is in VALUES (called from stringified)
+    def get_prunable(key)
       val = get_val(key)
       return val if self[:no_pruning].include?(key)
-      PRUNABLES.include?(val) ? Prunable : val
+      Prunable::VALUES.include?(val) ? Prunable::Value : val
     end
 
-  private
+    private
 
     # allows to fetch values for tag names like 'a.3.c' fetching vars[:a][3][:c]
     def get_val(key)

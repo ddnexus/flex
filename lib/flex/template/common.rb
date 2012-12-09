@@ -14,7 +14,7 @@ module Flex
       def interpolate_partials(vars)
         @partials.each do |name|
           val = vars[name]
-          next if Vars::PRUNABLES.include?(val)
+          next if Prunable::VALUES.include?(val)
           vars[name] = case val
                        when Array
                          val.map {|v| @host_flex.partials[name].interpolate(vars, v)}

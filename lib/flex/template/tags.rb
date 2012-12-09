@@ -18,7 +18,7 @@ module Flex
           match =~ TAG_REGEXP
           t = Tag.new($1, $2)
           push t unless find{|i| i.name == t.name}
-          (match !~ /^"/) ? "\#{vars.prunable?(:'#{t.name}')}" : "vars.prunable?(:'#{t.name}')"
+          (match !~ /^"/) ? "\#{vars.get_prunable(:'#{t.name}')}" : "vars.get_prunable(:'#{t.name}')"
         end
       end
 

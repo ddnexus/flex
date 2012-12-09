@@ -92,7 +92,7 @@ module Flex
           vars = @base_variables.deep_merge(context_variables, @temp_variables, vars).finalize
           vars = interpolate_partials(vars)
           obj  = #{stringified}
-          obj  = Vars.prune(obj, Vars::Prunable)
+          obj  = Prunable.prune(obj, Prunable::Value)
           obj[:path].tr_s!('/', '/')     # removes empty path segments
           obj[:vars] = vars
           obj
