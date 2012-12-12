@@ -2,17 +2,17 @@ module Flex
   module Utils
     extend self
 
-    def data_from_source(source)
+    def parse_source(source)
       return unless source
-      data = case source
-             when Hash              then keyfy(:to_s, source)
-             when /^\s*\{.+\}\s*$/m then source
-             when String            then YAML.load(source)
-             else raise ArgumentError, "expected a String or Hash instance (got #{source.inspect})"
-             end
-      raise ArgumentError, "the source does not decode to an Array, Hash or String (got #{data.inspect})" \
-            unless data.is_a?(Hash) || data.is_a?(Array) || data.is_a?(String)
-      data
+      parsed = case source
+               when Hash              then keyfy(:to_s, source)
+               when /^\s*\{.+\}\s*$/m then source
+               when String            then YAML.load(source)
+               else raise ArgumentError, "expected a String or Hash instance (got #{source.inspect})"
+               end
+      raise ArgumentError, "the source does not decode to an Array, Hash or String (got #{parsed.inspect})" \
+            unless parsed.is_a?(Hash) || parsed.is_a?(Array) || parsed.is_a?(String)
+      parsed
     end
 
     def erb_process(source)

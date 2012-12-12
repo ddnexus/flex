@@ -4,8 +4,8 @@ module Flex
       module Search
 
         def define_search(name, source, source_vars=nil)
-          structure = Utils.data_from_source(source)
-          send :define_template, Template::Search, name, structure, source_vars
+          args = Utils.parse_source(source)
+          send :define_template, Template::Search, name, args, source_vars
         end
 
         # http://www.elasticsearch.org/guide/reference/api/multi-search.html

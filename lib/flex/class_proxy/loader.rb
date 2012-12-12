@@ -78,7 +78,7 @@ module Flex
 
       def do_load_source(klass, source, source_vars)
         source = Utils.erb_process(source) unless source.match("\n") # skips non-path
-        hash   = Utils.data_from_source(source)
+        hash   = Utils.parse_source(source)
         hash.delete('ANCHORS')
         hash.each do |name, structure|
           define_template klass, name, structure, source_vars

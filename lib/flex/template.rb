@@ -21,7 +21,7 @@ module Flex
       raise ArgumentError, "#@method method not supported" \
             unless %w[HEAD GET PUT POST DELETE].include?(@method)
       @path          = path =~ /^\// ? path : "/#{path}"
-      @data          = Utils.data_from_source(data)
+      @data          = Utils.parse_source(data)
       @instance_vars = Vars.new(*vars)
     end
 
@@ -74,7 +74,7 @@ module Flex
     end
 
     def build_data(int, vars)
-      data = vars[:data] && Utils.data_from_source(vars[:data]) || int[:data]
+      data = vars[:data] && Utils.parse_source(vars[:data]) || int[:data]
       (data.nil? || data.is_a?(String)) ? data : MultiJson.encode(data)
     end
 
