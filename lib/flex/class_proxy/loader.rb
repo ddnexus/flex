@@ -61,39 +61,32 @@ module Flex
 
       private
 
-      # adds a template instance and defines the template method in the host_class::TemplateMethods
-      def add_template(name, template)
-        templates[name] = template
-        # no define_singleton_method in 1.8.7
-        context::FlexTemplateMethods.send(:define_method, name) do |*vars|
-          raise ArgumentError, "#{context}.#{name} expects a list of Hashes, got (\#{vars.map(&:inspect).join(', ')})" \
-                unless vars.all?{|i| i.nil? || i.is_a?(Hash)}
-          flex.templates[name].render(*vars)
+      def do_load_source(klass, source, source_vars)
+        source = Utils.erb_process(source) unless source.match("\n") # skips non-path
+        hash   = Utils.parse_source(source)
+        hash.delete('ANCHORS')
+        hash.each do |name, args|
+          define_template klass, name, args, source_vars
+        end
+      end
+
+      def define_template(klass, name, args, source_vars)
+        name = name.to_sym
+        args = [args] unless args.is_a?(Array)
+        if name.to_s[0] == '_' # partial
+          partials[name] = Template::Partial.new(*args).setup(self, name)
+        else
+          templates[name] = klass.new(*args).setup(self, name, source_vars)
+          context::FlexTemplateMethods.send(:define_method, name) do |*vars|
+            raise ArgumentError, "#{context}.#{name} expects a list of Hashes, got (\#{vars.map(&:inspect).join(', ')})" \
+                  unless vars.all?{|i| i.nil? || i.is_a?(Hash)}
+            flex.templates[name].render(*vars)
+          end
         end
       end
 
       def meta_context
         class << context; self end
-      end
-
-      def do_load_source(klass, source, source_vars)
-        source = Utils.erb_process(source) unless source.match("\n") # skips non-path
-        hash   = Utils.parse_source(source)
-        hash.delete('ANCHORS')
-        hash.each do |name, structure|
-          define_template klass, name, structure, source_vars
-        end
-      end
-
-      def define_template(klass, name, structure, source_vars)
-        structure = [structure] unless structure.is_a?(Array)
-        if name.to_s[0] == '_' # partial
-          partial = Template::Partial.new(*structure).setup(self, name.to_sym)
-          partials[name.to_sym] = partial
-        else
-          template = klass.new(*structure).setup(self, name.to_sym, source_vars)
-          add_template(name.to_sym, template)
-        end
       end
 
     end
