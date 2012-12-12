@@ -66,7 +66,7 @@ module Flex
     def build_path(int, vars)
       params = int[:vars][:params]
       path   = vars[:path] || int[:path]
-      if params
+      unless params.empty?
         path << ((path =~ /\?/) ? '&' : '?')
         path << params.map { |p| p.join('=') }.join('&')
       end
