@@ -6,7 +6,6 @@ module Flex
         @flex ||= ClassProxy::Base.new(base)
         @flex.extend(ClassProxy::Model).init
         def self.flex; @flex end
-        extend FlexResult unless respond_to?(:flex_result)
       end
     end
 

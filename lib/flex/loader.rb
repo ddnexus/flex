@@ -12,7 +12,6 @@ module Flex
         @flex.extend(ClassProxy::Loader).init
         def self.flex; @flex end
         def self.template_methods; flex.templates.keys end
-        extend FlexResult unless respond_to?(:flex_result)
         eval "extend module #{context}::FlexTemplateMethods; self end"
       end
     end
