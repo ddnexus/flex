@@ -586,6 +586,47 @@ module Flex
     super
   end
 
+  #  ########## Flex.more_like_this ##########
+  #
+  #  --------------
+  #  Flex::Template
+  #  ---
+  #  more_like_this:
+  #  - GET
+  #  - /<<index>>/<<type>>/<<id>>/_mlt
+  #
+  #
+  #  Usage:
+  #  Flex.more_like_this :id    => id,          # required
+  #                      :index => "flex_test_index",
+  #                      :type  => nil
+  #
+  def Flex.more_like_this(*vars)
+    ## this is a stub, used for reference
+    super
+  end
+
+  #  ########## Flex.mlt ##########
+  #
+  #  --------------
+  #  Flex::Template
+  #  ---
+  #  mlt:
+  #  - GET
+  #  - /<<index>>/<<type>>/<<id>>/_mlt
+  #
+  #
+  #  Usage:
+  #  Flex.mlt :id    => id,          # required
+  #           :index => "flex_test_index",
+  #           :type  => nil
+  #
+  def Flex.mlt(*vars)
+    ## this is a stub, used for reference
+    super
+  end
+
+
   include Loader
   flex.load_source File.expand_path('../flex/api_methods.yml', __FILE__)
 

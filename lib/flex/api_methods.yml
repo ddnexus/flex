@@ -135,3 +135,12 @@ match_all:
   - /<<index>>/<<type>>/_search
   - query:
       match_all: {}
+
+# http://www.elasticsearch.org/guide/reference/api/more-like-this.html
+# You can pass the search API (facets, from/to and so on) as :data variable
+more_like_this: &mlt
+  - GET
+  - /<<index>>/<<type>>/<<id>>/_mlt
+
+# aliased
+mlt: *mlt
