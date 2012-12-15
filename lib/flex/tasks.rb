@@ -3,7 +3,6 @@ module Flex
 
     DEFAULT_OPTIONS = { :force          => false,
                         :timeout        => 20,
-                        :debug          => false,
                         :batch_size     => 1000,
                         :import_options => { },
                         :index          => nil,
@@ -20,7 +19,6 @@ module Flex
       options[:batch_size] = options[:batch_size].to_i   if options[:batch_size]
       options[:index]      = options[:index].split(',')  if options[:index]
       options[:models]     = options[:models].split(',') if options[:models]
-      options[:debug]      = !!options[:debug]
 
       if options[:import_options]
         import_options = {}
@@ -49,7 +47,6 @@ module Flex
 
     def import_models
       C11n.http_client_options[:timeout] = options[:timeout]
-      C11n.debug = options[:debug]
       deleted = []
       models.each do |klass|
         index = klass.flex.index
