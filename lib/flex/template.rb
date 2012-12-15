@@ -35,7 +35,7 @@ module Flex
       vars = Vars.new(*vars)
       int  = interpolate(vars)
       a    = [method, int[:path], int[:data], @instance_vars]
-      2.times { a.pop if a.last.nil? }
+      2.times { a.pop if a.last.nil? || a.last.empty? }
       a
     end
 
