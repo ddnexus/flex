@@ -3,7 +3,7 @@ module Flex
     module Loader
 
       attr_reader :templates, :partials
-      include Info
+      include Doc
       include Search
 
       def init
