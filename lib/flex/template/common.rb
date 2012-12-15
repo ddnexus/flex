@@ -7,7 +7,7 @@ module Flex
       def setup(host_flex, name=nil, *vars)
         @host_flex   = host_flex
         @name        = name
-        @source_vars = Vars.new(*vars) if self.class == Flex::Template
+        @source_vars = Vars.new(*vars) if is_a?(Flex::Template)
         self
       end
 
