@@ -121,7 +121,7 @@ put_percolator:
 # http://www.elasticsearch.org/guide/reference/api/percolate.html
 delete_percolator:
   - DELETE
-  - /_percolator/<<index/<<name>>
+  - /_percolator/<<index>>/<<name>>
 
 # http://www.elasticsearch.org/guide/reference/api/percolate.html
 # You must pass the the document (and additional queries) as :data variable
