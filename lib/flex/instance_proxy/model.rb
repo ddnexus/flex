@@ -6,25 +6,25 @@ module Flex
       # usually called from after_save, you can eventually call it explicitly for example from another callback
       # or whenever the DB doesn't get updated by the model
       # you can also pass the :data=>flex_source explicitly (useful for example to override the flex_source in the model)
-      def store(vars={})
+      def store(*vars)
         if instance.flex_indexable?
           vars[:data] ||= instance.flex_source
-          Flex.store metainfo.deep_merge(vars)
+          Flex.store(metainfo, *vars)
         else
-          Flex.remove metainfo.deep_merge(vars) if Flex.get metainfo.deep_merge(vars, :raise => false)
+          Flex.remove(metainfo, *vars) if Flex.get(metainfo, *vars, :raise => false)
         end
       end
 
       # removes the document from the index (called from after_destroy)
-      def remove(vars={})
+      def remove(*vars)
         return unless instance.flex_indexable?
-        Flex.remove metainfo.deep_merge(vars)
+        Flex.remove(metainfo, *vars)
       end
 
       # gets the document from ES
-      def get(vars={})
+      def get(*vars)
         return unless instance.flex_indexable?
-        Flex.get metainfo.deep_merge(vars)
+        Flex.get(metainfo, *vars)
       end
 
       def parent_instance(raise=true)
