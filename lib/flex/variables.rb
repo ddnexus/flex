@@ -1,5 +1,5 @@
 module Flex
-  class Vars < Struct::Hash
+  class Variables < Struct::Hash
 
     def initialize(*hashes)
       deep_merge! super(), *hashes
@@ -43,8 +43,9 @@ module Flex
       raise MissingVariableError, "required variables #{key.inspect} missing."
     end
 
-   end
-  Variables = Vars
+  end
+  # shorter alias
+  Vars = Variables
 end
 
 

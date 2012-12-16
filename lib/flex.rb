@@ -13,7 +13,7 @@ require 'flex/struct/mergeable'
 require 'flex/struct/symbolize'
 require 'flex/struct/hash'
 require 'flex/struct/array'
-require 'flex/vars'
+require 'flex/variables'
 
 require 'flex/result'
 require 'flex/result/collection'
