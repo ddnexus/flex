@@ -7,10 +7,8 @@ module Flex
       end
 
       def to_a(*vars)
-        vars = Vars.new(*vars)
-        int  = interpolate(vars)
-        a    = [int[:data]]
-        a << @instance_vars unless @instance_vars.nil?
+        a = super
+        2.times{ a.delete_at 0 }
         a
       end
 

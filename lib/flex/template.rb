@@ -34,7 +34,7 @@ module Flex
     def to_a(*vars)
       vars = Vars.new(*vars)
       int  = interpolate(vars)
-      a    = [method, int[:path], int[:data], @instance_vars]
+      a    = [method, int[:path], Utils.keyfy(:to_s, int[:data]), Utils.keyfy(:to_s, @instance_vars)]
       2.times { a.pop if a.last.nil? || a.last.empty? }
       a
     end
