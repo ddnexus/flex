@@ -13,7 +13,7 @@ module Flex
       end
 
       def log_render(int, path, encoded_data, result)
-        logger = C11n.logger
+        logger = Conf.logger
         logger.info Dye.dye("Rendered #{template_name} from: #{caller_line}", :blue, :bold)
         return unless logger.level == ::Logger::DEBUG
 
@@ -40,7 +40,7 @@ module Flex
 
       def curl_format(h)
         pretty = h[:path] =~ /\?/ ? '&pretty=1' : '?pretty=1'
-        curl =  %(curl -X#{method} "#{C11n.base_uri}#{h[:path]}#{pretty}")
+        curl =  %(curl -X#{method} "#{Conf.base_uri}#{h[:path]}#{pretty}")
         if h[:data]
           data = h[:data].is_a?(String) ? h[:data] : MultiJson.encode(h[:data], :pretty => true)
           curl << %( -d '\n#{data}\n')

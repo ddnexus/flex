@@ -54,7 +54,7 @@ require 'flex/model'
 
 require 'flex/http_clients/base'
 require 'flex/http_clients/loader'
-require 'flex/c11n'
+require 'flex/configuration'
 require 'flex/utility_methods'
 
 require 'progressbar'
@@ -633,7 +633,7 @@ module Flex
   extend UtilityMethods
 
   def reload!
-    flex.variables.deep_merge! C11n.variables
+    flex.variables.deep_merge! Conf.variables
     Loader.contexts.each {|c| c.flex.reload!}
     true
   end

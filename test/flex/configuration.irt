@@ -48,6 +48,6 @@ _eql?( 3 )
 
 
 desc 'custom option is in object'
-Flex::C11n.new_custom
+Flex::Conf.new_custom
 _eql?( 3 )
 

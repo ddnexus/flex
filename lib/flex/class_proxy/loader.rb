@@ -15,8 +15,8 @@ module Flex
       # accepts a path to a file or YAML string
       def load_source_for(klass, source, source_vars)
         if source.nil? || source !~ /\n/m
-          paths = [ "#{C11n.flex_dir}/#{source}.yml",
-                    "#{C11n.flex_dir}/#{Manager.class_name_to_type(context.name)}.yml",
+          paths = [ "#{Conf.flex_dir}/#{source}.yml",
+                    "#{Conf.flex_dir}/#{Manager.class_name_to_type(context.name)}.yml",
                     source.to_s ]
           source = paths.find {|p| File.exist?(p)}
         end

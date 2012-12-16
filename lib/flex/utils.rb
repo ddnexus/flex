@@ -80,7 +80,7 @@ module Flex
     end
 
     def deprecate(old, new)
-      C11n.logger.warn "The #{old} method is deprecated in favour of #{new}, and will be removed in a next version (called at: #{caller[1]})"
+      Conf.logger.warn "The #{old} method is deprecated in favour of #{new}, and will be removed in a next version (called at: #{caller[1]})"
     end
 
   end

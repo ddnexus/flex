@@ -51,10 +51,10 @@ module Flex
       int          = interpolate(vars, strict=true)
       path         = build_path(int, vars)
       encoded_data = build_data(int, vars)
-      response     = C11n.http_client.request(method, path, encoded_data)
+      response     = Conf.http_client.request(method, path, encoded_data)
       # used in Flex.exist?
       return response.status == 200 if method == 'HEAD'
-      if C11n.http_client.raise_proc.call(response)
+      if Conf.http_client.raise_proc.call(response)
         int[:vars][:raise].is_a?(FalseClass) ? return : raise(HttpError.new(response, caller_line))
       end
       result = yield(response, int)
@@ -82,7 +82,7 @@ module Flex
       tags             = Tags.new
       stringified      = tags.stringify(:path => @path, :data => @data)
       @partials, @tags = tags.partial_and_tag_names
-      @base_variables  = C11n.variables.deep_merge(self.class.variables)
+      @base_variables  = Conf.variables.deep_merge(self.class.variables)
       @temp_variables  = Vars.new(@source_vars, @instance_vars, tags.variables)
       instance_eval <<-ruby, __FILE__, __LINE__
         def interpolate(vars={}, strict=false)

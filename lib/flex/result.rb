@@ -9,7 +9,7 @@ module Flex
       @variables = variables
       @response  = response
       replace result || !response.body.empty? && MultiJson.decode(response.body) || return
-      C11n.result_extenders.each do |ext|
+      Conf.result_extenders.each do |ext|
         next if ext.respond_to?(:should_extend?) && !ext.should_extend?(self)
         extend ext
       end
