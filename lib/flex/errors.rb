@@ -28,7 +28,7 @@ module Flex
     end
 
     def to_s
-      log = "#{@caller_line}\n" if @caller_line
+      log = "#@caller_line\n" if @caller_line
       "#{log}#{status}: #{body}"
     end
 

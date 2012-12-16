@@ -26,8 +26,8 @@ module Flex
 
     def finish
       @pbar.finish
-      puts "Processed #{@total_count}. Successful #{@successful_count}. Skipped #{@total_count - @successful_count - @failed_count}. Failed #{@failed_count}."
-      puts "See the log for the details about the failed import." unless @failed_count == 0
+      puts "Processed #@total_count. Successful #@successful_count. Skipped #{@total_count - @successful_count - @failed_count}. Failed #@failed_count."
+      puts 'See the log for the details about the failed import.' unless @failed_count == 0
     end
 
   end
