@@ -47,13 +47,9 @@ module Flex
   private
 
     def do_render(*vars)
-      vars         = Vars.new(*vars)
-      int          = interpolate(vars, strict=true)
-      path         = build_path(int, vars)
-      encoded_data = build_data(int, vars)
-      response     = Conf.http_client.request(method, path, encoded_data)
-      # used in Flex.exist?
-      return response.status == 200 if method == 'HEAD'
+      vars = Vars.new(*vars)
+      int, path, encoded_data, response = vars[:cleanable_query] ? try_clean_and_retry(vars) : request(vars)
+      return response.status == 200 if method == 'HEAD' # used in Flex.exist?
       if Conf.http_client.raise_proc.call(response)
         int[:vars][:raise].is_a?(FalseClass) ? return : raise(HttpError.new(response, caller_line))
       end
@@ -61,6 +57,25 @@ module Flex
     ensure
       log_render(int, path, encoded_data, result)
       result
+    end
+
+    # This allows to use Lucene style search language in the :cleanable_query declared variable and
+    # in case of a syntax error it will remove all the problematic characters and retry with a cleaned query_string
+    # http://lucene.apache.org/core/old_versioned_docs/versions/3_5_0/queryparsersyntax.html
+    def try_clean_and_retry(vars)
+     request(vars)
+    rescue Flex::HttpError => e
+      raise unless e.to_hash['error'] =~ /^SearchPhaseExecutionException/
+      vars[:cleanable_query].tr!('"&|!(){}[]~^:+-\\', '')
+      request vars
+    end
+
+    def request(vars)
+      int          = interpolate(vars, strict=true)
+      path         = build_path(int, vars)
+      encoded_data = build_data(int, vars)
+      response     = Conf.http_client.request(method, path, encoded_data)
+      return int, path, encoded_data, response
     end
 
     def build_path(int, vars)
