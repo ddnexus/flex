@@ -1,19 +1,11 @@
 module Flex
   class Tasks
 
-    DEFAULT_OPTIONS = { :force          => false,
-                        :timeout        => 20,
-                        :batch_size     => 1000,
-                        :import_options => { },
-                        :index          => Conf.variables[:index],
-                        :models         => Conf.flex_models,
-                        :config_file    => Conf.config_file,
-                        :verbose        => true }
 
     attr_reader :options
 
     def initialize(overrides={})
-      options = Flex::Utils.env2options *DEFAULT_OPTIONS.keys
+      options = Flex::Utils.env2options *default_options.keys
 
       options[:timeout]    = options[:timeout].to_i      if options[:timeout]
       options[:batch_size] = options[:batch_size].to_i   if options[:batch_size]
@@ -29,7 +21,18 @@ module Flex
         options[:import_options] = import_options
       end
 
-      @options = DEFAULT_OPTIONS.merge(options).merge(overrides)
+      @options = default_options.merge(options).merge(overrides)
+    end
+
+    def default_options
+      @default_options ||= { :force          => false,
+                             :timeout        => 20,
+                             :batch_size     => 1000,
+                             :import_options => { },
+                             :index          => Conf.variables[:index],
+                             :models         => Conf.flex_models,
+                             :config_file    => Conf.config_file,
+                             :verbose        => true }
     end
 
     def create_indices
@@ -112,7 +115,7 @@ module Flex
 
     def models
       @models ||= ( models = options[:models] || Conf.flex_models
-                    raise ArgumentError, 'no class defined. Please use MODELS=ClassA,ClassB' +
+                    raise ArgumentError, 'no class defined. Please use MODELS=ClassA,ClassB ' +
                                          'or set the Flex::Configuration.flex_models properly' \
                           if models.nil? || models.empty?
                     models.map{|c| c.is_a?(String) ? eval("::#{c}") : c} )
