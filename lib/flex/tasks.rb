@@ -5,9 +5,9 @@ module Flex
                         :timeout        => 20,
                         :batch_size     => 1000,
                         :import_options => { },
-                        :index          => nil,
-                        :models         => nil,
-                        :config_file    => nil,
+                        :index          => Conf.variables[:index],
+                        :models         => Conf.flex_models,
+                        :config_file    => Conf.config_file,
                         :verbose        => true }
 
     attr_reader :options
