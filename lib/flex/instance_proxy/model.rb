@@ -8,8 +8,7 @@ module Flex
       # you can also pass the :data=>flex_source explicitly (useful for example to override the flex_source in the model)
       def store(*vars)
         if instance.flex_indexable?
-          vars[:data] ||= instance.flex_source
-          Flex.store(metainfo, *vars)
+          Flex.store(metainfo, {:data => instance.flex_source}, *vars)
         else
           Flex.remove(metainfo, *vars) if Flex.get(metainfo, *vars, :raise => false)
         end
