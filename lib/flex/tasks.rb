@@ -112,7 +112,7 @@ module Flex
 
     def models
       @models ||= ( models = options[:models] || Conf.flex_models
-                    raise AgrumentError, 'no class defined. Please use MODELS=ClassA,ClassB' +
+                    raise ArgumentError, 'no class defined. Please use MODELS=ClassA,ClassB' +
                                          'or set the Flex::Configuration.flex_models properly' \
                           if models.nil? || models.empty?
                     models.map{|c| c.is_a?(String) ? eval("::#{c}") : c} )
