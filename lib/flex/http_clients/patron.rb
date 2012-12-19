@@ -3,7 +3,7 @@ module Flex
     class Patron < Base
 
       def request(method, path, data=nil)
-        opts = options.merge(:data => data) if data
+        opts = options.merge(:data => data)
         session.request method.to_s.downcase.to_sym, path, {}, opts
       rescue ::Patron::TimeoutError
         session.request method.to_s.downcase.to_sym, path, {}, opts
