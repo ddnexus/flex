@@ -20,7 +20,7 @@ module Flex
                     source.to_s ]
           source = paths.find {|p| File.exist?(p)}
         end
-        raise ArgumentError, "expected a string (got #{source.inspect})." \
+        raise ArgumentError, "expected a string, got #{source.inspect}" \
             unless source.is_a?(String)
         @sources << [klass, source, source_vars]
         do_load_source(klass, source, source_vars)
@@ -78,7 +78,7 @@ module Flex
         else
           templates[name] = klass.new(*args).setup(self, name, source_vars)
           context::FlexTemplateMethods.send(:define_method, name) do |*vars|
-            raise ArgumentError, "#{flex.context}.#{name} expects a list of Hashes (got #{vars.map(&:inspect).join(', ')})" \
+            raise ArgumentError, "#{flex.context}.#{name} expects a list of Hashes, got #{vars.map(&:inspect).join(', ')}" \
                   unless vars.all?{|i| i.nil? || i.is_a?(Hash)}
             flex.templates[name].render(*vars)
           end

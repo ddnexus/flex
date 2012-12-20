@@ -8,9 +8,9 @@ module Flex
                when Hash              then keyfy(:to_s, source)
                when /^\s*\{.+\}\s*$/m then source
                when String            then YAML.load(source)
-               else raise ArgumentError, "expected a String or Hash instance (got #{source.inspect})"
+               else raise ArgumentError, "expected a String or Hash instance, got #{source.inspect}"
                end
-      raise ArgumentError, "the source does not decode to an Array, Hash or String (got #{parsed.inspect})" \
+      raise ArgumentError, "the source does not decode to an Array, Hash or String, got #{parsed.inspect}" \
             unless parsed.is_a?(Hash) || parsed.is_a?(Array) || parsed.is_a?(String)
       parsed
     end

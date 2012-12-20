@@ -36,7 +36,7 @@ module Flex
     # in order to bulk-index or bulk-delete the whole collection
     # you can use Flex.bulk if you have an already formatted bulk data-string
     def process_bulk(args)
-      raise ArgumentError, "Array expected as :collection (got #{args[:collection].inspect})" \
+      raise ArgumentError, "Array expected as :collection, got #{args[:collection].inspect}" \
             unless args[:collection].is_a?(Array)
 
       index  = args[:index]  || Conf.variables[:index]
