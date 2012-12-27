@@ -96,7 +96,8 @@ module Flex
     private
 
     def indices
-      options[:index] || struct.keys
+      i = options[:index] || struct.keys
+      i.is_a?(Array) ? i : [i]
     end
 
     def exist?(index)
