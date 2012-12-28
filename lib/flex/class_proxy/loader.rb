@@ -59,6 +59,10 @@ module Flex
         end
       end
 
+      def render(name, *vars)
+        templates[name].render(*vars)
+      end
+
       private
 
       def do_load_source(klass, source, source_vars)
@@ -80,7 +84,7 @@ module Flex
           context::FlexTemplateMethods.send(:define_method, name) do |*vars|
             raise ArgumentError, "#{flex.context}.#{name} expects a list of Hashes, got #{vars.map(&:inspect).join(', ')}" \
                   unless vars.all?{|i| i.nil? || i.is_a?(Hash)}
-            flex.templates[name].render(*vars)
+            flex.render(name,*vars)
           end
         end
       end
