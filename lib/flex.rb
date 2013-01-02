@@ -62,7 +62,7 @@ require 'flex/prog_bar'
 
 module Flex
 
-  VERSION  = File.read(File.expand_path('../../VERSION', __FILE__)).strip
+  VERSION   = File.read(File.expand_path('../../VERSION', __FILE__)).strip
   LIB_PATHS = [__FILE__.sub(/flex.rb$/, '')]
 
 

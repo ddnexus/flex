@@ -48,10 +48,6 @@ module Flex
       end
     end
 
-    def load_tasks
-      load File.expand_path('../../tasks/index.rake', __FILE__)
-    end
-
     def env2options(*keys)
       options = {}
       ENV.keys.map do |k|
