@@ -10,11 +10,14 @@ module Flex
       # extend the hits results on extended
       def self.extended(result)
         result['docs'].each { |h| h.extend(Document) }
+        result['docs'].extend Collection
+        result['docs'].setup(result['docs'].size, result.variables)
       end
 
       def docs
         self['docs']
       end
+      alias_method :collection, :docs
 
     end
   end
