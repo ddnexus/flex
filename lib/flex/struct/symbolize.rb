@@ -1,10 +1,11 @@
 module Flex
   module Struct
+    module AsIs end
     module Symbolize
 
       def symbolize(obj)
         case obj
-        when Flex::Struct::Hash, Flex::Struct::Array
+        when Flex::Struct::Hash, Flex::Struct::Array, Flex::Struct::AsIs
           obj
         when ::Hash
           h = Struct::Hash.new

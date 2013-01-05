@@ -21,7 +21,11 @@ module Flex
       end
 
       def store(key, val)
-        super clean_key(key), symbolize(val)
+        if key[-1] == '='
+          super key[0..-2].to_sym, val.extend(AsIs)
+        else
+          super clean_key(key), symbolize(val)
+        end
       end
       alias_method :[]=, :store
 
