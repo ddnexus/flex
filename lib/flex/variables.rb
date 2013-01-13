@@ -27,20 +27,35 @@ module Flex
 
     # returns Prunable::Value if the value is in VALUES (called from stringified)
     def get_prunable(key)
-      val = get_val(key)
+      val = fetch_nested(key)
       return val if self[:no_pruning].include?(key)
       Prunable::VALUES.include?(val) ? Prunable::Value : val
     end
 
-    private
+    def store_nested(key, value)
+      var = unnest(key).reverse.inject(value) do |memo,k|
+              if k.is_a?(Symbol)
+                {k => memo}
+              else
+                ar = []
+                ar[k] = memo
+                ar
+              end
+            end
+      deep_merge! var
+    end
 
     # allows to fetch values for tag names like 'a.3.c' fetching vars[:a][3][:c]
-    def get_val(key)
-      return self[key] if has_key?(key) # to make tag defaults work see Tags#variables
-      keys = key.to_s.split('.').map{|s| s =~ /^[0..9]+$/ ? s.to_i : s.to_sym}
-      keys.inject(self, :fetch)
+    def fetch_nested(key)
+      unnest(key).inject(self, :fetch)
     rescue NoMethodError, KeyError
       raise MissingVariableError, "required variables #{key.inspect} missing."
+    end
+
+    private
+
+    def unnest(key)
+      key.to_s.split('.').map{|s| s =~ /^\d+$/ ? s.to_i : s.to_sym}
     end
 
   end

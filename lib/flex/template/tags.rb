@@ -7,8 +7,16 @@ module Flex
       # tag variables are the defaults defined with the tag
       # a variable could be optional, and the default could be nil
       def variables
-        tag_variables = {}
-        each { |t| tag_variables[t.name] = t.default if t.default || t.optional  }
+        tag_variables = Vars.new
+        each do |t|
+          if t.default || t.optional
+            if t.name =~ /\./ # set default for nested var
+              tag_variables.store_nested(t.name, t.default)
+            else
+              tag_variables[t.name] = t.default
+            end
+          end
+        end
         tag_variables
       end
 
