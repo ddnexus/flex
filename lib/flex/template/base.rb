@@ -22,7 +22,8 @@ module Flex
           vars[:params] ||= {}
           page = vars[:page].to_i
           page = 1 unless page > 0
-          vars[:params][:from] = ((page - 1) * vars[:params][:size] || vars[:size] || 10).ceil
+          size = vars[:params][:size] || vars[:size] || 10
+          vars[:params][:from] = ((page - 1) * size).ceil
         end
         vars
       end
