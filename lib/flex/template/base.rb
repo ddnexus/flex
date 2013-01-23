@@ -20,9 +20,10 @@ module Flex
         vars[:type]  = vars[:type].join(',')  if vars[:type].is_a?(Array)
         if vars[:page]
           vars[:params] ||= {}
+          vars[:params][:size] ||= vars[:size] || 10
           page = vars[:page].to_i
           page = 1 unless page > 0
-          vars[:params][:from] = ((page - 1) * vars[:params][:size] || vars[:size] || 10).ceil
+          vars[:params][:from] = ((page - 1) * vars[:params][:size]).ceil
         end
         vars
       end
