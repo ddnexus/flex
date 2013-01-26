@@ -5,11 +5,6 @@ module Flex
       deep_merge! super(), *hashes
     end
 
-    def add(*hashes)
-      Utils.deprecate 'Flex::Variables#add', 'Flex::Variables#deep_merge!'
-      replace deep_merge(*hashes)
-    end
-
     def finalize
       self[:index] = self[:index].uniq.join(',') if self[:index].is_a?(Array)
       self[:type]  = self[:type].uniq.join(',')  if self[:type].is_a?(Array)
@@ -32,6 +27,7 @@ module Flex
       Prunable::VALUES.include?(val) ? Prunable::Value : val
     end
 
+    # allows to store keys like 'a.3.c' into vars[:a][3][:c]
     def store_nested(key, value)
       var = unnest(key).reverse.inject(value) do |memo,k|
               if k.is_a?(Symbol)

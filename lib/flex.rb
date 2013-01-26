@@ -59,6 +59,7 @@ require 'flex/utility_methods'
 
 require 'progressbar'
 require 'flex/prog_bar'
+require 'flex/deprecation'
 
 module Flex
 

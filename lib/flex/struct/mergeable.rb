@@ -13,11 +13,6 @@ module Flex
         replace deep_merge(*hashes)
       end
 
-      def add(*hashes)
-        Utils.deprecate 'Flex::Variables#add', 'Variables#deep_merge!'
-        replace deep_merge(*hashes)
-      end
-
       def deep_dup
         Marshal.load(Marshal.dump(self))
       end

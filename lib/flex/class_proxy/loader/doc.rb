@@ -41,11 +41,6 @@ meth
           puts doc
         end
 
-        def info(*names)
-          Utils.deprecate 'flex.info', 'flex.doc'
-          doc *names
-        end
-
         def usage(name)
           meth_call = [context, name].join('.')
           puts build_usage(meth_call, templates[name])
