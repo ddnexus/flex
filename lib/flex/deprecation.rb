@@ -62,12 +62,14 @@ module Flex
     end
   end
 
+
   module Struct::Mergeable
     def add(*hashes)
       Deprecation.warn 'Flex::Variables#add', 'Variables#deep_merge!'
       replace deep_merge(*hashes)
     end
   end
+
 
   module ClassProxy::Loader::Doc
     def info(*names)

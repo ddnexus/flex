@@ -5,9 +5,6 @@ env   = defined?(Rails) ? :environment : []
 
 namespace :flex do
 
-  desc 'imports from an ActiveRecord or Mongoid models'
-  task(:import => env) {  Flex::Tasks.new.import_models }
-
   # deprecated tasks
   task(:create_indices => env) { Flex::Tasks.new.create_indices }
   task(:delete_indices => env) { Flex::Tasks.new.delete_indices }

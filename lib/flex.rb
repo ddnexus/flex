@@ -17,7 +17,6 @@ require 'flex/variables'
 
 require 'flex/result'
 require 'flex/result/collection'
-require 'flex/result/document'
 require 'flex/result/source_document'
 require 'flex/result/search'
 require 'flex/result/multi_get'
@@ -31,8 +30,6 @@ require 'flex/template'
 require 'flex/template/search'
 require 'flex/template/slim_search'
 require 'flex/template/tags'
-
-require 'flex/manager'
 
 require 'flex/class_proxy/base'
 require 'flex/class_proxy/loader/search'

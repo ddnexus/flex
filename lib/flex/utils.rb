@@ -75,5 +75,18 @@ module Flex
 
     end
 
+    def class_name_to_type(class_name)
+      type = class_name.tr(':', '_')
+      type.gsub!(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+      type.gsub!(/([a-z\d])([A-Z])/,'\1_\2')
+      type.downcase!
+      type
+    end
+
+    def type_to_class_name(type)
+      type.gsub(/__(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
+    end
+
+
   end
 end

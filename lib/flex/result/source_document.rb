@@ -1,7 +1,7 @@
 module Flex
   class Result
 
-    #  adds sugar to documents with the following structure:
+    #  adds sugar to documents with the following structure (_source is optional):
     #
     #    {
     #        "_index" : "twitter",
@@ -18,17 +18,21 @@ module Flex
 
       # extend if result has a structure like a document
       def self.should_extend?(obj)
-        %w[_index _type _id _source].all? {|k| obj.has_key?(k)}
+        %w[_index _type _id].all? {|k| obj.has_key?(k)}
       end
 
       # exposes _source: automatically supply object-like reader access
       # also expose meta fields like _id, _source, etc, also for methods without the leading '_'
       def method_missing(meth, *args, &block)
         case
-        when meth.to_s =~ /^_/ && has_key?(meth.to_s) then self[meth.to_s]
-        when self['_source'].has_key?(meth.to_s)      then self['_source'][meth.to_s]
-        when has_key?("_#{meth.to_s}")                then self["_#{meth.to_s}"]
-        else super
+        when meth.to_s =~ /^_/ && has_key?(meth.to_s)
+          self[meth.to_s]
+        when self['_source'] && self['_source'].has_key?(meth.to_s)
+          self['_source'][meth.to_s]
+        when has_key?("_#{meth.to_s}")
+          self["_#{meth.to_s}"]
+        else
+          super
         end
       end
 
