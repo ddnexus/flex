@@ -13,10 +13,11 @@ require 'flex/struct/mergeable'
 require 'flex/struct/symbolize'
 require 'flex/struct/hash'
 require 'flex/struct/array'
+
 require 'flex/variables'
 
 require 'flex/result'
-require 'flex/result/collection'
+require 'flex/struct/paginable'
 require 'flex/result/source_document'
 require 'flex/result/search'
 require 'flex/result/multi_get'

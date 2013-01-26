@@ -79,4 +79,9 @@ module Flex
   end
 
 
+  module Result::Collection
+    NEW_MODULE = Struct::Paginable
+    extend Deprecation::Module
+  end
+
 end
