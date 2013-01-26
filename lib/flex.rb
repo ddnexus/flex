@@ -40,17 +40,8 @@ require 'flex/class_proxy/loader/doc'
 
 require 'flex/class_proxy/common_vars'
 require 'flex/class_proxy/loader'
-require 'flex/class_proxy/model_sync'
-require 'flex/class_proxy/model'
-require 'flex/class_proxy/related_model'
-
-require 'flex/instance_proxy/base'
-require 'flex/instance_proxy/model'
-require 'flex/instance_proxy/related_model'
 
 require 'flex/loader'
-require 'flex/related_model'
-require 'flex/model'
 
 require 'flex/http_clients/base'
 require 'flex/http_clients/loader'
