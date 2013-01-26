@@ -33,6 +33,11 @@ module Flex
       h
     end
 
+    def delete_allcaps_keys(hash)
+      hash.keys.each { |k| hash.delete(k) if k =~ /^[A-Z_]+$/ }
+      hash
+    end
+
     def keyfy(to_what, obj)
       case obj
       when Hash

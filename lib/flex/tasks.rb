@@ -29,9 +29,8 @@ module Flex
     end
 
     def config_hash
-      @config_hash ||= (hash = YAML.load(Utils.erb_process(config_path))
-                        hash.delete('ANCHORS')
-                        hash)
+      @config_hash ||= ( hash = YAML.load(Utils.erb_process(config_path))
+                         Utils.delete_allcaps_keys(hash) )
     end
 
   private
