@@ -8,17 +8,14 @@ module Flex
     end
 
     module Module
-
       def extended(obj)
         Deprecation.warn(self, self::NEW_MODULE, 2)
         obj.extend self::NEW_MODULE
       end
-
       def included(base)
         Deprecation.warn(self, self::NEW_MODULE, 2)
         base.send :include, self::NEW_MODULE
       end
-
     end
 
   end
@@ -82,6 +79,20 @@ module Flex
   module Result::Collection
     NEW_MODULE = Struct::Paginable
     extend Deprecation::Module
+  end
+
+
+  module Model
+    def self.included(base)
+      raise NotImplementedError, %(Flex does not include "Flex::Model" anymore. Please, require the "flex-model" gem, and include "Flex::ModelMapper" (and eventually the "Flex::ModelSyncer") instead.)
+    end
+  end
+
+
+  module RelatedModel
+    def self.included(base)
+      raise NotImplementedError, %(Flex does not include "Flex::RelatedModel" anymore. Please, require the "flex-model" gem, and include "Flex::ModelSyncer" instead.)
+    end
   end
 
 end
