@@ -84,7 +84,7 @@ module Flex
 
   module Model
     def self.included(base)
-      raise NotImplementedError, %(Flex does not include "Flex::Model" anymore. Please, require the "flex-model" gem, and include "Flex::ModelMapper" (and eventually the "Flex::ModelSyncer") instead.)
+      raise NotImplementedError, %(Flex does not include "Flex::Model" anymore. Please, require the "flex-model" gem, and include "Flex::ModelMapper" instead.)
     end
   end
 
