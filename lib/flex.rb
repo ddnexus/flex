@@ -9,15 +9,14 @@ require 'flex/utils'
 
 require 'flex/struct/prunable'
 require 'flex/struct/indifferent_access'
-require 'flex/struct/mergeable'
 require 'flex/struct/symbolize'
 require 'flex/struct/hash'
 require 'flex/struct/array'
+
 require 'flex/variables'
 
 require 'flex/result'
-require 'flex/result/collection'
-require 'flex/result/document'
+require 'flex/struct/paginable'
 require 'flex/result/source_document'
 require 'flex/result/search'
 require 'flex/result/multi_get'
@@ -32,25 +31,14 @@ require 'flex/template/search'
 require 'flex/template/slim_search'
 require 'flex/template/tags'
 
-require 'flex/manager'
-
 require 'flex/class_proxy/base'
 require 'flex/class_proxy/loader/search'
 require 'flex/class_proxy/loader/doc'
 
 require 'flex/class_proxy/common_vars'
 require 'flex/class_proxy/loader'
-require 'flex/class_proxy/model_sync'
-require 'flex/class_proxy/model'
-require 'flex/class_proxy/related_model'
-
-require 'flex/instance_proxy/base'
-require 'flex/instance_proxy/model'
-require 'flex/instance_proxy/related_model'
 
 require 'flex/loader'
-require 'flex/related_model'
-require 'flex/model'
 
 require 'flex/http_clients/base'
 require 'flex/http_clients/loader'

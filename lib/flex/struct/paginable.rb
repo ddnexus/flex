@@ -1,6 +1,6 @@
 module Flex
-  class Result
-    module Collection
+  module Struct
+    module Paginable
 
       attr_accessor :total_entries, :variables
 
@@ -54,4 +54,5 @@ module Flex
 
     end
   end
+
 end

@@ -33,6 +33,11 @@ module Flex
       h
     end
 
+    def delete_allcaps_keys(hash)
+      hash.keys.each { |k| hash.delete(k) if k =~ /^[A-Z_]+$/ }
+      hash
+    end
+
     def keyfy(to_what, obj)
       case obj
       when Hash
@@ -74,6 +79,19 @@ module Flex
       end
 
     end
+
+    def class_name_to_type(class_name)
+      type = class_name.tr(':', '_')
+      type.gsub!(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+      type.gsub!(/([a-z\d])([A-Z])/,'\1_\2')
+      type.downcase!
+      type
+    end
+
+    def type_to_class_name(type)
+      type.gsub(/__(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
+    end
+
 
   end
 end

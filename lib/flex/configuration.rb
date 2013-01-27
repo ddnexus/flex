@@ -1,7 +1,6 @@
 module Flex
 
-  Configuration = OpenStruct.new :result_extenders => [ Result::Document,
-                                                        Result::SourceDocument,
+  Configuration = OpenStruct.new :result_extenders => [ Result::SourceDocument,
                                                         Result::Search,
                                                         Result::MultiGet,
                                                         Result::SourceSearch,
@@ -11,7 +10,6 @@ module Flex
                                                                 :type       => nil,
                                                                 :params     => {},
                                                                 :no_pruning => [] ),
-                                 :flex_models      => [],
                                  :config_file      => './config/flex.yml',
                                  :flex_dir         => './flex',
                                  :http_client      => HttpClients::Loader.new_http_client

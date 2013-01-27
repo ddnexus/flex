@@ -10,7 +10,7 @@ module Flex
       # extend the hits results on extended
       def self.extended(result)
         result['docs'].each { |h| h.extend(Document) }
-        result['docs'].extend Collection
+        result['docs'].extend Struct::Paginable
         result['docs'].setup(result['docs'].size, result.variables)
       end
 

@@ -16,7 +16,7 @@ module Flex
       def load_source_for(klass, source, source_vars)
         if source.nil? || source !~ /\n/m
           paths = [ "#{Conf.flex_dir}/#{source}.yml",
-                    "#{Conf.flex_dir}/#{Manager.class_name_to_type(context.name)}.yml",
+                    "#{Conf.flex_dir}/#{Utils.class_name_to_type(context.name)}.yml",
                     source.to_s ]
           source = paths.find {|p| File.exist?(p)}
         end
@@ -68,8 +68,7 @@ module Flex
       def do_load_source(klass, source, source_vars)
         source = Utils.erb_process(source) unless source.match("\n") # skips non-path
         hash   = Utils.parse_source(source)
-        hash.keys.each { |k| hash.delete(k) if k =~ /^[A-Z_]+$/ }
-        hash.each do |name, args|
+        Utils.delete_allcaps_keys(hash).each do |name, args|
           define_template klass, name, args, source_vars
         end
       end
