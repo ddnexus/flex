@@ -14,6 +14,7 @@ module Flex
 
       def log_render(int, path, encoded_data, result)
         logger = Conf.logger
+        return unless logger.is_a?(Flex::Logger)
         logger.info Dye.dye("Rendered #{template_name} from: #{caller_line}", :blue, :bold)
         return unless logger.level == ::Logger::DEBUG
 
