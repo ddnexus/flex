@@ -19,6 +19,10 @@ module Flex
 
       def init; end
 
+      def refresh_index
+        Flex.refresh_index :index => index
+      end
+
     end
   end
 end
