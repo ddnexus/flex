@@ -6,8 +6,14 @@ env   = defined?(Rails) ? :environment : []
 namespace :flex do
 
   # deprecated tasks
-  task(:create_indices => env) { Flex::Tasks.new.create_indices }
-  task(:delete_indices => env) { Flex::Tasks.new.delete_indices }
+  task(:create_indices => env) do
+    Flex::Deprecation.warn 'flex:create_indices', 'flex:index:create', nil
+    Flex::Tasks.new.create_indices
+  end
+  task(:delete_indices => env) do
+    Flex::Deprecation.warn 'flex:delete_indices', 'flex:index:delete', nil
+    Flex::Tasks.new.delete_indices
+  end
 
   namespace :index do
 

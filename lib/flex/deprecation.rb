@@ -4,7 +4,9 @@ module Flex
     extend self
 
     def warn(old, new, called=1)
-      Conf.logger.warn "#{old} is deprecated in favour of #{new}, and will be removed in a next version (called at: #{caller[called]})"
+      message = "#{old} is deprecated in favour of #{new}, and will be removed in a next version "
+      message << "(called at: #{caller[called]})" if called
+      Conf.logger.warn message
     end
 
     module Module
