@@ -72,7 +72,6 @@ module Flex
     def import_collection(collection, options={})
       process_bulk( {:collection => collection,
                      :action     => 'index'}.merge(options) )
-
     end
 
     def delete_collection(collection, options={})

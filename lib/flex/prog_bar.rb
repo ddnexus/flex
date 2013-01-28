@@ -18,7 +18,10 @@ module Flex
     end
 
     def process_result(result, inc)
-      Conf.logger.error "Failed load:\n#{result.failed.to_yaml}" unless result.failed.size == 0
+      unless result.failed.size == 0
+        Conf.logger.error "Failed load:\n#{result.failed.to_yaml}"
+        @pbar.bar_mark = 'F'
+      end
       @failed_count     += result.failed.size
       @successful_count += result.successful.size
       @pbar.inc(inc)
@@ -27,7 +30,7 @@ module Flex
     def finish
       @pbar.finish
       puts "Processed #@total_count. Successful #@successful_count. Skipped #{@total_count - @successful_count - @failed_count}. Failed #@failed_count."
-      puts 'See the log for the details about the failed import.' unless @failed_count == 0
+      puts 'See the log for the details about the failures.' unless @failed_count == 0
     end
 
   end
