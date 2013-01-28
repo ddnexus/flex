@@ -84,11 +84,11 @@ module Flex
 
   module Model
     def self.included(base)
-      if defined?(Flex::ModelMapper)
-        Deprecation.warn 'Flex::Model', 'Flex::ModelMapper'
-        base.send :include, Flex::ModelMapper
+      if defined?(Flex::ModelIndexer)
+        Deprecation.warn 'Flex::Model', 'Flex::ModelIndexer'
+        base.send :include, Flex::ModelIndexer
       else
-        raise NotImplementedError,  %(Flex does not include "Flex::Model" anymore. Please, require the "flex-model" gem, and include "Flex::ModelMapper" instead.)
+        raise NotImplementedError,  %(Flex does not include "Flex::Model" anymore. Please, require the "flex-model" gem, and include "Flex::ModelIndexer" instead.)
       end
     end
   end
