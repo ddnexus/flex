@@ -14,7 +14,7 @@ module Flex
     #        }
     #    }
 
-    module SourceDocument
+    module Document
 
       # extend if result has a structure like a document
       def self.should_extend?(obj)

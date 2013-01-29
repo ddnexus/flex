@@ -17,10 +17,9 @@ require 'flex/variables'
 
 require 'flex/result'
 require 'flex/struct/paginable'
-require 'flex/result/source_document'
+require 'flex/result/document'
 require 'flex/result/search'
 require 'flex/result/multi_get'
-require 'flex/result/source_search'
 require 'flex/result/bulk'
 
 require 'flex/template/common'

@@ -1,9 +1,8 @@
 module Flex
 
-  Configuration = OpenStruct.new :result_extenders => [ Result::SourceDocument,
+  Configuration = OpenStruct.new :result_extenders => [ Result::Document,
                                                         Result::Search,
                                                         Result::MultiGet,
-                                                        Result::SourceSearch,
                                                         Result::Bulk ],
                                  :logger           => Logger.new(STDERR),
                                  :variables        => Vars.new( :index      => nil,
