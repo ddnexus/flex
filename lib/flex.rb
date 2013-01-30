@@ -628,7 +628,6 @@ module Flex
   def doc(*args)
     flex.doc(*args)
   end
-  alias_method :info, :doc
 
   def scan_search(*args, &block)
     flex.scan_search(*args, &block)

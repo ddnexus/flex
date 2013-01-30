@@ -78,6 +78,13 @@ module Flex
   end
 
 
+  # Flex.info
+  def info(*names)
+    Deprecation.warn 'Flex.info', 'Flex.doc'
+    doc *names
+  end
+
+
   module Result::Collection
     NEW_MODULE = Struct::Paginable
     extend Deprecation::Module
