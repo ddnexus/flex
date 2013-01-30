@@ -11,7 +11,7 @@ module Flex
 
       def init; end
 
-      [:context, :index, :type, :params].each do |meth|
+      [:context, :index, :type].each do |meth|
         define_method meth do
           variables[meth]
         end
