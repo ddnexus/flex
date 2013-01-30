@@ -70,10 +70,24 @@ module Flex
   end
 
 
-  module ClassProxy::Loader::Doc
-    def info(*names)
-      Deprecation.warn 'flex.info', 'flex.doc'
-      doc *names
+  module Loader
+    NEW_MODULE = Templates
+    extend Deprecation::Module
+  end
+
+
+  module ClassProxy::Loader
+    NEW_MODULE = ClassProxy::Templates
+    extend Deprecation::Module
+  end
+
+
+  module ClassProxy::Templates
+    module Doc
+      def info(*names)
+        Deprecation.warn 'flex.info', 'flex.doc'
+        doc *names
+      end
     end
   end
 

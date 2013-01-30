@@ -1,6 +1,6 @@
 module Flex
   module ClassProxy
-    module Loader
+    module Templates
       module Doc
 
         def doc(*names)

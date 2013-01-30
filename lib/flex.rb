@@ -31,12 +31,12 @@ require 'flex/template/slim_search'
 require 'flex/template/tags'
 
 require 'flex/class_proxy/base'
-require 'flex/class_proxy/loader/search'
-require 'flex/class_proxy/loader/doc'
+require 'flex/class_proxy/templates/search'
+require 'flex/class_proxy/templates/doc'
 
-require 'flex/class_proxy/loader'
+require 'flex/class_proxy/templates'
 
-require 'flex/loader'
+require 'flex/templates'
 
 require 'flex/http_clients/base'
 require 'flex/http_clients/loader'
@@ -613,7 +613,7 @@ module Flex
   end
 
 
-  include Loader
+  include Templates
   flex.load_source File.expand_path('../flex/api_methods.yml', __FILE__)
 
   extend self
@@ -621,7 +621,7 @@ module Flex
 
   def reload!
     flex.variables.deep_merge! Conf.variables
-    Loader.contexts.each {|c| c.flex.reload!}
+    Templates.contexts.each {|c| c.flex.reload!}
     true
   end
 

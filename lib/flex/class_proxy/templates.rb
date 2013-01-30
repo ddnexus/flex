@@ -1,6 +1,6 @@
 module Flex
   module ClassProxy
-    module Loader
+    module Templates
 
       attr_reader :templates, :partials
       include Doc
