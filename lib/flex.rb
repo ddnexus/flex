@@ -34,7 +34,6 @@ require 'flex/class_proxy/base'
 require 'flex/class_proxy/loader/search'
 require 'flex/class_proxy/loader/doc'
 
-require 'flex/class_proxy/common_vars'
 require 'flex/class_proxy/loader'
 
 require 'flex/loader'

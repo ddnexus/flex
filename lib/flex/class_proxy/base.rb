@@ -9,15 +9,16 @@ module Flex
                                :index   => Conf.variables[:index]}.merge(vars))
       end
 
-      def context
-        variables[:context]
-      end
-
-      def context=(context)
-        variables[:context] = context
-      end
-
       def init; end
+
+      [:context, :index, :type, :params].each do |meth|
+        define_method meth do
+          variables[meth]
+        end
+        define_method :"#{meth}=" do |val|
+          variables[meth] = val
+        end
+      end
 
       def refresh_index
         Flex.refresh_index :index => index
