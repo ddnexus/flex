@@ -8,7 +8,6 @@ require 'flex/errors'
 require 'flex/utils'
 
 require 'flex/struct/prunable'
-require 'flex/struct/indifferent_access'
 require 'flex/struct/symbolize'
 require 'flex/struct/hash'
 require 'flex/struct/array'
