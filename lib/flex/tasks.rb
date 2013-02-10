@@ -53,8 +53,7 @@ module Flex
     end
 
     def create(index)
-      raise MissingIndexEntryError, "no #{index.inspect} entry defined in #{config_path}" \
-            unless config_hash.has_key?(index)
+      config_hash[index] = {} unless config_hash.has_key?(index)
       Flex.POST "/#{index}", config_hash[index]
     end
 
