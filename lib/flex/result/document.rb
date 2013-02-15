@@ -21,19 +21,39 @@ module Flex
         %w[_index _type _id].all? {|k| obj.has_key?(k)}
       end
 
-      # exposes _source: automatically supply object-like reader access
-      # also expose meta fields like _id, _source, etc, also for methods without the leading '_'
+      def respond_to?(meth, private=false)
+        smeth = meth.to_s
+        readers.has_key?(smeth) || has_key?(smeth) || has_key?("_#{smeth}") || super
+      end
+
+      # exposes _source and readers: automatically supply object-like reader access
+      # also expose meta readers like _id, _source, etc, also callable without the leading '_'
       def method_missing(meth, *args, &block)
+        smeth = meth.to_s
         case
-        when meth.to_s =~ /^_/ && has_key?(meth.to_s)
-          self[meth.to_s]
-        when self['_source'] && self['_source'].has_key?(meth.to_s)
-          self['_source'][meth.to_s]
-        when has_key?("_#{meth.to_s}")
-          self["_#{meth.to_s}"]
+        # field name
+        when readers.has_key?(smeth)
+          readers[smeth]
+        # result item
+        when has_key?(smeth)
+          self[smeth]
+        # result item called without the '_' prefix
+        when has_key?("_#{smeth}")
+          self["_#{smeth}"]
         else
           super
         end
+      end
+
+    private
+
+      def readers
+        @readers ||= begin
+                       readers = (self['_source']||{}).merge(self['fields']||{})
+                       # flattened reader for multi_readers or attachment readers
+                       readers.keys.each{|k| readers[k.gsub('.','_')] = readers.delete(k) if k.include?('.')}
+                       readers
+                     end
       end
 
     end
