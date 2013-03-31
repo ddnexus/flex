@@ -18,7 +18,17 @@ module Flex
           vars[name] = case val
                        when Array
                          val.map {|v| @host_flex.partials[name].interpolate(vars, v)}
-                       when true # switch to include the partial
+                       # other partial name (usable as a conditional output)
+                       when Symbol
+                         @host_flex.partials[val].interpolate(vars, vars[val])
+                       # a partial object
+                       when Template::Partial
+                         val.interpolate(vars)
+                       # on-the-fly partial creation (an empty string would prune it before)
+                       when String
+                         Template::Partial.new(val).interpolate(vars)
+                       # switch to include the partial (a false value would prune it before)
+                       when TrueClass
                          @host_flex.partials[name].interpolate(vars)
                        else
                          @host_flex.partials[name].interpolate(vars, val)
