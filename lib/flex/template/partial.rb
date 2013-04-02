@@ -9,10 +9,10 @@ module Flex
         tags             = Tags.new
         stringified      = tags.stringify(data)
         @partials, @tags = tags.partial_and_tag_names
-        @variables       = tags.variables
+        @tags_variables  = tags.variables
         instance_eval <<-ruby, __FILE__, __LINE__
-          def interpolate(main_vars={}, vars={})
-            vars = Vars.new(main_vars, @variables, vars)
+          def interpolate(vars={}, partial_assigned_vars={})
+            vars = Vars.new(vars, @tags_variables, partial_assigned_vars)
             vars = interpolate_partials(vars)
             #{stringified}
           end

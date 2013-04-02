@@ -13,25 +13,25 @@ module Flex
 
       def interpolate_partials(vars)
         @partials.each do |name|
-          val = vars[name]
-          next if Prunable::VALUES.include?(val)
-          vars[name] = case val
+          partial_assigned_vars = vars[name]
+          next if Prunable::VALUES.include?(partial_assigned_vars)
+          vars[name] = case partial_assigned_vars
                        when Array
-                         val.map {|v| @host_flex.partials[name].interpolate(vars, v)}
+                         partial_assigned_vars.map {|v| @host_flex.partials[name].interpolate(vars, v)}
                        # other partial name (usable as a conditional output)
                        when Symbol
-                         @host_flex.partials[val].interpolate(vars, vars[val])
+                         @host_flex.partials[partial_assigned_vars].interpolate(vars, vars[partial_assigned_vars])
                        # a partial object
                        when Template::Partial
-                         val.interpolate(vars)
+                         partial_assigned_vars.interpolate(vars)
                        # on-the-fly partial creation (an empty string would prune it before)
                        when String
-                         Template::Partial.new(val).interpolate(vars)
+                         Template::Partial.new(partial_assigned_vars).interpolate(vars)
                        # switch to include the partial (a false value would prune it before)
                        when TrueClass
                          @host_flex.partials[name].interpolate(vars)
                        else
-                         @host_flex.partials[name].interpolate(vars, val)
+                         @host_flex.partials[name].interpolate(vars, partial_assigned_vars)
                        end
         end
         vars
