@@ -78,7 +78,7 @@ module Flex
           when oldval.is_a?(Hash) && newval.is_a?(Hash)
             deep_merge_hash(oldval, newval)
           when oldval.is_a?(Array) && newval.is_a?(Array)
-            oldval + newval
+            oldval | newval
           else
             newval
           end
