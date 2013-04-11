@@ -8,7 +8,7 @@ module Flex
 
     def initialize(*)
       super
-      self.level     = ::Logger::INFO
+      self.level     = ::Logger::WARN
       self.progname  = 'FLEX'
       self.formatter = proc do |severity, datetime, progname, msg|
         flex_format(severity, msg)
