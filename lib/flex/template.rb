@@ -48,7 +48,7 @@ module Flex
 
     def do_render(*vars)
       vars = Vars.new(*vars)
-      int, path, encoded_data, response = vars[:cleanable_query] ? try_clean_and_retry(vars) : request(vars)
+      int, path, encoded_data, response = try_clean_and_retry(vars)
       return response.status == 200 if method == 'HEAD' # used in Flex.exist?
       if Conf.http_client.raise_proc.call(response)
         int[:vars][:raise].is_a?(FalseClass) ? return : raise(HttpError.new(response, caller_line))
@@ -63,11 +63,15 @@ module Flex
     # in case of a syntax error it will remove all the problematic characters and retry with a cleaned query_string
     # http://lucene.apache.org/core/old_versioned_docs/versions/3_5_0/queryparsersyntax.html
     def try_clean_and_retry(vars)
-     request(vars)
-    rescue Flex::HttpError => e
-      raise unless e.to_hash['error'] =~ /^SearchPhaseExecutionException/
-      vars[:cleanable_query].tr!('"&|!(){}[]~^:+-\\', '')
-      request vars
+     response_vars = request(vars)
+     if vars[:cleanable_query] && Conf.http_client.raise_proc.call(response_vars[3])
+       e = HttpError.new(response_vars[3], caller_line)
+       e.to_hash['error'] =~ /^SearchPhaseExecutionException/
+       (vars[:cleanable_query].is_a?(String) ? vars[:cleanable_query] : vars[:cleanable_query][:query]).tr!('"&|!(){}[]~^:+-\\', '')
+       request vars
+     else
+       response_vars
+     end
     end
 
     def request(vars)
