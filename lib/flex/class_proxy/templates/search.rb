@@ -36,6 +36,7 @@ module Flex
 
         # implements search_type=scan (http://www.elasticsearch.org/guide/reference/api/search/search-type.html)
         def scan_search(template, *vars, &block)
+          user_raw_result = vars.any?{|v| v[:raw_result]}
           scroll      = '5m'
           search_vars = Vars.new({:params     => { :search_type => 'scan',
                                                    :scroll      => scroll,
@@ -53,6 +54,7 @@ module Flex
           while (result = scroll_temp.render(:data => scroll_id)) do
             break if result['hits']['hits'].empty?
             scroll_id = result['_scroll_id']
+            result.variables[:raw_result] = user_raw_result
             block.call result.to_flex_result(force=true)
           end
         end
