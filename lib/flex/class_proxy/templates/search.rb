@@ -42,9 +42,10 @@ module Flex
                                                    :scroll      => scroll,
                                                    :size        => 50 },
                                   :raw_result => true}, *vars)
-          scroll_vars = Vars.new({:params     => { :scroll => scroll },
-                                  :raw_result => true}, *vars)
           search_temp = template.is_a?(Flex::Template) ? template : templates[template]
+
+          scroll_vars = Vars.new({:params     => { :scroll => scroll },
+                                  :raw_result => true}, variables, *vars)
           scroll_temp = Flex::Template.new( :get,
                                             '/_search/scroll',
                                             nil,
