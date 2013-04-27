@@ -41,7 +41,12 @@ module Flex
           obj.each do |k, v|
             pruned = prune(v, *values)
             next if values.include?(pruned)
-            h[k] = pruned
+            # when a key is prunable merges the value if it is a hash (allows merging of partials)
+            if VALUES.include?(k)
+              h.merge!(pruned) if pruned.is_a?(::Hash)
+            else
+              h[k] = pruned
+            end
           end
           h.empty? ? values.first : h
         else
