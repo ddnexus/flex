@@ -23,13 +23,13 @@ module Flex
                          @host_flex.partials[partial_assigned_vars].interpolate(vars, vars[partial_assigned_vars])
                        # a partial object
                        when Template::Partial
-                         partial_assigned_vars.interpolate(vars)
+                         partial_assigned_vars.interpolate(vars, vars)
                        # on-the-fly partial creation (an empty string would prune it before)
                        when String
-                         Template::Partial.new(partial_assigned_vars).interpolate(vars)
+                         Template::Partial.new(partial_assigned_vars).interpolate(vars, vars)
                        # switch to include the partial (a false value would prune it before)
                        when TrueClass
-                         @host_flex.partials[name].interpolate(vars)
+                         @host_flex.partials[name].interpolate(vars, vars)
                        else
                          @host_flex.partials[name].interpolate(vars, partial_assigned_vars)
                        end
