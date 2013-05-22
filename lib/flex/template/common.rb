@@ -18,7 +18,7 @@ module Flex
           vars[name] = case partial_assigned_vars
                        when Array
                          partial_assigned_vars.map {|v| @host_flex.partials[name].interpolate(vars, v)}
-                       # other partial name (usable as a conditional output)
+                       # other partial name (usable as a case output)
                        when Symbol
                          @host_flex.partials[partial_assigned_vars].interpolate(vars, vars[partial_assigned_vars])
                        # a partial object
