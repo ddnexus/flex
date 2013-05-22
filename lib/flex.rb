@@ -353,12 +353,13 @@ module Flex
   #  ---
   #  stats:
   #  - GET
-  #  - /<<index>>/_stats/<<end_point= ~ >>
+  #  - /<<index>>/_stats/<<endpoint= ~ >>/<<type= ~ >>
   #
   #
   #  Usage:
-  #  Flex.stats :index     => "flex_test_index",
-  #             :end_point => nil
+  #  Flex.stats :index    => "flex_test_index",
+  #             :endpoint => nil
+  #             :type     => nil
   #
   def Flex.stats(*vars)
     ## this is a stub, used for reference
