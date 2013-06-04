@@ -64,7 +64,7 @@ module Flex
     # http://lucene.apache.org/core/old_versioned_docs/versions/3_5_0/queryparsersyntax.html
     def try_clean_and_retry(vars)
      response_vars = request(vars)
-     if vars[:cleanable_query] && Conf.http_client.raise_proc.call(response_vars[3])
+     if !Prunable::VALUES.include?(vars[:cleanable_query]) && Conf.http_client.raise_proc.call(response_vars[3])
        e = HttpError.new(response_vars[3], caller_line)
        e.to_hash['error'] =~ /^SearchPhaseExecutionException/
        (vars[:cleanable_query].is_a?(String) ? vars[:cleanable_query] : vars[:cleanable_query][:query]).tr!('"&|!(){}[]~^:+-\\', '')
