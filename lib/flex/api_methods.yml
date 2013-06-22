@@ -106,6 +106,10 @@ get:
   - GET
   - /<<index>>/<<type>>/<<id>>
 
+get_source:
+  - GET
+  - /<<index>>/<<type>>/<<id>>/_source
+
 # http://www.elasticsearch.org/guide/reference/api/multi-get.html
 multi_get:
   - GET

@@ -470,6 +470,26 @@ module Flex
     super
   end
 
+  #  ########## Flex.get_source ##########
+  #
+  #  --------------
+  #  Flex::Template
+  #  ---
+  #  get:
+  #  - GET
+  #  - /<<index>>/<<type>>/<<id>>/_source
+  #
+  #
+  #  Usage:
+  #  Flex.get_source :id    => id,          # required
+  #                  :index => "flex_test_index",
+  #                  :type  => nil
+  #
+  def Flex.get_source(*vars)
+    ## this is a stub, used for reference
+    super
+  end
+
 
   #  ########## Flex.multi_get ##########
   #
