@@ -54,15 +54,16 @@ meth
                         @base_variables.deep_merge @host_flex && @host_flex.variables, @temp_variables
                       end
           all_tags  = temp.tags + temp.partials
-          lines     = all_tags.map do |t|
-                        comments = 'partial' if t.to_s[0] == '_'
-                        line = ['', t.inspect]
-                        line + if variables.has_key?(t)
-                                 ["#{variables[t].inspect},", comments_to_s(comments)]
-                               else
-                                 ["#{to_code(t)},", comments_to_s(comments, 'required')]
-                               end
-                      end
+          return meth_call if all_tags.size == 0
+          lines = all_tags.map do |t|
+                    comments = 'partial' if t.to_s[0] == '_'
+                    line = ['', t.inspect]
+                    line + if variables.has_key?(t)
+                             ["#{variables[t].inspect},", comments_to_s(comments)]
+                           else
+                             ["#{to_code(t)},", comments_to_s(comments, 'required')]
+                           end
+                  end
           lines.sort! { |a,b| b[3] <=> a[3] }
           lines.first[0] = meth_call
           lines.last[2].chop!
