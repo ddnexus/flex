@@ -34,7 +34,7 @@ and set the Flex::Configuration.http_client option.
 
 ________________________________________________________________________________
 EOM
-  s.add_runtime_dependency     'multi_json',  '>= 1.3.4',  '~> 1.6.1'
+  s.add_runtime_dependency     'multi_json',  '>= 1.3.4',  '~> 1.7.7'
   s.add_runtime_dependency     'progressbar', '>= 0.11.0', '~> 0.12.0'
   s.add_runtime_dependency     'dye',         '~> 0.1.4'
   s.add_development_dependency 'patron',      '~> 0.4.18'

@@ -1,0 +1,302 @@
+# These methods are available as Flex.<method>(variable_hash)
+# you can get the updated full reference and usage example of these methods
+# by just doing in the console:
+# >> Flex.doc
+
+#-----------------------------------------------------------------------------#
+### Aliases ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-aliases/
+
+# this is the generic interface allowing all options
+# you must pass the aliases API structure as :data variable
+post_index_aliases:
+  - POST
+  - /_aliases
+
+get_index_aliases:
+  - GET
+  - /<<index>>/_aliases
+
+# this is the single index alias
+# you can pass other options as :data variable
+put_index_alias:
+  - PUT
+  - /<<index>>/_alias/<<alias>>
+
+delete_index_alias:
+  - DELETE
+  - /<<index>>/_alias/<<alias>>
+
+get_index_alias:
+  - GET
+  - /<<index>>/_alias/<<alias= '*' >>
+
+
+
+#-----------------------------------------------------------------------------#
+### Analyze ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-analyze/
+
+# you can pass the text to analyze as the :data variable (or the param :text)
+# you can pass the parameters as the :params variable
+analyze_index:
+  - GET
+  - /<<index>>/_analyze
+
+
+
+#-----------------------------------------------------------------------------#
+### Create Index ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-create-index.html
+
+put_index: &create
+  - PUT
+  - /<<index>>
+  - settings:
+      number_of_shards: <<number_of_shards= 5 >>
+      number_of_replicas: <<number_of_replicas= 1 >>
+
+# aliased
+create_index: *create
+
+post_index:
+  - POST
+  - /<<index>>
+  - settings:
+      number_of_shards: <<number_of_shards= 5 >>
+      number_of_replicas: <<number_of_replicas= 1 >>
+
+
+
+#-----------------------------------------------------------------------------#
+### Delete Index ###
+# http://www.elasticsearch.org/guide/reference/api/delete.html
+
+delete_index:
+  - DELETE
+  - /<<index>>
+
+
+
+#-----------------------------------------------------------------------------#
+### Open/Close Index ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-open-close/
+
+close_index:
+  - POST
+  - /<<index>>/_close
+
+open_index:
+  - POST
+  - /<<index>>/_open
+
+
+
+#-----------------------------------------------------------------------------#
+### Get Settings ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-get-settings.html
+
+get_index_settings: &get_index_settings
+  - GET
+  - /<<index>>/_settings
+
+# alias
+get_settings: *get_index_settings
+
+
+
+#-----------------------------------------------------------------------------#
+### Get Mappings ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-get-mapping.html
+
+get_index_mapping: &get_index_mapping
+  - GET
+  - /<<index>>/<<type>>/_mapping
+
+# alias
+get_mapping: *get_index_mapping
+
+
+
+#-----------------------------------------------------------------------------#
+### Put Mappings ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-put-mapping.html
+
+put_index_mapping: &put_index_mapping
+  - PUT
+  - /<<index>>/<<type>>/_mapping
+  - <<type>>:
+      properties: <<properties>>
+
+# alias
+put_mapping: *put_index_mapping
+
+
+
+#-----------------------------------------------------------------------------#
+### Delete Mappings ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-delete-mapping.html
+
+delete_index_mapping: &delete_index_mapping
+  - DELETE
+  - /<<index>>/<<type>>
+
+# alias
+delete_mapping: *delete_index_mapping
+
+
+
+#-----------------------------------------------------------------------------#
+### Refresh ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-refresh.html
+
+refresh_index:
+  - POST
+  - /<<index>>/_refresh
+
+
+
+#-----------------------------------------------------------------------------#
+### Optimize ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-optimize/
+
+# you can pass the parameters as the :params variable
+optimize_index:
+  - POST
+  - /<<index>>/_optimize
+
+
+
+#-----------------------------------------------------------------------------#
+### Flush ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-flush/
+
+# you can pass the parameters as the :params variable
+flush_index:
+  - POST
+  - /<<index>>/_flush
+
+
+
+#-----------------------------------------------------------------------------#
+### Snapshot ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-gateway-snapshot/
+
+gateway_snapshot:
+  - POST
+  - /<<index>>/_gateway/snapshot
+
+
+
+#-----------------------------------------------------------------------------#
+### Update Settings ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-update-settings/
+
+# you can pass the settings structure as the :data variable
+update_index_settings:
+  - PUT
+  - /<<index>>/_settings
+
+
+
+#-----------------------------------------------------------------------------#
+### Templates ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-templates/
+
+# you can pass the data structure as :data variable
+put_index_template:
+  - PUT
+  - /_template/<<template>>
+
+delete_index_template:
+  - DELETE
+  - /_template/<<template>>
+
+get_index_template:
+  - GET
+  - /_template/<<template>>
+
+
+
+#-----------------------------------------------------------------------------#
+### Warmers ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-warmers/
+
+# you can pass the warmer structure as the :data variable
+put_index_warmer:
+  - PUT
+  - /<<index>>/<<type>>/_warmer/<<warmer>>
+
+delete_index_warmer:
+  - DELETE
+  - /<<index>>/_warmer/<<warmer= ~ >>
+
+get_index_warmer:
+  - GET
+  - /<<index>>/_warmer/<<warmer= ~ >>
+
+
+
+#-----------------------------------------------------------------------------#
+### Stats ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-stats.html
+
+index_stats: &index_stats
+  - GET
+  - /<<index>>/_stats/<<endpoint= ~ >>/<<names= ~ >>
+
+# alias
+stats: *index_stats
+
+
+
+#-----------------------------------------------------------------------------#
+### Status ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-status/
+
+index_status:
+  - GET
+  - /<<index>>/_status
+
+
+
+#-----------------------------------------------------------------------------#
+### Segments ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-segments/
+
+index_segments:
+  - GET
+  - /<<index>>/_segments
+
+
+
+#-----------------------------------------------------------------------------#
+### Clear Cache ###
+#http://www.elasticsearch.org/guide/reference/api/admin-indices-clearcache/
+
+index_clearcache:
+  - POST
+  - /<<index>>/_cache/clear
+
+
+
+#-----------------------------------------------------------------------------#
+### Indices Exists ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-indices-exists.html
+
+indices_exists: &exist
+  - HEAD
+  - /<<index>>
+
+# aliased
+exist?: *exist
+
+
+
+#-----------------------------------------------------------------------------#
+### Types Exists ###
+# http://www.elasticsearch.org/guide/reference/api/admin-indices-types-exists/
+
+types_exists:
+  - HEAD
+  - /<<index>>/<<type>>

@@ -1,0 +1,93 @@
+# These methods are available as Flex.<method>(variable_hash)
+# you can get the updated full reference and usage example of these methods
+# by just doing in the console:
+# >> Flex.doc
+
+
+#-----------------------------------------------------------------------------#
+### Health ###
+# http://www.elasticsearch.org/guide/reference/api/admin-cluster-health/
+
+# you can pass the params as the :params variable
+cluster_health:
+  - GET
+  - /_cluster/health/<<index>>
+
+
+
+#-----------------------------------------------------------------------------#
+### State ###
+# http://www.elasticsearch.org/guide/reference/api/admin-cluster-state/
+
+# you can pass the params as the :params variable
+cluster_state:
+  - GET
+  - /_cluster/state
+
+
+
+#-----------------------------------------------------------------------------#
+### Update Settings ###
+# http://www.elasticsearch.org/guide/reference/api/admin-cluster-update-settings/
+
+# you can pass the settings structure as the :data variable
+put_cluster_settings:
+  - PUT
+  - /_cluster/settings
+
+get_cluster_settings:
+  - GET
+  - /_cluster/settings
+
+
+
+#-----------------------------------------------------------------------------#
+### Nodes Info ###
+# http://www.elasticsearch.org/guide/reference/api/admin-cluster-nodes-info/
+# http://www.elasticsearch.org/guide/reference/api/
+
+# uses the _nodes shortcut
+cluster_nodes_info:
+  - GET
+  - /_nodes/<<nodes= ~ >>/<<endpoint= ~ >>
+
+
+
+#-----------------------------------------------------------------------------#
+### Nodes Stats ###
+# http://www.elasticsearch.org/guide/reference/api/admin-cluster-nodes-stats/
+
+cluster_nodes_stats:
+  - GET
+  - /_nodes/<<nodes= ~ >>/stats/<<endpoint= ~ >>
+
+
+
+#-----------------------------------------------------------------------------#
+### Nodes Shutdown ###
+# http://www.elasticsearch.org/guide/reference/api/admin-cluster-nodes-shutdown/
+
+cluster_nodes_shutdown:
+  - POST
+  - /_cluster/nodes/<<nodes= ~ >>/_shutdown
+
+
+
+#-----------------------------------------------------------------------------#
+### Nodes Hot Threads ###
+# http://www.elasticsearch.org/guide/reference/api/admin-cluster-nodes-hot-threads/
+
+cluster_nodes_hot_threads:
+  - GET
+  - /_nodes/<<nodes= ~ >>/hot_threads
+
+
+
+#-----------------------------------------------------------------------------#
+### Cluster Reroute ###
+# http://www.elasticsearch.org/guide/reference/api/admin-cluster-reroute.html
+
+# you can pass the data structure as the :data variable
+cluster_reroute:
+  - POST
+  - /_cluster/reroute
