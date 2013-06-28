@@ -22,6 +22,7 @@ get_index_aliases:
 put_index_alias:
   - PUT
   - /<<index>>/_alias/<<alias>>
+  - data: {} # this default avoids a patron error if you don't pass any :data with PUT
 
 delete_index_alias:
   - DELETE
@@ -203,7 +204,7 @@ update_index_settings:
 ### Templates ###
 # http://www.elasticsearch.org/guide/reference/api/admin-indices-templates/
 
-# you can pass the data structure as :data variable
+# you must pass the data structure as :data variable
 put_index_template:
   - PUT
   - /_template/<<template>>
@@ -222,7 +223,7 @@ get_index_template:
 ### Warmers ###
 # http://www.elasticsearch.org/guide/reference/api/admin-indices-warmers/
 
-# you can pass the warmer structure as the :data variable
+# you must pass the warmer structure as the :data variable
 put_index_warmer:
   - PUT
   - /<<index>>/<<type>>/_warmer/<<warmer>>
@@ -277,6 +278,7 @@ index_segments:
 index_clearcache:
   - POST
   - /<<index>>/_cache/clear
+  - data: {} # this default avoids a patron error if you don't pass any :data with POST
 
 
 
