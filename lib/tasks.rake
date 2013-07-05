@@ -1,5 +1,4 @@
 require 'flex'
-require 'flex/tasks'
 
 env   = defined?(Rails) ? :environment : []
 
