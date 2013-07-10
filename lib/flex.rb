@@ -78,5 +78,12 @@ module Flex
     flex.scan_search(*args, &block)
   end
 
+  def scan_all(*args, &block)
+    flex.scan_search(:match_all, *args) do |raw_result|
+      batch = raw_result['hits']['hits']
+      block.call(batch)
+    end
+  end
+
 
 end
