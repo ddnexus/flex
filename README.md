@@ -4,9 +4,9 @@ Flex is a complete ruby client for [ElasticSearch](http://www.elasticsearch.org)
 
 ## Useful Links
 
-* [Documentation](./flex/wiki)
-* [Issues](./flex/issues)
-* [Pull Requests](./flex/pulls)
+* [Documentation](https://github.com/ddnexus/flex/wiki)
+* [Issues](https://github.com/ddnexus/flex/issues)
+* [Pull Requests](https://github.com/ddnexus/flex/pulls)
 
 ## Branches
 
@@ -19,4 +19,4 @@ Special thanks for their sponsorship to [Escalate Media](http://www.escalatemedi
 ## Copyright
 
 Copyright (c) 2012 by [Domizio Demichelis](mailto://dd.nexus@gmail.com)<br>
-See [LICENSE](./flex/blob/master/LICENSE) for details.
+See [LICENSE](https://github.com/ddnexus/flex/blob/master/LICENSE) for details.
