@@ -22,7 +22,6 @@ get_index_aliases:
 put_index_alias:
   - PUT
   - /<<index>>/_alias/<<alias>>
-  - data: {} # this default avoids a patron error if you don't pass any :data with PUT
 
 delete_index_alias:
   - DELETE
@@ -278,7 +277,6 @@ index_segments:
 index_clearcache:
   - POST
   - /<<index>>/_cache/clear
-  - data: {} # this default avoids a patron error if you don't pass any :data with POST
 
 
 

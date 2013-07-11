@@ -70,7 +70,6 @@ cluster_nodes_stats:
 cluster_nodes_shutdown:
   - POST
   - /_cluster/nodes/<<nodes= ~ >>/_shutdown
-  - data: {} # this default avoids a patron error if you don't pass any :data with POST
 
 
 #-----------------------------------------------------------------------------#
