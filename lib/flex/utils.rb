@@ -53,6 +53,12 @@ module Flex
       end
     end
 
+    def slice_hash(hash, *keys)
+      h = {}
+      keys.each{|k| h[k] = hash[k] if hash.has_key?(k)}
+      h
+    end
+
     def env2options(*keys)
       options = {}
       ENV.keys.map do |k|

@@ -1,4 +1,5 @@
 module Flex
+
   module Deprecation
 
     extend self
@@ -22,8 +23,36 @@ module Flex
 
   end
 
+  ### Deprecation of Flex methods ###
 
-  ### DEPRECATIONS ###
+  def info(*names)
+    Deprecation.warn 'Flex.info', 'Flex.doc'
+    doc *names
+  end
+
+  def process_bulk(options={})
+    Deprecation.warn 'Flex.process_bulk(:collection => collection)', 'Flex.post_bulk_collection(collection, options)'
+    post_bulk_collection(options.delete(:collection), options)
+  end
+
+  def import_collection(collection, options={})
+    Deprecation.warn 'Flex.import_collection', 'Flex.post_bulk_collection'
+    post_bulk_collection(collection, options.merge(:action => 'index'))
+  end
+
+  def delete_collection(collection, options={})
+    Deprecation.warn 'Flex.delete_collection(collection)', 'Flex.post_bulk_collection(collection, :action => "delete")'
+    post_bulk_collection(collection, options.merge(:action => 'delete'))
+  end
+
+  def bulk(*vars)
+    Deprecation.warn 'Flex.bulk(:lines => lines_bulk_string)', 'Flex.post_bulk_string(:bulk_string => lines_bulk_string)'
+    vars = Vars.new(*vars)
+    post_bulk_string(:bulk_string => vars[:lines])
+  end
+
+
+  ### Deprecation of Configuration methods ###
 
   Configuration.instance_eval do
     # temprary deprecation warnings
@@ -89,13 +118,6 @@ module Flex
         doc *names
       end
     end
-  end
-
-
-  # Flex.info
-  def info(*names)
-    Deprecation.warn 'Flex.info', 'Flex.doc'
-    doc *names
   end
 
 

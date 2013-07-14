@@ -109,10 +109,13 @@ delete_percolator:
 ### Bulk ###
 # http://www.elasticsearch.org/guide/reference/api/bulk.html
 
-bulk:
+post_bulk_string: &bulk
   - POST
   - /_bulk
-  - << lines >>
+  - << bulk_string >>
+
+# Deprecated alias for backward compatibility
+bulk: *bulk
 
 
 

@@ -230,20 +230,20 @@ module Flex
       super
     end
 
-    #  ########## Flex.bulk ##########
+    #  ########## Flex.post_bulk_string ##########
     #  --------------
     #  Flex::Template
     #  ---
-    #  bulk:
+    #  post_bulk_string:
     #  - POST
     #  - /_bulk
-    #  - << lines >>
+    #  - << bulk_string >>
     #
     #
     #  Usage:
-    #  Flex.bulk :lines => lines  # required
+    #  Flex.bulk :bulk_string => bulk_string  # required
     #
-    def Flex.bulk(*vars)
+    def Flex.post_bulk_string(*vars)
       ## this is a stub, used for reference
       super
     end

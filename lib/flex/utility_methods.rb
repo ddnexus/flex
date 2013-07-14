@@ -31,52 +31,51 @@ module Flex
       MultiJson.encode(YAML.load(yaml))
     end
 
-    # Flex.process_bulk accepts a :collection of objects, that can be hashes or Models
-    # you can pass also a :action set to 'index' (default) or 'delete'
-    # in order to bulk-index or bulk-delete the whole collection
-    # you can use Flex.bulk if you have an already formatted bulk data-string
-    def process_bulk(args)
-      raise ArgumentError, "Array expected as :collection, got #{args[:collection].inspect}" \
-            unless args[:collection].is_a?(Array)
+    def reload!
+      flex.variables.deep_merge! Conf.variables
+      Templates.contexts.each {|c| c.flex.reload!}
+      true
+    end
 
-      index  = args[:index]  || Conf.variables[:index]
-      type   = args[:type]   || Conf.variables[:type]
-      action = args[:action] || 'index'
+    def doc(*args)
+      flex.doc(*args)
+    end
 
-      meta = {}
-      [:version, :routing, :percolate, :parent, :timestamp, :ttl].each do |opt|
-        meta["_#{opt}"] = args[opt] if args[opt]
+    def scan_search(*args, &block)
+      flex.scan_search(*args, &block)
+    end
+
+    def scan_all(*args, &block)
+      flex.scan_search(:match_all, *args) do |raw_result|
+        batch = raw_result['hits']['hits']
+        block.call(batch)
       end
-      lines = args[:collection].map do |d|
-                # skips indexing for objects that return nil as the indexed_json or are not flex_indexable?
-                unless action == 'delete'
-                  next if d.respond_to?(:flex_indexable?) && !d.flex_indexable?
-                  json = get_json(d) || next
-                end
-                m = {}
-                m['_index']   = get_index(d) || index
-                m['_type']    = get_type(d)  || type
-                m['_id']      = get_id(d)    || d       # we could pass an array of ids to delete
-                parent        = get_parent(d)
-                m['_parent']  = parent if parent
-                routing       = get_routing(d)
-                m['_routing'] = routing if routing
-                line = MultiJson.encode({action => meta.merge(m)})
-                line << "\n#{json}" unless action == 'delete'
-                line
-              end.compact
-
-      bulk(args.merge(:lines => lines.join("\n") + "\n")) if lines.size > 0
     end
 
-    def import_collection(collection, options={})
-      process_bulk( {:collection => collection,
-                     :action     => 'index'}.merge(options) )
+    def dump_all(*args, &block)
+      scan_all({:params => {:fields => '*,_source'}}, *args, &block)
     end
 
-    def delete_collection(collection, options={})
-      process_bulk( {:collection => collection,
-                     :action     => 'delete'}.merge(options) )
+    # You should use Flex.post_bulk_string if you have an already formatted bulk data-string
+    def post_bulk_collection(collection, options={})
+      raise ArgumentError, "Array expected as :collection, got #{collection.inspect}" \
+            unless collection.is_a?(Array)
+      bulk_string = ''
+      collection.each do |d|
+        bulk_string << build_bulk_string(d, options)
+      end
+      post_bulk_string(:bulk_string => bulk_string) unless lines.empty?
+    end
+
+    def build_bulk_string(d, options={})
+      case
+      when d.is_a?(Hash)
+        bulk_string_from_hash(d, options)
+      when d.is_a?(Flex::ModelIndexer) || d.is_a?(Flex::ActiveModel)
+        bulk_string_from_flex(d, options)
+      else
+        raise NotImplementedError, "Unable to convert the document #{d.inspect} to a bulk entry."
+      end
     end
 
   private
@@ -85,57 +84,38 @@ module Flex
       Template.new(*args).setup(Flex.flex).render
     end
 
-    def get_index(d)
-       d.class.flex.index if d.class.respond_to?(:flex)
+    def bulk_string_from_hash(d, options)
+      meta = Utils.slice_hash(d, '_index', '_type', '_id')
+      if d.has_key?('fields')
+        d['fields'].each do |k, v|
+          meta[k] = v if k[0] == '_'
+        end
+      end
+      source = d['_source'] unless action == 'delete'
+      to_bulk_string(meta, source, options)
     end
 
-    def get_type(d)
-      case
-      when d.respond_to?(:flex)  then d.flex.type
-      when d.respond_to?(:_type) then d._type
-      when d.is_a?(Hash)         then d.delete(:_type) || d.delete('_type') ||
-                                      d.delete(:type)  || d.delete('type')
-      when d.respond_to?(:type)  then d.type
-      end
+    def bulk_string_from_flex(d, options)
+      flex = d.flex
+      meta = { '_index' => flex.index,
+               '_type'  => flex.type,
+               '_id'    => flex.id }
+      meta['_parent']  = flex.parent if flex.parent
+      meta['_routing'] = flex.routing if flex.routing
+      source = d.flex_source if d.flex_indexable? && ! action == 'delete'
+      to_bulk_string(meta, source, options)
     end
 
-    def get_parent(d)
-      case
-      when d.respond_to?(:flex) && d.flex.parent_instance(false) then d.flex.parent_instance.id
-      when d.respond_to?(:_parent) then d._parent
-      when d.respond_to?(:parent)  then d.parent
-      when d.is_a?(Hash)           then d.delete(:_parent) || d.delete('_parent') ||
-                                        d.delete(:parent)  || d.delete('parent')
+    def to_bulk_string(meta, source, options)
+      action = options[:action] || 'index'
+      return '' if source.nil? || source.empty? && ! action == 'delete'
+      entry  = MultiJson.encode(action => meta) + "\n"
+      unless action == 'delete'
+        source_line = source.is_a?(String) ? source : MultiJson.encode(source)
+        return '' if source.nil? || source.empty?
+        entry << source_line + "\n"
       end
-    end
-
-    def get_routing(d)
-      case
-      when d.respond_to?(:flex) && d.flex.routing(false) then d.flex.routing
-      when d.respond_to?(:_routing) then d._routing
-      when d.respond_to?(:routing)  then d.routing
-      when d.is_a?(Hash)            then d.delete(:_routing) || d.delete('_routing') ||
-                                         d.delete(:routing)  || d.delete('routing')
-      end
-    end
-
-    def get_id(d)
-      case
-      when d.is_a?(Hash)      then  d.delete(:_id) || d.delete('_id') ||
-                                    d.delete(:id)  || d.delete('id')
-      when d.respond_to?(:id) then  d.id
-      end
-    end
-
-    def get_json(d)
-      case
-      when d.respond_to?(:flex_source)
-        json = d.flex_source
-        json.is_a?(String) ? json : MultiJson.encode(json)
-      when d.respond_to?(:to_json)
-        d.to_json
-      else MultiJson.encode(d)
-      end
+      entry
     end
 
   end
