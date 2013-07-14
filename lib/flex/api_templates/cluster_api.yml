@@ -4,6 +4,7 @@
 # >> Flex.doc
 
 
+
 #-----------------------------------------------------------------------------#
 ### Health ###
 # http://www.elasticsearch.org/guide/reference/api/admin-cluster-health/
@@ -70,6 +71,7 @@ cluster_nodes_stats:
 cluster_nodes_shutdown:
   - POST
   - /_cluster/nodes/<<nodes= ~ >>/_shutdown
+
 
 
 #-----------------------------------------------------------------------------#

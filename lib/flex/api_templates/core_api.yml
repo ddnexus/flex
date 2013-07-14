@@ -4,6 +4,7 @@
 # >> Flex.doc
 
 
+
 #-----------------------------------------------------------------------------#
 ### Index ###
 # http://www.elasticsearch.org/guide/reference/api/index_/
@@ -188,3 +189,14 @@ match_all:
   - /<<index>>/<<type>>/_search
   - query:
       match_all: {}
+
+
+
+#-----------------------------------------------------------------------------#
+# get a document without using the get API (which doesn't support fields '*')
+search_by_id:
+  - GET
+  - /<<index>>/<<type>>/_search
+  - query:
+      term:
+        _id: <<id>>

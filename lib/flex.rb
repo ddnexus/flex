@@ -86,5 +86,41 @@ module Flex
     end
   end
 
+  # get a document without using the get API (which doesn't support fields '*')
+  flex.wrap :search_by_id do |*vars|
+    vars = Vars.new(*vars)
+    refresh_index(vars) if vars[:refresh]
+    result = super(vars)
+    doc = result['hits']['hits'].first
+    class << doc; self end.class_eval do
+      define_method(:raw_result){ result }
+    end
+    doc
+  end
+
+  # support for live-reindex
+  flex.wrap :store, :put_store, :post_store do |*vars|
+    result = super(*vars)
+    track_change(:index, *vars)
+    result
+  end
+
+  # support for live-reindex
+  flex.wrap :delete, :remove do |*vars|
+    track_change(:delete, *vars)
+    super(*vars)
+  end
+
+private
+
+  def track_change(action, *vars)
+    return unless defined?(LiveReindex) && LiveReindex.reindexing?
+    vars = Vars.new(*vars)
+    # avoids an infinite loop during the indexing of the changes
+    return if LiveReindex.reindexing_index?(vars[:index])
+    # refresh and pull the full document from the index
+    doc = search_by_id({:params => {:fields => '*,_source'}, :refresh => true}, vars)
+    LiveReindex.track_change(action, doc)
+  end
 
 end

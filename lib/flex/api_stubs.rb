@@ -379,6 +379,29 @@ module Flex
       super
     end
 
+    #  ########## Flex.search_by_id ##########
+    #  --------------
+    #  Flex::Template
+    #  ---
+    #  search_by_id:
+    #  - GET
+    #  - /<<index>>/<<type>>/_search
+    #  - query:
+    #      term:
+    #        _id: <<id>>
+    #
+    #
+    #  Usage:
+    #  Flex.search_by_id :id      => id,    # required
+    #                    :type    => nil,
+    #                    :index   => "flex_test_index",
+    #                    # added by the wrapper in flex.rb
+    #                    :refresh => false
+    #
+    def Flex.search_by_id(*vars)
+      ## this is a stub, used for reference
+      super
+    end
 
     ######################## Indices API ########################
 

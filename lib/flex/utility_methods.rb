@@ -1,11 +1,6 @@
 module Flex
   module UtilityMethods
 
-    # Anonymous search query: please, consider to use named templates for better performances and programming style
-    # data can be a JSON string that will be passed as is, or a YAML string (that will be converted into a ruby hash)
-    # or a hash. It can contain interpolation tags as usual.
-    # You can pass an optional hash of interpolation arguments (or query string :params).
-    # See also the Flex::Template::Search documentation
     def search(data, args={})
       Template::Search.new(data).setup(Flex.flex).render(args)
     end
@@ -109,6 +104,9 @@ module Flex
     def to_bulk_string(meta, source, options)
       action = options[:action] || 'index'
       return '' if source.nil? || source.empty? && ! action == 'delete'
+      if defined?(LiveReindex) && options[:reindexing]
+        meta['_index'] = LiveReindex.prefix_index(meta['_index'])
+      end
       entry  = MultiJson.encode(action => meta) + "\n"
       unless action == 'delete'
         source_line = source.is_a?(String) ? source : MultiJson.encode(source)
