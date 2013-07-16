@@ -115,11 +115,8 @@ private
 
   def track_change(action, *vars)
     return unless defined?(LiveReindex) && LiveReindex.reindexing?
-    vars = Vars.new(*vars)
-    # avoids an infinite loop during the indexing of the changes
-    return if LiveReindex.reindexing_index?(vars[:index])
     # refresh and pull the full document from the index
-    doc = search_by_id({:params => {:fields => '*,_source'}, :refresh => true}, vars)
+    doc = search_by_id({:params => {:fields => '*,_source'}, :refresh => true}, *vars)
     LiveReindex.track_change(action, doc)
   end
 
