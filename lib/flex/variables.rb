@@ -45,7 +45,7 @@ module Flex
     def fetch_nested(key)
       unnest(key).inject(self, :fetch)
     rescue NoMethodError, KeyError
-      raise MissingVariableError, "required variables #{key.inspect} missing."
+      raise MissingVariableError, "the required #{key.inspect} variable is missing."
     end
 
     private
