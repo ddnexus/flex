@@ -59,7 +59,7 @@ module Flex
       collection.each do |d|
         bulk_string << build_bulk_string(d, options)
       end
-      post_bulk_string(:bulk_string => bulk_string) unless lines.empty?
+      post_bulk_string(:bulk_string => bulk_string) unless bulk_string.empty?
     end
 
     def build_bulk_string(d, options={})
@@ -86,7 +86,7 @@ module Flex
           meta[k] = v if k[0] == '_'
         end
       end
-      source = d['_source'] unless action == 'delete'
+      source = d['_source'] unless options[:action] == 'delete'
       to_bulk_string(meta, source, options)
     end
 
@@ -97,7 +97,7 @@ module Flex
                '_id'    => flex.id }
       meta['_parent']  = flex.parent if flex.parent
       meta['_routing'] = flex.routing if flex.routing
-      source = d.flex_source if d.flex_indexable? && ! action == 'delete'
+      source = d.flex_source if d.flex_indexable? && ! options[:action] == 'delete'
       to_bulk_string(meta, source, options)
     end
 
