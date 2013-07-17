@@ -65,27 +65,6 @@ module Flex
   extend self
   extend UtilityMethods
 
-  def reload!
-    flex.variables.deep_merge! Conf.variables
-    Templates.contexts.each {|c| c.flex.reload!}
-    true
-  end
-
-  def doc(*args)
-    flex.doc(*args)
-  end
-
-  def scan_search(*args, &block)
-    flex.scan_search(*args, &block)
-  end
-
-  def scan_all(*args, &block)
-    flex.scan_search(:match_all, *args) do |raw_result|
-      batch = raw_result['hits']['hits']
-      block.call(batch)
-    end
-  end
-
   flex.wrap :post_bulk_string, :bulk do |*vars|
     vars = Vars.new(*vars)
     return if vars[:bulk_string].nil? || vars[:bulk_string].empty?
@@ -122,8 +101,8 @@ private
   def track_change(action, *vars)
     return unless defined?(LiveReindex) && LiveReindex.reindexing?
     # refresh and pull the full document from the index
-    doc = search_by_id({:params => {:fields => '*,_source'}, :refresh => true}, *vars)
-    LiveReindex.track_change(action, doc)
+    document = dump_one(*vars)
+    LiveReindex.track_change(action, document)
   end
 
 end
