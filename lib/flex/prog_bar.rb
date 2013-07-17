@@ -18,12 +18,14 @@ module Flex
     end
 
     def process_result(result, inc)
-      unless result.failed.size == 0
-        Conf.logger.error "Failed load:\n#{result.failed.to_yaml}"
-        @pbar.bar_mark = 'F'
+      unless result.nil? || result.empty?
+        unless result.failed.size == 0
+          Conf.logger.error "Failed load:\n#{result.failed.to_yaml}"
+          @pbar.bar_mark = 'F'
+        end
+        @failed_count     += result.failed.size
+        @successful_count += result.successful.size
       end
-      @failed_count     += result.failed.size
-      @successful_count += result.successful.size
       @pbar.inc(inc)
     end
 

@@ -86,6 +86,12 @@ module Flex
     end
   end
 
+  flex.wrap :post_bulk_string, :bulk do |*vars|
+    vars = Vars.new(*vars)
+    return if vars[:bulk_string].nil? || vars[:bulk_string].empty?
+    super vars
+  end
+
   # get a document without using the get API (which doesn't support fields '*')
   flex.wrap :search_by_id do |*vars|
     vars = Vars.new(*vars)
