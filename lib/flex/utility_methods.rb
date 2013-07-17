@@ -1,13 +1,13 @@
 module Flex
   module UtilityMethods
 
-    def search(data, args={})
-      Template::Search.new(data).setup(Flex.flex).render(args)
+    def search(data, vars={})
+      Template::Search.new(data).setup(Flex.flex).render(vars)
     end
 
     # like Flex.search, but it will use the Flex::Template::SlimSearch instead
-    def slim_search(data, args={})
-      Template::SlimSearch.new(data).setup(Flex.flex).render(args)
+    def slim_search(data, vars={})
+      Template::SlimSearch.new(data).setup(Flex.flex).render(vars)
     end
 
     %w[HEAD GET PUT POST DELETE].each do |m|
@@ -40,15 +40,24 @@ module Flex
       flex.scan_search(*args, &block)
     end
 
-    def scan_all(*args, &block)
-      flex.scan_search(:match_all, *args) do |raw_result|
+    def scan_all(*vars, &block)
+      flex.scan_search(:match_all, *vars) do |raw_result|
         batch = raw_result['hits']['hits']
         block.call(batch)
       end
     end
 
-    def dump_all(*args, &block)
-      scan_all({:params => {:fields => '*,_source'}}, *args, &block)
+    def dump_all(*vars, &block)
+      scan_all({:params => {:fields => '*,_source'}}, *vars) do |batch|
+        batch.map!{|d| d.delete('_score'); doc}
+        block.call(batch)
+      end
+    end
+
+    def dump_one(*vars)
+      document = search_by_id({:params => {:fields => '*,_source'}, :refresh => true}, *vars)
+      document.delete('_score')
+      document
     end
 
     # You should use Flex.post_bulk_string if you have an already formatted bulk data-string
