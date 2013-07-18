@@ -74,7 +74,6 @@ module Flex
   # get a document without using the get API (which doesn't support fields '*')
   flex.wrap :search_by_id do |*vars|
     vars = Vars.new(*vars)
-    refresh_index(vars) if vars[:refresh]
     result = super(vars)
     doc = result['hits']['hits'].first
     class << doc; self end.class_eval do
@@ -99,10 +98,8 @@ module Flex
 private
 
   def track_change(action, *vars)
-    return unless defined?(LiveReindex) && LiveReindex.reindexing?
-    # refresh and pull the full document from the index
-    document = dump_one(*vars)
-    LiveReindex.track_change(action, document)
+    return unless defined?(LiveReindex) && LiveReindex.in_progress?
+    LiveReindex.track_change(action, dump_one(*vars))
   end
 
 end

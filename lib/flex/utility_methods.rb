@@ -48,14 +48,17 @@ module Flex
     end
 
     def dump_all(*vars, &block)
+      refresh_index(*vars)
       scan_all({:params => {:fields => '*,_source'}}, *vars) do |batch|
         batch.map!{|d| d.delete('_score'); doc}
         block.call(batch)
       end
     end
 
+    # refresh and pull the full document from the index
     def dump_one(*vars)
-      document = search_by_id({:params => {:fields => '*,_source'}, :refresh => true}, *vars)
+      refresh_index(*vars)
+      document = search_by_id({:params => {:fields => '*,_source'}}, *vars)
       document.delete('_score')
       document
     end

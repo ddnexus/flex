@@ -395,8 +395,6 @@ module Flex
     #  Flex.search_by_id :id      => id,    # required
     #                    :type    => nil,
     #                    :index   => "flex_test_index",
-    #                    # added by the wrapper in flex.rb
-    #                    :refresh => false
     #
     def Flex.search_by_id(*vars)
       ## this is a stub, used for reference
