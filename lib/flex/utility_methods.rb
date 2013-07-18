@@ -81,7 +81,7 @@ module Flex
       when d.is_a?(Flex::ModelIndexer) || d.is_a?(Flex::ActiveModel)
         bulk_string_from_flex(d, options)
       else
-        raise NotImplementedError, "Unable to convert the document #{d.inspect} to a bulk entry."
+        raise NotImplementedError, "Unable to convert the document #{d.inspect} to a bulk string."
       end
     end
 
@@ -107,25 +107,25 @@ module Flex
       meta = { '_index' => flex.index,
                '_type'  => flex.type,
                '_id'    => flex.id }
-      meta['_parent']  = flex.parent if flex.parent
+      meta['_parent']  = flex.parent  if flex.parent
       meta['_routing'] = flex.routing if flex.routing
-      source = d.flex_source if d.flex_indexable? && ! options[:action] == 'delete'
+      source = d.flex_source if d.flex_indexable? &&! (options[:action] == 'delete')
       to_bulk_string(meta, source, options)
     end
 
     def to_bulk_string(meta, source, options)
       action = options[:action] || 'index'
-      return '' if source.nil? || source.empty? && ! action == 'delete'
+      return '' if source.nil? || source.empty? &&! (action == 'delete')
       if defined?(LiveReindex) && options[:reindexing]
         meta['_index'] = LiveReindex.prefix_index(meta['_index'])
       end
-      entry  = MultiJson.encode(action => meta) + "\n"
+      bulk_string = MultiJson.encode(action => meta) + "\n"
       unless action == 'delete'
         source_line = source.is_a?(String) ? source : MultiJson.encode(source)
         return '' if source.nil? || source.empty?
-        entry << source_line + "\n"
+        bulk_string << source_line + "\n"
       end
-      entry
+      bulk_string
     end
 
   end
