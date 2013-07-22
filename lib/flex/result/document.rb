@@ -45,7 +45,13 @@ module Flex
         end
       end
 
-    private
+      # used to get the unprefixed (by live-reindex) index name
+      def index_basename
+        @index_basename ||= self['_index'].sub(/^\d{14}_/, '')
+      end
+
+
+      private
 
       def readers
         @readers ||= begin
