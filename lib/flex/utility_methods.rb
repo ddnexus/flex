@@ -50,7 +50,7 @@ module Flex
     def dump_all(*vars, &block)
       refresh_index(*vars)
       scan_all({:params => {:fields => '*,_source'}}, *vars) do |batch|
-        batch.map!{|d| d.delete('_score'); doc}
+        batch.map!{|document| document.delete('_score'); document}
         block.call(batch)
       end
     end
@@ -74,14 +74,14 @@ module Flex
       post_bulk_string(:bulk_string => bulk_string) unless bulk_string.empty?
     end
 
-    def build_bulk_string(d, options={})
-      case
-      when d.is_a?(Hash)
-        bulk_string_from_hash(d, options)
-      when d.is_a?(Flex::ModelIndexer) || d.is_a?(Flex::ActiveModel)
-        bulk_string_from_flex(d, options)
+    def build_bulk_string(document, options={})
+      case document
+      when Hash
+        bulk_string_from_hash(document, options)
+      when Flex::ModelIndexer, Flex::ActiveModel
+        bulk_string_from_flex(document, options)
       else
-        raise NotImplementedError, "Unable to convert the document #{d.inspect} to a bulk string."
+        raise NotImplementedError, "Unable to convert the document #{document.inspect} to a bulk string."
       end
     end
 
@@ -91,25 +91,25 @@ module Flex
       Template.new(*args).setup(Flex.flex).render
     end
 
-    def bulk_string_from_hash(d, options)
-      meta = Utils.slice_hash(d, '_index', '_type', '_id')
-      if d.has_key?('fields')
-        d['fields'].each do |k, v|
+    def bulk_string_from_hash(document, options)
+      meta = Utils.slice_hash(document, '_index', '_type', '_id')
+      if document.has_key?('fields')
+        document['fields'].each do |k, v|
           meta[k] = v if k[0] == '_'
         end
       end
-      source = d['_source'] unless options[:action] == 'delete'
+      source = document['_source'] unless options[:action] == 'delete'
       to_bulk_string(meta, source, options)
     end
 
-    def bulk_string_from_flex(d, options)
-      flex = d.flex
+    def bulk_string_from_flex(document, options)
+      flex = document.flex
       meta = { '_index' => flex.index,
                '_type'  => flex.type,
                '_id'    => flex.id }
       meta['_parent']  = flex.parent  if flex.parent
       meta['_routing'] = flex.routing if flex.routing
-      source = d.flex_source if d.flex_indexable? &&! (options[:action] == 'delete')
+      source = document.flex_source if document.flex_indexable? &&! (options[:action] == 'delete')
       to_bulk_string(meta, source, options)
     end
 
