@@ -99,7 +99,9 @@ private
 
   def track_change(action, *vars)
     return unless defined?(LiveReindex) && LiveReindex.in_progress?
-    LiveReindex.track_change(action, dump_one(*vars))
+    vars = Vars.new(*vars)
+    vars.delete(:data)
+    LiveReindex.track_change(action, dump_one(vars))
   end
 
 end
