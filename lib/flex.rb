@@ -48,6 +48,7 @@ require 'flex/deprecation'
 
 require 'flex/api_stubs'
 require 'flex/tasks'
+require 'flex/live_reindex'
 
 module Flex
 
@@ -73,9 +74,9 @@ module Flex
 
   # get a document without using the get API (which doesn't support fields '*')
   flex.wrap :search_by_id do |*vars|
-    vars = Vars.new(*vars)
+    vars   = Vars.new(*vars)
     result = super(vars)
-    doc = result['hits']['hits'].first
+    doc    = result['hits']['hits'].first
     class << doc; self end.class_eval do
       define_method(:raw_result){ result }
     end
@@ -84,24 +85,25 @@ module Flex
 
   # support for live-reindex
   flex.wrap :store, :put_store, :post_store do |*vars|
-    result = super(*vars)
-    track_change(:index, *vars)
+    vars         = Vars.new(*vars)
+    vars[:index] = LiveReindex.prefix_index(vars[:index]) if LiveReindex.should_prefix_index?
+    result = super(vars)
+    if LiveReindex.should_track_change?
+      vars.delete(:data)
+      LiveReindex.track_change(:index, dump_one(vars))
+    end
     result
   end
 
   # support for live-reindex
   flex.wrap :delete, :remove do |*vars|
-    track_change(:delete, *vars)
-    super(*vars)
-  end
-
-private
-
-  def track_change(action, *vars)
-    return unless defined?(LiveReindex) && LiveReindex.in_progress?
-    vars = Vars.new(*vars)
-    vars.delete(:data)
-    LiveReindex.track_change(action, dump_one(vars))
+    vars         = Vars.new(*vars)
+    vars[:index] = LiveReindex.prefix_index(vars[:index]) if LiveReindex.should_prefix_index?
+    if LiveReindex.should_track_change?
+      vars.delete(:data)
+      LiveReindex.track_change(:delete, dump_one(vars))
+    end
+    super(vars)
   end
 
 end
