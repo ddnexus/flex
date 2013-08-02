@@ -104,12 +104,13 @@ module Flex
 
     def bulk_string_from_flex(document, options)
       flex = document.flex
+      return '' unless document.flex_indexable?
       meta = { '_index' => flex.index,
                '_type'  => flex.type,
                '_id'    => flex.id }
       meta['_parent']  = flex.parent  if flex.parent
       meta['_routing'] = flex.routing if flex.routing
-      source = document.flex_source if document.flex_indexable? &&! (options[:action] == 'delete')
+      source           = document.flex_source unless options[:action] == 'delete'
       to_bulk_string(meta, source, options)
     end
 
