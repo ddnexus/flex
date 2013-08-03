@@ -82,7 +82,8 @@ module Flex
     end
 
     def should_track_change?
-      !!Redis.get(:pid) && !(Redis.get(:pid) == $$.to_s)
+      pid = Redis.get(:pid)
+      !!pid && !(pid == $$.to_s)
     end
 
     def track_change(action, document)
@@ -145,16 +146,15 @@ module Flex
       if opts[:ensure_indices]
         @ensure_indices = opts.delete(:ensure_indices)
         @ensure_indices = @ensure_indices.split(',') unless @ensure_indices.is_a?(Array)
-        # no block, so verbatim copy into the new index
-        each_change = @each_change
-        @each_change = nil
+        each_change     = @each_change
+        @each_change    = nil
         migrate_indices(:index => @ensure_indices)
-        @each_change = each_change
+        @each_change    = each_change
       end
 
       @reindex.call
 
-      # when the reindexing is ended we retries to empty the changes list a few times
+      # when the reindexing is finished we try to empty the changes list a few times
       tries = 0
       bulk_string = ''
       until (count = Redis.llen(:changes)) == 0 || tries > 9
@@ -164,8 +164,7 @@ module Flex
         tries += 1
       end
       # at this point the changes list should be empty or contain the minimum number of changes we could achieve live
-      # the @stop_indexing should ensure to stop/suspend all the actions that would produce changes in the indices being reindexed,
-      # flush and wait a couple of secs maybe; pass nil if your index is not updated live by any other process
+      # the @stop_indexing should ensure to stop/suspend all the actions that would produce changes in the indices being reindexed
       @stop_indexing.call if @stop_indexing
       # if we have still changes, we can index them (until the list will be empty)
       bulk_string = ''
