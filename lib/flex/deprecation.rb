@@ -133,7 +133,7 @@ module Flex
         Deprecation.warn 'Flex::Model', 'Flex::ModelIndexer'
         base.send :include, Flex::ModelIndexer
       else
-        raise NotImplementedError,  %(Flex does not include "Flex::Model" anymore. Please, require the "flex-model" gem, and include "Flex::ModelIndexer" instead.)
+        raise NotImplementedError,  %(Flex does not include "Flex::Model" anymore. Please, require the "flex-models" gem, and include "Flex::ModelIndexer" instead.)
       end
     end
   end
@@ -145,7 +145,7 @@ module Flex
         Deprecation.warn 'Flex::RelatedModel', 'Flex::ModelSyncer'
         base.send :include, Flex::ModelSyncer
       else
-        raise NotImplementedError, %(Flex does not include "Flex::RelatedModel" anymore. Please, require the "flex-model" gem, and include "Flex::ModelSyncer" instead.)
+        raise NotImplementedError, %(Flex does not include "Flex::RelatedModel" anymore. Please, require the "flex-models" gem, and include "Flex::ModelSyncer" instead.)
       end
     end
   end
