@@ -34,7 +34,8 @@ module Flex
         rescue LoadError
           raise MissingRedisError, 'The live-reindex feature rely on redis. Please, install redis and the "redis" gem.'
         end
-                   # this should never happen
+        raise MissingAppIdError, 'You must set the Flex::Configuration.app_id, and be sure you deploy it before live-reindexing.' \
+              if Config.app_id.nil? || Config.app_id.empty?
         raise LiveReindexInProgressError, %(It looks like a live-reindex is in progress (PID #{get(:pid)}). If you are sure that there is no live-reindex in progress, please run the "flex:reset_redis_keys" rake task and retry.) \
               if get(:pid)
         reset_keys # just in case
@@ -130,9 +131,6 @@ module Flex
       @indices        = []
       @timestamp      = Time.now.strftime('%Y%m%d%H%M%S_')
       @ensure_indices = nil
-
-      raise MissingAppIdError, 'You must set the Flex::Configuration.app_id, and be sure you deploy it before live-reindexing.' \
-            if Conf.app_id.nil?
 
       unless opts[:on_stop_indexing] == false || Conf.on_stop_indexing == false
         @stop_indexing ||= Conf.on_stop_indexing || raise(MissingStopIndexingProcError, 'The on_stop_indexing block is not set.')
