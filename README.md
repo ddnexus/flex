@@ -8,7 +8,7 @@ It also implements and integrates very advanced features like chainable scopes, 
 
 ## Quick Start
 
-The Flex documentation is very complete and detailed, so starting from the right topic for you will save time. Please, pick below the starting point that better describes you:
+The Flex documentation is very complete and detailed, so starting from the right topic for you will save you time. Please, pick the starting point that better describes you below:
 
 ### For Tire Users
 
@@ -32,13 +32,13 @@ The Flex documentation is very complete and detailed, so starting from the right
 
 ### For Elasticsearch Experts
 
-1. Flex provides the full elasticsearch APIs as ready to method. Just take a look at the [API Metods](http://ddnexus.github.io/flex/doc/2-flex/2-API-Methods.html) page to appreciate its completeness.
+1. Flex provides the full elasticsearch APIs as ready to methods. Just take a look at the [API Metods](http://ddnexus.github.io/flex/doc/2-flex/2-API-Methods.html) page to appreciate its completeness.
 
-2. Then you may want to read the [Usage Overview](http://ddnexus.github.io/flex/doc/1-Flex-Project/2-Usage-Overview.html) page. Follow the links from there in order to dig into the topics that interest you the most.
+2. Then you may want to read the [Usage Overview](http://ddnexus.github.io/flex/doc/1-Flex-Project/2-Usage-Overview.html) page. Follow the links from there in order to dig into the topics that interest you.
 
 3. If you are used to create complex searching logic, you will certainly appreciate the [Templating System](http://ddnexus.github.io/flex/doc/2-flex/3-Templating) that gives you real power with great simplicity.
 
-4. As an elasticsearch expert, you will certainly appreciate the [Live-Reindex](http://ddnexus.github.io/flex/doc/2-flex/7-Live-Reindex.html) feature: it encapsulates the solution to a quite complex problem in just one method call.
+4. As an elasticsearch expert, you will certainly appreciate the [Live-Reindex](http://ddnexus.github.io/flex/doc/6-flex-admin/2-Live-Reindex.html) feature: it encapsulates the solution to a quite complex problem in just one method call.
 
 ## Links
 
