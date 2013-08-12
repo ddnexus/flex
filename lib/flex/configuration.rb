@@ -11,8 +11,7 @@ module Flex
                                                                 :no_pruning => [] ),
                                  :config_file      => './config/flex.yml',
                                  :flex_dir         => './flex',
-                                 :http_client      => HttpClients::Loader.new_http_client,
-                                 :redis            => $redis || defined?(::Redis) && ::Redis.current
+                                 :http_client      => HttpClients::Loader.new_http_client
 
   # shorter alias
   Conf = Configuration

@@ -48,7 +48,6 @@ require 'flex/deprecation'
 
 require 'flex/api_stubs'
 require 'flex/tasks'
-require 'flex/live_reindex'
 
 module Flex
 
