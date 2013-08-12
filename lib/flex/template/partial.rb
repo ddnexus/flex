@@ -2,28 +2,25 @@ module Flex
   class Template
     class Partial
 
-      include Base
+      include Common
 
-      def initialize(data, parent)
-        @data       = data
-        @parent     = parent
-        tags        = Tags.new
-        stringified = tags.stringify(data)
-        @partials, @tags = tags.map(&:name).partition{|n| n.to_s =~ /^_/}
-        @variables  = tags.variables
+      def initialize(data)
+        @data            = data
+        tags             = Tags.new
+        stringified      = tags.stringify(data)
+        @partials, @tags = tags.partial_and_tag_names
+        @tags_variables  = tags.variables
         instance_eval <<-ruby, __FILE__, __LINE__
-          def interpolate(main_vars=Variables.new, vars={})
-            sym_vars = {}
-            vars.each{|k,v| sym_vars[k.to_sym] = v} # so you can pass the rails params hash
-            main_vars.add(@variables, sym_vars)
-            vars = process_vars(main_vars)
+          def interpolate(vars={}, partial_assigned_vars={})
+            vars = Vars.new(vars, @tags_variables, partial_assigned_vars)
+            vars = interpolate_partials(vars)
             #{stringified}
           end
         ruby
       end
 
-      def to_flex(name=nil)
-        {name.to_s => @data}.to_yaml
+      def to_source
+        {@name.to_s => @data}.to_yaml
       end
 
     end

@@ -3,17 +3,17 @@ module Flex
     class Search < Template
 
       def initialize(data, vars=nil)
-        super('GET', "/<<index>>/<<type>>/_search", data, vars)
+        super('GET', '/<<index>>/<<type>>/_search', data, vars)
       end
 
-      def to_a(vars={})
-        int = interpolate(vars)
-        a = [int[:data]]
-        a << @instance_vars unless @instance_vars.nil?
+      def to_a(*vars)
+        a = super
+        2.times{ a.delete_at 0 }
         a
       end
 
-      def to_msearch(vars={})
+      def to_msearch(*vars)
+        vars   = Vars.new(*vars)
         int    = interpolate(vars, strict=true)
         header = {}
         header[:index] = int[:vars][:index] if int[:vars][:index]

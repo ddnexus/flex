@@ -1,18 +1,13 @@
 module Flex
   module UtilityMethods
 
-    # Anonymous search query: please, consider to use named templates for better performances and programming style
-    # data can be a JSON string that will be passed as is, or a YAML string (that will be converted into a ruby hash)
-    # or a hash. It can contain interpolation tags as usual.
-    # You can pass an optional hash of interpolation arguments (or query string :params).
-    # See also the Flex::Template::Search documentation
-    def search(data, args={})
-      Template::Search.new(data).render(args)
+    def search(data, vars={})
+      Template::Search.new(data).setup(Flex.flex).render(vars)
     end
 
     # like Flex.search, but it will use the Flex::Template::SlimSearch instead
-    def slim_search(data, args={})
-      Template::SlimSearch.new(data).render(args)
+    def slim_search(data, vars={})
+      Template::SlimSearch.new(data).setup(Flex.flex).render(vars)
     end
 
     %w[HEAD GET PUT POST DELETE].each do |m|
@@ -31,109 +26,105 @@ module Flex
       MultiJson.encode(YAML.load(yaml))
     end
 
-    # Flex.process_bulk accepts a :collection of objects, that can be hashes or Models
-    # you can pass also a :action set to 'index' (default) or 'delete'
-    # in order to bulk-index or bulk-delete the whole collection
-    # you can use Flex.bulk if you have an already formatted bulk data-string
-    def process_bulk(args)
-      raise ArgumentError, "Array expected as :collection (got #{args[:collection].inspect})" \
-            unless args[:collection].is_a?(Array)
+    def reload!
+      flex.variables.deep_merge! Conf.variables
+      Templates.contexts.each {|c| c.flex.reload!}
+      true
+    end
 
-      index  = args[:index]  || Configuration.variables[:index]
-      type   = args[:type]   || Configuration.variables[:type]
-      action = args[:action] || 'index'
+    def doc(*args)
+      flex.doc(*args)
+    end
 
-      meta = {}
-      [:version, :routing, :percolate, :parent, :timestamp, :ttl].each do |opt|
-        meta["_#{opt}"] = args[opt] if args[opt]
+    def scan_search(*args, &block)
+      flex.scan_search(*args, &block)
+    end
+
+    def scan_all(*vars, &block)
+      flex.scan_search(:match_all, *vars) do |raw_result|
+        batch = raw_result['hits']['hits']
+        block.call(batch)
       end
-      lines = args[:collection].map do |d|
-                # skips indexing for objects that return nil as the indexed_json or are not flex_indexable?
-                unless action == 'delete'
-                  next if d.respond_to?(:flex_indexable?) && !d.flex_indexable?
-                  json = get_json(d) || next
-                end
-                m = {}
-                m['_index']   = get_index(d) || index
-                m['_type']    = get_type(d)  || type
-                m['_id']      = get_id(d)    || d       # we could pass an array of ids to delete
-                parent        = get_parent(d)
-                m['_parent']  = parent if parent
-                routing       = get_routing(d)
-                m['_routing'] = routing if routing
-                line = MultiJson.encode({action => meta.merge(m)})
-                line << "\n#{json}" unless action == 'delete'
-                line
-              end.compact
-
-      bulk(args.merge(:lines => lines.join("\n") + "\n")) if lines.size > 0
     end
 
-    def import_collection(collection, options={})
-      process_bulk( {:collection => collection,
-                     :action     => 'index'}.merge(options) )
-
+    def dump_all(*vars, &block)
+      refresh_index(*vars)
+      scan_all({:params => {:fields => '*,_source'}}, *vars) do |batch|
+        batch.map!{|document| document.delete('_score'); document}
+        block.call(batch)
+      end
     end
 
-    def delete_collection(collection, options={})
-      process_bulk( {:collection => collection,
-                     :action     => 'delete'}.merge(options) )
+    # refresh and pull the full document from the index
+    def dump_one(*vars)
+      refresh_index(*vars)
+      document = search_by_id({:params => {:fields => '*,_source'}}, *vars)
+      document.delete('_score')
+      document
+    end
+
+    # You should use Flex.post_bulk_string if you have an already formatted bulk data-string
+    def post_bulk_collection(collection, options={})
+      raise ArgumentError, "Array expected as :collection, got #{collection.inspect}" \
+            unless collection.is_a?(Array)
+      bulk_string = ''
+      collection.each do |d|
+        bulk_string << build_bulk_string(d, options)
+      end
+      post_bulk_string(:bulk_string => bulk_string) unless bulk_string.empty?
+    end
+
+    def build_bulk_string(document, options={})
+      case document
+      when Hash
+        bulk_string_from_hash(document, options)
+      when Flex::ModelIndexer, Flex::ActiveModel
+        bulk_string_from_flex(document, options)
+      else
+        raise NotImplementedError, "Unable to convert the document #{document.inspect} to a bulk string."
+      end
     end
 
   private
 
     def perform(*args)
-      Template.new(*args).render
+      Template.new(*args).setup(Flex.flex).render
     end
 
-    def get_index(d)
-       d.class.flex.index if d.class.respond_to?(:flex)
-    end
-
-    def get_type(d)
-      case
-      when d.respond_to?(:flex)  then d.flex.type
-      when d.respond_to?(:_type) then d._type
-      when d.is_a?(Hash)         then d.delete(:_type) || d.delete('_type') ||
-                                      d.delete(:type)  || d.delete('type')
-      when d.respond_to?(:type)  then d.type
+    def bulk_string_from_hash(document, options)
+      meta = Utils.slice_hash(document, '_index', '_type', '_id')
+      if document.has_key?('fields')
+        document['fields'].each do |k, v|
+          meta[k] = v if k[0] == '_'
+        end
       end
+      source = document['_source'] unless options[:action] == 'delete'
+      to_bulk_string(meta, source, options)
     end
 
-    def get_parent(d)
-      case
-      when d.respond_to?(:flex) && d.flex.parent_instance(false) then d.flex.parent_instance.id
-      when d.respond_to?(:_parent) then d._parent
-      when d.respond_to?(:parent)  then d.parent
-      when d.is_a?(Hash)           then d.delete(:_parent) || d.delete('_parent') ||
-                                        d.delete(:parent)  || d.delete('parent')
-      end
+    def bulk_string_from_flex(document, options)
+      flex = document.flex
+      return '' unless document.flex_indexable?
+      meta = { '_index' => flex.index,
+               '_type'  => flex.type,
+               '_id'    => flex.id }
+      meta['_parent']  = flex.parent  if flex.parent
+      meta['_routing'] = flex.routing if flex.routing
+      source           = document.flex_source unless options[:action] == 'delete'
+      to_bulk_string(meta, source, options)
     end
 
-    def get_routing(d)
-      case
-      when d.respond_to?(:flex) && d.flex.routing(false) then d.flex.routing
-      when d.respond_to?(:_routing) then d._routing
-      when d.respond_to?(:routing)  then d.routing
-      when d.is_a?(Hash)            then d.delete(:_routing) || d.delete('_routing') ||
-                                         d.delete(:routing)  || d.delete('routing')
+    def to_bulk_string(meta, source, options)
+      action = options[:action] || 'index'
+      return '' if source.nil? || source.empty? &&! (action == 'delete')
+      meta['_index'] = LiveReindex.prefix_index(meta['_index']) if LiveReindex.should_prefix_index?
+      bulk_string = MultiJson.encode(action => meta) + "\n"
+      unless action == 'delete'
+        source_line = source.is_a?(String) ? source : MultiJson.encode(source)
+        return '' if source.nil? || source.empty?
+        bulk_string << source_line + "\n"
       end
-    end
-
-    def get_id(d)
-      case
-      when d.is_a?(Hash)      then  d.delete(:_id) || d.delete('_id') ||
-                                    d.delete(:id)  || d.delete('id')
-      when d.respond_to?(:id) then  d.id
-      end
-    end
-
-    def get_json(d)
-      case
-      when d.respond_to?(:flex_source) then d.flex_source
-      when d.respond_to?(:to_json)     then d.to_json
-      else MultiJson.encode(d)
-      end
+      bulk_string
     end
 
   end

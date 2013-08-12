@@ -1,0 +1,202 @@
+# These methods are available as Flex.<method>(variable_hash)
+# you can get the updated full reference and usage example of these methods
+# by just doing in the console:
+# >> Flex.doc
+
+
+
+#-----------------------------------------------------------------------------#
+### Index ###
+# http://www.elasticsearch.org/guide/reference/api/index_/
+
+# You must pass the :data variable
+store: &store
+  - PUT
+  - /<<index>>/<<type>>/<<id>>
+
+# alias for symmetry with post_store
+put_store: *store
+
+# id is assigned by ES; you must pass :data
+post_store:
+  - POST
+  - /<<index>>/<<type>>
+
+
+
+#-----------------------------------------------------------------------------#
+### Delete ###
+# http://www.elasticsearch.org/guide/reference/api/delete/
+
+delete: &delete
+  - DELETE
+  - /<<index>>/<<type>>/<<id>>
+
+remove: *delete
+
+
+
+#-----------------------------------------------------------------------------#
+### Get ###
+# http://www.elasticsearch.org/guide/reference/api/get.html
+
+get:
+  - GET
+  - /<<index>>/<<type>>/<<id>>
+
+get_source:
+  - GET
+  - /<<index>>/<<type>>/<<id>>/_source
+
+
+
+#-----------------------------------------------------------------------------#
+### Multi Get ###
+# http://www.elasticsearch.org/guide/reference/api/multi-get.html
+
+multi_get:
+  - GET
+  - /<<index>>/<<type>>/_mget
+  - ids: << ids >>
+
+
+
+#-----------------------------------------------------------------------------#
+### Update ###
+# http://www.elasticsearch.org/guide/reference/api/update/
+
+# you must pass script or doc and the other options as the :data variable
+update:
+  - POST
+  - /<<index>>/<<type>>/<<id>>/_update
+
+
+
+#-----------------------------------------------------------------------------#
+### Search ###
+# The search api is covered by the templating system
+
+
+
+#-----------------------------------------------------------------------------#
+### Multi Search ###
+# the Multi Search api is covered by the YourClass.multi_search method
+# added by the Flex::Templates module
+
+
+
+#-----------------------------------------------------------------------------#
+### Percolate ###
+# http://www.elasticsearch.org/guide/reference/api/percolate.html
+
+# You must pass the the document (and additional queries) as :data variable
+percolate:
+  - GET
+  - /<<index>>/<<type>>/_percolate
+
+# You must pass the the query (and additional fields) as :data variable
+put_percolator:
+  - PUT
+  - /_percolator/<<index>>/<<percolator>>
+
+# http://www.elasticsearch.org/guide/reference/api/percolate.html
+delete_percolator:
+  - DELETE
+  - /_percolator/<<index>>/<<percolator>>
+
+
+
+#-----------------------------------------------------------------------------#
+### Bulk ###
+# http://www.elasticsearch.org/guide/reference/api/bulk.html
+
+post_bulk_string: &bulk
+  - POST
+  - /_bulk
+  - << bulk_string >>
+
+# Deprecated alias for backward compatibility
+bulk: *bulk
+
+
+
+#-----------------------------------------------------------------------------#
+### Count ###
+# http://www.elasticsearch.org/guide/reference/api/count.html
+
+count:
+  - GET
+  - /<<index>>/<<type>>/_count
+  # pass :data structure if you need
+
+
+
+#-----------------------------------------------------------------------------#
+### Delete by query ###
+# http://www.elasticsearch.org/guide/reference/api/delete-by-query.html
+
+delete_by_query:
+  - DELETE
+  - /<<index>>/<<type>>/_query
+  # pass :data variable query if you need
+
+
+
+#-----------------------------------------------------------------------------#
+### More Like This ###
+# http://www.elasticsearch.org/guide/reference/api/more-like-this.html
+
+# You can pass the search API (facets, from/to and so on) as :data variable
+more_like_this: &mlt
+  - GET
+  - /<<index>>/<<type>>/<<id>>/_mlt
+
+# aliased
+mlt: *mlt
+
+
+
+#-----------------------------------------------------------------------------#
+### Validate ###
+# http://www.elasticsearch.org/guide/reference/api/validate/
+
+# you must pass the query to validate as the :data variable
+# you can pass the parameters as the :params variable
+validate:
+  - GET
+  - /<<index>>/<<type>>/_validate/query
+
+
+
+#-----------------------------------------------------------------------------#
+### Explain ###
+# http://www.elasticsearch.org/guide/reference/api/explain/
+
+# you must pass the query to explain as the :data variable
+# you can pass the parameters as the :params variable
+explain:
+  - GET
+  - /<<index>>/<<type>>/<<id>>/_explain
+
+
+
+#-----------------------------------------------------------------------------#
+### Flex additions ###
+
+# not a real API method, but handy
+match_all:
+  - GET
+  - /<<index>>/<<type>>/_search
+  - query:
+      match_all: {}
+
+
+
+#-----------------------------------------------------------------------------#
+# get a document without using the get API (which doesn't support fields '*')
+search_by_id:
+  - GET
+  - /<<index>>/<<type>>/_search
+  - query:
+      term:
+        _id: <<id>>

@@ -8,6 +8,7 @@ module Flex
   class ExistingIndexError     < StandardError; end
   class MissingHttpClientError < StandardError; end
   class MissingParentError     < StandardError; end
+  class MissingVariableError   < StandardError; end
 
   class HttpError < StandardError
 
@@ -27,7 +28,7 @@ module Flex
     end
 
     def to_s
-      log = "#{@caller_line}\n" if @caller_line
+      log = "#@caller_line\n" if @caller_line
       "#{log}#{status}: #{body}"
     end
 

@@ -1,15 +1,29 @@
 module Flex
   module ClassProxy
-
     class Base
-      attr_reader :host_class
+
       attr_accessor :variables
 
-      def initialize(host_class)
-        @host_class = host_class
-        @variables  = Variables.new
+      def initialize(context, vars={})
+        @variables = Vars.new({:context => context,
+                               :index   => Conf.variables[:index]}.merge(vars))
       end
-    end
 
+      def init; end
+
+      [:context, :index, :type].each do |meth|
+        define_method meth do
+          variables[meth]
+        end
+        define_method :"#{meth}=" do |val|
+          variables[meth] = val
+        end
+      end
+
+      def refresh_index
+        Flex.refresh_index :index => index
+      end
+
+    end
   end
 end

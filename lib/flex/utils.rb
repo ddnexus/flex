@@ -2,23 +2,17 @@ module Flex
   module Utils
     extend self
 
-    def data_from_source(source)
+    def parse_source(source)
       return unless source
-      data = case source
-             when Hash              then stringified_hash(source)
-             when /^\s*\{.+\}\s*$/m then source
-             when String            then YAML.load(source)
-             else raise ArgumentError, "expected a String or Hash instance (got #{source.inspect})"
-             end
-      raise ArgumentError, "the source does not decode to a Hash or String (got #{data.inspect})" \
-            unless data.is_a?(Hash) || data.is_a?(String)
-      data
-    end
-
-    def deep_merge_hashes(h1, *hashes)
-      merged = h1.dup
-      hashes.each {|h2| merged.replace(deep_merge_hash(merged,h2))}
-      merged
+      parsed = case source
+               when Hash              then keyfy(:to_s, source)
+               when /^\s*\{.+\}\s*$/m then source
+               when String            then YAML.load(source)
+               else raise ArgumentError, "expected a String or Hash instance, got #{source.inspect}"
+               end
+      raise ArgumentError, "the source does not decode to an Array, Hash or String, got #{parsed.inspect}" \
+            unless parsed.is_a?(Hash) || parsed.is_a?(Array) || parsed.is_a?(String)
+      parsed
     end
 
     def erb_process(source)
@@ -39,22 +33,71 @@ module Flex
       h
     end
 
-    def stringified_hash(hash)
-      h = {}
-      hash.each do |k,v|
-        h[k.to_s] = v.is_a?(Hash) ? stringified_hash(v) : v
+    def delete_allcaps_keys(hash)
+      hash.keys.each { |k| hash.delete(k) if k =~ /^[A-Z_]+$/ }
+      hash
+    end
+
+    def keyfy(to_what, obj)
+      case obj
+      when Hash
+        h = {}
+        obj.each do |k,v|
+          h[k.send(to_what)] = keyfy(to_what, v)
+        end
+        h
+      when Array
+        obj.map{|i| keyfy(to_what, i)}
+      else
+        obj
       end
+    end
+
+    def slice_hash(hash, *keys)
+      h = {}
+      keys.each{|k| h[k] = hash[k] if hash.has_key?(k)}
       h
     end
 
-  private
-
-    def deep_merge_hash(h1, h2)
-      h2 ||= {}
-      h1.merge(h2) do |key, oldval, newval|
-        oldval.is_a?(Hash) && newval.is_a?(Hash) ? deep_merge_hash(oldval, newval) : newval
+    def env2options(*keys)
+      options = {}
+      ENV.keys.map do |k|
+        key = k.downcase.to_sym
+        options[key] = ENV[k] if keys.include?(key)
       end
+      options
     end
+
+    def define_delegation(opts)
+      file, line = caller.first.split(':', 2)
+      line = line.to_i
+
+      obj, meth, methods, to = opts[:in], opts[:by], opts[:for], opts[:to]
+
+      methods.each do |method|
+        obj.send meth, <<-method, file, line - 1
+          def #{method}(*args, &block)                        # def method_name(*args, &block)
+            if #{to} || #{to}.respond_to?(:#{method})         #   if client || client.respond_to?(:name)
+              #{to}.__send__(:#{method}, *args, &block)       #     client.__send__(:name, *args, &block)
+            end                                               #   end
+          end                                                 # end
+        method
+      end
+
+    end
+
+    def class_name_to_type(class_name)
+      type = class_name.tr(':', '_')
+      type.gsub!(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+      type.gsub!(/([a-z\d])([A-Z])/,'\1_\2')
+      type.downcase!
+      type
+    end
+
+    def type_to_class_name(type)
+      type.gsub(/__(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
+    end
+
 
   end
 end

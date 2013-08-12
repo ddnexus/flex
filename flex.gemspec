@@ -2,20 +2,23 @@ require 'date'
 
 Gem::Specification.new do |s|
   s.name                      = 'flex'
-  s.summary                   = 'Ruby Client for ElasticSearch'
+  s.summary                   = 'The ultimate ruby client for elasticsearch'
   s.description               = <<-desc
-Flex is an innovative ruby client for ElasticSearch. With Flex your code will be clean, easy to write and read, and very short: "poetic-short". Flex is fast and efficient, easy to use and customize, and offers ActiveRecord, Mongoid and Rails integration.
+Flex is the ultimate ruby client for elasticsearch. It is powerful, fast and efficient, easy to use and customize.
+
+It covers ALL the elasticsearch API, and transparently integrates it with your app and its components, like Rails, ActiveRecord, Mongoid, ActiveModel, will_paginate, kaminari, elasticsearch-mapper-attachments, ...
+
+It also implements and integrates very advanced features like chainable scopes, live-reindex, cross-model syncing, query fragment reuse, parent/child relationships, templating, self-documenting tools, detailed debugging, ...
   desc
   s.homepage                  = 'http://github.com/ddnexus/flex'
-  s.authors                   = ["Domizio Demichelis"]
+  s.authors                   = ['Domizio Demichelis']
   s.email                     = 'dd.nexus@gmail.com'
-  s.executables               = ['flexes']
   s.extra_rdoc_files          = %w[README.md]
   s.require_paths             = %w[lib]
   s.files                     = `git ls-files -z`.split("\0")
   s.version                   = File.read(File.expand_path('../VERSION', __FILE__)).strip
   s.date                      = Date.today.to_s
-  s.required_rubygems_version = ">= 1.3.6"
+  s.required_rubygems_version = '>= 1.3.6'
   s.rdoc_options              = %w[--charset=UTF-8]
   s.post_install_message      = <<EOM
 ________________________________________________________________________________
@@ -23,22 +26,13 @@ ________________________________________________________________________________
                              FLEX INSTALLATION NOTES
 ________________________________________________________________________________
 
-In order to use Flex, a supported http-client must be installed on this system.
+New Documentation:  http://ddnexus.github.io/flex
 
-The suported http-client gems are "patron" and "rest-client".
-
-You should install "patron" (a libcurl based gem developed in C) for best
-performances, or install "rest-client" if you cannot use libcurl on your system.
-
-As an alternative you could eventually develop your own http-client interface
-and set the Flex::Configuration.http_client option.
+Upgrading Tutorial: http://ddnexus.github.io/flex/doc/7-Tutorials/2-Migrate-from-0.x.html
 
 ________________________________________________________________________________
 EOM
-  s.add_runtime_dependency 'multi_json', '~> 1.3.4'
-  s.add_runtime_dependency 'progressbar', '~> 0.11.0'
-  s.add_runtime_dependency 'prompter', '~> 0.1.5'
-  s.add_development_dependency 'irt', '~> 1.2.10'
-  s.add_development_dependency 'patron', '~> 0.4.18'
-  s.add_development_dependency 'rest-client', '~> 1.6.7'
+  s.add_runtime_dependency     'multi_json',  '>= 1.3.4'
+  s.add_runtime_dependency     'progressbar', '>= 0.11.0', '~> 0.12.0'
+  s.add_runtime_dependency     'dye',         '~> 0.1.4'
 end

@@ -1,36 +1,65 @@
 module Flex
   class Result
 
-    #  adds sugar to documents with the following structure:
+    #  adds sugar to documents with the following structure (_source is optional):
     #
     #    {
     #        "_index" : "twitter",
     #        "_type" : "tweet",
     #        "_id" : "1",
+    #        "_source" : {
+    #            "user" : "kimchy",
+    #            "postDate" : "2009-11-15T14:12:12",
+    #            "message" : "trying out Elastic Search"
+    #        }
     #    }
 
     module Document
 
-      META = %w[_index _type _id]
-
       # extend if result has a structure like a document
       def self.should_extend?(obj)
-        META.all? {|k| obj.has_key?(k)}
+        %w[_index _type _id].all? {|k| obj.has_key?(k)}
       end
 
-      META.each do |m|
-        define_method(m){self["#{m}"]}
+      def respond_to?(meth, private=false)
+        smeth = meth.to_s
+        readers.has_key?(smeth) || has_key?(smeth) || has_key?("_#{smeth}") || super
       end
 
-      def mapped_class(should_raise=false)
-        @mapped_class ||= Manager.type_class_map["#{_index}/#{_type}"]
-      rescue NameError
-        raise DocumentMappingError, "the '#{_index}/#{_type}' document cannot be mapped to any class." \
-              if should_raise
+      # exposes _source and readers: automatically supply object-like reader access
+      # also expose meta readers like _id, _source, etc, also callable without the leading '_'
+      def method_missing(meth, *args, &block)
+        smeth = meth.to_s
+        case
+        # field name
+        when readers.has_key?(smeth)
+          readers[smeth]
+        # result item
+        when has_key?(smeth)
+          self[smeth]
+        # result item called without the '_' prefix
+        when has_key?("_#{smeth}")
+          self["_#{smeth}"]
+        else
+          super
+        end
       end
 
-      def load
-        mapped_class.find _id
+      # used to get the unprefixed (by live-reindex) index name
+      def index_basename
+        @index_basename ||= self['_index'].sub(/^\d{14}_/, '')
+      end
+
+
+      private
+
+      def readers
+        @readers ||= begin
+                       readers = (self['_source']||{}).merge(self['fields']||{})
+                       # flattened reader for multi_readers or attachment readers
+                       readers.keys.each{|k| readers[k.gsub('.','_')] = readers.delete(k) if k.include?('.')}
+                       readers
+                     end
       end
 
     end
