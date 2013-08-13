@@ -20,6 +20,7 @@ It also implements and integrates very advanced features like chainable scopes, 
   s.date                      = Date.today.to_s
   s.required_rubygems_version = '>= 1.3.6'
   s.rdoc_options              = %w[--charset=UTF-8]
+  s.license                   = 'MIT'
   s.post_install_message      = <<EOM
 ________________________________________________________________________________
 
