@@ -1,5 +1,7 @@
 # Flex
 
+[![Gem Version](https://badge.fury.io/rb/flex.png)](http://badge.fury.io/rb/flex)
+
 Flex is the ultimate ruby client for [elasticsearch](http://elasticsearch.org). It is powerful, fast and efficient, easy to use and customize.
 
 It covers ALL the elasticsearch API, and transparently integrates it with your app and its components, like `Rails`, `ActiveRecord`, `Mongoid`, `ActiveModel`, `will_paginate`, `kaminari`, `elasticsearch-mapper-attachments`, ...
