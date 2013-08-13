@@ -32,7 +32,7 @@ The Flex documentation is very complete and detailed, so starting from the right
 
 ### For Elasticsearch Experts
 
-1. Flex provides the full elasticsearch APIs as ready to methods. Just take a look at the [API Metods](http://ddnexus.github.io/flex/doc/2-flex/2-API-Methods.html) page to appreciate its completeness.
+1. Flex provides the full elasticsearch APIs as ready to use methods. Just take a look at the [API Metods](http://ddnexus.github.io/flex/doc/2-flex/2-API-Methods.html) page to appreciate its completeness.
 
 2. Then you may want to read the [Usage Overview](http://ddnexus.github.io/flex/doc/1-Flex-Project/2-Usage-Overview.html) page. Follow the links from there in order to dig into the topics that interest you.
 
