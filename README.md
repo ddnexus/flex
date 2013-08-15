@@ -44,14 +44,16 @@ The Flex documentation is very complete and detailed, so starting from the right
 
 ## Links
 
-* [Flex Project (Global Documentation)](http://ddnexus.github.io/flex/doc/)
-* [flex Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/2-flex)
-* [flex-admin Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/6-flex-admin)
-* [flex-models Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/4-flex-models)
-* [flex-rails Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/5-flex-rails)
-* [flex-scopes Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/3-flex-scopes)
-* [Issues](https://github.com/ddnexus/flex/issues)
-* [Pull Requests](https://github.com/ddnexus/flex/pulls)
+- __Project Documentation__
+  - [Flex Project](http://ddnexus.github.io/flex/doc/)
+- __Gem-Specific Documentation__
+  - [flex](http://ddnexus.github.io/flex/doc/2-flex)
+  - [flex-admin](http://ddnexus.github.io/flex/doc/6-flex-admin)
+  - [flex-models](http://ddnexus.github.io/flex/doc/4-flex-models)
+  - [flex-rails](http://ddnexus.github.io/flex/doc/5-flex-rails)
+  - [flex-scopes](http://ddnexus.github.io/flex/doc/3-flex-scopes)
+- __[Issues](https://github.com/ddnexus/flex/issues)__
+- __[Pull Requests](https://github.com/ddnexus/flex/pulls)__
 
 ## Branches
 
