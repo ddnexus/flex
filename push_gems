@@ -1,0 +1,35 @@
+#! /usr/bin/env ruby
+
+require 'fileutils'
+gems    = %w[flex flex-admin flex-models flex-rails flex-scopes]
+
+begin
+
+  unless `git status -s`.empty?
+    puts 'aborted: the working tree is dirty!'
+    exit(1)
+  end
+
+  gems.each do |gem_name|
+    FileUtils.chdir(gem_name) do
+      system %(gem build #{gem_name}.gemspec)
+      version = File.read('VERSION').strip
+      gemfile = "#{gem_name}-#{version}.gem"
+      system %(gem push #{gemfile})
+    end
+  end
+
+  system %(git tag '#{version}')
+
+ensure
+
+  gems.each do |gem_name|
+    FileUtils.chdir(gem_name) do
+      version = File.read('VERSION').strip
+      gemfile = "#{gem_name}-#{version}.gem"
+      FileUtils.remove_entry_secure gemfile, true
+    end
+  end
+
+end
+

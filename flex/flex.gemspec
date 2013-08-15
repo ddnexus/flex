@@ -1,4 +1,5 @@
 require 'date'
+version = File.read(File.expand_path('../VERSION', __FILE__)).strip
 
 Gem::Specification.new do |s|
   s.name                      = 'flex'
@@ -13,10 +14,9 @@ It also implements and integrates very advanced features like chainable scopes, 
   s.homepage                  = 'http://github.com/ddnexus/flex'
   s.authors                   = ['Domizio Demichelis']
   s.email                     = 'dd.nexus@gmail.com'
-  s.extra_rdoc_files          = %w[README.md]
   s.require_paths             = %w[lib]
   s.files                     = `git ls-files -z`.split("\0")
-  s.version                   = File.read(File.expand_path('../VERSION', __FILE__)).strip
+  s.version                   = version
   s.date                      = Date.today.to_s
   s.required_rubygems_version = '>= 1.3.6'
   s.rdoc_options              = %w[--charset=UTF-8]

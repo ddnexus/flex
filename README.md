@@ -46,12 +46,16 @@ The Flex documentation is very complete and detailed, so starting from the right
 
 * [Flex Project (Global Documentation)](http://ddnexus.github.io/flex/doc/)
 * [flex Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/2-flex)
+* [flex-admin Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/6-flex-admin)
+* [flex-models Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/4-flex-models)
+* [flex-rails Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/5-flex-rails)
+* [flex-scopes Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/3-flex-scopes)
 * [Issues](https://github.com/ddnexus/flex/issues)
 * [Pull Requests](https://github.com/ddnexus/flex/pulls)
 
 ## Branches
 
-The master branch reflects the last published gem. Then you may find a next-version branch (named after the version string), with the commits that will be merged in master just before publishing the next gem version. The next-version branch may get rebased or force pushed.
+The master branch reflects the last published gems. Then you may find a next-version branch (named after the version string), with the commits that will be merged in master just before publishing the next gem versions. The next-version branch may get rebased or force pushed.
 
 ## Credits
 

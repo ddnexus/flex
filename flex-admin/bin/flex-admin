@@ -1,0 +1,112 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require 'flex-admin'
+
+options  = Flex::Admin::Tasks.new.default_options
+
+version  = File.read(File.expand_path('../../VERSION', __FILE__)).strip
+copy     = "flex-admin #{version} (c) 2012-2013 by Domizio Demichelis"
+optparse = OptionParser.new do |opts|
+
+  opts.banner = <<-banner
+
+    flex-admin:
+        Generic binary tool to dump/load data from/to any elasticsearch index (no app needed).
+        If you need to migrate data, use the flex live-reindexing.
+
+    Usage:
+        flex-admin <command> [options]
+    <command>:
+        dump    dumps the data from one or more elasticsearch indices
+        load    loads a dumpfile
+        stats   prints the full elasticsearch stats
+
+    Notice: The load command will load the dump-file into elasticsearch without removing any pre-existent data.
+            If you need fresh indices, use the flex:index:delete and flex:index:create rake tasks from your
+            application, which will also recreate the mapping.
+  banner
+
+
+  opts.separator ''
+  opts.separator 'Common options:'
+
+  opts.on( '-f', '--file [FILE]', "The path of the dumpfile (default: '#{options[:file]}')" ) do |f|
+    options[:file] = f
+  end
+
+  opts.on( '-r', '--[no-]verbose', "Run verbosely (default: '#{options[:verbose]}')" ) do |q|
+    options[:verbose] = q
+  end
+
+  opts.separator ''
+  opts.separator 'Dump options:'
+
+  opts.on( '-i', '--index [INDEX_OR_INDICES]', Array, 'The index or comma separated indices to dump (default: all indices)' ) do |i|
+    options[:index] = i
+  end
+
+  opts.on( '-t', '--type [TYPE_OR_TYPES]', Array, 'The type or comma separated types to dump (default: all types)' ) do |t|
+    options[:type] = t
+  end
+
+  opts.on( '-s', '--scroll [TIME]', Integer, "The ElasticSearch scroll time (default: #{options[:scroll]})" ) do |s|
+    options[:scroll] = s
+  end
+
+  opts.on( '-z', '--size [SIZE]', Integer, "The chunk size to dump per shard (default: #{options[:size]} * number of shards)" ) do |z|
+    options[:size] = z
+  end
+
+  opts.separator ''
+  opts.separator 'Load options:'
+
+  opts.on( '-m', '--index-map [INDEX_MAP]', 'The index rename map (example: -m=dumped_index_name:loaded_index_name,a:b)') do |m|
+    options[:index_map] = Hash[m.split(',').map{|i|i.split(':')}]
+  end
+
+  opts.on( '-o', '--timeout [SECONDS]', Integer, "The http_client timeout for bulk loading (default: #{options[:timeout]} seconds)" ) do |o|
+    options[:timeout] = o
+  end
+
+  opts.on( '-b', '--batch-size [BATCH_SIZE]', Integer, "The batch size to load (default: #{options[:batch_size]})" ) do |z|
+    options[:batch_size] = z
+  end
+
+  opts.separator ''
+  opts.separator 'Other options:'
+
+  opts.on( '-v', '--version', 'Shows the version and exits' ) do
+    puts version
+    exit
+  end
+
+  opts.on_tail( '-h', '--help', 'Displays this screen' ) do
+    puts copy
+    puts opts
+    exit
+  end
+
+end
+
+optparse.parse!
+command = ARGV.first
+exec "#{$0} -h" if command.nil?
+puts copy
+
+case command
+
+when 'dump'
+  Flex::Admin::Tasks.new(options).dump_to_file(true)
+
+when 'load'
+  Flex::Admin::Tasks.new(options).load_from_file
+
+when 'stats'
+  puts '>> puts Flex.index_stats.to_yaml'
+  puts Flex.index_stats.to_yaml
+
+else
+  puts "unknown command: #{command.inspect}"
+
+end
