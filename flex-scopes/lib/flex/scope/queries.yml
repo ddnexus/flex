@@ -1,0 +1,52 @@
+ANCHORS:
+  - &filters
+    - <<filters= ~ >>
+    - <<term_list= ~ >>
+    - terms: <<terms_list= ~ >>
+    - <<_missing_list= ~ >>
+    - <<_and= ~ >>
+    - <<_or= ~ >>
+    - range: <<range= ~ >>
+
+  - &scope
+    query:
+      query_string:
+        "<<cleanable_query= {query: '*'} >>"
+    script_fields:
+      <<script_fields= ~ >>
+    sort: <<sort= ~ >>
+    facets: <<facets= ~ >>
+    highlight: <<highlight= ~ >>
+    filter: <<_boolean_wrapper= :_and >>
+
+_and:
+  and: *filters
+
+_or:
+  or: *filters
+
+_missing_fields:
+  missing:
+    field: <<missing>>
+
+get:
+- GET
+- /<<index>>/<<type>>/_search
+- *scope
+
+
+
+delete:
+- DELETE
+- /<<index>>/<<type>>/_query
+- filtered:
+    <<: *scope
+
+
+
+ids:
+- GET
+- /<<index>>/<<type>>/_search
+- query:
+    terms:
+      _id: <<ids>>

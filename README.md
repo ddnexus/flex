@@ -1,5 +1,7 @@
 # Flex
 
+[![Gem Version](https://badge.fury.io/rb/flex.png)](http://badge.fury.io/rb/flex)
+
 Flex is the ultimate ruby client for [elasticsearch](http://elasticsearch.org). It is powerful, fast and efficient, easy to use and customize.
 
 It covers ALL the elasticsearch API, and transparently integrates it with your app and its components, like `Rails`, `ActiveRecord`, `Mongoid`, `ActiveModel`, `will_paginate`, `kaminari`, `elasticsearch-mapper-attachments`, ...
@@ -32,7 +34,7 @@ The Flex documentation is very complete and detailed, so starting from the right
 
 ### For Elasticsearch Experts
 
-1. Flex provides the full elasticsearch APIs as ready to methods. Just take a look at the [API Metods](http://ddnexus.github.io/flex/doc/2-flex/2-API-Methods.html) page to appreciate its completeness.
+1. Flex provides the full elasticsearch APIs as ready to use methods. Just take a look at the [API Metods](http://ddnexus.github.io/flex/doc/2-flex/2-API-Methods.html) page to appreciate its completeness.
 
 2. Then you may want to read the [Usage Overview](http://ddnexus.github.io/flex/doc/1-Flex-Project/2-Usage-Overview.html) page. Follow the links from there in order to dig into the topics that interest you.
 
@@ -42,14 +44,20 @@ The Flex documentation is very complete and detailed, so starting from the right
 
 ## Links
 
-* [Flex Project (Global Documentation)](http://ddnexus.github.io/flex/doc/)
-* [flex Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/2-flex)
-* [Issues](https://github.com/ddnexus/flex/issues)
-* [Pull Requests](https://github.com/ddnexus/flex/pulls)
+- __Project Documentation__
+  - [Flex Project](http://ddnexus.github.io/flex/doc/)
+- __Gem-Specific Documentation__
+  - [flex](http://ddnexus.github.io/flex/doc/2-flex)
+  - [flex-admin](http://ddnexus.github.io/flex/doc/6-flex-admin)
+  - [flex-models](http://ddnexus.github.io/flex/doc/4-flex-models)
+  - [flex-rails](http://ddnexus.github.io/flex/doc/5-flex-rails)
+  - [flex-scopes](http://ddnexus.github.io/flex/doc/3-flex-scopes)
+- __[Issues](https://github.com/ddnexus/flex/issues)__
+- __[Pull Requests](https://github.com/ddnexus/flex/pulls)__
 
 ## Branches
 
-The master branch reflects the last published gem. Then you may find a next-version branch (named after the version string), with the commits that will be merged in master just before publishing the next gem version. The next-version branch may get rebased or force pushed.
+The master branch reflects the last published gems. Then you may find a next-version branch (named after the version string), with the commits that will be merged in master just before publishing the next gem versions. The next-version branch may get rebased or force pushed.
 
 ## Credits
 
