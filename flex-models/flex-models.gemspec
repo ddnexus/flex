@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name                      = 'flex-models'
   s.summary                   = 'Transparently integrates your models with one or more elasticsearch indices.'
   s.description               = 'Provides ActiveRecord, Mongoid, ActiveModel and elasticsearch-mapper-attachment integrations, cross syncing, parent/child relationships, bulk-import, live-reindex of models, ...'
-  s.homepage                  = 'http://github.com/ddnexus/flex-models'
+  s.homepage                  = 'http://github.com/ddnexus/flex'
   s.authors                   = ["Domizio Demichelis"]
   s.email                     = 'dd.nexus@gmail.com'
   s.files                     = `git ls-files -z`.split("\0")

@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name                      = 'flex-scopes'
   s.summary                   = 'ActiveRecord-like chainable scopes and finders for Flex.'
   s.description               = 'Provides an easy to use ruby API to search elasticsearch with ActiveRecord-like chainable and mergeables scopes.'
-  s.homepage                  = 'http://github.com/ddnexus/flex-scopes'
+  s.homepage                  = 'http://github.com/ddnexus/flex'
   s.authors                   = ["Domizio Demichelis"]
   s.email                     = 'dd.nexus@gmail.com'
   s.files                     = `git ls-files -z`.split("\0")

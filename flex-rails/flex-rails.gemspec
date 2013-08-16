@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name                      = 'flex-rails'
   s.summary                   = 'Rails integration for Flex'
   s.description               = 'Provides the engine, generators and helpers to integrate Flex with Rails'
-  s.homepage                  = 'http://github.com/ddnexus/flex-rails'
+  s.homepage                  = 'http://github.com/ddnexus/flex'
   s.authors                   = ["Domizio Demichelis"]
   s.email                     = 'dd.nexus@gmail.com'
   s.files                     = `git ls-files -z`.split("\0")
