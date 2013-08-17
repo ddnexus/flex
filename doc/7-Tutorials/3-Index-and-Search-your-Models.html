@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - Index and Search your Models
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/7-Tutorials">Tutorials</a></span> &gt; <span>Index and Search your Models</span>
+      </div>
+      <h1 id='index_and_search_your_models'>Index and Search your Models</h1>
+
+<blockquote>
+<p><strong>Notice</strong>: This tutorial is complemented by the next one, please read both of them (see <a href='/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html'>Index and Search External Data</a>).</p>
+</blockquote>
+
+<p>In this tutorial you will learn how to index the data in your own models and a few different options for searching it. You will also learn how you can easily transform any (even complex) elasticsearch query to a ready to use method in no time.</p>
+
+<p>We will not explicitly create any new app as we did in the previous tutorial. It is better if you just experiment with one of your apps and just add what it needs to index and search its data (eventually in a new branch). So let&#8217;s start with the prerequisites and the setup to make a rails app work with flex.</p>
+
+<h2 id='prerequisites'>Prerequisites</h2>
+
+<p>Elasticsearch must be installed and running. If you are on a Mac you can just install it with <code>homebrew</code>:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>brew install elasticsearch
+</code></pre></div>
+<p>If you are on any other OS, read <a href='http://www.elasticsearch.org/guide/reference/setup/installation/'>elasticsearch installation</a></p>
+
+<h2 id='setup'>Setup</h2>
+
+<p>Open the <code>Gemfile</code> and add a couple of gems:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>gem</span> <span class='s1'>&#39;rest-client&#39;</span>
+<span class='n'>gem</span> <span class='s1'>&#39;flex-rails&#39;</span>
+</code></pre></div>
+<p>Now run the bundle install command:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>bundle install
+</code></pre></div>
+<p>When it finishes, run the generator:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>rails generate flex:setup
+<span class='c'># press return when asked</span>
+</code></pre></div>
+<h2 id='enabling_the_models'>Enabling the Models</h2>
+
+<p>If you just want to add indexing and searching capability to your models, you need to add just 2 lines of code per model, and all your records will be indexed in the same structure they have in the DB. Let&#8217;s start by doing it in a couple of related models:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>Blog</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+  <span class='n'>has_many</span> <span class='ss'>:comments</span>
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Indexer</span>
+  <span class='n'>flex</span><span class='o'>.</span><span class='n'>sync</span> <span class='nb'>self</span>
+<span class='k'>end</span>
+
+<span class='k'>class</span> <span class='nc'>Comment</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+  <span class='n'>belongs_to</span> <span class='ss'>:blog</span>
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Indexer</span>
+  <span class='n'>flex</span><span class='o'>.</span><span class='n'>sync</span> <span class='nb'>self</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>That&#8217;s trivially easy, isn&#8217;t it? That will create 2 elasticsearch types of indexed documents: <code>&#39;blog&#39;</code> and <code>&#39;comment&#39;</code>, and it will index all the fields in each record at each record change. That&#8217;s what you get by default with only 2 lines.</p>
+
+<h3 id='finetuning_the_indexing'>Fine-tuning the indexing</h3>
+
+<p>For the purpose of this tutorial, the default is fine, but keep in mind that you should design your index to make it simple to search, and most importantly to contain all the data you have to display, so avoiding to query your DB in order to get what is missing from your indexed data.</p>
+
+<p>So it is likely that indexing all (but only) the fields is not the most suitable way for your specific needs. You may need to display some data that is not a field of your model, or you may decide to implement parent/children relationships between your models because you need to search them with the <code>has_child</code> query. With flex you can easily finetuning your models at the class level, by adding some simple declarations or methods to your model, in order to get the index you want (see <a href='/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html'>ActiveRecord And Mongoid Integration</a>).</p>
+
+<h2 id='updating_the_setup'>Updating the Setup</h2>
+
+<p>Before we restart our app and try to index or search anything, we must do one more thing. We must add your models to the <code>flex_models</code> array in the <code>config/initializers/flex.rb</code>, because flex needs to know it in order to create the index/indices:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>config</span><span class='o'>.</span><span class='n'>flex_models</span> <span class='o'>|=</span> <span class='sx'>%w[ Blog Comment ]</span>
+</code></pre></div>
+<p>Now we can import the data into the index. We can do so by running a rake task:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>rake flex:import_models
+</code></pre></div>
+<p>That will create the default index and will import all the <code>Blog</code> and <code>Comment</code> records in it.</p>
+
+<blockquote>
+<p>During the development you can use the same rake task to reindex from scratch each time you change something that will affect the structure of the index (just pass <code>FORCE=true</code> to also delete the old index). When your app will be in production, the problem will get more complex, so you should use the live-reindex feature that allows a lot smoother transition (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html'>Live Reindex</a>).</p>
+</blockquote>
+
+<h2 id='how_to_search'>How to Search</h2>
+
+<p>So how can your search your new indexed data now? Flex offers 2 different ways to search your data: flex scopes and flex templates. You can use them separately or toghether, inside your models and/or inside your <code>FlexSearch</code> module in any combination suits your needs. So let&#8217;s analyze the pros and the cons of each combination so you will be able to easily pick the best one for you.</p>
+
+<h3 id='adding_to_the_models_or_to_the_flexsearch_module'>Adding to the models or to the FlexSearch module?</h3>
+
+<p>You can add flex scopes and flex template to your own models. That is a good option if all your searches are scoped to one single model/type at a time, and you use different criteria to search different models, since it will keep the search logic within the model logic, and in that case it will be cleaner.</p>
+
+<p>However if you need to search more than one model at a time, you should move scopes and templates from your models to the <code>FlexSearch</code> module that the flex generator created. That will keep the search logic in a single place but separated from the application logic and will not suffer the limitation of searching only one specific model/type.</p>
+
+<p>Since it is the most common and versatile option, in this tutorial we will add our flex scopes and templates to the <code>FlexSearch</code> module.</p>
+
+<blockquote>
+<p><strong>Notice</strong>: You can split the <code>FlexSearch</code> into as many different classes as it makes sense to you, reorganizing your files/classes as you prefer.</p>
+</blockquote>
+
+<h3 id='using_flex_scopes_or_templates'>Using flex scopes or templates?</h3>
+
+<p>Flex scopes are a very easy way to search your data in pure ruby and almost without any knowledge of elasticsearch. They work very similarly to the <code>ActiveRecord</code> scopes, and are perfect for simple search criteria that can make your code very simple, readable and reusable. You have plenty of predefined scopes ready to use, you can chain them together to create more elaborated search criteria, and you can define custom named scopes that can encapsulate many search criteria in one single scope. All that done in pure, clear and simple ruby.</p>
+
+<p>However, they are not an all purpose searching tool: they are just an easy to use tool. Indeed they tend to be less useful or even useless, when your search logic starts to require very complex queries.</p>
+
+<p>On the other hand, flex templates are the all purpose searching (and querying) tool, that can express very easily any possible query, regardless its complexity. They are very powerful but they require you to know elasticsearch a bit, or at least&#8230; to know how to find and copy the right query from the elasticsearch documentation :-).</p>
+
+<p>In this tutorial we will use a bit of both flex scopes and templates, so you will get an idea about both.</p>
+
+<h3 id='using_flexscopes'>Using Flex::Scopes</h3>
+
+<p>If you look into the <code>FlexSearch</code> you will see that it already includes <code>Flex::Scopes</code>. That means that you can already search with the predefined scopes included in the <code>FlexSearch</code> model. So let&#8217;s try a couple of predefined scopes in the console.</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='no'>FlexSearch</span><span class='o'>.</span><span class='n'>term</span><span class='p'>(</span><span class='s1'>&#39;ruby&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>all</span>
+<span class='gp'>&gt;&gt; </span><span class='no'>FlexSearch</span><span class='o'>.</span><span class='n'>query</span><span class='p'>(</span><span class='s1'>&#39;ruby AND rails&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>all</span>
+</code></pre></div>
+<blockquote>
+<p>You can find more predefined scopes in the flex scopes documentation page, and learn how to chain together many scopes and define custom scopes (see <a href='/flex/doc/3-flex-scopes'>flex-scopes</a>).</p>
+</blockquote>
+
+<p>If you want to add your own custom scope, just do so in the <code>flex/flex_search.rb</code> module, and use it as any other predefined scope.</p>
+
+<h3 id='adding_flex_templates'>Adding Flex Templates</h3>
+
+<p>The <code>FlexSearch</code> loads also one predefined template. It is defined in the <code>flex/flex_search.yml</code> file. It is ready to use:</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='no'>FlexSearch</span><span class='o'>.</span><span class='n'>search</span><span class='p'>(</span><span class='ss'>:cleanable_query</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;ruby AND rails&#39;</span><span class='p'>)</span>
+</code></pre></div>
+<p>But usually your searching needs are not so simple: may be you need to run some quite complex query that you find in internet, and you need to transform it into some method to use in your app. For example, you may find a json query that is exactly what you need: how could you transform it in a ready to use method?</p>
+
+<p>That&#8217;s easy with the flex Templates. The first thing you should do is making it a little easier to manage, by transforming it in <code>YAML</code>. You can do so very easily by using the <code>Flex.json2yaml</code> utility method in the console.</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='nb'>puts</span> <span class='no'>Flex</span><span class='o'>.</span><span class='n'>json2yaml</span> <span class='err'>&#39;</span><span class='p'>{</span>
+<span class='go'>                           &quot;query&quot;: {</span>
+<span class='go'>                               &quot;filtered&quot; : {</span>
+<span class='go'>                                   &quot;query&quot; : {</span>
+<span class='go'>                                       &quot;query_string&quot; : {</span>
+<span class='go'>                                           &quot;query&quot; : &quot;some query string here&quot;</span>
+<span class='go'>                                       }</span>
+<span class='go'>                                   },</span>
+<span class='go'>                                   &quot;filter&quot; : {</span>
+<span class='go'>                                       &quot;term&quot; : { &quot;user&quot; : &quot;kimchy&quot; }</span>
+<span class='go'>                                   }</span>
+<span class='go'>                               }</span>
+<span class='go'>                           }</span>
+<span class='go'>                       }&#39;</span>
+<span class='go'>---</span>
+<span class='go'>query:</span>
+<span class='go'>  filtered:</span>
+<span class='go'>    query:</span>
+<span class='go'>      query_string:</span>
+<span class='go'>        query: some query string here</span>
+<span class='go'>    filter:</span>
+<span class='go'>      term:</span>
+<span class='go'>        user: kimchy</span>
+<span class='go'> =&gt; nil</span>
+</code></pre></div>
+<p>Now let&#8217;s copy just the yaml output (without the <code>---</code>) and paste it as the content of a new template in the <code>flex/flex_search.yml</code> template source (right after the predefined <code>search</code> query). Let&#8217;s call it <code>my_test</code>:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_test</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>filtered</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+        <span class='l-Scalar-Plain'>query_string</span><span class='p-Indicator'>:</span>
+          <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>some query string here</span>
+      <span class='l-Scalar-Plain'>filter</span><span class='p-Indicator'>:</span>
+        <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+          <span class='l-Scalar-Plain'>user</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>kimchy</span>
+</code></pre></div>
+<p>We obviously don&#8217;t want to search the <code>some query string here</code>, nor the <code>kimky</code> as the user, but we want to change that dynamically. So we can remove those string and change them with a couple of placeholder tags:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_test</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>filtered</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+        <span class='l-Scalar-Plain'>query_string</span><span class='p-Indicator'>:</span>
+          <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;my_query&gt;&gt;</span>
+      <span class='l-Scalar-Plain'>filter</span><span class='p-Indicator'>:</span>
+        <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+          <span class='l-Scalar-Plain'>user</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;the_user&gt;&gt;</span>
+</code></pre></div>
+<p>Done!</p>
+
+<p>Yeah, really! We now have the <code>FlexSearch.my_test</code> method ready to use and it is also aware of the placeholder that you defined, because it will complain if you miss any variable. Let&#8217;s try it:</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='no'>Flex</span><span class='o'>.</span><span class='n'>reload!</span>
+<span class='go'>true</span>
+
+<span class='gp'>&gt;&gt; </span><span class='no'>FlexSearch</span><span class='o'>.</span><span class='n'>my_test</span>
+<span class='go'>...</span>
+<span class='go'>Flex::MissingVariableError: the required :my_query variable is missing.</span>
+
+<span class='gp'>&gt;&gt; </span><span class='no'>FlexSearch</span><span class='o'>.</span><span class='n'>my_test</span> <span class='ss'>:my_query</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;ruby&#39;</span><span class='p'>,</span> <span class='ss'>:the_user</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;whoever&#39;</span>
+<span class='go'>... successful query result ...</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Remember</strong>: During a console session you must use <code>Flex.reload!</code> each time you add or change a template in any source or the changes will not be available in the session. That doesn&#8217;t apply to the rails server: in development mode the rails server will automatically reload the changes in the sources at each request, so you will just have to reload the page in order to see the effect of your changes.</p>
+</blockquote>
+
+<p>Flex Templates are not only easy to implement and use, they are also very powerful. They can generate very dynamic queries based on the variables you send them, automatically adding or removing part of their queries. (see <a href='/flex/doc/2-flex/3-Templating/5-Interpolation.html'>Interpolation</a> and <a href='/flex/doc/2-flex/3-Templating/6-Partials.html'>Partial Templates</a>)</p>
+
+<blockquote>
+<p><strong>Notice</strong>: This tutorial is complemented by the next one, please read both of them (see <a href='/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html'>Index and Search External Data</a>).</p>
+</blockquote><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/7-Tutorials">Tutorials</a></span> &gt; <span>Index and Search your Models</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

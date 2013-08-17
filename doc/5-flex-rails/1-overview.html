@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - flex-rails - Overview
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex-rails"><img src="https://badge.fury.io/rb/flex-rails.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/5-flex-rails">flex-rails</a></span> &gt; <span>Overview</span>
+      </div>
+      <h1 id='flexrails__overview'>flex-rails - Overview</h1>
+
+<p>The <code>flex-rails</code> gem provides the engine and generators to integrate the flex gems with <code>Rails</code>. It also loads the <code>flex</code>, <code>flex-scopes</code> and <code>flex-models</code> gems, so you don&#8217;t have to explicitly include them in the Gemfile, unless you need to force some special version or commit. On the other hand you may want to add the <code>flex-admin</code> gem which is optional.</p>
+
+<h2 id='setup'>Setup</h2>
+
+<h3 id='1_customize_the_'>1. Customize the <code>Gemfile</code></h3>
+
+<p>Add the following to your Gemfile:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># use one of the following</span>
+<span class='c1'># libcurl C based http client - faster</span>
+<span class='n'>gem</span> <span class='s1'>&#39;patron&#39;</span>
+<span class='c1'># pure ruby http client - more compatible</span>
+<span class='c1'># gem &#39;rest-client&#39;</span>
+<span class='n'>gem</span> <span class='s1'>&#39;flex-rails&#39;</span>
+<span class='c1'># use flex-admin if you need to dump/load/rename/live-reindex</span>
+<span class='c1'># gem &#39;flex-admin&#39;</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Temporary Note</strong>: The <code>patron</code> gem currently available on rubygem (v0.4.18) is missing the support for sending data with delete queries. As the result it fails with the <code>delete_by_query</code> elasticsearch API, when the query is the request body and not the param. If you want full support until a new version will be pushed to rubygems, you should use <code>gem &#39;patron&#39;, &#39;0.4.18&#39;, :git =&gt; &#39;https://github.com/ddnexus/patron.git&#39;</code> or download <a href='/flex/patron-0.4.18.flex.gem'>patron-0.4.18.flex.gem</a>, install it with <code>gem install /path/to/patron-0.4.18.flex.gem --local</code> and be sure your app will use that version, or switch to the <code>rest-client</code> gem.</p>
+</blockquote>
+
+<h3 id='2_run_'>2. Run <code>bundle install</code></h3>
+
+<h3 id='3_run__that_will_install_the_needed_files_with_comments_and_stubs'>3. Run <code>rails generate flex:setup</code> that will install the needed files with comments and stubs</h3>
+
+<h2 id='work_flow'>Work Flow</h2>
+
+<h3 id='1_customize_your_models'>1. Customize your models</h3>
+
+<p>Add the <code>include Flex::&lt;some_model_module&gt;</code> to the model that need it (see <a href='/flex/doc/4-flex-models'>flex-models</a>).</p>
+
+<ul>
+<li>Each time you include a <code>Flex::ModelIndexer</code> or <code>Flex::ActiveModel</code> you should add its name to the <code>config/initializers/flex.rb</code></li>
+
+<li>Each time you alter the way your models generate the source that will be indexed (for example by changing your <code>flex_source</code> methods or adding/changing a <code>flex.parent</code> relation in a model) you should reindex your DB(s) (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html'>Live Reindex</a>)</li>
+</ul>
+
+<h3 id='2_customize_the_'>2. Customize the <code>config/initializers/flex.rb</code></h3>
+
+<p>In this initializer you must add the <code>flex_models</code> and/or <code>flex_active_models</code> arrays. They are the names or the classes of the models that you customized with <code>include Flex::ModelIndexer</code> or <code>include Flex::ActiveModel</code>, and may want to customize other configuration variables. For example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Configuration</span><span class='o'>.</span><span class='n'>configure</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>config</span><span class='o'>|</span>
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>flex_models</span> <span class='o'>=</span> <span class='sx'>%w[ Project ]</span>
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>flex_active_models</span> <span class='o'>=</span> <span class='sx'>%w[ WebContent ]</span>
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>result_extenders</span> <span class='o'>|=</span> <span class='o'>[</span><span class='no'>YourResultExtenderA</span><span class='p'>,</span> <span class='no'>YourResultExtenderB</span><span class='p'>,</span> <span class='o'>.</span><span class='n'>.</span><span class='o'>.]</span>
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>variables</span><span class='o'>.</span><span class='n'>deep_merge!</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;test&#39;</span><span class='p'>,</span>
+                               <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='s1'>&#39;project&#39;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>(see <a href='/flex/doc/1-Flex-Project/3-Configuration.html'>Configuration</a>)</p>
+
+<h3 id='3_customize_'>3. Customize <code>config/flex.yml</code></h3>
+
+<p>This is an optional yaml file used to add custom mapping to your index or indices. You don&#8217;t need to use it unless you start to map your index/indices better. Flex provides a quite detailed mapping by default, keeping into consideration all your indexed models and also parent/child relationships. Your file will be deep merged with the structure that Flex will prepare on its own. You can inspect the mapping in the console with one of:</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get_mapping</span>
+<span class='gp'>&gt;&gt; </span><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get_mapping</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;the_index&#39;</span><span class='p'>,</span> <span class='ss'>:type</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+<p>While at it you can get info about the method and the usage of <code>get_mapping</code> by doing as usual:</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='no'>Flex</span><span class='o'>.</span><span class='n'>doc</span> <span class='ss'>:get_mapping</span>
+</code></pre></div>
+<p>(see <a href='/flex/doc/2-flex/5-Self-Documentation.html'>Self Documentation</a>)</p>
+
+<h3 id='4_run__or_'>4. Run <code>rake flex:index:create</code> or <code>rake flex:import</code></h3>
+
+<p>You sould use either <code>rake flex:index:create</code> or <code>rake flex:import</code> (if you already have data to index from your DB) in order to create a new index and its auto-generated mapping.</p>
+
+<h3 id='5_customize_the_'>5. Customize the <code>app/flex/*</code></h3>
+
+<p>Usually contains your search classes (those that include any of <code>Flex::Templates</code>, <code>Flex::ModelIndexer</code>, etc.) and your Tempates Sources (see <a href='/flex/doc/2-flex/3-Templating/2-Sources.html'>Template Sources</a>). Average applications usually have just one class and one source template file but your mileage may vary. Here you can also add your Result Extenders modules (see <a href='/flex/doc/2-flex/4-Result-Extenders.html'>Result Extenders</a>), so keeping all the Flex related files together.</p>
+
+<h2 id='rails_3_and_4'>Rails 3 and 4</h2>
+
+<p>Flex comes with a Rails engine that integrates with your app very easily. The engine sets a few configuration defaults:</p>
+
+<ul>
+<li><code>config.flex.variables[:index]</code> to your application&#8217;s underscored name, plus the current <code>Rails.env</code> (e.g. <code>&#39;my_app_development&#39;</code>)</li>
+
+<li><code>config.flex.config_file</code> default path to <code>&quot;#{Rails.root}/config/flex.yml&quot;</code></li>
+
+<li><code>config.flex.flex_dir</code> default path to <code>&quot;#{Rails.root}/app/flex&quot;</code></li>
+
+<li><code>config.flex.logger.level</code> to <code>Logger::DEBUG</code> in development mode (<code>Logger::WARN</code> otherwise)</li>
+
+<li><code>config.flex.logger.log_to_rails_logger</code> to <code>true</code> for the Rails server and <code>false</code> for the Rails console</li>
+
+<li><code>config.flex.logger.log_to_stderr</code> to <code>false</code> for the Rails server and <code>true</code> for the Rails console</li>
+
+<li><code>config.flex.logger.debug_result</code> to <code>true</code> for the Rails server and <code>false</code> for the Rails console</li>
+</ul>
+
+<p>(see <a href='/flex/doc/1-Flex-Project/3-Configuration.html'>Configuration</a>)</p>
+
+<h2 id='per_environment_configuration'>Per Environment Configuration</h2>
+
+<p>You might want to have different configuration settings for different environments. You can do so by using the <code>config.flex</code> object in the environment file, for example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>config</span><span class='o'>.</span><span class='n'>flex</span><span class='o'>.</span><span class='n'>http_client</span>          <span class='o'>=</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:HttpClients</span><span class='o'>::</span><span class='no'>RestClient</span>
+<span class='n'>config</span><span class='o'>.</span><span class='n'>flex</span><span class='o'>.</span><span class='n'>http_client</span><span class='o'>.</span><span class='n'>base_uri</span> <span class='o'>=</span> <span class='s1'>&#39;http://localhost:9400&#39;</span>
+</code></pre></div>
+<h2 id='rails_2'>Rails 2</h2>
+
+<p>You can use Flex with Rails 2 applications as well, just remember that you should require <code>flex-rails</code> so it will set the <code>config_file</code> and <code>flex_dir</code> paths for you (see <a href='/flex/doc/1-Flex-Project/3-Configuration.html'>Configuration</a>), but remember that the default <code>config.flex.variables[:index]</code> variable and the <code>config.flex.app_id</code> for Rails 2 are not set so you better configure them, somewhere. Also remember that you should explicitly call <code>Flex::Rails::Helper.after_initialize</code> to complete the rails integration. Except this little difference in the configuration, there is no other difference from Rails 3 and 4.</p><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/5-flex-rails">flex-rails</a></span> &gt; <span>Overview</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

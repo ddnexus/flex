@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - flex-models - Result Extenders
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex-models"><img src="https://badge.fury.io/rb/flex-models.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/4-flex-models">flex-models</a></span> &gt; <span>Result Extenders</span>
+      </div>
+      <h1 id='flexmodels__result_extenders'>flex-models - Result Extenders</h1>
+
+<p>The <code>flex-models</code> gem adds a few extender to the standard extended <code>Flex::Result</code> object (see <a href='/flex/doc/2-flex/4-Result-Extenders.html'>Result Extenders</a>). They are aware of your models, so you can do, for example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># search the index</span>
+<span class='n'>result</span> <span class='o'>=</span> <span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_search</span> <span class='ss'>:my_tag</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;the tag value&#39;</span>
+
+<span class='c1'># retrieve the document from the index as usual</span>
+<span class='n'>collection</span> <span class='o'>=</span> <span class='n'>result</span><span class='o'>.</span><span class='n'>collection</span>
+<span class='c1'>#=&gt; [ ... the hits array ... ]</span>
+
+<span class='c1'># you can load one record at a time</span>
+<span class='n'>document</span> <span class='o'>=</span> <span class='n'>result</span><span class='o'>[</span><span class='s1'>&#39;hits&#39;</span><span class='o'>][</span><span class='s1'>&#39;hits&#39;</span><span class='o'>][</span><span class='mi'>0</span><span class='o'>]</span>
+<span class='n'>document</span><span class='o'>.</span><span class='n'>load</span>
+<span class='c1'>#=&gt; #&lt;Project id: 167017 ...&gt; # ActiveRecord object loaded from the DB</span>
+
+<span class='c1'># or easier</span>
+<span class='n'>collection</span><span class='o'>.</span><span class='n'>first</span><span class='o'>.</span><span class='n'>load</span>
+<span class='c1'>#=&gt; #&lt;Project id: 167017 ...&gt; # same thing</span>
+
+<span class='c1'># or retrieve all the records from your DB in one go</span>
+<span class='n'>loaded_collection</span> <span class='o'>=</span> <span class='n'>result</span><span class='o'>.</span><span class='n'>loaded_collection</span>
+<span class='c1'>#=&gt; [ #&lt;Project id: 167017 ...&gt;, #&lt;Comment id: 2342 ...&gt;, ... ]</span>
+
+<span class='c1'># notice that record can belong to different models</span>
+</code></pre></div>
+<h2 id='flex_model_result_extenders'>Flex Model Result Extenders</h2>
+
+<ul>
+<li>
+<p><strong><code>Flex::Result::SearchLoader</code></strong><br /> It extends the results coming from a search query. It adds the following method:</p>
+
+<ul>
+<li>
+<p><strong><code>result.loaded_collection</code></strong><br /> This method takes the index, types and ids from the collection, map them back to your original models, and query the DB with as less as possible queries, returning a collection of records (instead of a collection of elasticsearch documents). The records might be composed of mixed classes, depending on what you retrieved.</p>
+
+<blockquote>
+<p>This is an operation that requires an extra query per each type returned. For example if your collection contains 20 documents of a total of 3 different types, it generates 3 extra DB queries to retrieve the original models. For this reason it should be used only when the performance is not a problem, besides, when you use it, you can avoid to load the document source, by using <code>Flex::Template::SlimSearch</code> templates, which are just regular Search Templates, that don&#8217;t retrieve the source that in this case is not needed.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+
+<li>
+<p><strong><code>Flex::Result::DocumentLoader</code></strong><br /> Applies to documents that contain (at least, but not limited to) <code>_index</code>, <code>_type</code>, <code>_id</code>. It adds the following method:</p>
+
+<ul>
+<li>
+<p><strong><code>document.load</code></strong><br /> Maps the document back to the original model and class and retrieves it from the DB.</p>
+</li>
+
+<li>
+<p><strong><code>document.load!</code></strong><br /> Like <code>document.load</code> but raises a <code>Flex::DocumentMappingError</code> if it cannot find the model class for the document.</p>
+</li>
+</ul>
+</li>
+
+<li>
+<p><strong><code>Flex::Result::ActiveModel</code></strong><br /> It extends the results when the <code>context</code> class (your class) includes <code>Flex::ActiveModel</code>. It adds the following methods:</p>
+
+<ul>
+<li>
+<p><strong><code>result.get_docs</code></strong><br /> This method is used internally, in order to build the objects of your <code>Flex::ActiveModel</code> extended class, out of the raw elasticsearch result.</p>
+
+<blockquote>
+<p>You will seldom need to use this method, unless you pass <code>:raw_result =&gt; true</code>.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/4-flex-models">flex-models</a></span> &gt; <span>Result Extenders</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

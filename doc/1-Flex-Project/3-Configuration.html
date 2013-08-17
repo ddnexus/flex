@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - Configuration
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/1-Flex-Project">Flex Project</a></span> &gt; <span>Configuration</span>
+      </div>
+      <h1 id='configuration'>Configuration</h1>
+
+<p>This class is also aliased as <code>Flex::Conf</code>.</p>
+
+<p>You can configure the flex gems by changing their configuration settings. You can set them directly in any part of your code or the console like:</p>
+<div class='highlight'><pre><code class='ruby'><span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Configuration</span><span class='o'>.</span><span class='n'>logger</span><span class='o'>.</span><span class='n'>debug_result</span> <span class='o'>=</span> <span class='kp'>true</span>
+</code></pre></div>
+<p>or setting them inside a <code>Flex::Configuration.configure</code> block:</p>
+<div class='highlight'><pre><code class='ruby'><span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Configuration</span><span class='o'>.</span><span class='n'>configure</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>conf</span><span class='o'>|</span>
+  <span class='n'>conf</span><span class='o'>.</span><span class='n'>http_client</span><span class='o'>.</span><span class='n'>base_uri</span> <span class='o'>=</span> <span class='s1'>&#39;http://localhost:9222&#39;</span>
+  <span class='n'>conf</span><span class='o'>.</span><span class='n'>http_client</span><span class='o'>.</span><span class='n'>options</span>  <span class='o'>=</span> <span class='p'>{</span><span class='ss'>:timeout</span> <span class='o'>=&gt;</span> <span class='mi'>10</span><span class='p'>}</span>
+  <span class='n'>conf</span><span class='o'>.</span><span class='n'>variables</span><span class='o'>[</span><span class='ss'>:index</span><span class='o'>]</span>    <span class='o'>=</span> <span class='s1'>&#39;my_index&#39;</span>
+  <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>If you use the rails integration, you usually do so in an initializer, usually generated by the <code>flex:setup</code> generator (see <a href='/flex/doc/5-flex-rails'>flex-rails</a>).</p>
+
+<h2 id='settings'>Settings</h2>
+<table cellpadding='0' cellspacing='0' class='code-topics' id='config'>
+  <tr>
+    <td>
+      <code>result_extenders</code>
+    </td>
+    <td>
+      <p>An array of extender modules. Each gem pushes its default:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># flex gem</span>
+<span class='o'>[</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Result</span><span class='o'>::</span><span class='no'>Document</span><span class='p'>,</span>
+  <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Result</span><span class='o'>::</span><span class='no'>Search</span><span class='p'>,</span>
+  <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Result</span><span class='o'>::</span><span class='no'>MultiGet</span><span class='p'>,</span>
+  <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Result</span><span class='o'>::</span><span class='no'>Bulk</span> <span class='o'>]</span>
+
+<span class='c1'># flex-models gem</span>
+<span class='o'>[</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Result</span><span class='o'>::</span><span class='no'>DocumentLoader</span><span class='p'>,</span>
+  <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Result</span><span class='o'>::</span><span class='no'>SearchLoader</span><span class='p'>,</span>
+  <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Result</span><span class='o'>::</span><span class='no'>ActiveModel</span> <span class='o'>]</span>
+
+<span class='c1'># flex-scopes gem</span>
+<span class='o'>[</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Result</span><span class='o'>::</span><span class='no'>Scope</span> <span class='o'>]</span>
+</code></pre></div>
+<p>You usually push your own extenders to the <code>result_extenders</code> array (see <a href='/flex/doc/2-flex/4-Result-Extenders.html'>Result Extenders</a>)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>logger</code>
+    </td>
+    <td><p>The Flex logger. Default <code>Logger.new(STDERR)</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>logger.color</code>
+    </td>
+    <td><p>Boolean. If <code>true</code> prints the log in color. Default <code>true</code> (when supported).</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>logger.debug_variables</code>
+    </td>
+    <td><p>Boolean. If <code>true</code> it prints the merged variables. Default <code>true</code> unless in Rails Console.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>logger.debug_request</code>
+    </td>
+    <td><p>Boolean. If <code>true</code> it prints the request. Default <code>true</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>logger.debug_result</code>
+    </td>
+    <td><p>Boolean. If <code>true</code> it prints also the result. Default <code>true</code> unless in Rails Console.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>logger.curl_format</code>
+    </td>
+    <td><p>Boolean. If <code>true</code> it uses curl-like logging info, suitable to be copied and pasted in a terminal. Default <code>false</code> (YAML logging).</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>logger.log_to_rails_logger</code>
+    </td>
+    <td><blockquote>
+<p>This is a specific configuration for the <code>flex-rails</code> gem.</p>
+</blockquote>
+
+<p>Boolean. If <code>true</code> it forwards the messages to the <code>Rails.logger</code>. Defaut <code>true</code> unless in Rails Console.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>logger.log_to_stdout</code>
+    </td>
+    <td><blockquote>
+<p>This is a specific configuration for the <code>flex-rails</code> gem.</p>
+</blockquote>
+
+<p>Boolean. Option added by flex-rails. If <code>true</code> prints the log to <code>STDOUT</code>. Default <code>false</code> unless in Rails Console.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex_models</code>
+    </td>
+    <td><blockquote>
+<p>This is a specific configuration for the <code>flex-models</code> gem.</p>
+</blockquote>
+
+<p>An array of model classes (or model class names) that your app will index. This is the only required configuration setting if you use the <code>Flex::ModelIndexer</code> integration, since it is used to generate the default mappings and the default models for the <code>import</code> task.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex_active_models</code>
+    </td>
+    <td><blockquote>
+<p>This is a specific configuration for the <code>flex-models</code> gem.</p>
+</blockquote>
+
+<p>An array of ActiveModel classes (or model class names) that your app defines. This is the only required configuration setting if you use the <code>Flex::ActiveModel</code> integration, since it is used to generate the default mappings.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex_dir</code>
+    </td>
+    <td><p>The path where Flex searches for source files. Default <code>&#39;./flex&#39;</code> or <code>&quot;#{Rails.root}/app/flex&quot;</code> in Rails.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>config_file</code>
+    </td>
+    <td><p>A YAML file usually containing the custom index mapping. Default <code>&#39;./config/flex.yml&#39;</code> or <code>&quot;#{Rails.root}/config/flex.yml&quot;</code> in Rails.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>http_client</code>
+    </td>
+    <td><p>The flex client instance. Default an object of class <code>Flex::HttpClients::Patron</code> or <code>Flex::HttpClients::RestClient</code>, depending on which gem you have installed (<code>patron</code> or <code>rest-client</code>). If you create a custom client class you must set it.</p>
+
+<blockquote>
+<p><strong>Temporary Note</strong>: The <code>patron</code> gem currently available on rubygem (v0.4.18) is missing the support for sending data with delete queries. As the result it fails with the <code>delete_by_query</code> elasticsearch API, when the query is the request body and not the param. If you want full support until a new version will be pushed to rubygems, you should use <code>gem &#39;patron&#39;, &#39;0.4.18&#39;, :git =&gt; &#39;https://github.com/ddnexus/patron.git&#39;</code> or download <a href='/flex/patron-0.4.18.flex.gem'>patron-0.4.18.flex.gem</a>, install it with <code>gem install /path/to/patron-0.4.18.flex.gem --local</code> and be sure your app will use that version, or switch to the <code>rest-client</code> gem.</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>http_client.base_uri</code>
+    </td>
+    <td><p>The base uri of the elasticsearch server used for all the requests. Default <code>&#39;http://localhost:9200&#39;</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>http_client.options</code>
+    </td>
+    <td><p>Hash of options passed to the <code>http_client#new</code> method. Default <code>{}</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>http_client.raise_proc</code>
+    </td>
+    <td><blockquote>
+<p>This variable is experimental and may be removed in a next vesion.</p>
+</blockquote>
+
+<p>A proc that should return whether or not to raise an error, depending on the response. It is used for example to decide whether a 404 response code should raise an error or should just be ignored. Default <code>proc{|respose| response.status &gt;= 400}</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>variables</code>
+    </td>
+    <td><p>The <code>Flex::Variable</code> object (Hash subclass) of interpolation variables used as the lowest default level. Default:</p>
+<div class='highlight'><pre><code class='ruby'><span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Variables</span><span class='o'>.</span><span class='n'>new</span> <span class='ss'>:index</span>      <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+                    <span class='ss'>:type</span>       <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+                    <span class='ss'>:params</span>     <span class='o'>=&gt;</span> <span class='p'>{},</span>
+                    <span class='ss'>:no_pruning</span> <span class='o'>=&gt;</span> <span class='o'>[]</span>
+</code></pre></div>
+<blockquote>
+<p>The <code>flex-rails</code> gem sets the default <code>variables[:index]</code> as the <code>app_id</code> (see below).</p>
+</blockquote>
+
+<p>(see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html'>Variables</a>)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>app_id</code>
+    </td>
+    <td><p>An unique string used to identify your app. Default: <code>nil</code> or the uderscored rails application name, plus the environment in rails. It must be set if you use any <code>reindex</code> method. Used by the flex-reindex feature (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html'>Live Reindex</a>).</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>redis</code>
+    </td>
+    <td><p>The redis client object. Default: <code>$redis || Redis.current</code>. Used by the flex-reindex feature (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html'>Live Reindex</a>).</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>on_stop_indexing</code>
+    </td>
+    <td><p>A proc that should ensure to stop/suspend all the actions that would produce any change in the indices being live-reindexed. Used by the flex-reindex feature and overridden by the <code>on_stop_indexing</code> block (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html#id1'>on_stop_indexing</a>).</p>
+    </td>
+  </tr>
+</table><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/1-Flex-Project">Flex Project</a></span> &gt; <span>Configuration</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

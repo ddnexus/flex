@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - flex - Partial Templates
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/2-flex">flex</a></span> &gt; <span><a href="/flex/doc/2-flex/3-Templating">Templating</a></span> &gt; <span>Partial Templates</span>
+      </div>
+      <h1 id='partial_templates'>Partial Templates</h1>
+
+<blockquote>
+<p><strong>Notice</strong>: you should know about all the Templating section before reading this (see <a href='/flex/doc/2-flex/3-Templating/1-Templates.html'>Templates</a>, <a href='/flex/doc/2-flex/3-Templating/2-Sources.html'>Template Sources</a>, <a href='/flex/doc/2-flex/3-Templating/3-Tags.html'>Tags</a>, <a href='/flex/doc/2-flex/3-Templating/4-Variables.html'>Variables</a> and <a href='/flex/doc/2-flex/3-Templating/5-Interpolation.html'>Interpolation</a>).</p>
+</blockquote>
+
+<p>Flex Partial Templates are templates that will be inserted into other templates at interpolation time. They are used in a few different ways in order to make the templating system more dynamic and powerful. For example:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>_a_partial_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>foo</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;bar&gt;&gt;</span>
+
+<span class='l-Scalar-Plain'>_another_partial_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>alpha</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;beta&gt;&gt;</span>
+
+<span class='l-Scalar-Plain'>a_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>&lt;&lt;_a_partial_template&gt;&gt;</span>
+</code></pre></div>
+<p>The name of a partial template must start with <code>&#39;_&#39;</code>. Its content can be inserted into another template in a couple of ways: the most common is simply creating a tag with the same name in the other template (in our example the <code>&lt;&lt;_a_partial_template&gt;&gt;</code> tag). Then the value of the variable with the same name (in our example the <code>:_a_partial_template</code> variable) will determine what will be inserted in place of the tag.</p>
+
+<h2 id='partial_template_interpolation'>Partial Template Interpolation</h2>
+
+<p>There are a few possible cases of interpolation, depending on the value of the variable with the same partial template name:</p>
+<table cellpadding='0' cellspacing='0' class='code-topics' id='partial-interpolation'>
+  <tr>
+    <th>
+      Type of Value
+    </th>
+    <th>
+      Tag Replacement
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Single Hash</code>
+    </td>
+    <td>
+      <p>
+        <b>Partial Insertion</b>
+      </p>
+      
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>a_template</span><span class='p'>(</span><span class='ss'>:_a_partial_template</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='ss'>:bar</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;baz&#39;</span><span class='p'>})</span>
+</code></pre></div>
+
+      <p>
+        will result as:
+      </p>
+      
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>a_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>foo</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>baz</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Array of Hashes</code>
+    </td>
+    <td>
+      <p>
+        <b>Partial Insertion repeated for each item in the hash</b>
+      </p>
+      
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>a_template</span><span class='p'>(</span><span class='ss'>:_a_partial_template</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='p'>{</span><span class='ss'>:bar</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;baz&#39;</span><span class='p'>},</span> <span class='p'>{</span><span class='ss'>:bar</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;quux&#39;</span><span class='p'>})</span>
+</code></pre></div>
+
+      <p>
+        will result as:
+      </p>
+      
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>a_template</span><span class='p-Indicator'>:</span>
+  <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>foo</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>baz</span>
+  <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>foo</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>quux</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>true</code>
+    </td>
+    <td>
+      <p>
+        <b>Partial Insertion</b>
+      </p>
+      
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>a_template</span><span class='p'>(</span><span class='ss'>:bar</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;baz&#39;</span><span class='p'>,</span> <span class='ss'>:_a_partial_template</span> <span class='o'>=&gt;</span> <span class='kp'>true</span><span class='p'>)</span>
+</code></pre></div>
+
+      <p>
+        will result as:
+      </p>
+      
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>a_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>foo</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>baz</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Symbol</code>
+    </td>
+    <td>
+      <p>
+        <b>Insertion of the partial named as the Symbol</b>
+      </p>
+      
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>a_template</span><span class='p'>(</span><span class='ss'>:_a_partial_template</span> <span class='o'>=&gt;</span> <span class='ss'>:_another_partial_template</span><span class='p'>,</span> <span class='ss'>:beta</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;gamma&#39;</span><span class='p'>)</span>
+</code></pre></div>
+
+      <p>
+        will result as:
+      </p>
+      
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>a_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>alpha</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>gamma</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>String</code>
+    </td>
+    <td>
+      <p>
+        <b>Will be evaluated as a Template and Inserted</b>
+      </p>
+      
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>a_template</span><span class='p'>(</span><span class='ss'>:_a_partial_template</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;oh: &lt;&lt;my&gt;&gt;&#39;</span><span class='p'>,</span> <span class='ss'>:my</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;god&#39;</span><span class='p'>)</span>
+</code></pre></div>
+
+      <p>
+        will result as:
+      </p>
+      
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>a_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>oh</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>god</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>nil, false, "", {}, []</code>
+    </td>
+    <td>
+      <p>
+        <b>Branch Pruning</b>
+      </p>
+      
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>a_template</span><span class='p'>(</span><span class='ss'>:_a_partial_template</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>)</span> <span class='c1'># or &#39;&#39;, [], {}</span>
+</code></pre></div>
+
+      <p>
+        will result as:
+      </p>
+      
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>a_template</span><span class='p-Indicator'>:</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+</table>
+<h2 id='example'>Example</h2>
+
+<p>The most common case of partial usage is when you need to generate a repetition. The structure you pass must be a (possibly empty) Array of Hashes, each hash containing the variables to interpolate with each single repeated fragment. For example:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>_the_terms</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>&lt;&lt;attr&gt;&gt;</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;term&gt;&gt;</span>
+
+<span class='l-Scalar-Plain'>my_search</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>bool</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>must</span><span class='p-Indicator'>:</span>
+      <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query_string</span><span class='p-Indicator'>:</span>
+          <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;q= &#39;*&#39; &gt;&gt;</span>
+      <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>&lt;&lt; _the_terms= ~ &gt;&gt;</span>
+</code></pre></div>
+<p>The <code>_the_terms</code> template is a partial, its structure will be repeated and interpolated with the data passed as <code>:_the_terms</code> variable and will be inserted in place of <code>_the_terms</code> tag. If <code>:_the_term</code> is nil (or if it is an empty Array) the partial will be pruned.</p>
+
+<p>Here are a couple possible usages of the same template, and the final data query they produce (translated in YAML for readability):</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>results1</span> <span class='o'>=</span> <span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_search</span><span class='p'>(</span><span class='ss'>:_the_terms</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='p'>{</span><span class='ss'>:attr</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;color&#39;</span><span class='p'>,</span> <span class='ss'>:term</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;blue&#39;</span><span class='p'>},</span> <span class='p'>{</span><span class='ss'>:attr</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;year&#39;</span><span class='p'>,</span> <span class='ss'>:term</span> <span class='o'>=&gt;</span> <span class='mi'>1984</span><span class='p'>},</span> <span class='o'>.</span><span class='n'>.</span><span class='o'>.]</span><span class='p'>)</span>
+</code></pre></div><div class='highlight'><pre><code class='yaml'><span class='c1'># produced data query</span>
+<span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>bool</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>must</span><span class='p-Indicator'>:</span>
+      <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query_string</span><span class='p-Indicator'>:</span>
+          <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span> <span class='s'>&quot;*&quot;</span>
+      <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+          <span class='l-Scalar-Plain'>color</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>blue</span>
+      <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+          <span class='l-Scalar-Plain'>year</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>1984</span>
+      <span class='l-Scalar-Plain'>...</span>
+</code></pre></div><div class='highlight'><pre><code class='ruby'><span class='n'>results2</span> <span class='o'>=</span> <span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_search</span><span class='p'>(</span><span class='ss'>:q</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;Chevrolet OR Fiat&#39;</span><span class='p'>)</span>
+</code></pre></div><div class='highlight'><pre><code class='yaml'><span class='c1'># produced data query</span>
+<span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>bool</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>must</span><span class='p-Indicator'>:</span>
+      <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query_string</span><span class='p-Indicator'>:</span>
+          <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span> <span class='s'>&quot;Chevrolet</span><span class='nv'> </span><span class='s'>OR</span><span class='nv'> </span><span class='s'>Fiat&quot;</span>
+</code></pre></div>
+<p>But you could do the same with less, that may be simpler in your context. This partial would produce exactly the same data query, providing the simpler interpolation values:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>_the_terms</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;terms&gt;&gt;</span>
+</code></pre></div><div class='highlight'><pre><code class='ruby'><span class='n'>results1</span> <span class='o'>=</span> <span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_search</span><span class='p'>(</span><span class='ss'>:_the_terms</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='p'>{</span><span class='ss'>:terms</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='s1'>&#39;color&#39;</span><span class='o'>=&gt;</span> <span class='s1'>&#39;blue&#39;</span><span class='p'>}},</span> <span class='p'>{</span><span class='ss'>:terms</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='s1'>&#39;year&#39;</span> <span class='o'>=&gt;</span> <span class='mi'>1984</span><span class='p'>}},</span> <span class='o'>.</span><span class='n'>.</span><span class='o'>.]</span><span class='p'>)</span>
+</code></pre></div><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/2-flex">flex</a></span> &gt; <span><a href="/flex/doc/2-flex/3-Templating">Templating</a></span> &gt; <span>Partial Templates</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - flex - API Methods
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/2-flex">flex</a></span> &gt; <span>API Methods</span>
+      </div>
+      <h1 id='api_methods'>API Methods</h1>
+
+<p>Flex exposes the full elasticsearch API as own class methods. You will need to use them directly only for advanced usage, however Flex uses them internally and creates them with just a few lines of yaml. Indeed they are just generated by Generic Templates (see <a href='/flex/doc/2-flex/3-Templating/1-Templates.html#flex_generic_templates'>Flex Generic Templates</a>).</p>
+
+<p>The naming of these methods tries to conform with the original elasticsearch documentation, and adds a few aliases for convenience.</p>
+
+<p>As any template-generated method, they accept a list of variables (hashes) for interpolation (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html'>Variables</a> and <a href='/flex/doc/2-flex/3-Templating/5-Interpolation.html'>Interpolation</a>). This documentation reports the underlying templates and the usage examples complete with all the accepted variable, for completeness. Please, notice that you can omit variables that have defaults.</p>
+
+<p>When an API has flags/parameters, you can pass them as the <code>:params</code> variable; when it has structured data you can pass it as the <code>:data</code> variable.</p>
+
+<blockquote>
+<p><strong>Notice</strong>: you can get the updated full reference and usage example of these methods also in the console at any time, by just writing <code>Flex.doc</code> (for the full API) or <code>Flex.doc :create_index, :get_index_mapping, ...</code> (for specific methods).</p>
+</blockquote>
+
+<blockquote>
+<p>This document is updated to elasticsearch version 0.90.2</p>
+</blockquote>
+
+<h2 id='core_api'>Core API</h2>
+<table cellpadding='0' cellspacing='0' class='code-topics api-methods'>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/index_/' target='_blank'>Index</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.store</code>
+    </td>
+    <td><p>Stores a document into the index using <code>PUT</code>.</p>
+
+<p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>store</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>PUT</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/&lt;&lt;id&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>store</span> <span class='ss'>:id</span>    <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>               <span class='c1'># required</span>
+           <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+           <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>You must pass the source as the <code>:data</code> variable.</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.put_store</code>
+    </td>
+    <td><p>Alias of <code>Flex.store</code> (defined for symmetry with <code>Flex.post_store</code>)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.post_store</code>
+    </td>
+    <td><p>Stores a document into the index using <code>POST</code>: the <code>:id</code> is assigned by elasticsearch.</p>
+
+<p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>post_store</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>post_store</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+<blockquote>
+<p>You must pass the source as the <code>:data</code> variable.</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/delete/' target='_blank'>Delete</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.remove</code>
+    </td>
+    <td>
+      <p>Removes a document from the index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>remove</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>DELETE</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/&lt;&lt;id&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>remove</span> <span class='ss'>:id</span>    <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>               <span class='c1'># required</span>
+            <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+            <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/get.html' target='_blank'>Get</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get</code>
+    </td>
+    <td>
+      <p>Retrieves a document from the index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>get</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/&lt;&lt;id&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get</span> <span class='ss'>:id</span>    <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>               <span class='c1'># required</span>
+         <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+         <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get_source</code>
+    </td>
+    <td>
+      <p>Retrieves the source of a document from the index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>get</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/&lt;&lt;id&gt;&gt;/_source</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get_source</span> <span class='ss'>:id</span>    <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>               <span class='c1'># required</span>
+                <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+                <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/multi-get.html' target='_blank'>Multi Get</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.multi_get</code>
+    </td>
+    <td>
+      <p>Retrieves multiple documents</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>multi_get</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_mget</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>ids</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt; ids &gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>multi_get</span> <span class='ss'>:ids</span>   <span class='o'>=&gt;</span> <span class='n'>ids</span><span class='p'>,</span>              <span class='c1'># required</span>
+               <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+               <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/update/' target='_blank'>Update</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.update</code>
+    </td>
+    <td>
+      <p>Updates a document based on a script provided.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>update</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/&lt;&lt;id&gt;&gt;/_update</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+      
+      <p>You must pass script or doc and the other options as the :data variable</p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>update</span> <span class='ss'>:id</span>    <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>    <span class='c1'># required</span>
+            <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+            <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/search' target='_blank'>Search</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>YourClass.your_custom_search</code>
+    </td>
+    <td><p>The Search API is completely covered by the Flex Templating system and mostly covered by the <code>flex-scopes</code> gem.</p>(see <a href='/flex/doc/2-flex/3-Templating'>Templating</a> and <a href='/flex/doc/3-flex-scopes'>flex-scopes</a>)
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/multi-search.html' target='_blank'>Multi Search</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>YourClass.flex.multi_search</code>
+    </td>
+    <td><blockquote>
+<p>This method is documented here because it is an elasticsearch API method, however it is defined into your <code>flex</code> proxy included by <code>Flex::Templates</code>.</p>
+</blockquote>
+
+<p>The method allows you to do multi-searching by using multiple templates defined by your class. It takes 2 arguments. The first is a required hash with the templates names as the keys and the variable hash as the values. You can also use an array of arrays. The second is an optional hash of variables that will be used to render the <code>multi_search</code> template. The array of responses is available as <code>responses</code> method.</p>
+
+<p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>multi_search</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_msearch</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>result</span> <span class='o'>=</span> <span class='no'>MyClass</span><span class='o'>.</span><span class='n'>flex</span><span class='o'>.</span><span class='n'>multi_search</span><span class='p'>({</span><span class='ss'>:my_search_a</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='ss'>:a_var</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;foo&#39;</span><span class='p'>},</span>
+                                    <span class='ss'>:my_search_b</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='ss'>:another_var</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;bar&#39;</span><span class='p'>},</span>
+                                   <span class='p'>{</span><span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;another_index&#39;</span><span class='p'>})</span>
+
+<span class='n'>result</span><span class='o'>.</span><span class='n'>responses</span><span class='o'>.</span><span class='n'>each</span><span class='p'>{</span><span class='o'>|</span><span class='n'>r</span><span class='o'>|</span> <span class='n'>r</span><span class='o'>.</span><span class='n'>do_something</span> <span class='p'>}</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/percolate.html' target='_blank'>Percolate</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.put_percolator</code>
+    </td>
+    <td>
+      <p>Registers a named percolator query against an index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>put_percolator</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>PUT</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_percolator/&lt;&lt;index&gt;&gt;/&lt;&lt;percolator&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>put_percolator</span> <span class='ss'>:percolator</span> <span class='o'>=&gt;</span> <span class='n'>percolator</span><span class='p'>,</span>       <span class='c1'># required</span>
+                    <span class='ss'>:index</span>      <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.delete_percolator</code>
+    </td>
+    <td>
+      <p>Unregisters a named percolator.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>delete_percolator</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>DELETE</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_percolator/&lt;&lt;index&gt;&gt;/&lt;&lt;percolator&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>delete_percolator</span> <span class='ss'>:percolator</span> <span class='o'>=&gt;</span> <span class='n'>percolator</span><span class='p'>,</span>       <span class='c1'># required</span>
+                       <span class='ss'>:index</span>      <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.percolate</code>
+    </td>
+    <td>
+      <p>Percolates a document.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>percolate</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_percolate</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>percolate</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+               <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+<blockquote>
+<p>You must pass the document (and additional queries) as the <code>:data</code> variable)</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/bulk.html' target='_blank'>Bulk</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.post_bulk_string</code>
+    </td>
+    <td>
+      <p>Performs many index/create/update/delete operations in a single API call.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>post_bulk_string</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_bulk</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>&lt;&lt; bulk_string &gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>post_bulk_string</span> <span class='ss'>:bulk_string</span> <span class='o'>=&gt;</span> <span class='n'>bulk_string</span>   <span class='c1'># required</span>
+</code></pre></div>
+<p>It may return <code>nil</code> if you pass a blank <code>:bulk_string</code></p><br />(see <a href='/flex/doc/1-Flex-Project/4-Rake-Tasks.html#flex_import'>flex:import</a> and <a href='/flex/doc/2-flex/6-Utility-Methods.html#bulk_support'>Bulk Support</a>)
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/count.html' target='_blank'>Count</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.count</code>
+    </td>
+    <td>
+      <p>Gets the number of matches for a query.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>count</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_count</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>count</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+           <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/delete-by-query.html' target='_blank'>Delete by Query</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.delete_by_query</code>
+    </td>
+    <td>
+      <p>Allows to delete documents from one or more indices and one or more types based on a query.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>delete_by_query</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>DELETE</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_query</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>delete_by_query</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                     <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the query as the <code>:data</code> variable</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/more-like-this.html' target='_blank'>More Like This</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.more_like_this</code>
+    </td>
+    <td>
+      <p>Allows to get documents that are &#8220;like&#8221; a specified document.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>more_like_this</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/&lt;&lt;id&gt;&gt;/_mlt</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>more_like_this</span> <span class='ss'>:id</span>    <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>          <span class='c1'># required</span>
+                    <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                    <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the search API (facets, from/to and so on) as the <code>:data</code> variable)</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code> Flex.mlt</code>
+    </td>
+    <td><p>Alias for <code>Flex.more_like_this</code></p>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/validate/' target='_blank'>Validate</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.validate</code>
+    </td>
+    <td>
+      <p>Allows to validate a potentially expensive query without executing it.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>validate</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_validate/query</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>validate</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+              <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+<blockquote>
+<p>You must pass the query to validate as the <code>:data</code> variable You can pass the parameters as the <code>:params</code> variable</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/explain/' target='_blank'>Explain</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.explain</code>
+    </td>
+    <td>
+      <p>Computes a score explanation for a query and a specific document.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>explain</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/&lt;&lt;id&gt;&gt;/_explain</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>explain</span> <span class='ss'>:id</span>    <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>    <span class='c1'># required</span>
+             <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+             <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>You must pass the query to explain as the <code>:data</code> variable You can pass the parameters as the <code>:params</code> variable</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2' id='flex_additions'>
+      Flex Additions
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code> Flex.match_all</code>
+    </td>
+    <td>
+      <p>Not a real API method, but handy:</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>match_all</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_search</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>match_all</span><span class='p-Indicator'>:</span> <span class='p-Indicator'>{}</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>match_all</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+               <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code> Flex.search_by_id</code>
+    </td>
+    <td>
+      <p>Get a document without using the get API (which doesn&#8217;t support fields &#8217;*&#8217;)</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>search_by_id</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_search</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>_id</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;id&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>search_by_id</span> <span class='ss'>:id</span>      <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>    <span class='c1'># required</span>
+                  <span class='ss'>:type</span>    <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+                  <span class='ss'>:index</span>   <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>This method uses the search API, which is not real-time like the get API. You may want to refresh the index with <code>Flex.refresh_index</code>, before calling it.</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code> Flex.scan_search</code>
+    </td>
+    <td><p>Generic implementation of the <a href='http://www.elasticsearch.org/guide/reference/api/search/search-type'>elasticsearch search_type API</a> of type <code>scan</code>. It passes the raw result to the block.</p><p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>scan_search</span><span class='p'>(</span><span class='ss'>:my_template</span><span class='p'>,</span> <span class='n'>my_vars</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>result</span><span class='o'>|</span>
+  <span class='n'>result</span><span class='o'>[</span><span class='s1'>&#39;hits&#39;</span><span class='o'>][</span><span class='s1'>&#39;hits&#39;</span><span class='o'>].</span><span class='n'>each</span><span class='p'>{</span><span class='o'>|</span><span class='n'>d</span><span class='o'>|</span><span class='n'>do_something_with</span><span class='p'>(</span><span class='n'>d</span><span class='p'>)}</span>
+<span class='k'>end</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code> Flex.scan_all</code>
+    </td>
+    <td><p>Specific implementation of the <a href='http://www.elasticsearch.org/guide/reference/api/search/search-type'>elasticsearch search_type API</a> of type <code>scan</code>, applied to the <code>match_all</code> template/query. It passes an array of documents to the block.</p><p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>scan_all</span><span class='p'>(</span><span class='n'>my_vars</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>batch</span><span class='o'>|</span>
+  <span class='n'>batch</span><span class='o'>.</span><span class='n'>each</span><span class='p'>{</span><span class='o'>|</span><span class='n'>d</span><span class='o'>|</span><span class='n'>do_something_with</span><span class='p'>(</span><span class='n'>d</span><span class='p'>)}</span>
+<span class='k'>end</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code> Flex.dump_all</code>
+    </td>
+    <td><p>It <code>flush_index</code> and call <code>scan_all</code>, with added <code>{:params =&gt; {:fields =&gt; &#39;*,_source&#39;}}</code>. Used to include all the relevant fields from a document:</p><p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>dump_all</span><span class='p'>(</span><span class='n'>my_vars</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>batch</span><span class='o'>|</span>
+  <span class='n'>batch</span><span class='o'>.</span><span class='n'>each</span><span class='p'>{</span><span class='o'>|</span><span class='n'>d</span><span class='o'>|</span><span class='n'>do_something_with</span><span class='p'>(</span><span class='n'>d</span><span class='p'>)}</span>
+<span class='k'>end</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code> Flex.dump_one</code>
+    </td>
+    <td><p>It <code>flush_index</code> and call <code>search_by_id</code>, with added <code>{:params =&gt; {:fields =&gt; &#39;*,_source&#39;}}</code>. Used to include all the relevant fields from the document:</p><p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>dump_one</span> <span class='ss'>:id</span>      <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>    <span class='c1'># required</span>
+              <span class='ss'>:type</span>    <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+              <span class='ss'>:index</span>   <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+</table>
+<h2 id='indices_api'>Indices API</h2>
+<table cellpadding='0' cellspacing='0' class='code-topics api-methods'>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-aliases/' target='_blank'>Aliases</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.post_index_aliases</code>
+    </td>
+    <td>
+      <p>The index aliases API allow to alias an index with a name, with all APIs automatically converting the alias name to the actual index name.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>post_index_aliases</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_aliases</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>post_index_aliases</span>
+</code></pre></div>
+<blockquote>
+<p>You must pass the aliases API structure as the <code>:data</code> variable</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get_index_aliases</code>
+    </td>
+    <td>
+      <p>Returns all indices with all aliases, or just for specific indices. (pre 0.90.1).</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>get_index_aliases</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_aliases</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get_index_aliases</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.add_index_alias</code>
+    </td>
+    <td>
+      <p>Adds an index alias.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>add_index_alias</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>PUT</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_alias/&lt;&lt;alias&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>add_index_alias</span> <span class='ss'>:alias</span> <span class='o'>=&gt;</span> <span class='k'>alias</span><span class='p'>,</span>  <span class='c1'># required</span>
+                     <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass other options as the <code>:data</code> variable.</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.delete_index_alias</code>
+    </td>
+    <td>
+      <p>Deletes an index alias.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>delete_index_alias</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>DELETE</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_alias/&lt;&lt;alias&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>delete_index_alias</span> <span class='ss'>:alias</span> <span class='o'>=&gt;</span> <span class='k'>alias</span><span class='p'>,</span>  <span class='c1'># required</span>
+                        <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get_index_alias</code>
+    </td>
+    <td>
+      <p>Allows to filter by alias name and index name.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>get_index_alias</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_alias/&lt;&lt;alias= &#39;*&#39; &gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get_index_alias</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                     <span class='ss'>:alias</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;*&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-analyze/' target='_blank'>Analyze</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.analyze_index</code>
+    </td>
+    <td>
+      <p>Performs the analysis process on a text and return the tokens breakdown of the text.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>analyze_index</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_analyze</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>analyze_index</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the text to analyze as the <code>:data</code> variable (or the param <code>:text</code>). You can pass the parameters as the <code>:params</code> variable.</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-create-index.html' target='_blank'>Create Index</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.create_index</code>
+    </td>
+    <td><p>Allows to instantiate an index. (Uses <code>PUT</code>)</p>
+
+<p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>create_index</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>PUT</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>settings</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>number_of_shards</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;number_of_shards= 5 &gt;&gt;</span>
+    <span class='l-Scalar-Plain'>number_of_replicas</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;number_of_replicas= 1 &gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>create_index</span> <span class='ss'>:index</span>              <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                  <span class='ss'>:number_of_shards</span>   <span class='o'>=&gt;</span> <span class='mi'>5</span><span class='p'>,</span>
+                  <span class='ss'>:number_of_replicas</span> <span class='o'>=&gt;</span> <span class='mi'>1</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.put_index</code>
+    </td>
+    <td><p>Alias for <code>Flex.create_index</code> (defined for symmetry with <code>Flex.post_index</code>)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.post_index</code>
+    </td>
+    <td><p>Allows to instantiate an index. (Uses <code>POST</code>)</p>
+
+<p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>post_index</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>settings</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>number_of_shards</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;number_of_shards= 5 &gt;&gt;</span>
+    <span class='l-Scalar-Plain'>number_of_replicas</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;number_of_replicas= 1 &gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>post_index</span> <span class='ss'>:index</span>              <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                <span class='ss'>:number_of_shards</span>   <span class='o'>=&gt;</span> <span class='mi'>5</span><span class='p'>,</span>
+                <span class='ss'>:number_of_replicas</span> <span class='o'>=&gt;</span> <span class='mi'>1</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/delete.html' target='_blank'>Delete Index</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.delete_index</code>
+    </td>
+    <td>
+      <p>Allows to delete an existing index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>delete_index</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>DELETE</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>delete_index</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-open-close/' target='_blank'>Open/Close Index</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.close_index</code>
+    </td>
+    <td>
+      <p>Allows to close an index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>close_index</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_close</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>close_index</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.open_index</code>
+    </td>
+    <td>
+      <p>Allows to open an index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>open_index</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_open</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>open_index</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-get-settings.html' target='_blank'>Get Settings</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get_index_settings</code>
+    </td>
+    <td>
+      <p>Allows to retrieve settings of index/indices.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>get_index_settings</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_settings</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get_index_settings</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get_settings</code>
+    </td>
+    <td><p>Alias for <code>Flex.get_index_settings</code>. (Flex-backward compatible)</p>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-get-mapping.html' target='_blank'>Get Mapping</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get_index_mapping</code>
+    </td>
+    <td>
+      <p>Allows to retrieve the mapping of index/indices.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>get_index_mapping</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_mapping</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get_index_mapping</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get_mapping</code>
+    </td>
+    <td><p>Alias for <code>Flex.get_index_mapping</code>. (Flex-backward compatible)</p>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-put-mapping.html' target='_blank'>Put Mapping</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.put_index_mapping</code>
+    </td>
+    <td>
+      <p>Allows to register specific mapping definition for a specific type.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>put_index_mapping</span><span class='p-Indicator'>:</span> <span class='nl'>&amp;put_index_mapping</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>PUT</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_mapping</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>&lt;&lt;type&gt;&gt;</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>properties</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;properties&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>put_index_mapping</span> <span class='ss'>:properties</span> <span class='o'>=&gt;</span> <span class='n'>properties</span><span class='p'>,</span>  <span class='c1'># required</span>
+                       <span class='ss'>:type</span>       <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+                       <span class='ss'>:index</span>      <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.put_mapping</code>
+    </td>
+    <td><p>Alias for <code>Flex.put_index_mapping</code>. (Flex-backward compatible)</p>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-delete-mapping.html' target='_blank'>Delete Mapping</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.delete_index_mapping</code>
+    </td>
+    <td>
+      <p>Allows to delete the mapping of an index/type.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>delete_index_mapping</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>DELETE</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>delete_index_mapping</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                          <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.delete_mapping</code>
+    </td>
+    <td><p>Alias for <code>Flex.delete_index_mapping</code>. (Flex-backward compatible)</p>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-refresh.html' target='_blank'>Refresh</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.refresh_index</code>
+    </td>
+    <td>
+      <p>Allows to explicitly refresh one or more index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>refresh_index</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_refresh</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>refresh_index</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-optimize/' target='_blank'>Optimize</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.optimize_index</code>
+    </td>
+    <td>
+      <p>Allows to optimize one or more index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>refresh_index</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_optimize</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>optimize_index</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the parameters as the <code>:params</code> variable.</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-flush/' target='_blank'>Flush</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.flush_index</code>
+    </td>
+    <td>
+      <p>Allows to flush one or more index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>flush_index</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_flush</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>flush_index</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the parameters as the <code>:params</code> variable.</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-gateway-snapshot/' target='_blank'>Snapshot</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.gateway_snapshot</code>
+    </td>
+    <td>
+      <p>Allows to explicitly perform a snapshot through the gateway of one or more indices (backup them).</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>gateway_snapshot</span><span class='p-Indicator'>:</span>
+ <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+ <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_gateway/snapshot</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>gateway_snapshot</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-update-settings/' target='_blank'>Update</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.update_index_settings</code>
+    </td>
+    <td>
+      <p>Change specific index level settings in real time.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>update_index_settings</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>PUT</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_settings</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>update_index_settings</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the settings structure as the <code>:data</code> variable</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-templates/' target='_blank'>Templates</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.put_index_template</code>
+    </td>
+    <td>
+      <p>Creates a template that will automatically be applied to new indices created.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>put_index_template</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>PUT</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_template/&lt;&lt;template&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>put_index_template</span> <span class='ss'>:template</span> <span class='o'>=&gt;</span> <span class='n'>template</span>  <span class='c1'># required</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the data structure as the <code>:data</code> variable</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.delete_index_template</code>
+    </td>
+    <td>
+      <p>Deletes an existing template.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>delete_index_template</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>DELETE</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_template/&lt;&lt;template&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>delete_index_template</span> <span class='ss'>:template</span> <span class='o'>=&gt;</span> <span class='n'>template</span>  <span class='c1'># required</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get_index_template</code>
+    </td>
+    <td>
+      <p>Retrieves an existing template.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>get_index_template</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_template/&lt;&lt;template&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get_index_template</span> <span class='ss'>:template</span> <span class='o'>=&gt;</span> <span class='n'>template</span>  <span class='c1'># required</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-warmers/' target='_blank'>Warmers</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.put_index_warmer</code>
+    </td>
+    <td>
+      <p>Creates a warmer to warm up the index before it is available for search.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>put_index_warmer</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>PUT</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_warmer/&lt;&lt;warmer&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>put_warmer</span> <span class='ss'>:warmer</span> <span class='o'>=&gt;</span> <span class='n'>warmer</span><span class='p'>,</span>  <span class='c1'># required</span>
+                <span class='ss'>:type</span>   <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+                <span class='ss'>:index</span>  <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the data structure as the <code>:data</code> variable</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.delete_index_warmer</code>
+    </td>
+    <td>
+      <p>Deletes an existing warmer.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>delete_index_warmer</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>DELETE</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_warmer/&lt;&lt;warmer= ~ &gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>delete_warmer</span> <span class='ss'>:index</span>  <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                   <span class='ss'>:warmer</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+      
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get_index_warmer</code>
+    </td>
+    <td>
+      <p>Retrieves an existing warmer.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>get_index_warmer</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_warmer/&lt;&lt;warmer= ~ &gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get_warmer</span> <span class='ss'>:index</span>  <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                <span class='ss'>:warmer</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-stats.html' target='_blank'>Stats</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.index_stats</code>
+    </td>
+    <td>
+      <p>Provides statistics on different operations happening on an index.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>index_stats</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_stats/&lt;&lt;endpoint= ~ &gt;&gt;/&lt;&lt;type= ~ &gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>index_stats</span> <span class='ss'>:index</span>    <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                 <span class='ss'>:endpoint</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+                 <span class='ss'>:type</span>     <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.stats</code>
+    </td>
+    <td><p>Alias for <code>Flex.index_stats</code>. (Flex-backward compatible)</p>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-status/' target='_blank'>Status</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.index_status</code>
+    </td>
+    <td>
+      <p>Provides a comprehensive status information of one or more indices.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>index_status</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_status</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>index_status</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-segments/' target='_blank'>Segments</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.index_segments</code>
+    </td>
+    <td>
+      <p>Provides low level segments information that a Lucene index (shard level) is built with.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>index_segments</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_segments</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>index_segments</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-clearcache/' target='_blank'>Clear Cache</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.index_clearcache</code>
+    </td>
+    <td>
+      <p>Clears either all caches or specific cached associated with one ore more indices.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>index_clearcache</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/_cache/clear</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>index_clearcache</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-indices-exists.html' target='_blank'>Indices Exists</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.indices_exists</code>
+    </td>
+    <td>
+      <p>Checks if the index/indices exists.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>indices_exists</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>HEAD</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>indices_exists</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+      <p><strong>Notice</strong>: the result is a boolean</p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.exist?</code>
+    </td>
+    <td><p>Alias for <code>Flex.indices_exists</code>. (Flex-backward compatible)</p>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-indices-types-exists.html' target='_blank'>Types Exists</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.types_exists</code>
+    </td>
+    <td>
+      <p>Checks if the type/types exists in an index/indices.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>types_exists</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>HEAD</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>types_exists</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span><span class='p'>,</span>
+                  <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+<blockquote>
+      <p><strong>Notice</strong>: the result is a boolean</p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.exist?</code>
+    </td>
+    <td><p>Alias for <code>Flex.indices_exists</code>. (Flex-backward compatible)</p>
+    </td>
+  </tr>
+</table>
+<h2 id='cluster_api'>Cluster API</h2>
+<table cellpadding='0' cellspacing='0' class='code-topics api-methods'>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-cluster-health/' target='_blank'>Health</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.cluster_health</code>
+    </td>
+    <td>
+      <p>Gets a very simple status on the health of the cluster.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>cluster_health</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_cluster/health/&lt;&lt;index&gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>cluster_health</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;flex_test_index&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the params as the <code>:params</code> variable</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-cluster-state/' target='_blank'>State</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.cluster_state</code>
+    </td>
+    <td>
+      <p>Gets a comprehensive state information of the whole cluster.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>cluster_state</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_cluster/state</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>cluster_state</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the params as the <code>:params</code> variable</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-cluster-update-settings/' target='_blank'>Update Settings</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.put_cluster_settings</code>
+    </td>
+    <td>
+      <p>Updates cluster wide specific settings.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>put_cluster_settings</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>PUT</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_cluster/settings</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>put_cluster_settings</span>
+</code></pre></div>
+<blockquote>
+<p>You can pass the settings structure as the <code>:data</code> variable</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.get_cluster_settings</code>
+    </td>
+    <td>
+      <p>Retrieves cluster settings.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>get_cluster_settings</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_cluster/settings</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>get_cluster_settings</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-cluster-nodes-info/' target='_blank'>Nodes Info</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.cluster_nodes_info</code>
+    </td>
+    <td>
+      <p>Retrieves one or more (or all) of the cluster nodes information.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>cluster_nodes_info</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_nodes/&lt;&lt;nodes= ~ &gt;&gt;/&lt;&lt;endpoint= ~ &gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>cluster_nodes_info</span> <span class='ss'>:nodes</span>    <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+                        <span class='ss'>:endpoint</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-cluster-nodes-stats/' target='_blank'>Nodes Stats</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.cluster_nodes_info</code>
+    </td>
+    <td>
+      <p>Retrieves one or more (or all) of the cluster nodes statistics.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>cluster_nodes_stats</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_nodes/&lt;&lt;nodes= ~ &gt;&gt;/stats/&lt;&lt;endpoint= ~ &gt;&gt;</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>cluster_nodes_stats</span> <span class='ss'>:nodes</span>    <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span>
+                         <span class='ss'>:endpoint</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-cluster-nodes-shutdown/' target='_blank'>Nodes Shutdown</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.cluster_nodes_shutdown</code>
+    </td>
+    <td>
+      <p>Shutdown one or more (or all) nodes in the cluster.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>cluster_nodes_shutdown</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_cluster/nodes/&lt;&lt;nodes= ~ &gt;&gt;/_shutdown</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>cluster_nodes_shutdown</span> <span class='ss'>:nodes</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-cluster-nodes-hot-threads/' target='_blank'>Nodes Hot Threads</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.cluster_nodes_hot_threads</code>
+    </td>
+    <td>
+      <p>Gets the current hot threads on each node in the cluster.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>cluster_nodes_hot_threads</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_nodes/&lt;&lt;nodes= ~ &gt;&gt;/hot_threads</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>cluster_nodes_hot_threads</span> <span class='ss'>:nodes</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2'>
+      <a href='http://www.elasticsearch.org/guide/reference/api/admin-cluster-reroute.html' target='_blank'>Cluster Reroute</a>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>Flex.cluster_reroute</code>
+    </td>
+    <td>
+      <p>Explicitly execute a cluster reroute allocation command including specific commands.</p>
+      
+      <p><strong>Template</strong></p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>cluster_reroute</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>POST</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/_cluster/reroute</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>cluster_reroute</span>
+</code></pre></div>
+<p>You can pass the data structure as the <code>:data</code> variable</p>
+    </td>
+  </tr>
+</table>
+<blockquote>
+<p>If you find any elasticsearch API missing from this list, please, let me know and I will add it right away (it should be just a matter of a few minutes)</p>
+</blockquote><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/2-flex">flex</a></span> &gt; <span>API Methods</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

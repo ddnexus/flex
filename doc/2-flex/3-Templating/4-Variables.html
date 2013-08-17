@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - flex - Variables
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/2-flex">flex</a></span> &gt; <span><a href="/flex/doc/2-flex/3-Templating">Templating</a></span> &gt; <span>Variables</span>
+      </div>
+      <h1 id='variables'>Variables</h1>
+
+<p>When you call a generated method (originated by a template), you can pass a list of hashes of variables that will be interpolated into the templates.</p>
+
+<blockquote>
+<p><strong>Notice</strong>: We will use just one hash in the following examples, but you can actually pass a list of hashes that will be deep merged into one single hash (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html#7_single_call_level'>Single Call Level</a>).</p>
+</blockquote>
+
+<p>For example:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_search</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>color</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;the_color&gt;&gt;</span>
+</code></pre></div><div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_search</span> <span class='ss'>:the_color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;blue&#39;</span>
+</code></pre></div>
+<p>You know that you can also set a tag default (see <a href='/flex/doc/2-flex/3-Templating/3-Tags.html'>Tags</a>):</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_search</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>color</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;the_color= blue &gt;&gt;</span>
+</code></pre></div><div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_search</span>
+</code></pre></div>
+<p>but you can also set a default for all the <code>the_color</code> tags in the source file, or for all the source files used by your class, or for all the requests of your app, etc. by setting them at different levels.</p>
+
+<h2 id='variable_levels'>Variable Levels</h2>
+
+<p>Flex allows you to set interpolation variables at different levels, affecting different ranges of requests. They act as sort of cascading defaults, so you can minimize the code needed to set the right value, which is somehow similar to what you do with CSSs.</p>
+
+<p>That is internally achieved by deep-merging all the <code>Flex::Variables</code> objects in the cascading hierarchy of levels, from the most general to the most specific. More specific variable levels override more general levels.</p>
+
+<p>Here they are, from the most general to the most specific:</p>
+
+<h3 id='1_configuration_level'>1. Configuration Level</h3>
+
+<p>Variables set at configuration level will set the default for all the requests of your application and can be overridden by all the other levels. You usually set them by merging or deep-merging your values into the <code>Flex::Variables</code> object contained in <code>Flex::Configuration.variables</code> so preserving the values already there:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>config</span><span class='o'>.</span><span class='n'>variables</span><span class='o'>.</span><span class='n'>deep_merge!</span> <span class='ss'>:the_color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;green&#39;</span>
+</code></pre></div>
+<p>(see <a href='/flex/doc/1-Flex-Project/3-Configuration.html'>Configuration</a>)</p>
+
+<h3 id='2_template_class_level'>2. Template Class level</h3>
+
+<p>This is mostly used internally by the <code>Flex::Template::*</code> subclasses. You might need it if you want to create a custom template class. In that case take a look at the implementation of <a href='https://github.com/ddnexus/flex/blob/master/lib/flex/template/slim_search.rb'>flex/template/slim_search</a>.</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>MyTemplateClass</span> <span class='o'>&lt;</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Template</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>variables</span>
+    <span class='k'>super</span><span class='o'>.</span><span class='n'>deep_merge</span><span class='p'>(</span><span class='ss'>:the_color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;blue&#39;</span><span class='p'>)</span>
+  <span class='k'>end</span>
+  <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+<span class='k'>end</span>
+</code></pre></div>
+<h3 id='3_host_class_level_your_class'>3. Host Class level (your class)</h3>
+
+<p>When you want to set a default variable for all the requests from your own class (context class) you can simply add the variables to the <code>flex</code> class proxy of your class:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>MyClass</span>
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Templates</span>
+  <span class='n'>flex</span><span class='o'>.</span><span class='n'>variables</span><span class='o'>.</span><span class='n'>deep_merge!</span><span class='p'>(</span><span class='ss'>:the_color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>)</span>
+  <span class='n'>flex</span><span class='o'>.</span><span class='n'>load_source</span> <span class='ss'>:my_source</span>
+  <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+<span class='k'>end</span>
+</code></pre></div>
+<h3 id='4_source_level'>4. Source Level</h3>
+
+<p>When you want to set a default variable for all the requests generated by the same source file you can do so in the loading statement:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>flex</span><span class='o'>.</span><span class='n'>load_source</span> <span class='ss'>:my_source</span><span class='p'>,</span> <span class='ss'>:the_color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;black&#39;</span>
+</code></pre></div>
+<p>(see <a href='/flex/doc/2-flex/3-Templating/2-Sources.html'>Template Sources</a>)</p>
+
+<h3 id='5_instance_template_level'>5. Instance Template Level</h3>
+
+<p>This level is specially useful when you want to set a variable at the template level (i.e. affecting all the requests made with that template), but you cannot use tag defaults because that tag is not explicit in your template. This is usually the case of the tags used in the <code>path</code>, such as <code>:index</code>, <code>:type</code> or (query) <code>:params</code> that are not accessible from Search Templates. In the following template, the second argument is used as template variables. In this case we want to use the <code>car</code> and <code>truck</code> default types when we use that template.</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_search</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>color</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;the_color&gt;&gt;</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>type</span><span class='p-Indicator'>:</span>
+  <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>car</span>
+  <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>truck</span>
+</code></pre></div>
+<h3 id='6_tag_level'>6. Tag Level</h3>
+
+<p>This is a quite specific level: may be overridden only by the call argument below.</p>
+<div class='highlight'><pre><code class='yaml'><span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>&lt;&lt;the_color= yellow &gt;&gt;</span>
+</code></pre></div>
+<h3 id='7_single_call_level'>7. Single Call Level</h3>
+
+<p>This is the most specific level where you can set a variable, indeed it affects only that single request and overrides any other level that may set <code>:the_color</code>.</p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_search</span> <span class='ss'>:the_color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;white&#39;</span>
+</code></pre></div>
+<p>Besides, all the methods that accept a variable hash, can accept a list of hashes as well. The list will be deep-merged and the resulting hash will be used as the final variable hash passed as the arguments. For example:</p>
+
+<p><div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_search</span> <span class='vi'>@default_controller_vars</span><span class='p'>,</span> <span class='n'>params</span><span class='p'>,</span> <span class='ss'>:the_color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;pink&#39;</span>
+</code></pre></div></p>
+
+<p>The order is important: in this case we pass 3 hashes: the 3rd hash will override the 2nd, which will override the 1st.</p>
+
+<h2 id='special_variables'>Special Variables</h2>
+
+<p>Variables are usually created by you: their primary function is supplying the values to replace the tags, but there are a few variables that are special because they have a different function, so you cannot define a tag with their name. They are mostly set and used internally, but you might need to pass it explicitly in some special case.</p>
+<table cellpadding='0' cellspacing='0' class='code-topics'>
+  <tr>
+    <td>
+      <code>:context</code>
+    </td>
+    <td><p>This variable contain the context class, which is usually the class where you included some Flex module (like <code>Flex::Templates</code>, <code>Flex::Scopes</code>, <code>Flex::ModelIndexer</code>, etc.). It is used by the <code>flex-scopes</code> gem.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>:path</code>
+    </td>
+    <td>
+      <p>This variable contain the full path of the request. It is usually set and used internally.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>:data</code>
+    </td>
+    <td><p>This variable contain the data, i.e. the request body (a ruby structure that express the elasticsearch <code>JSON</code> query). You may need to set it directly in some very special case, but it is mostly used internally.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>:params</code>
+    </td>
+    <td><p>The params are a hash of key/value pairs. Flex will transform them in the query string part of the path (all what comes after the <code>?</code>), so you will probably use it quite often.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>:no_pruning</code>
+    </td>
+    <td>
+      <p>Skips the automatic pruning for the keys listed here. You can skip arbitrary keys that are expected to containing nil/empty values (see <a href='/flex/doc/2-flex/3-Templating/5-Interpolation.html#pruning'>Pruning</a>)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>:raise</code>
+    </td>
+    <td><p>Boolean. <code>false</code> will not raise errors coming from elasticsearch.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>:raw_result</code>
+    </td>
+    <td><p>Boolean. <code>true</code> will return the raw result as returned by elasticsearch. It is mostly useful to skip the automatic casting provided by the <code>Flex::ActiveModel</code> module, or skip your own post processing of the result (see <a href='/flex/doc/2-flex/4-Result-Extenders.html#modelflex_resultresult'>flex_result</a>).</p>
+    </td>
+  </tr>
+</table>
+<h2 id='predefined_variables'>Predefined Variables</h2>
+
+<p>Flex defines a few tags internally, so it adds some predefined variable to the set. For example, when you use Search Templates, you have more predefined variables:</p>
+<table cellpadding='0' cellspacing='0' class='code-topics' style='width: 100%'>
+  <tr>
+    <td>
+      <code>:index</code>
+    </td>
+    <td>
+      <p>The index or indices. You can set it as a string or as an Array of strings.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>:type</code>
+    </td>
+    <td>
+      <p>The type or types. You can set it as a string or as an Array of strings.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>:page</code>
+    </td>
+    <td><p>The page number of the pagination. By setting this variable you get automatically set the <code>:from</code> param, consistently with the <code>:size</code> (that is usually defaulted). Very convenient when you get the page number from a pagination link). Default 1.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>:cleanable_query</code>
+    </td>
+    <td><p>This variable is used to pass query_string queries and it is treated in a special way by Flex. For example: if you pass a search field content from a web form directly to a query_string query, you may easily get some nasty error by elasticsearch. Indeed there are a few special characters that can break the Lucene syntax, so they should either be escaped/removed or used in a proper way. If you pass the query_string as the <code>:cleanable_query</code> variable, Flex tries to search with its content as is first (so allowing your power users to use advanced queries). But if it gets an error from elasticsearch, then it removes the offending characters from the string, and performs a second search with the cleaned string, and finally returns the result.</p>
+
+<blockquote>
+<p>See <a href='http://lucene.apache.org/core/old_versioned_docs/versions/3_5_0/queryparsersyntax.html'>Lucene Query Parser Syntax</a></p>
+</blockquote>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>query_string</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;cleanable_query= &#39;*&#39; &gt;&gt;</span>
+
+<span class='c1'># or</span>
+<span class='l-Scalar-Plain'>my_other_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>query_string</span><span class='p-Indicator'>:</span>
+      <span class='c1'># must wrap in quotes or the &#39;:&#39; would generate a YAML error</span>
+      <span class='s'>&quot;&lt;&lt;cleanable_query=</span><span class='nv'> </span><span class='s'>{query:</span><span class='nv'> </span><span class='s'>&#39;*&#39;}</span><span class='nv'> </span><span class='s'>&gt;&gt;&quot;</span>
+</code></pre></div>
+
+      <p />
+      
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_template</span><span class='p'>(</span><span class='ss'>:cleanable_query</span> <span class='o'>=&gt;</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:q</span><span class='o'>]</span><span class='p'>)</span>
+<span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_other_template</span><span class='p'>(</span> <span class='ss'>:cleanable_query</span> <span class='o'>=&gt;</span> <span class='p'>{</span> <span class='ss'>:query</span>  <span class='o'>=&gt;</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:q</span><span class='o'>]</span><span class='p'>,</span>
+                                                 <span class='ss'>:fields</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='s1'>&#39;text&#39;</span><span class='p'>,</span> <span class='s1'>&#39;category&#39;</span><span class='o'>]</span> <span class='p'>}</span> <span class='p'>)</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+</table>
+<blockquote>
+<p>When you use other API methods (e.g. <code>Flex.multi_get</code>, <code>Flex.stats</code>, &#8230;), you may need to set other variables as well (see <a href='/flex/doc/2-flex/2-API-Methods.html'>API Methods</a>). As usual you can get the variables and an usage example in the console with <code>Flex.doc</code></p>
+</blockquote>
+
+<h2 id='flex_variables_structure'>Flex Variables Structure</h2>
+
+<p>When you pass a variable hash (or list of hashes) to any flex method, flex will create an internal <code>Flex::Variables</code> instance, which is a special <code>Hash</code> instance.</p>
+
+<ul>
+<li>The <code>Flex::Variables</code> objects are aware of the elasticsearch/flex usage and its special variables</li>
+
+<li>They are deep-mergeable and prunable</li>
+
+<li>Deep-merging is done both for hashes and arrays in the stucture</li>
+
+<li>Their keys are automatically symbolized</li>
+</ul><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/2-flex">flex</a></span> &gt; <span><a href="/flex/doc/2-flex/3-Templating">Templating</a></span> &gt; <span>Variables</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

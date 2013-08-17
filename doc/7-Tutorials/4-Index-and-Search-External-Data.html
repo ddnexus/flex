@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - Index and Search External Data
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/7-Tutorials">Tutorials</a></span> &gt; <span>Index and Search External Data</span>
+      </div>
+      <h1 id='index_and_search_external_data'>Index and Search External Data</h1>
+
+<blockquote>
+<p><strong>Notice</strong>: This tutorial is complemented by the previous one, please read both of them (see <a href='/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html'>Index and Search your Models</a>).</p>
+</blockquote>
+
+<p>When the data you want to search is not managed by your app, you can index and search it as easily as it were in your own DB. Indeed you can use elasticsearch as it were a sort of DB itself, managing its indices and types with your models as you do with databases and tables.</p>
+
+<p>In this tutorial we will create a small Rails app that will crawl this very documentation and index all its content with the <code>elasticsearch-mapper-attachment</code> plugin. It will do so without using any DB, using only one elasticsearch index, managed by a simple model. Then we will add a search form that will search in the elasticsearch index, highlight the results and link to the original documentation page, so you will learn also how to use the results that you pull from your searches.</p>
+
+<h2 id='prerequisite'>Prerequisite</h2>
+
+<p>Elasticsearch must be installed and running. If you are on a Mac you can just install it with <code>homebrew</code>:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>brew install elasticsearch
+</code></pre></div>
+<p>If you are on any other OS, read <a href='http://www.elasticsearch.org/guide/reference/setup/installation/'>elasticsearch installation</a></p>
+
+<p>For the purpose of this tutorial, you need also to install the elasticsearch-mapper-attachment plugin. That&#8217;s very easy:</p>
+
+<p>The command should be something like the following (but please, check the latest version in its <a href='https://github.com/elasticsearch/elasticsearch-mapper-attachments'>github page</a>)</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>bin/plugin -install elasticsearch/elasticsearch-mapper-attachments/1.7.0
+</code></pre></div>
+<h2 id='setup'>Setup</h2>
+
+<p>Create a rails app:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>rails new flex_doc_search --skip-active-record --skip-bundle
+</code></pre></div>
+<blockquote>
+<p>we don&#8217;t need any database for this tutorial, and we will run <code>bundle install</code> later</p>
+</blockquote>
+
+<p>Now open the <code>Gemfile</code> and add a few gems that we will use in this tutorial in order to crawl and index the flex-doc site, search it and paginate the results:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>gem</span> <span class='s1'>&#39;rest-client&#39;</span>
+<span class='n'>gem</span> <span class='s1'>&#39;flex-rails&#39;</span>
+<span class='n'>gem</span> <span class='s1'>&#39;anemone&#39;</span>
+<span class='n'>gem</span> <span class='s1'>&#39;kaminari&#39;</span>
+</code></pre></div>
+<p>Now run the bundle install command:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>bundle install
+</code></pre></div>
+<p>When it finishes, run the generator:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>rails generate flex:setup
+<span class='c'># press return when asked</span>
+</code></pre></div>
+<h2 id='model_and_index'>Model and Index</h2>
+
+<p>First, we add a <code>Flex::ActiveModel</code> model, that will manage the pages we crawl. It will use the elasticsearch index as it were a database. You can just add the file <code>app/models/flex_doc_page.rb</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>FlexDocPage</span>
+
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:ActiveModel</span>
+
+  <span class='n'>attribute</span> <span class='ss'>:url</span>
+  <span class='n'>attribute_created_at</span>
+  <span class='n'>attribute_attachment</span>
+
+<span class='k'>end</span>
+</code></pre></div>
+<blockquote>
+<p>The <code>attribute :url</code> is a custom attribute that we will use to store the original url of any crawled page<br /> The <code>attribute_created_at</code> will automatically add a field with the creation date<br /> The <code>attribute_attachment</code> is a special attribute that integrates the elasticsearch-mapper-attachment plugin: it can index various type of contenTs, like html, pdf, word, excel etc.</p>
+</blockquote>
+
+<p>(see <a href='/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html#class_methods'>Flex::ActiveModel Attributes</a>)</p>
+
+<p>Now we must add the <code>FlexDocPage</code> to the <code>flex_active_models</code> array in the <code>config/initializers/flex.rb</code>, because flex needs to know it in order to create the index/indices:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>config</span><span class='o'>.</span><span class='n'>flex_active_models</span> <span class='o'>|=</span> <span class='o'>[</span> <span class='no'>FlexDocPage</span> <span class='o'>]</span>
+</code></pre></div>
+<p>Create the index with the rake task:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>rake flex:index:create
+</code></pre></div>
+<h2 id='crawler'>Crawler</h2>
+
+<p>Now we can create the rake task that will crawl the <code>flex-doc</code> site and will index its content. Just create the file <code>lib/tasks/crawler.rake</code> and paste the following content in it:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>desc</span> <span class='s1'>&#39;Crawl and index the Flex Doc Site&#39;</span>
+
+<span class='n'>task</span> <span class='ss'>:index_flex_doc</span> <span class='o'>=&gt;</span> <span class='ss'>:environment</span> <span class='k'>do</span>
+  <span class='nb'>puts</span> <span class='s2'>&quot;Crawling The Flex Doc site:&quot;</span>
+  <span class='c1'># we want to delete all the pages we eventually already have in the index, so they will be fresh each time we re-crawl</span>
+  <span class='no'>FlexDocPage</span><span class='o'>.</span><span class='n'>delete</span>
+
+  <span class='no'>Anemone</span><span class='o'>.</span><span class='n'>crawl</span><span class='p'>(</span><span class='s1'>&#39;http://ddnexus.github.io/flex/&#39;</span><span class='p'>,</span> <span class='ss'>:verbose</span> <span class='o'>=&gt;</span> <span class='kp'>true</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>anemone</span><span class='o'>|</span>
+
+    <span class='n'>anemone</span><span class='o'>.</span><span class='n'>on_every_page</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>page</span><span class='o'>|</span>
+      <span class='c1'># index only the successful html pages with some content</span>
+      <span class='k'>if</span> <span class='n'>page</span><span class='o'>.</span><span class='n'>code</span> <span class='o'>==</span> <span class='mi'>200</span> <span class='o'>&amp;&amp;</span> <span class='n'>page</span><span class='o'>.</span><span class='n'>url</span><span class='o'>.</span><span class='n'>to_s</span> <span class='o'>=~</span> <span class='sr'>/\.html$/</span> <span class='o'>&amp;&amp;</span> <span class='n'>page</span><span class='o'>.</span><span class='n'>body</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&gt;</span> <span class='mi'>0</span>
+        <span class='c1'># remove the common parts not useful for searching</span>
+        <span class='sx'>%w[#page-nav #footer .breadcrumb]</span><span class='o'>.</span><span class='n'>each</span><span class='p'>{</span><span class='o'>|</span><span class='n'>css</span><span class='o'>|</span> <span class='n'>page</span><span class='o'>.</span><span class='n'>doc</span><span class='o'>.</span><span class='n'>css</span><span class='p'>(</span><span class='n'>css</span><span class='p'>)</span><span class='o'>.</span><span class='n'>remove</span><span class='p'>}</span>
+        <span class='c1'># we index the page content by just passing it as a Base64 encoded string</span>
+        <span class='no'>FlexDocPage</span><span class='o'>.</span><span class='n'>create</span> <span class='ss'>:url</span>        <span class='o'>=&gt;</span> <span class='n'>page</span><span class='o'>.</span><span class='n'>url</span><span class='o'>.</span><span class='n'>to_s</span><span class='p'>,</span>
+                           <span class='ss'>:attachment</span> <span class='o'>=&gt;</span> <span class='no'>Base64</span><span class='o'>.</span><span class='n'>encode64</span><span class='p'>(</span><span class='n'>page</span><span class='o'>.</span><span class='n'>doc</span><span class='o'>.</span><span class='n'>to_s</span><span class='p'>)</span>
+      <span class='k'>end</span>
+
+    <span class='k'>end</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<blockquote>
+<p>Most of the code in the task is related to the <code>anemone</code> crawling, which will fetch the pages. The important thing is the last line, where we create a new <code>FlexDocPage</code> document, as we would do in order to store the content in a DB: that will analyze and store the page content into the index.</p>
+</blockquote>
+
+<p>Run the task, that will crawl and index the whole Flex-Doc site:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>rake index_flex_doc
+</code></pre></div>
+<h2 id='check_the_index'>Check the Index</h2>
+
+<p>Now we have all the content in the index managed by our application, so let&#8217;s play with it in the console.</p>
+
+<p>Let&#8217;s start just with checking the existence of the index:</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='no'>Flex</span><span class='o'>.</span><span class='n'>exist?</span>
+<span class='go'>FLEX-INFO: Rendered Flex.exist? from: (irb):1:in `irb_binding&#39;</span>
+<span class='go'>FLEX-DEBUG: :request:</span>
+<span class='go'>FLEX-DEBUG:   :method: HEAD</span>
+<span class='go'>FLEX-DEBUG:   :path: /flex_doc_search_development</span>
+<span class='go'>=&gt; true</span>
+</code></pre></div>
+<blockquote>
+<p>As you see, each time flex sends any query, it prints the request on your screen. That&#8217;s useful to check what is the actual request that has been sent to the elasticsearch server. That is just the basic logging default: you may want to disable it or you may need more info. You can experiment with different settings of the logger by just changing them in the console. For example you may want to whatch the raw result returned by elasticsearch: to enable that you have just to type <code>Flex::Conf.logger.debug_result = true</code> right in the console (see <a href='/flex/doc/1-Flex-Project/3-Configuration.html'>Configuration</a>).</p>
+</blockquote>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='no'>FlexDocPage</span><span class='o'>.</span><span class='n'>count</span>
+<span class='go'>FLEX-INFO  Rendered Flex::Scope::Query.get from: (irb):2:in `irb_binding&#39;</span>
+<span class='go'>FLEX-DEBUG  :request:</span>
+<span class='go'>FLEX-DEBUG    :method: GET</span>
+<span class='go'>FLEX-DEBUG    :path: /flex_doc_search_development/flex_doc_page/_search?version=true&amp;search_type=count</span>
+<span class='go'>FLEX-DEBUG    :data:</span>
+<span class='go'>FLEX-DEBUG      query:</span>
+<span class='go'>FLEX-DEBUG        query_string:</span>
+<span class='go'>FLEX-DEBUG          query: ! &#39;*&#39;</span>
+<span class='go'>=&gt; 30</span>
+</code></pre></div>
+<p>You can also get an indexed page, for example:</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='no'>FlexDocPage</span><span class='o'>.</span><span class='n'>first</span>
+<span class='go'>... long Base64 encoded content ...</span>
+</code></pre></div>
+<p>And if you want to avoid the encoded content, just use the <code>attachment_scope</code>:</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='no'>FlexDocPage</span><span class='o'>.</span><span class='n'>attachment_scope</span><span class='o'>.</span><span class='n'>first</span>
+<span class='go'>...</span>
+<span class='gp'>&gt;&gt; </span><span class='no'>FlexDocPage</span><span class='o'>.</span><span class='n'>attachment_scope</span><span class='o'>.</span><span class='n'>all</span>
+<span class='go'>...</span>
+<span class='gp'>&gt;&gt; </span><span class='no'>FlexDocPage</span><span class='o'>.</span><span class='n'>attachment_scope</span><span class='o'>.</span><span class='n'>all</span><span class='p'>(</span><span class='ss'>:page</span> <span class='o'>=&gt;</span> <span class='mi'>2</span><span class='p'>)</span>
+<span class='go'>...</span>
+</code></pre></div>
+<h2 id='searching'>Searching</h2>
+
+<p>Now that we have an index, let&#8217;s add a custom scope to our <code>FlexDocPage</code> model: we will use it to search the index easily. Let&#8217;s call it <code>:searchable</code>. Here is how the model will appear after adding our scope:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>FlexDocPage</span>
+
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:ActiveModel</span>
+
+  <span class='n'>attribute</span> <span class='ss'>:url</span>
+  <span class='n'>attribute_created_at</span>
+  <span class='n'>attribute_attachment</span>
+
+  <span class='n'>scope</span> <span class='ss'>:searchable</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>q</span><span class='o'>|</span>
+     <span class='n'>attachment_scope</span>
+    <span class='o'>.</span><span class='n'>highlight</span><span class='p'>(</span><span class='ss'>:fields</span> <span class='o'>=&gt;</span> <span class='p'>{</span> <span class='ss'>:attachment</span>          <span class='o'>=&gt;</span> <span class='p'>{},</span>
+                            <span class='ss'>:&#39;attachment.title&#39;</span>  <span class='o'>=&gt;</span> <span class='p'>{}</span> <span class='p'>})</span>
+    <span class='o'>.</span><span class='n'>query</span><span class='p'>(</span><span class='n'>q</span><span class='p'>)</span>
+  <span class='k'>end</span>
+
+<span class='k'>end</span>
+</code></pre></div>
+<p>In the block of our scope we have chained together a few predefined scopes (see <a href='/flex/doc/3-flex-scopes'>flex-scopes</a>).</p>
+
+<p>The <code>attribute_attachment</code> declaration (that we added to the <code>FlexDocScope</code>) added the <code>attachment_scope</code> to our class: we can use it to include in our result also the meta-fields of the page (like title, author, content-type, etc.), and - as we have just experimented in the console session above - it will also exclude the attachment field itself from the result, so it will be easier to handle (see <a href='/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html#attribute_attachment'>attribute_attachment</a>).</p>
+
+<blockquote>
+<p>The <code>attachment</code> field contains the Base64-encoded content, and unless we need to display it in some view, we can omit it from the result (indeed in this tutorial we will link the original page). However, although we omit it from the result, it is searched by our queries.</p>
+</blockquote>
+
+<p>The <code>highlight</code> scope will add the highlights for the <code>attachment</code> and the <code>attachment.title</code> fields to our results and the <code>query</code> scope will handle the query_string that we will use to search (passed to the scope as an argument).</p>
+
+<p>Let&#8217;s try it in the console:</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='n'>my_scope</span> <span class='o'>=</span> <span class='no'>FlexDocPage</span><span class='o'>.</span><span class='n'>searchable</span><span class='p'>(</span><span class='s1'>&#39;flex&#39;</span><span class='p'>)</span>
+<span class='go'>=&gt; #&lt;Flex::Scope ...&gt;</span>
+</code></pre></div>
+<p>Notice that the <code>searchable</code> scope is like any other scope (predefined or custom), so it is chainable with other scopes as well if we want to modify our search criteria. If we need the actual results from that scope, we should call one of the query-scopes, like <code>all</code>, <code>first</code>, <code>last</code>, etc. (see <a href='/flex/doc/3-flex-scopes/2-Scopes.html#query_scopes'>Query Scopes</a>):</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='n'>result</span> <span class='o'>=</span> <span class='n'>my_scope</span><span class='o'>.</span><span class='n'>all</span>
+<span class='go'>=&gt; ...</span>
+</code></pre></div>
+<h2 id='user_interface'>User Interface</h2>
+
+<p>So let&#8217;s add the <code>app/controllers/searches_controller.rb</code> with just one action in it:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>SearchesController</span> <span class='o'>&lt;</span> <span class='no'>ApplicationController</span>
+
+  <span class='k'>def</span> <span class='nf'>search</span>
+    <span class='k'>return</span> <span class='k'>if</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:q</span><span class='o'>].</span><span class='n'>blank?</span>
+    <span class='vi'>@result</span> <span class='o'>=</span> <span class='no'>FlexDocPage</span><span class='o'>.</span><span class='n'>searchable</span><span class='p'>(</span><span class='n'>params</span><span class='o'>[</span><span class='ss'>:q</span><span class='o'>]</span><span class='p'>)</span><span class='o'>.</span><span class='n'>all</span><span class='p'>(</span><span class='ss'>:page</span> <span class='o'>=&gt;</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:page</span><span class='o'>]</span><span class='p'>)</span>
+  <span class='k'>end</span>
+
+<span class='k'>end</span>
+</code></pre></div>
+<p>We will search the pages by passing the query string to our <code>searchable</code> scope. We pass also the special variable <code>:page</code> that will get the right page of the pagination.</p>
+
+<p>We make the <code>search</code> action the root route in <code>config/routes.rb</code></p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>root</span> <span class='s1'>&#39;searches#search&#39;</span>
+</code></pre></div>
+<p>Then we need to create the <code>app/views/searches/search.html.erb</code>, with a form, a loop to display all the paginated result, and the pagination header and footer. Let&#8217;s paste the following content in it:</p>
+<div class='highlight'><pre><code class='erb'><span class='x'>&lt;h3&gt; Search the FlexDoc Site:&lt;/h3&gt;</span>
+
+<span class='cp'>&lt;%=</span> <span class='n'>form_tag</span><span class='p'>(</span><span class='n'>root_path</span><span class='p'>,</span> <span class='ss'>:method</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;GET&#39;</span><span class='p'>,</span> <span class='ss'>:id</span><span class='o'>=&gt;</span><span class='s1'>&#39;search-form&#39;</span><span class='p'>)</span> <span class='k'>do</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>  </span><span class='cp'>&lt;%=</span> <span class='n'>text_field_tag</span><span class='p'>(</span><span class='ss'>:q</span><span class='p'>,</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:q</span><span class='o'>]</span><span class='p'>)</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>  </span><span class='cp'>&lt;%=</span> <span class='n'>submit_tag</span><span class='p'>(</span><span class='s1'>&#39;Search&#39;</span><span class='p'>,</span> <span class='ss'>:id</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;submit-search&#39;</span><span class='p'>)</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>  </span><span class='cp'>&lt;%=</span> <span class='n'>submit_tag</span><span class='p'>(</span><span class='s1'>&#39;Reset&#39;</span><span class='p'>,</span> <span class='ss'>:name</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;reset&#39;</span><span class='p'>,</span> <span class='ss'>:id</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;reset-button&#39;</span> <span class='p'>)</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='cp'>&lt;%</span> <span class='k'>end</span> <span class='cp'>%&gt;</span><span class='x' />
+
+
+<span class='cp'>&lt;%</span> <span class='k'>if</span> <span class='vi'>@result</span> <span class='cp'>%&gt;</span><span class='x' />
+
+<span class='x'>  &lt;div class=&quot;pagination&quot;&gt;</span>
+<span class='x'>    </span><span class='cp'>&lt;%=</span> <span class='n'>page_entries_info</span><span class='p'>(</span><span class='vi'>@result</span><span class='o'>.</span><span class='n'>collection</span><span class='p'>,</span> <span class='ss'>:entry_name</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;result&#39;</span><span class='p'>)</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>  &lt;/div&gt;</span>
+
+<span class='x'>  </span><span class='cp'>&lt;%</span> <span class='vi'>@result</span><span class='o'>.</span><span class='n'>collection</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>page</span><span class='o'>|</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>    &lt;div class=&quot;hit&quot;&gt;</span>
+<span class='x'>      &lt;div class=&quot;attachment_title&quot;&gt;</span>
+<span class='x'>        </span><span class='cp'>&lt;%=</span> <span class='n'>link_to</span> <span class='n'>page</span><span class='o'>.</span><span class='n'>highlighted_attachment_title</span><span class='p'>,</span> <span class='n'>page</span><span class='o'>.</span><span class='n'>url</span><span class='p'>,</span> <span class='ss'>:target</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;_blank&#39;</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>      &lt;/div&gt;</span>
+<span class='x'>      &lt;div class=&quot;attachment&quot;&gt;</span>
+<span class='x'>        </span><span class='cp'>&lt;%=</span> <span class='n'>page</span><span class='o'>.</span><span class='n'>highlighted_attachment</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>      &lt;/div&gt;</span>
+<span class='x'>    &lt;/div&gt;</span>
+<span class='x'>  </span><span class='cp'>&lt;%</span> <span class='k'>end</span> <span class='cp'>%&gt;</span><span class='x' />
+
+<span class='x'>  </span><span class='cp'>&lt;%=</span> <span class='n'>paginate</span><span class='p'>(</span><span class='vi'>@result</span><span class='o'>.</span><span class='n'>collection</span><span class='p'>)</span> <span class='cp'>%&gt;</span><span class='x' />
+
+<span class='cp'>&lt;%</span> <span class='k'>end</span> <span class='cp'>%&gt;</span><span class='x' />
+</code></pre></div>
+<blockquote>
+<p><strong>Notice</strong>: the <code>highlighted_*</code> methods are special helpers generated by the <code>flex-rails</code> gem. They return the joined string from the elasticsearch <code>highlights</code>, if there are no highlights and the attribute exists they return the attribute, or an empty string in any other case (see <a href='/flex/doc/5-flex-rails/2-Result-Extenders.html'>document.highlighted_*</a>).</p>
+</blockquote>
+
+<p>Now let&#8217;s add just a minimum of CSS rules to make our search page easy to read. Let&#8217;s create the file <code>app/assets/stylesheets/search.sass</code> and paste the following content in it:</p>
+<div class='highlight'><pre><code class='sass'><span class='nt'>body</span>
+  <span class='na'>margin</span><span class='o'>:</span> <span class='mi'>3</span><span class='kt'>em</span>
+
+<span class='nt'>em</span>
+  <span class='na'>background-color</span><span class='o'>:</span> <span class='nb'>yellow</span>
+  <span class='nt'>padding</span>
+    <span class='na'>left</span><span class='o'>:</span> <span class='mf'>.2</span><span class='kt'>em</span>
+    <span class='na'>right</span><span class='o'>:</span> <span class='mf'>.2</span><span class='kt'>em</span>
+
+<span class='nc'>.hit</span>
+  <span class='na'>margin-top</span><span class='o'>:</span> <span class='mi'>2</span><span class='kt'>em</span>
+
+<span class='nc'>.attachment_title</span> <span class='nt'>a</span>
+  <span class='na'>font-weight</span><span class='o'>:</span> <span class='no'>bold</span>
+
+<span class='nc'>.pagination</span>
+  <span class='na'>margin-top</span><span class='o'>:</span> <span class='mi'>2</span><span class='kt'>em</span>
+  <span class='na'>border-top</span><span class='o'>:</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='no'>solid</span> <span class='nb'>gray</span>
+  <span class='na'>padding-top</span><span class='o'>:</span> <span class='mf'>.5</span><span class='kt'>em</span>
+  <span class='nt'>span</span>
+    <span class='na'>margin-right</span><span class='o'>:</span> <span class='mf'>.5</span><span class='kt'>em</span>
+</code></pre></div>
+<p>Job done! Now we can start the rails server, and point the browser to our new search app.</p>
+
+<blockquote>
+<p><strong>Notice</strong>: This tutorial is complemented by the previous one, please read both of them (see <a href='/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html'>Index and Search your Models</a>).</p>
+</blockquote><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/7-Tutorials">Tutorials</a></span> &gt; <span>Index and Search External Data</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

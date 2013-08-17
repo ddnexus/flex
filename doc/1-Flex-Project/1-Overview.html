@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - Project Overview
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/1-Flex-Project">Flex Project</a></span> &gt; <span>Project Overview</span>
+      </div>
+      <h1 id='project_overview'>Project Overview</h1>
+
+<p>Flex is the ultimate ruby client for <a href='http://www.elasticsearch.org'>elasticsearch</a>. It is powerful, fast and efficient, easy to use and customize.</p>
+
+<p>It covers ALL the elasticsearch API, and transparently integrates it with your app and its components, like <code>Rails</code>, <code>ActiveRecord</code>, <code>Mongoid</code>, <code>ActiveModel</code>, <code>will_paginate</code>, <code>kaminari</code>, <code>elasticsearch-mapper-attachments</code>, &#8230;</p>
+
+<p>It also implements and integrates very advanced features like chainable scopes, live-reindex, cross-model syncing, query fragment reuse, parent/child relationships, templating, self-documenting tools, detailed debugging, &#8230;</p>
+
+<ul>
+<li>
+<p><strong>Easy to use even for beginners</strong><br /> If you have almost no elasticsearch knowledge, fear not! You can populate and search the elasticsearch index as it were an <code>ActiveRecord</code> DB, using very familiar chainable scopes and finders, validation and callbacks that you are used to master in your models (see <a href='/flex/doc/3-flex-scopes'>flex-scopes</a> and <a href='/flex/doc/4-flex-models/3-ActiveModel-Integration.html'>ActiveModel Integration</a>)</p>
+</li>
+
+<li>
+<p><strong>Powerful for experts</strong><br /> Flex provides 6 different ways to interact with elasticsearch, useful in different contexts. From a fully automatic integration, to a very low-level manual interaction; a clever and powerful templating system that covers all the elaticsearch API (see <a href='/flex/doc/2-flex/3-Templating'>Templating</a>); <u>all</u> the standard elasticsearch API as ready to use methods; very detailed debugging info, high configurable logging, etc. (see <a href='/flex/doc/1-Flex-Project/2-Usage-Overview.html'>Usage Overview</a>), very easy to use live-reindexing (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html'>Live Reindex</a>)</p>
+</li>
+
+<li>
+<p><strong>Easy to learn</strong><br /> Flex doesn&#8217;t try to create any &#8220;powerful DSL&#8221; on top of the elasticsearch API: it just transparently uses the elasticsearch API, so you will never have to learn anything twice or adapt any elasticsearch query to use with ruby, a very common practice needed with other clients (see <a href='/flex/doc/7-Tutorials/1-Flex-vs-Tire.html'>Why you should use Flex rather than Tire</a>).</p>
+</li>
+
+<li>
+<p><strong>DRY</strong><br /> You can reuse full queries, or part of them to build other queries, interpolate variables into queries at request time, or define and use smart cascading defaults to reduce clutter and duplications. Flex creates the needed methods in your classes for you, so 99% of the times you will have just to use them in your code, and for the other 1% you will just need to define a simple wrapper method.</p>
+</li>
+
+<li>
+<p><strong>Self Documenting</strong><br /> Flex creates the documentation of your custom templates complete with usage examples. You can get it by simply calling a method&#8230; also very handy in the console (see <a href='/flex/doc/2-flex/5-Self-Documentation.html'>Self Documentation</a>).</p>
+</li>
+
+<li>
+<p><strong>Fast and Efficient</strong><br /> Flex uses a fast libcurl HTTP client that is at least twice as fast as a pure ruby client (but you can fallback to pure ruby if you need to). It reuses the same HTTP session between different requests saving time and resources. It extends the elasticsearch result objects instead of duplicating new structures, saving memory. It compiles the YAML templates into ruby code at startup time and just calls it at render time for faster execution.</p>
+</li>
+
+<li>
+<p><strong>Clean separation of the elasticsearch logic from the application logic</strong><br /> Flex uses simple YAML documents (templates that you define) to encapsulate the whole request/response cycle with the elasticsearch server, relegating the elasticsearch logic away from the application logic. Your code will be clean, easy to write and read, and very short: &#8220;poetic-short&#8221;.</p>
+</li>
+
+<li>
+<p><strong>Easily Extendable</strong><br /> Flex provides a simple mechanism to extend all or just specific elasticsearch results with your own methods. That is a lot cleaner and self contained than extending the results in the application code (see <a href='/flex/doc/2-flex/4-Result-Extenders.html'>Result Extenders</a>).</p>
+</li>
+
+<li>
+<p><strong>Fully Integrated</strong><br /> (see <a href='/flex/doc/1-Flex-Project/1-Overview.html#out_of_the_box_integrations'>Out Of The Box Integrations</a>)</p>
+</li>
+</ul>
+
+<h2 id='quick_start'>Quick Start</h2>
+
+<p>The Flex documentation is very complete and detailed, so starting from the right topic for you will save you time. Please, pick the starting point that better describes you below:</p>
+
+<h3 id='for_tire_users'>For Tire Users</h3>
+
+<ol>
+<li>
+<p>You may be interested to start from <a href='http://ddnexus.github.io/flex/doc/7-Tutorials/1-Flex-vs-Tire.html'>Why you should use Flex rather than Tire</a> that is a direct comparison between the two projects.</p>
+</li>
+
+<li>
+<p>Depending on your elasticsearch knowledge you can read below the &#8220;Elasticsearch Beginner&#8221; or the &#8220;Elasticsearch Expert&#8221; starting point sections.</p>
+</li>
+</ol>
+
+<h3 id='for_flex_0x_users'>For Flex 0.x Users</h3>
+
+<ol>
+<li>
+<p>If you used an old flex version, please start with <a href='http://ddnexus.github.io/flex/doc/7-Tutorials/2-Migrate-from-0.x.html'>How to migrate from flex 0.x</a>.</p>
+</li>
+
+<li>
+<p>Depending on your elasticsearch knowledge you can read below the &#8220;Elasticsearch Beginner&#8221; or the &#8220;Elasticsearch Expert&#8221; sections.</p>
+</li>
+</ol>
+
+<h3 id='for_elasticsearch_beginners'>For Elasticsearch Beginners</h3>
+
+<ol>
+<li>
+<p>You may want to start with the <a href='http://ddnexus.github.io/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.md'>Index and Search External Data</a> tutorial, since it practically doesn&#8217;t require any elasticsearch knowledge. It will show you how to build your own search application with just a few lines of code. You will crawl a site, extract its content and build a simple user interface to search it with elasticsearch.</p>
+</li>
+
+<li>
+<p>Then you may want to read the <a href='http://ddnexus.github.io/flex/doc/1-Flex-Project/2-Usage-Overview.html'>Usage Overview</a> page. Follow the links from there in order to dig into the topics that interest you.</p>
+</li>
+
+<li>
+<p>You will probably like the <a href='http://ddnexus.github.io/flex/doc/3-flex-scopes'>flex-scopes</a> that allows you to easy search, chain toghether and reuse searching scopes in pure ruby.</p>
+</li>
+</ol>
+
+<h3 id='for_elasticsearch_experts'>For Elasticsearch Experts</h3>
+
+<ol>
+<li>
+<p>Flex provides the full elasticsearch APIs as ready to use methods. Just take a look at the <a href='http://ddnexus.github.io/flex/doc/2-flex/2-API-Methods.html'>API Metods</a> page to appreciate its completeness.</p>
+</li>
+
+<li>
+<p>Then you may want to read the <a href='http://ddnexus.github.io/flex/doc/1-Flex-Project/2-Usage-Overview.html'>Usage Overview</a> page. Follow the links from there in order to dig into the topics that interest you.</p>
+</li>
+
+<li>
+<p>If you are used to create complex searching logic, you will certainly appreciate the <a href='http://ddnexus.github.io/flex/doc/2-flex/3-Templating'>Templating System</a> that gives you real power with great simplicity.</p>
+</li>
+
+<li>
+<p>As an elasticsearch expert, you will certainly appreciate the <a href='http://ddnexus.github.io/flex/doc/6-flex-admin/2-Live-Reindex.html'>Live-Reindex</a> feature: it encapsulates the solution to a quite complex problem in just one method call.</p>
+</li>
+</ol>
+
+<h2 id='gems'>Gems</h2>
+
+<p>The functionality of flex are conveniently organized and integrated by a few gems. You can use them together or separately, depending on your needs.</p>
+<table cellpadding='0' cellspacing='0' class='code-topics' id='gems'>
+  <tr>
+    <td>
+      <code>flex</code>
+    </td>
+    <td>
+      <p>Provides the core infrastructure and the lower level functionality:</p>
+      
+      <ul>
+      <li>HTTP clients</li>
+      
+      <li>elasticsearch API methods</li>
+      
+      <li>Templating System</li>
+      
+      <li>Cascading Variables Management</li>
+      
+      <li>Result Extenders</li>
+      
+      <li>Logging &amp; Debugging</li>
+      
+      <li>Self-documenting tool</li>
+      
+      <li>Rake Tasks</li>
+      </ul>(see <a href='/flex/doc/2-flex'>flex</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex-scopes</code>
+    </td>
+    <td><blockquote>
+<p>very cool option for most common needs and for beginners</p>
+</blockquote>
+
+<p>Provides <code>ActiveRecord</code>-like chainable <code>scopes</code> allowing to use pure ruby to search your indices. It simplifies your code and make it very reusable.</p>(see <a href='/flex/doc/3-flex-scopes'>flex-scopes</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex-models</code>
+    </td>
+    <td><p>Transparently integrates your models with one or more elasticsearch indices:</p>
+
+<ul>
+<li>
+<p>Automatic integration with your <code>ActiveRecord</code> and <code>Mongoid</code> models</p>
+</li>
+
+<li>
+<p>Direct management of indices throught <code>ActiveModel</code></p>
+
+<ul>
+<li>Validations and callbacks</li>
+
+<li>Typecasting</li>
+
+<li>Attribute defaults</li>
+
+<li>Persistent storage with optimistic lock update</li>
+
+<li>integration with the <code>elasticsearch-mapper-attachment</code> plugin</li>
+
+<li>finders, chainable scopes etc. (see <a href='/flex/doc/4-flex-models/3-ActiveModel-Integration.html'>ActiveModel Integration</a>)</li>
+</ul>
+</li>
+
+<li>
+<p>Automatic generation of elasticsearch mappings based on your models</p>
+</li>
+
+<li>
+<p>Parent/Child Relationships</p>
+</li>
+
+<li>
+<p>Bulk import</p>
+</li>
+
+<li>
+<p>Real-time indexing and search capabilities</p>
+</li>
+</ul>(see <a href='/flex/doc/4-flex-models'>flex-models</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex-rails</code>
+    </td>
+    <td><p>Integrates all the flex gems with <code>Rails</code>, providing also specific tasks, generators, logger options, etc.</p>(see <a href='/flex/doc/5-flex-rails'>flex-rails</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex-admin</code>
+    </td>
+    <td><ul>
+<li>Provides an executable and a few tasks to <code>dump</code>, <code>load</code> (optionally rename) and <code>stat</code> any elasticsearch index.</li>
+
+<li>Live-reindex with hot-swap of old code/index with new code/index (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html'>Live Reindex</a>)</li>
+</ul>(see <a href='/flex/doc/6-flex-admin'>flex-admin</a>)
+    </td>
+  </tr>
+</table>
+<h2 id='tech_specs'>Tech Specs</h2>
+
+<h3 id='requirements'>Requirements</h3>
+
+<ul>
+<li><code>ruby</code> &gt;= 1.8.7</li>
+
+<li><code>elasticsearch</code> &gt;= 0.19.2</li>
+</ul>
+
+<h3 id='installation'>Installation</h3>
+
+<ol>
+<li>Install the gem <code>patron</code> (faster, libcurl C based) or <code>rest-client</code> (pure ruby)</li>
+
+<li>Install the flex gem(s) (see <a href='/flex/doc/1-Flex-Project/1-Overview.html#gems'>Gems</a>)</li>
+</ol>
+
+<blockquote>
+<p><strong>Temporary Note</strong>: The <code>patron</code> gem currently available on rubygem (v0.4.18) is missing the support for sending data with delete queries. As the result it fails with the <code>delete_by_query</code> elasticsearch API, when the query is the request body and not the param. If you want full support until a new version will be pushed to rubygems, you should use <code>gem &#39;patron&#39;, &#39;0.4.18&#39;, :git =&gt; &#39;https://github.com/ddnexus/patron.git&#39;</code> or download <a href='/flex/patron-0.4.18.flex.gem'>patron-0.4.18.flex.gem</a>, install it with <code>gem install /path/to/patron-0.4.18.flex.gem --local</code> and be sure your app will use that version, or switch to the <code>rest-client</code> gem.</p>
+</blockquote>
+
+<h3 id='out_of_the_box_integrations'>Out Of The Box Integrations</h3>
+
+<ul>
+<li><code>ActiveRecord</code> 2, 3 and 4 (see <a href='/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html'>ActiveRecord And Mongoid Integration</a>)</li>
+
+<li><code>ActiveModel</code> 2, 3 and 4 (see <a href='/flex/doc/4-flex-models/3-ActiveModel-Integration.html'>ActiveModel Integration</a>)</li>
+
+<li><code>Mongoid</code> 2 and 3 (see <a href='/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html'>ActiveRecord And Mongoid Integration</a>)</li>
+
+<li><code>Rails</code> 2, 3 and 4 (see <a href='/flex/doc/5-flex-rails'>flex-rails</a>)</li>
+
+<li><code>elasticsearch-mapper-attachments</code> plugin (see <a href='/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html#attribute_attachment'>Attribute Attachment</a>)</li>
+
+<li><code>will_paginate</code> and <code>kaminari</code> recent versions</li>
+</ul>
+
+<h2 id='configuration'>Configuration</h2>
+
+<p>Flex needs just a few lines of configuration. However you can use more configuration settings to fine-tune its behavior and/or defining smart defaults that will reduce the need to pass variables explicitly (see <a href='/flex/doc/1-Flex-Project/3-Configuration.html'>Configuration</a>).</p><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/1-Flex-Project">Flex Project</a></span> &gt; <span>Project Overview</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

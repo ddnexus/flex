@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - flex-models - Flex::ModelIndexer
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex-models"><img src="https://badge.fury.io/rb/flex-models.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/4-flex-models">flex-models</a></span> &gt; <span><a href="/flex/doc/4-flex-models/4-Modules">Modules</a></span> &gt; <span>Flex::ModelIndexer</span>
+      </div>
+      <h1 id='flexmodelindexer'>Flex::ModelIndexer</h1>
+
+<blockquote>
+<p><strong>Notice</strong>: The <code>Flex::ModelIndexer</code> includes also <code>Flex::ModelSyncer</code> (see <a href='/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html'>Flex::ModelSyncer</a>)</p>
+</blockquote>
+
+<p>Flex avoids polluting your models with many methods: indeed it adds just 1 class method and 3 instance methods, all starting with the <code>flex</code> prefix to avoid confusion:</p>
+
+<ul>
+<li><code>Model.flex</code></li>
+
+<li><code>record.flex</code></li>
+
+<li><code>record.flex_source</code></li>
+
+<li><code>record.flex_indexable?</code></li>
+</ul>
+
+<p>Besides you can define a <code>Model.flex_result</code> method in order to customize the results (see <a href='/flex/doc/2-flex/4-Result-Extenders.html#modelflex_resultresult'>Model.flex_result</a>)</p>
+
+<h2 id='class_methods'>Class Methods</h2>
+<table cellpadding='0' cellspacing='0' class='code-topics' id='indexer-class-methods'>
+  <tr>
+    <td>
+      <code>flex</code>
+    </td>
+    <td><p>You access all the Flex features included in your model through the <code>flex</code> proxy object. It implements the methods to map your models to the elasticsearch index, define parent/child relationships and sync.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.index</code>
+    </td>
+    <td><p>By default the index used for all the models in your app is the <code>Flex::Configuration.variables[:index]</code>. In a rails app that gets set before initializing the app (see <a href='/flex/doc/1-Flex-Project/3-Configuration.html'>Configuration</a>). You can map your model to another index by explicitly setting it in your class.</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>flex</span><span class='o'>.</span><span class='n'>index</span> <span class='o'>=</span> <span class='s1'>&#39;foo&#39;</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.type</code>
+    </td>
+    <td><p>By default the type used for your model is the full-underscored class name. For example <code>MyModel::SuperSpecial</code> will generate <code>my_model__super_special</code>. Notice the double underscore in place of the commonly used slash, which avoids url conflicts. You can map your model to another type by explicitly setting it in your class:</p>
+<div class='highlight'><pre><code class='ruby'>      <span class='n'>flex</span><span class='o'>.</span><span class='n'>type</span> <span class='o'>=</span> <span class='s1'>&#39;bar&#39;</span>
+      
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.parent</code>
+    </td>
+    <td>
+      <p>Defines elasticsearch parent/child relations (see <a href='/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html#indexing_records'>Indexing Records</a>).</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.sync(*synced)</code>
+    </td>
+    <td><p>Implemented by the <code>Flex::ModelSyncer</code> module (see <a href='/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html#flex_sync__synced_'>flex.sync</a>).</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.synced</code>
+    </td>
+    <td><p>Implemented by the <code>Flex::ModelSyncer</code> module (see <a href='/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html#flex_synced'>flex.synced</a>).</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex_result(result)</code>
+    </td>
+    <td>
+      <p>Custom defined method (see <a href='/flex/doc/2-flex/4-Result-Extenders.html#modelflex_resultresult'>Model.flex_result</a>).</p>
+    </td>
+  </tr>
+</table>
+<h2 id='instance_methods'>Instance Methods</h2>
+
+<p>You usually don&#8217;t need to deal with this methods unless you sync manually or have very special needs.</p>
+<table cellpadding='0' cellspacing='0' class='code-topics' id='indexer-instance-methods'>
+  <tr>
+    <td>
+      <code>flex</code>
+    </td>
+    <td><p>The <code>flex</code> instance object is mostly used internally, however you can access all the Flex features included in your records through it. It implements the methods to manage the elasticsearch document related to your record.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.index</code>
+    </td>
+    <td>
+      <p>The index for this record.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.type</code>
+    </td>
+    <td>
+      <p>The document type for this record.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.store</code>
+    </td>
+    <td><p>Indexes the <code>flex_source</code> of this record. It is used internally and you don&#8217;t need to use this directly if you use <code>Model.flex.sync</code> on this model.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.remove</code>
+    </td>
+    <td><p>Removes the elasticsearch document for this record. It is used internally and you don&#8217;t need to use this directly if you use <code>Model.flex.sync</code> on this model.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.sync</code>
+    </td>
+    <td><p>Implemented by the <code>Flex::ModelSyncer</code> module (see <a href='/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html#flexsync'>flex.sync</a>).</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex.get</code>
+    </td>
+    <td>
+      <p>Retrieves the elasticsearch document from the index. The result is extended as usual (see <a href='/flex/doc/2-flex/4-Result-Extenders.html'>Flex Extenders</a>, <a href='/flex/doc/4-flex-models/5-Result-Extenders.html'>Flex Model Extenders</a> and <a href='/flex/doc/5-flex-rails/2-Result-Extenders.html'>Flex Rails Extenders</a>). Mostly useful in the console to inspect the elasticsearch related document.</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='n'>comment</span> <span class='o'>=</span> <span class='no'>Comment</span><span class='o'>.</span><span class='n'>first</span>
+<span class='gp'>&gt;&gt; </span><span class='n'>comment</span><span class='o'>.</span><span class='n'>flex</span><span class='o'>.</span><span class='n'>get</span>
+<span class='go'>=&gt; {&quot;_index&quot;=&gt;&quot;my_index&quot;, &quot;_type&quot;=&gt;&quot;review_comment&quot;,&quot;_id&quot;=&gt;&quot;4f15d2712c16bf4337000012&quot;, ... }</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex_source</code>
+    </td>
+    <td>
+      <p>(see <a href='/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html#indexing_records'>Indexing Records</a>)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>flex_indexable?</code>
+    </td>
+    <td>
+      <p>(see <a href='/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html#indexing_fields'>Indexing Fields</a>)</p>
+    </td>
+  </tr>
+  <tr>
+    <th colspan='2' id='overriding_flex_metafields'>
+      Overriding Flex Metafields
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>flex_id</code>, <code>flex_index</code>, <code>flex_type</code>, <code>flex_parent</code>, <code>flex_routing</code>
+    </td>
+    <td><p><strong>Use only if you know what you are doing!</strong></p>
+
+<blockquote>
+<p>You define any of this methods in your model, if you want to override the <code>flex.id</code>, <code>flex.index</code>, <code>flex.type</code>, <code>flex.parent</code> and/or <code>flex.routing</code> generation.</p>
+</blockquote>
+
+<p>The <code>flex_index</code> should be used if you want to implement dynamic indices in your model.</p>
+    </td>
+  </tr>
+</table><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/4-flex-models">flex-models</a></span> &gt; <span><a href="/flex/doc/4-flex-models/4-Modules">Modules</a></span> &gt; <span>Flex::ModelIndexer</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

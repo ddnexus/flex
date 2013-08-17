@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - Usage Overview
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/1-Flex-Project">Flex Project</a></span> &gt; <span>Usage Overview</span>
+      </div>
+      <h1 id='usage_overview'>Usage Overview</h1>
+
+<p>Flex can integrate your code with elasticsearch in 6 different ways that can be handy in different contexts. From a fully automatic integration, to a very low-level manual interaction:</p>
+
+<h2 id='1_activerecord_and_mongoid_integration'>1. ActiveRecord and Mongoid Integration</h2>
+
+<p>When the data you need to index is in your DB, just add the following lines to your <code>ActiveRecord</code> and <code>Mongoid</code> model to sync them:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>MyModel</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:ModelIndexer</span>
+  <span class='n'>flex</span><span class='o'>.</span><span class='n'>sync</span> <span class='nb'>self</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>You can add a few other declarations to your models in order to setup parent and child relationship (eventually also polymorphic), and mapping any DB structure to any index structure you might want to design.</p>
+
+<p>(see <a href='/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html'>ActiveRecord And Mongoid Integration</a>)</p>
+
+<h2 id='2_activemodel_integration'>2. ActiveModel Integration</h2>
+
+<p>Manage the elasticsearch index as it were a DB, through <code>ActiveModel</code> models. Get validations and callbacks, typecasting, attribute defaults, persistent storage, with optimistic lock update, finders, chainable scopes etc.</p>
+
+<p>This is very useful when the data don&#8217;t come from a DB or when you want to use the elasticsearch index as a data storage, or simply when you want a familiar way to populate and search your index. For example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>Product</span>
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:ActiveModel</span>
+
+  <span class='n'>attribute</span> <span class='ss'>:name</span>
+  <span class='n'>attribute</span> <span class='ss'>:color</span><span class='p'>,</span> <span class='ss'>:analyzed</span> <span class='o'>=&gt;</span> <span class='kp'>false</span>
+  <span class='n'>attribute</span> <span class='ss'>:price</span><span class='p'>,</span> <span class='ss'>:properties</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='s1'>&#39;type&#39;</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;float&#39;</span><span class='p'>},</span> <span class='ss'>:default</span> <span class='o'>=&gt;</span> <span class='mi'>0</span>
+  <span class='n'>attribute_timestamps</span>
+
+  <span class='n'>validate</span> <span class='ss'>:name</span><span class='p'>,</span> <span class='ss'>:presence</span> <span class='o'>=&gt;</span> <span class='kp'>true</span>
+
+  <span class='n'>scope</span> <span class='ss'>:red</span><span class='p'>,</span> <span class='n'>term</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>)</span>
+
+<span class='k'>end</span>
+
+<span class='c1'># indexes the data in elasticsearch</span>
+<span class='no'>Product</span><span class='o'>.</span><span class='n'>create</span> <span class='ss'>:name</span>  <span class='o'>=&gt;</span> <span class='s1'>&#39;my_name&#39;</span><span class='p'>,</span>
+               <span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;blue&#39;</span><span class='p'>,</span>
+               <span class='ss'>:price</span> <span class='o'>=&gt;</span> <span class='mi'>9</span><span class='o'>.</span><span class='mi'>99</span>
+
+<span class='n'>red_products</span> <span class='o'>=</span> <span class='no'>Product</span><span class='o'>.</span><span class='n'>red</span><span class='o'>.</span><span class='n'>all</span>
+<span class='n'>product</span> <span class='o'>=</span> <span class='no'>Product</span><span class='o'>.</span><span class='n'>find</span><span class='p'>(</span><span class='s1'>&#39;a09rf&#39;</span><span class='p'>)</span>
+<span class='n'>total</span>   <span class='o'>=</span> <span class='no'>Product</span><span class='o'>.</span><span class='n'>count</span>
+</code></pre></div>
+<p>(see <a href='/flex/doc/4-flex-models/3-ActiveModel-Integration.html'>ActiveModel Integration</a>)</p>
+
+<h2 id='3_chainable_scopes_and_finders'>3. Chainable Scopes and Finders</h2>
+
+<blockquote>
+<p>Almost no elasticsearch knowledge required: a ruby-rails way that covers most searching needs!</p>
+</blockquote>
+
+<p>Scopes are a great way to define the criteria to search the index in pure ruby. You can mix and match many scopes to create a new search criteria, and finally get your result by calling the usual <code>find</code>, <code>count</code>, <code>delete</code>, <code>first</code>, <code>last</code>, <code>all</code>. You can also use <code>scan_all</code> when you want to process a lot of documents in batches.</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>MyClass</span>
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Scopes</span>
+
+  <span class='n'>scope</span> <span class='ss'>:red</span><span class='p'>,</span> <span class='n'>terms</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>)</span>
+
+  <span class='n'>scope</span> <span class='ss'>:size</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>size</span><span class='o'>|</span>
+    <span class='n'>terms</span><span class='p'>(</span><span class='ss'>:size</span> <span class='o'>=&gt;</span> <span class='n'>size</span><span class='p'>)</span>
+  <span class='k'>end</span>
+
+  <span class='n'>scope</span> <span class='ss'>:cheaper_than</span> <span class='k'>do</span> <span class='o'>|</span><span class='nb'>p</span><span class='o'>|</span>
+    <span class='n'>range</span> <span class='ss'>:price</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='ss'>:to</span> <span class='o'>=&gt;</span> <span class='nb'>p</span><span class='p'>}</span>
+  <span class='k'>end</span>
+
+<span class='k'>end</span>
+
+<span class='n'>my_scope</span>      <span class='o'>=</span> <span class='no'>MyClass</span><span class='o'>.</span><span class='n'>red</span><span class='o'>.</span><span class='n'>size</span><span class='p'>(</span><span class='s1'>&#39;big&#39;</span><span class='p'>)</span>
+<span class='n'>all_big_red</span>   <span class='o'>=</span> <span class='n'>my_scope</span><span class='o'>.</span><span class='n'>all</span>
+<span class='n'>big_red_cheap</span> <span class='o'>=</span> <span class='n'>my_scope</span><span class='o'>.</span><span class='n'>cheaper_than</span><span class='p'>(</span><span class='mi'>10</span><span class='p'>)</span><span class='o'>.</span><span class='n'>all</span>
+
+<span class='n'>in_range_scope</span> <span class='o'>=</span> <span class='no'>MyClass</span><span class='o'>.</span><span class='n'>range</span> <span class='ss'>:price</span> <span class='o'>=&gt;</span><span class='p'>{</span><span class='ss'>:from</span> <span class='o'>=&gt;</span> <span class='mi'>10</span><span class='p'>,</span> <span class='ss'>:to</span> <span class='o'>=&gt;</span> <span class='mi'>99</span><span class='o'>.</span><span class='mi'>99</span><span class='p'>}</span>
+<span class='n'>first_in_range</span> <span class='o'>=</span> <span class='n'>in_range_scope</span><span class='o'>.</span><span class='n'>first</span>
+
+<span class='c1'># uses the elasticsearch &#39;scan&#39; search_type</span>
+<span class='no'>MyClass</span><span class='o'>.</span><span class='n'>red</span><span class='o'>.</span><span class='n'>scan_all</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>batch</span><span class='o'>|</span>
+  <span class='n'>batch</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>d</span><span class='o'>|</span> <span class='n'>do_something_with</span><span class='p'>(</span><span class='n'>d</span><span class='p'>)}</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>You can use the <code>flex-scopes</code> with every class that includes any Flex module (see <a href='/flex/doc/3-flex-scopes'>flex-scopes</a>)</p>
+
+<h2 id='4_template_based_usage'>4. Template Based Usage</h2>
+
+<p>Easily design complex search queries in simple <code>YAML</code> that automatically define methods in your classes.</p>
+
+<p>Flex implements a very simple but powerful templating system that allows you to define very elaborate queries and automatically generate the methods to use (and reuse) them. This method is typically used for search queries, that may grow quite complex, but internally Flex uses it everywhere.</p>
+
+<p>Define the Flex source <code>my_source.yml</code>: it&#8217;s just a <code>YAML</code> document containing a few elasticsearch queries and placeholder tags:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>my_attr</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;the_term&gt;&gt;</span>
+  <span class='l-Scalar-Plain'>facets</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>my_facet</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>...</span>
+</code></pre></div>
+<p>Create a class and load the source in the class:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>MySearch</span>
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Templates</span>
+  <span class='n'>flex</span><span class='o'>.</span><span class='n'>load_search_source</span> <span class='s1'>&#39;my_source.yml&#39;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>Use the automatically generated class methods by just passing a hash of variables/values to interpolate:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>result</span> <span class='o'>=</span> <span class='no'>MySearch</span><span class='o'>.</span><span class='n'>my_template</span> <span class='ss'>:the_string</span> <span class='o'>=&gt;</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:the_string</span><span class='o'>]</span>
+ <span class='c1'># or simply</span>
+<span class='n'>result</span> <span class='o'>=</span> <span class='no'>MySearch</span><span class='o'>.</span><span class='n'>my_template</span> <span class='n'>params</span>
+</code></pre></div>
+<p>The results contains the untouched structure returned by elasticsearch, just extended (and easily custom-extendable) with the methods you may need to use:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>result</span><span class='o'>.</span><span class='n'>collection</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>document</span><span class='o'>|</span>
+  <span class='nb'>puts</span> <span class='n'>document</span><span class='o'>.</span><span class='n'>id</span><span class='p'>,</span> <span class='n'>document</span><span class='o'>.</span><span class='n'>title</span><span class='p'>,</span> <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+<span class='k'>end</span>
+
+<span class='n'>my_facet</span> <span class='o'>=</span> <span class='n'>result</span><span class='o'>.</span><span class='n'>facets</span><span class='o'>[</span><span class='s1'>&#39;my_facet&#39;</span><span class='o'>]</span>
+</code></pre></div>
+<p>(see <a href='/flex/doc/2-flex/3-Templating'>Templating</a>)</p>
+
+<h2 id='5_elasticsearch_api_methods_usage'>5. elasticsearch API Methods Usage</h2>
+
+<p>Flex exposes all the elasticsearch API methods as ready to use class methods. A few examples:</p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>exist?</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;my_index&#39;</span>
+
+<span class='no'>Flex</span><span class='o'>.</span><span class='n'>count</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;my_index&#39;</span><span class='p'>,</span>
+           <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='s1'>&#39;my_type&#39;</span>
+
+<span class='no'>Flex</span><span class='o'>.</span><span class='n'>get</span> <span class='ss'>:id</span>    <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>
+         <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='s1'>&#39;my_type&#39;</span><span class='p'>,</span>
+         <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;my_index&#39;</span>
+
+<span class='no'>Flex</span><span class='o'>.</span><span class='n'>multi_get</span> <span class='ss'>:ids</span>   <span class='o'>=&gt;</span> <span class='n'>ids</span><span class='p'>,</span>
+               <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='s1'>&#39;my_type&#39;</span><span class='p'>,</span>
+               <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;my_index&#39;</span>
+
+<span class='no'>Flex</span><span class='o'>.</span><span class='n'>delete_by_query</span> <span class='ss'>:index</span>  <span class='o'>=&gt;</span> <span class='s1'>&#39;my_index&#39;</span><span class='p'>,</span>
+                     <span class='ss'>:params</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='ss'>:q</span> <span class='o'>=&gt;</span><span class='s1'>&#39;my_field:value&#39;</span><span class='p'>}</span>
+
+<span class='no'>Flex</span><span class='o'>.</span><span class='n'>more_like_this</span> <span class='ss'>:id</span>    <span class='o'>=&gt;</span> <span class='nb'>id</span><span class='p'>,</span>
+                    <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;my_index&#39;</span><span class='p'>,</span>
+                    <span class='ss'>:type</span>  <span class='o'>=&gt;</span> <span class='s1'>&#39;my_type&#39;</span>
+
+<span class='no'>Flex</span><span class='o'>.</span><span class='n'>stats</span> <span class='ss'>:index</span>    <span class='o'>=&gt;</span> <span class='sx'>%w[my_index my_other_index]</span><span class='p'>,</span>
+           <span class='ss'>:type</span>     <span class='o'>=&gt;</span> <span class='sx'>%w[my_type my_other_type]</span>
+           <span class='ss'>:endpoint</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;indexing&#39;</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Notice</strong>: you don&#8217;t actually need to pass any explicit <code>:index</code> or <code>:type</code> if you set them as a defaults (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html'>Variables</a>)</p>
+</blockquote>
+
+<p>You will probably never need to use the API Methods directly, since Flex does the heavy lifting for you, but they cover all the elasticsearch API, so they will be available when you will need to do anything special (see <a href='/flex/doc/2-flex/2-API-Methods.html'>API Methods</a>).</p>
+
+<h2 id='6_curllike_usage'>6. Curl-like Usage</h2>
+
+<p>This usage is very explicit and mostly useful for experimentation and debugging: you can use the methods <code>HEAD</code>, <code>GET</code>, <code>PUT</code>, <code>POST</code>, <code>DELETE</code> exactly as you would do with curl (also enforced by the unconventional upcase naming):</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># you can use a json string</span>
+<span class='no'>Flex</span><span class='o'>.</span><span class='n'>GET</span> <span class='s1'>&#39;/my_index/my_type/_search&#39;</span><span class='p'>,</span> <span class='s1'>&#39;{&quot;query&quot;:{&quot;match_all&quot;:{}}}&#39;</span>
+
+<span class='c1'># a ruby hash</span>
+<span class='no'>Flex</span><span class='o'>.</span><span class='n'>GET</span> <span class='s1'>&#39;/my_index/my_type/_search&#39;</span><span class='p'>,</span> <span class='p'>{</span><span class='ss'>:query</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='ss'>:match_all</span> <span class='o'>=&gt;</span> <span class='p'>{}}}</span>
+
+<span class='c1'># or a yaml string</span>
+<span class='no'>Flex</span><span class='o'>.</span><span class='n'>GET</span> <span class='s1'>&#39;/my_index/my_type/_search&#39;</span><span class='p'>,</span> <span class='o'>&lt;&lt;-</span><span class='no'>yaml</span>
+<span class='sh'>query:</span>
+<span class='sh'>  match_all: {}</span>
+<span class='no'>yaml</span>
+</code></pre></div>
+<p>You don&#8217;t need to pass the base uri: just the path since the <code>base_uri</code> is a configuration setting that defaults to the elasticsearch <code>http:://localhost:9200</code> (see <a href='/flex/doc/1-Flex-Project/3-Configuration.html'>Configuration</a>).</p>
+
+<p>In all methods above you can also use tags in path and data, and get them interpolated with the default or explicit variables, as you do with a regular Flex template (see <a href='/flex/doc/2-flex/6-Utility-Methods.html#curllike_methods'>Curl-like Methods</a>))</p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>Flex</span><span class='o'>.</span><span class='n'>GET</span> <span class='s1'>&#39;/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_search&#39;</span><span class='p'>,</span> <span class='o'>&lt;&lt;-</span><span class='no'>yaml</span><span class='p'>,</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;my_index&#39;</span><span class='p'>,</span> <span class='ss'>:my_term</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;any&#39;</span>
+<span class='sh'>query:</span>
+<span class='sh'>  term:</span>
+<span class='sh'>    my_field: &lt;&lt;my_term&gt;&gt;</span>
+<span class='no'>yaml</span>
+</code></pre></div><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/1-Flex-Project">Flex Project</a></span> &gt; <span>Usage Overview</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

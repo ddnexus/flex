@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - Live Reindex
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex-admin"><img src="https://badge.fury.io/rb/flex-admin.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/6-flex-admin">flex-admin</a></span> &gt; <span>Live Reindex</span>
+      </div>
+      <h1 id='live_reindex'>Live Reindex</h1>
+
+<p>If you ever tried to reindex your production app while it is running you know that it might be quite a difficult task. You have the old code running and constantly updating the old index/indices, and you need to deploy some new search feature with the new code, that would produce and need a new index, so what should you do? If the production index/indices are small, you may shut-down your site for a few minutes in order to deploy the new code, reindex and restart the site. No big deal: problem solved! But quite typically your index/indices are big, so the reindexing would require you to shut down your site (or part of it) during a few hours, and that wouldn&#8217;t be acceptable. If your app is making money, shutting it down would likely cost you a lot of bucks.</p>
+
+<p>So you could try a live update, i.e. re-import the data while the old data is still in place. From a commercial point of view, that solution is probably better than shutting down the site, but it is still a bad one from a technical point of view. Your index will stay in an inconsistent state during the time of the update, and that may probably cause both your old and new code to fail during the process. The &#8220;deploy-then-update&#8221; will not be better than the &#8220;update-then-deploy&#8221; technique: both will likely produce a quite bad user experience during the process - depending on the magnitude of your changes.</p>
+
+<p>The flex live-reindex feature is what you need in this case. You can leave your production app running the old code/index (and keep updating the old index) while the live-reindex rebuilds a new index by using your new code. During the rebuild, all the changes made by the old code (still running live) get tracked and mirrored on the new index. When the new index is complete, the hot-swap of the old code and index with the new code and index can take place. Just a few lines of code to write, practically no down-time, no index inconsistency so no code failures and a very smooth user experience.</p>
+
+<blockquote>
+<p><strong>Personal Note</strong>: Live-reindexing is tricky per se, but finding a way to perform it easily and regardless the app structure has been an even trickier challenge.</p>
+</blockquote>
+
+<blockquote>
+<p>Live-reindex is very useful also when your app is not changing the index while you are reindexing, for example when your index/indices are updated only periodically. It provides a smooth reindexing with all the features you need, like index renaming, hot-swap, etc.</p>
+</blockquote>
+
+<h2 id='requirements'>Requirements</h2>
+
+<p>The live-reindex feature rely on a <code>redis</code> list in order to track the changes made by the processes of your running app during the reindex. You need to install redis and the <code>redis</code> gem, and/or you may need to add it to your Gemfile.</p>
+
+<p>If you are on a Mac you can install redis with <code>homebrew</code>:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>brew install redis
+</code></pre></div>
+<p>If you are on any other OS, read <a href='http://www.redis.io/download'>redis installation</a>.</p>
+
+<p>The <code>reindex_models</code> and the <code>reindex_active_models</code> methods require the <code>flex-models</code> gem (if you use <code>flex-rails</code> it is automatically required).</p>
+
+<h2 id='usage'>Usage</h2>
+
+<p>The live-reindex feature is very easy to use, but reindexing while the indices and the DBs change is a tricky process, so you must understand the basics about how it works in order to use it properly, or you might corrupt your indices (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html#important_warnings'>Important Warnings</a>).</p>
+
+<p>The live reindexing should be the last step of your new deployment, performed just before you swap the old code with the new one. It will take care of reindex your data in new index/indices, including the changes being made during the reindexing itself.</p>
+
+<blockquote>
+<p>If you deploy with <code>capistrano</code>, you should run the reindex method (perhaps in a migration) right before the <code>create_symlink</code></p>
+</blockquote>
+
+<h3 id='index_renaming'>Index Renaming</h3>
+
+<p>The live-reindex process must reindex the data in new indices, so it will automatically create a new index name for each index being reindexed.</p>
+
+<p>The names of the new indices will be prefixed with a timestamp similar to the timestamp prepended to the <code>ActiveRecord</code> migrations. For example for an old index named <code>my_index</code> (or an old index already prefixed like <code>20120805095424_my_index</code>) it will be something like <code>20130608103457_my_index</code> (where the prefix is the current timestamp).</p>
+
+<p>When the reindex will be completed each old index involved in the reindexing will be deleted and the new indices will be aliased with the original base name (e.g. unprefixed <code>my_index</code>). That means that your app will continue to use e.g. the <code>my_index</code> name, but it will automatically point to the new <code>20130608103457_my_index</code> index. No intervention is required on your side: you will continue to use the old index basename everywhere in your code and templates, but no surprise when you will inspect a document with a prefixed index name.</p>
+
+<blockquote>
+<p>You can always get the original basename, by calling <code>index_basename</code> on any elasticsearch document structure.</p>
+</blockquote>
+
+<blockquote>
+<p>All the index, delete and bulk operations made by the process that is running the live-reindex will automatically rename the index to the current timestamped index name. Any other process running during the live-reindex (e.g. your live app) will index, delete and bulk on the old index/indices, so there will be no automatic renaming.</p>
+</blockquote>
+
+<h3 id='tracking_changes'>Tracking Changes</h3>
+
+<p>During the reindexing, your live app may change some document in the old index/indices. The changes made to the old index/indices by the live processes are tracked in a redis list and will be indexed at the end of the reindexing. If you configure an <code>on_each_change</code> block within the reindex method it will receive (also) the changes done during the reindexing, so giving you the chance to update the new index/indices consistently with the change in the old index/indices (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html#id2'>on_each_change</a>).</p>
+
+<blockquote>
+<p>All the index, delete and bulk operations made by the process that is running the live-reindex are not tracked because they are performed directly on the new index/indices.</p>
+</blockquote>
+
+<p>If your indices may get modified by some custom method, by other applications or by some elasticsearch river (none of which uses the above methods), the changes during the reindexing will not be tracked, hence will not be mirrored to the new index/indices. In that case, you must explicitly keep track of the changes by using the <code>track_change</code> or the <code>track_external_change</code> methods. Pease, take a look at the code and if you need some assistance, send me an email.</p>
+
+<h2 id='configuration'>Configuration</h2>
+
+<p>There are 4 reindexing methods and they all accept a configuration block. You can use that block in order to define what the reindex should do <code>on_each_change</code>, <code>on_stop_indexing</code> and in advanced usage also <code>on_reindex</code>. For example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:LiveReindex</span><span class='o'>.</span><span class='n'>_any_reindexing_method_</span><span class='p'>(</span><span class='n'>my_options</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>config</span><span class='o'>|</span>
+
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>on_stop_indexing</span> <span class='k'>do</span>
+    <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+  <span class='k'>end</span>
+
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>on_each_change</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>action</span><span class='p'>,</span> <span class='n'>raw_document_hash</span><span class='o'>|</span>
+    <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+  <span class='k'>end</span>
+
+  <span class='c1'># ignored in all reindexing method but reindex</span>
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>on_reindex</span> <span class='k'>do</span>
+    <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+  <span class='k'>end</span>
+
+<span class='k'>end</span>
+</code></pre></div>
+<h3 id='id1'><code>on_stop_indexing</code></h3>
+
+<p>It&#8217;s important to understand that code and index must constantly match when the app is running: the old code with the old index; the new code with the new index. So in order to ensure that consistency the live-reindex feature needs to stop the indexing during the swapping (old code and index / new code and index). The elapsed time from the indexing-stop to the indexing-restart will probably be just a few milliseconds or a few seconds at worse, but that is a critical step if you want a consistent and complete index and a smooth swapping. For that reason you must define the <code>on_stop_indexing</code> proc that must ensure to prevent all the processes that use the old code to change the index during the swapping (e.g. put the app in maintenance mode, wait for eventual <code>resque</code> tasks in the queue to complete before returning, flush the indices, etc.).</p>
+
+<p>The <code>on_stop_indexing</code> proc will be called (almost) at the end of the live-reindexing, just before the index swap. Just remember that the reindex methods will: 1) reindex, 2) call the <code>on_stop_indexing</code> proc to stop the indexing and 3) swap the old index with the new one. After that you must: 1) swap the old code with the new one and 2) resume the indexing that your proc stopped (or maybe just restart the new deployed app).</p>
+
+<blockquote>
+<p>If you deploy with <code>capistrano</code>, you should resume the indexing right after the <code>restart</code></p>
+</blockquote>
+
+<p>You can set the <code>on_stop_indexing</code> as a configuration setting in the flex initializer file:</p>
+<div class='highlight'><pre><code class='ruby'><span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Configuration</span><span class='o'>.</span><span class='n'>on_stop_indexing</span> <span class='o'>=</span> <span class='nb'>proc</span><span class='p'>{</span><span class='ss'>Rake</span><span class='p'>:</span><span class='ss'>:Task</span><span class='p'>(</span><span class='s1'>&#39;maintenance:start&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>invoke</span><span class='p'>}</span>
+</code></pre></div>
+<p>However you can also define it as a configuration block. For example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:LiveReindex</span><span class='o'>.</span><span class='n'>_a_reindex_method_</span><span class='p'>(</span><span class='n'>my_options</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>config</span><span class='o'>|</span>
+
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>on_stop_indexing</span> <span class='k'>do</span>
+    <span class='ss'>Rake</span><span class='p'>:</span><span class='ss'>:Task</span><span class='p'>(</span><span class='s1'>&#39;maintenance:start&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>invoke</span>
+  <span class='k'>end</span>
+
+  <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+<span class='k'>end</span>
+</code></pre></div>
+<blockquote>
+<p>The <code>on_stop_indexing</code> is explicitly required for your production environment when the index may change during the reindexing. However when your app doesn&#8217;t change the index, or when you are experimenting in your development environment, you don&#8217;t need to stop anything, so you can silence the <code>MissingStopIndexingProcError</code> error by explicitly pass a <code>:on_stop_indexing =&gt; false</code> option to the method or set <code>Flex::Configuration.on_stop_indexing = false</code>. You may also want to set a different <code>Flex::Configuration.on_stop_indexing</code> for different environments.</p>
+</blockquote>
+
+<h3 id='id2'><code>on_each_change</code></h3>
+
+<p>The <code>on_each_change</code> block will receive the action (<code>&#39;index&#39;</code> or <code>&#39;delete&#39;</code>) as the first argument, and the hash document pulled from elasticsearch. It is expected to optionally change the passed document and return one of the following:</p>
+
+<ul>
+<li>a Hash with a single key/value pair of action/document: <code>{ action =&gt; document }</code>, where <code>document</code> can be a hash in the same elasticsearch format received by the block or a record/document (flex-models instance) to index/delete.</li>
+
+<li>an array of Hashes like the above (when you need to split one single action into a few different actions): <code>[ { action =&gt; document },{ action =&gt; document }, ... ]</code></li>
+
+<li>a nil value (when you want to skip the indexing/deletion for a particular document)</li>
+</ul>
+
+<p>The returned result(s) will be bulk-processed.</p>
+
+<p>For example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># a simple block</span>
+<span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:LiveReindex</span><span class='o'>.</span><span class='n'>_any_reindex_method_</span><span class='p'>(</span><span class='n'>my_options</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>config</span><span class='o'>|</span>
+
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>on_each_change</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>action</span><span class='p'>,</span> <span class='n'>raw_document_hash</span><span class='o'>|</span>
+    <span class='k'>if</span> <span class='n'>action</span> <span class='o'>==</span> <span class='s1'>&#39;index&#39;</span>
+      <span class='n'>raw_document_hash</span><span class='o'>[</span><span class='s1'>&#39;_source&#39;</span><span class='o'>][</span><span class='s1'>&#39;some_field&#39;</span><span class='o'>]</span> <span class='o'>=</span> <span class='n'>my_transform</span><span class='p'>(</span><span class='n'>raw_document_hash</span><span class='o'>[</span><span class='s1'>&#39;_source&#39;</span><span class='o'>][</span><span class='s1'>&#39;some_field&#39;</span><span class='o'>]</span><span class='p'>)</span>
+      <span class='n'>raw_document_hash</span><span class='o'>[</span><span class='s1'>&#39;_source&#39;</span><span class='o'>].</span><span class='n'>delete</span><span class='p'>(</span><span class='s1'>&#39;some_other_field&#39;</span><span class='p'>)</span>
+    <span class='k'>end</span>
+    <span class='c1'># you must return the action and the modified document</span>
+    <span class='p'>{</span><span class='n'>action</span> <span class='o'>=&gt;</span> <span class='n'>raw_document_hash</span><span class='p'>}</span>
+  <span class='k'>end</span>
+
+<span class='k'>end</span>
+</code></pre></div>
+<blockquote>
+<p>It&#8217;s important to notice that the raw document hash argument passed to the block is a document pulled from one of the elasticsearch OLD indices, containing the old structure.</p>
+</blockquote>
+
+<p>The block may need to process different indices in different ways, and the old index name might be prefixed (if it is already the product of a live-reindex). When you need to check the index name you should use the <code>index_basename</code> method on the document hash. It will return the unprefixed index name of the raw_document_hash. For example:</p>
+<div class='highlight'><pre><code class='irb'><span class='gp'>&gt;&gt; </span><span class='n'>raw_document_hash</span><span class='o'>[</span><span class='s1'>&#39;_index&#39;</span><span class='o'>]</span>
+<span class='go'>=&gt; &quot;20130608103457_my_index&quot;</span>
+
+<span class='gp'>&gt;&gt; </span><span class='n'>raw_document_hash</span><span class='o'>.</span><span class='n'>index_basename</span>
+<span class='go'>=&gt; &quot;my_index&quot;</span>
+</code></pre></div>
+<p>You should always use the <code>index_basename</code> method when you need to check the index of the document. For example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:LiveReindex</span><span class='o'>.</span><span class='n'>_a_reindex_method_</span><span class='p'>(</span><span class='n'>my_options</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>config</span><span class='o'>|</span>
+
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>on_each_change</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>action</span><span class='p'>,</span> <span class='n'>raw_document_hash</span><span class='o'>|</span>
+    <span class='k'>if</span> <span class='n'>action</span> <span class='o'>==</span> <span class='s1'>&#39;index&#39;</span>
+      <span class='k'>case</span> <span class='n'>raw_document_hash</span><span class='o'>.</span><span class='n'>index_basename</span>
+      <span class='k'>when</span> <span class='s1'>&#39;my_index&#39;</span>
+        <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+      <span class='k'>when</span> <span class='s1'>&#39;some_other_index&#39;</span>
+        <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+      <span class='k'>end</span>
+    <span class='k'>end</span>
+    <span class='c1'># you must return the action and the modified document</span>
+    <span class='p'>{</span><span class='n'>action</span> <span class='o'>=&gt;</span> <span class='n'>raw_document_hash</span><span class='p'>}</span>
+  <span class='k'>end</span>
+
+<span class='k'>end</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Important</strong>: Your <code>on_each_change</code> block should not directly store or delete anything, it should only return the (eventually modified) action/documents that the live-reindexing method will index/delete.</p>
+</blockquote>
+
+<p>If you don&#8217;t pass any configuration block, the reindex methods will use specific defaults: see the details about each default in the specific method session.</p>
+
+<h3 id='id3'><code>on_reindex</code></h3>
+
+<p>(see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html#id7'>reindex</a>)</p>
+
+<h2 id='reindexing_methods'>Reindexing Methods</h2>
+
+<p>There are 4 different reindexing methods, useful in different contexts but working quite similarly. 2 methods are added by the <code>flex-models</code> gem: <code>reindex_models</code> and <code>reindex_active_models</code>. The other 2 methods are the <code>reindex_indices</code> and the generic and advanced <code>reindex</code> method. You can use only one of the 4 methods and only one time in one live-reindex session, then you have to swap the code and deploy. If you need to use more than one method, you must do it in different deploys.</p>
+
+<blockquote>
+<p>If you try to use more than one of the reindexing method in the same session, the execution of the second method will raise a <code>MultipleReindexError</code> error. In that case the first reindexing execution took place regularly (and the error will tell you the new index/indices that have been swapped successfully), but the other reindexing(s) have been aborted so you have still the old index/indices in place. If the code-changes that you were about to deploy rely on the successive reindexings that have been aborted, your app may fail, so you should complete the other reindexing in single successive deploys ASAP.</p>
+
+<p>If you are in development environment and you know what you are doing, you can restart the process and silence that error by passing <code>:safe_reindex =&gt; false</code>.</p>
+</blockquote>
+
+<p>If any other (not <code>MultipleReindexError</code>) error is raised during the process, the live-reindex will be aborted. In that case, your old index/indices have not been touched at all. The new index/indices being built are probably incomplete, so they have already been deleted by a rescue block, so they left no trace in your elasticsearch server.</p>
+
+<h3 id='id4'><code>reindex_models</code></h3>
+
+<blockquote>
+<p>This method is added by the <code>flex-models</code> gem: use it to import/reimport <code>ActiveRecord</code> and <code>Mongoid</code> models.</p>
+</blockquote>
+
+<p>The <code>on_each_change</code> block will receive <strong>ONLY</strong> the tracked changes at the end of the reindexing.</p>
+
+<p>If you don&#8217;t configure any <code>on_each_change</code> block a default proc will be used. It will simply pull the current record/document from the DB and index it in the new index, or delete the elasticsearch document from the new index in case of a <code>&#39;delete&#39;</code> action. That&#8217;s fine when you don&#8217;t change the structure of your models, and change only the <code>flex_source</code> method for example. But if you delete or rename models, it will fail. In that case you could alias the models or split the changes in 2 deploys, or you must configure an explicit <code>on_each_change</code> block that will receive as usual the action and the document hash pulled from the old elasticsearch index at the moment of the change: you must do the changes in the document (like changing the type for example, or reindexing some other record, etc.) and return the proper result (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html#id2'>on_each_change</a>).</p>
+
+<h4 id='full_reindex'>Full Reindex</h4>
+
+<p>You can reindex all the <code>Flex::Configuration.flex_models</code>:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># if you don&#39;t configure any block the method will use a default on_each_change block</span>
+<span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:LiveReindex</span><span class='o'>.</span><span class='n'>reindex_models</span>
+
+<span class='c1'># explicit on_each_change block</span>
+<span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:LiveReindex</span><span class='o'>.</span><span class='n'>reindex_models</span><span class='p'>(</span><span class='n'>my_options</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>config</span><span class='o'>|</span>
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>on_each_change</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>action</span><span class='p'>,</span> <span class='n'>raw_document_hash</span><span class='o'>|</span>
+    <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<h4 id='partial_reindex'>Partial Reindex</h4>
+
+<p>In case you want to limit the reindexing to a few models (that really changed), you can pass an array of <code>:models</code>, but in that case you must also pass the <code>:ensure_indices</code> option that will ensure the completeness of the indices being reindexed.</p>
+<div class='highlight'><pre><code class='ruby'><span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:LiveReindex</span><span class='o'>.</span><span class='n'>reindex_models</span><span class='p'>(</span> <span class='ss'>:models</span>         <span class='o'>=&gt;</span> <span class='o'>[</span> <span class='no'>MyModelA</span><span class='p'>,</span> <span class='no'>MyModelB</span> <span class='o'>]</span><span class='p'>,</span>
+                                  <span class='ss'>:ensure_indices</span> <span class='o'>=&gt;</span> <span class='o'>[</span> <span class='s1'>&#39;my_index&#39;</span> <span class='o'>]</span> <span class='p'>)</span> <span class='k'>do</span>
+  <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>The <code>:ensure_indices</code> option ensures 2 things:</p>
+
+<ol>
+<li>It copies the complete data from the old index to the new one first then it reindexes only the models you listed. That ensures you won&#8217;t miss any data from the old indices. Besides, in case the index is built by more models, that is faster than reimporting all the models from scratch.</li>
+
+<li>It checks whether any record/document in your DB would use any index not specifically listed in the <code>:ensure_indices</code> option. That would compromise the safety ensured by point #1, so if that happens, it will abort the reindexing and raise an error that will show you the extra index found. You may want to add it to the <code>:ensure_indices</code> array and retry the reindex, so ensuring it will be first copied from the old index.</li>
+</ol>
+
+<blockquote>
+<p>Don&#8217;t use partial reindex to fix a corrupted index, because the <code>:ensure_indices</code> option will copy the old (and corrupted) indices first, and reindexing on that copy might not fix the corruption.</p>
+</blockquote>
+
+<blockquote>
+<p>You can also pass other options, that will be forwarded to the <code>import</code> task. You can use the symbolic version of the env options (e.g.: <code>MODELS</code> &gt; <code>:models</code>) (see <a href='/flex/doc/1-Flex-Project/4-Rake-Tasks.html#flex_import'>flex:import</a>).</p>
+</blockquote>
+
+<h3 id='id5'><code>reindex_active_models</code></h3>
+
+<blockquote>
+<p>This method is added by the <code>flex-models</code> gem: use it for indexed <code>ActiveModel</code> models.</p>
+</blockquote>
+
+<p>This method works similarly to the <code>reindex_models</code> for the options <code>:models</code> and <code>:ensure_indices</code> and similarly to the <code>reindex_indices</code> for the <code>on_each_change</code> block. Indeed the <code>on_each_change</code> block will be used to pass <strong>ALL</strong> the documents being reindexed <strong>AND</strong> the tracked changes at the end of the reindexing. If you don&#8217;t configure any <code>on_each_change</code> block, the index will be copied verbatim into the new index.</p>
+
+<p>The full reindex reindexes all the <code>Flex::Configuration.flex_active_models</code> and the partial reindex works similarly to the <code>reindex_models</code> method.</p>
+
+<h3 id='id6'><code>reindex_indices</code></h3>
+
+<blockquote>
+<p>Use this live reindex method for any index, if you prefer to interact directly with the documents, regardless the models. It migrates directly the content of one or more indices through the <code>on_each_change</code> block that you must configure.</p>
+</blockquote>
+
+<p>The <code>on_each_change</code> block will be used to pass <strong>ALL</strong> the documents being reindexed <strong>AND</strong> the tracked changes at the end of the reindexing. If you don&#8217;t configure any block, the index will be copied verbatim into the new index.</p>
+
+<p>You can pass the <code>:indices</code> option to limit the indices to migrate: if you don&#8217;t pass any <code>:indices</code> option the default indices of your app will be used (the <code>:models</code> option is obviously ignored by this method). For example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># reindex and swap all the known indices without doing any change (not very useful)</span>
+<span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:LiveReindex</span><span class='o'>.</span><span class='n'>reindex_indices</span>
+
+<span class='c1'># reindex and swap only the &#39;my_index&#39; and &#39;my_other_index&#39; indices, changing them with the on_each_change block</span>
+<span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:LiveReindex</span><span class='o'>.</span><span class='n'>reindex_indices</span><span class='p'>(</span><span class='ss'>:indices</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='s1'>&#39;my_index&#39;</span><span class='p'>,</span> <span class='s1'>&#39;my_other_index&#39;</span><span class='o'>]</span><span class='p'>)</span> <span class='k'>do</span>
+  <span class='n'>on_each_change</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>action</span><span class='p'>,</span> <span class='n'>raw_document_hash</span><span class='o'>|</span>
+    <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<h3 id='id7'><code>reindex</code></h3>
+
+<blockquote>
+<p>Use this live reindex method if you need to do some special reindexing not covered by any other reindexing method.</p>
+</blockquote>
+
+<p>All the other reindexing methods have the <code>on_reindex</code> block internally configured: the <code>reindex</code> method hasn&#8217;t, so you must configure it with the code you want to be executed in order to reindex, along with the <code>on_each_change</code> and eventually with the <code>on_stop_indexing</code> blocks. For example, the following will practically perform the same reindexing of the <code>reindex_model</code> method (used with the default <code>on_each_change</code> block):</p>
+<div class='highlight'><pre><code class='ruby'><span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:LiveReindex</span><span class='o'>.</span><span class='n'>reindex</span><span class='p'>(</span><span class='n'>my_options</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>config</span><span class='o'>|</span>
+
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>on_reindex</span> <span class='k'>do</span>
+    <span class='no'>ModelTasks</span><span class='o'>.</span><span class='n'>new</span><span class='o'>.</span><span class='n'>import_models</span>
+  <span class='k'>end</span>
+
+  <span class='n'>config</span><span class='o'>.</span><span class='n'>on_each_change</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>action</span><span class='p'>,</span> <span class='n'>document</span><span class='o'>|</span>
+    <span class='k'>if</span> <span class='n'>action</span> <span class='o'>==</span> <span class='s1'>&#39;index&#39;</span>
+      <span class='k'>begin</span>
+        <span class='p'>{</span> <span class='n'>action</span> <span class='o'>=&gt;</span> <span class='n'>document</span><span class='o'>.</span><span class='n'>load!</span> <span class='p'>}</span>
+      <span class='k'>rescue</span> <span class='ss'>Mongoid</span><span class='p'>:</span><span class='ss'>:Errors</span><span class='o'>::</span><span class='no'>DocumentNotFound</span><span class='p'>,</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:RecordNotFound</span>
+        <span class='kp'>nil</span> <span class='c1'># record already deleted</span>
+      <span class='k'>end</span>
+    <span class='k'>else</span>
+      <span class='p'>{</span> <span class='n'>action</span> <span class='o'>=&gt;</span> <span class='n'>document</span> <span class='p'>}</span>
+    <span class='k'>end</span>
+  <span class='k'>end</span>
+
+<span class='k'>end</span>
+</code></pre></div>
+<h2 id='reindexing_from_another_host'>Reindexing from another host</h2>
+
+<p>You may want to reindex from another host rather than the host of your live app. The live-reindex needs to connect with the 3 data storages your live app is connected to: elasticsearch, DB(s) and redis. If the reindex host has a transparent replication of all 3 data storages you can use the live-reindex as it were run from the live app host, otherwise you may need to change:</p>
+
+<ul>
+<li>the <code>Flex::Configuration.http_client.base_uri</code></li>
+
+<li>the <code>Flex::Configuration.redis</code> redis client</li>
+
+<li>the connection settings for your DBs (if you are reindexing <code>ActiveRecord</code> or <code>Mongoid</code> models)</li>
+</ul>
+
+<p>If you are using <code>Rails</code> you can set it all in a specific environment, that you will use for the reindexing from that host.</p>
+
+<h2 id='important_warnings'>Important Warnings</h2>
+
+<h3 id='flex_upgrade'>Flex Upgrade</h3>
+
+<p>When you live-reindex, make sure your live app is running the same version of flex of your new deploy, or you may corrupt your index/indices and/or miss the live changes (made by the old running code during the reindexing). <strong>You should never live-reindex in the same deploy you upgrade flex.</strong> Instead upgrade, deploy, then live-reindex on one next deploy.</p>
+
+<h3 id='flexconfigurationapp_id'>Flex::Configuration.app_id</h3>
+
+<p>When you live-reindex, the <code>Flex::Configuration.app_id</code> should be set and match for both the old code (running app) and the new code. If you use <code>flex-rails</code> it is already set and matching, however, if you set it explicitly, ensure that the running app processes are using the same id of the new code, or you will miss all the live changes (made by the old running code during the reindexing). In other words, <strong>you cannot set and run it in the same commit/deploy</strong>: instead you should set it, commit and deploy, then make your changes and reindex on the next deploy.</p>
+
+<h3 id='safe_livereindex'>Safe live-reindex</h3>
+
+<p>Live-reindexing is a potentially dangerous process because it deletes the old indices after a &#8220;successful&#8221; reindexing. Flex considers as &#8220;successful&#8221; a reindexing that raised no errors, but if you have a bug in any configuration block or forget the couple of warnings above, you may lose or corrupt part of the indices. For that reasons <strong>you should always backup your indices before proceed</strong>, or at least dump the data with the <code>flex:admin:dump</code> task. That&#8217;s very important especially with <code>Flex::ActiveModel</code> models, that don&#8217;t have the data mirrored in a DB. Besides, this is a very new implementation that lacks the time to be tested thoroughly yet, so please, do backup your indices before live-reindexing.</p><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/6-flex-admin">flex-admin</a></span> &gt; <span>Live Reindex</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

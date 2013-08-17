@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - flex - Templates
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/2-flex">flex</a></span> &gt; <span><a href="/flex/doc/2-flex/3-Templating">Templating</a></span> &gt; <span>Templates</span>
+      </div>
+      <h1 id='templates'>Templates</h1>
+
+<p>With Flex Templates you almost don&#8217;t need to write the code for searching: you can focus on writing bare elasticsearch queries, and Flex will generate the code for you. You can write all your custom queries in friendly <code>YAML</code> instead of <code>JSON</code>, add your own placeholder-tags where you want dynamic values instead of static strings, and Flex will automatically generate the methods to use in your code.</p>
+
+<h2 id='usage_overview'>Usage Overview</h2>
+
+<p>Define the Flex source <code>my_source.yml</code>: it&#8217;s just a <code>YAML</code> document containing a few elasticsearch queries and placeholder tags:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>my_attr</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;the_term&gt;&gt;</span>
+  <span class='l-Scalar-Plain'>facets</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>my_facet</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>...</span>
+</code></pre></div>
+<p>Create a class and load the source in the class:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>MySearch</span>
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Templates</span>
+  <span class='n'>flex</span><span class='o'>.</span><span class='n'>load_search_source</span> <span class='s1'>&#39;my_source.yml&#39;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>Use the automatically generated class methods by just passing a hash of variables/values to interpolate:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>result</span> <span class='o'>=</span> <span class='no'>MySearch</span><span class='o'>.</span><span class='n'>my_template</span> <span class='ss'>:the_string</span> <span class='o'>=&gt;</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:the_string</span><span class='o'>]</span>
+ <span class='c1'># or simply</span>
+<span class='n'>result</span> <span class='o'>=</span> <span class='no'>MySearch</span><span class='o'>.</span><span class='n'>my_template</span> <span class='n'>params</span>
+</code></pre></div>
+<p>The results contains the untouched structure returned by elasticsearch, just extended (and easily custom-extendable) with the methods you may need to use:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>result</span><span class='o'>.</span><span class='n'>collection</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>document</span><span class='o'>|</span>
+  <span class='nb'>puts</span> <span class='n'>document</span><span class='o'>.</span><span class='n'>id</span><span class='p'>,</span> <span class='n'>document</span><span class='o'>.</span><span class='n'>title</span><span class='p'>,</span> <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+<span class='k'>end</span>
+
+<span class='n'>my_facet</span> <span class='o'>=</span> <span class='n'>result</span><span class='o'>.</span><span class='n'>facets</span><span class='o'>[</span><span class='s1'>&#39;my_facet&#39;</span><span class='o'>]</span>
+</code></pre></div>
+<h3 id='advantages'>Advantages</h3>
+
+<p>This approach drastically cuts down time and effort to interface your app to elasticsearch, substancially reducing the whole search logic to a simple <code>YAML</code> file (see <a href='/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html#adding_flex_templates'>Adding Flex Templates</a>).</p>
+
+<p>Besides, <code>YAML</code> adds its own advantages to the whole:</p>
+
+<ul>
+<li><code>YAML</code> is very easy to write and read, so you can save a lot of typing and squinting</li>
+
+<li><code>YAML</code> maps 1 to 1 to the <code>JSON</code> structures that you need for elasticsearch, so you don&#8217;t have to learn anything new</li>
+
+<li><code>YAML</code> natively allows you to define and reuse part of queries into other queries, so you will write less lines, avoiding potential errors</li>
+</ul>
+
+<p>Flex Templates enforce a clean separation of the elasticsearch logic from the application logic, also allowing flexibility: indeed you can keep the elasticsearch queries in a central file, or split them in separated files (see <a href='/flex/doc/2-flex/3-Templating/2-Sources.html'>Template Sources</a>)</p>
+
+<p>Besides, the auto generated methods give you a few other useful advantages for free, without the need to write any code:</p>
+
+<ul>
+<li>variables validation</li>
+
+<li>cascading defaults</li>
+
+<li>data driven dynamic requests</li>
+
+<li>interpolation</li>
+</ul>
+
+<p>(see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html'>Variables</a>, <a href='/flex/doc/2-flex/3-Templating/5-Interpolation.html'>Interpolation</a> and <a href='/flex/doc/2-flex/3-Templating/6-Partials.html'>Partial Templates</a>)</p>
+
+<h2 id='general_concepts'>General Concepts</h2>
+
+<p>A basic principle of any templating systems (like ERB, Mustache, etc) is that you define your templates by separating the static part (that doesn&#8217;t change between renderings) from the dynamic part (that may change each time). That way, a template defines a self-contained logic that needs only a hash of variables to interpolate in order to render the final output.</p>
+
+<p>Flex Templates use the same basic principles of any templating system, but instead of describing and rendering a text output, its templates describe a http request to the elasticsearch server, that will be interpolated with variables and rendered as the resulting structure returned by elasticsearch.</p>
+
+<h2 id='template_types'>Template Types</h2>
+
+<p>Flex implements different types of templates, useful in different context:</p>
+
+<ul>
+<li><strong>Generic Templates</strong> <code>Flex::Template</code> base class</li>
+
+<li><strong>Search Templates</strong> <code>Flex::Template::Search</code> (subclass of <code>Flex::Template</code>)</li>
+
+<li><strong>Slim Search Templates</strong> <code>Flex::Template::SlimSearch</code> (subclass of <code>Flex::Template::Search</code>)</li>
+
+<li><strong>Partial Template</strong> <code>Flex::Tempalte::Partial</code> class</li>
+</ul>
+
+<p>The Generic Templates can handle all sort of requests, but they are mostly useful to internally define all the elasticsearch API Methods (see <a href='/flex/doc/2-flex/2-API-Methods.html'>API Methods</a>). Indeed you will mostly use Search (or SlimSearch) templates, which are search-specialized subclass of templates, easier to use. Partial Templates are used to generate repeating structures (similar to the ERB Rails partials) or dynamic structures.</p>
+
+<h3 id='flex_generic_templates'>Flex Generic Templates</h3>
+
+<blockquote>
+<p><strong>Notice</strong>: you will probably never have to define Generic Templates, and stick on the simpler Search Templates, however this section explains the basic concepts that apply to all the Template subclasses, so reading it may be useful.</p>
+</blockquote>
+
+<p>In practice a Flex Template encapsulates the whole request/response logic that leads to the returned result.</p>
+
+<p>For example, consider this curl request:</p>
+<div class='highlight'><pre><code class='sh'>curl -XGET <span class='s1'>&#39;http://localhost:9200/my_index/my_type/_search&#39;</span> -d <span class='s1'>&#39;{&quot;query&quot;:{&quot;term&quot;:{&quot;user_id&quot;:25}}}&#39;</span>
+</code></pre></div>
+<p>A very basic and static Flex template definition (without dynamic interpolation in order to make this example easier) would represent the whole named request in a simple very readable <code>YAML</code> fragment:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_request</span><span class='p-Indicator'>:</span>
+  <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>GET</span>
+  <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/my_index/my_type/_search</span>
+  <span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+        <span class='l-Scalar-Plain'>user_id</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>25</span>
+</code></pre></div>
+<p>As you see the &#8216;my_request&#8217; is a named array, that in this case contains 3 items, that are the http <code>method</code>, <code>path</code> and <code>data</code> arguments that Flex will use to perform the same curl request above, through an internally created instance of <code>Flex::Template</code> (or any of its subclasses). The missing <code>base_uri</code> in the <code>path</code> argument is a configuration settings defaulted to &#8216;http://localhost:9200&#8217;.</p>
+
+<p>As you see in the previous example, the template definitions are basically named arrays of the arguments that will be internally passed to the <code>Flex::Template#new</code> method in order to create a template instance. In its most complete form they are arrays of 4 items/arguments (being the last 2 optionals):</p>
+
+<ul>
+<li>http method</li>
+
+<li>path</li>
+
+<li>request body (optional data structure understood by elasticsearch)</li>
+
+<li>variables (optional list of hashes)</li>
+</ul>
+
+<p>Flex uses the Generic Templates internally, in order to implement the elasticsearch API methods and as the base class for the more specialized and less verbose Search Templates. You will probably never need to define Generic Templates directly, so from now on we will focus on Search Templates. If you need to recur to Generic Templates for any reason, take a look at the templates listed in the API Methods section (see <a href='/flex/doc/2-flex/2-API-Methods.html'>API Methods</a>).</p>
+
+<h3 id='flex_search_templates'>Flex Search Templates</h3>
+
+<p>Search Templates are simplified Generic Templates. For an elasticsearch search request, the http method is is always <code>&#39;GET&#39;</code> and the path end point is always <code>&#39;_search&#39;</code>, so Search Templates omit the first 2 arguments. This is how the above request would be rewritten as a Search Template:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_request</span><span class='p-Indicator'>:</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>query</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>term</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>user_id</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>25</span>
+</code></pre></div>
+<p>Search Templates are basically named search queries written in <code>YAML</code> in a Source file (see <a href='/flex/doc/2-flex/3-Templating/2-Sources.html'>Template Sources</a>). Comparing the above example with the Generic Template example, you can notice that we removed the path argument and also the index and the type segments with it, so how can we pass them now?</p>
+
+<p>It turns out that <code>:index</code> and <code>:type</code> are variables that can be set at different levels, and have a nice cascading behavior as any other variable in Flex. Just to give you the simpler (and lover level) example, you can set them contextually to the method call, by explicitly passing them:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>results</span> <span class='o'>=</span> <span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_request</span> <span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;my_index&#39;</span><span class='p'>,</span> <span class='ss'>:type</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;my_type&#39;</span>
+</code></pre></div>
+<p>Notice however that, variables are very very flexible in Flex, so depending on your app, you can easily avoid to pass them at all, or hard-code them in the template itself. For example if your app uses one single index you may want to set it at a general level, so you will not have to pass it with each request. More about this topic in the Variables section (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html'>Variables</a>).</p>
+
+<p>Search Templates are also loaded with a different statement, that specify that they are search sources (not just generic sources):</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>flex</span><span class='o'>.</span><span class='n'>load_search_source</span> <span class='s1'>&#39;your/template/search_source.yml&#39;</span>
+</code></pre></div>
+<p>(see <a href='/flex/doc/2-flex/3-Templating/2-Sources.html'>Template Sources</a>)</p>
+
+<h4 id='multi_search'>Multi Search</h4>
+
+<p>Flex implements also the elasticsearch multi-search capability with a very handy method that allows you to do multiple searches with one request (see <a href='/flex/doc/2-flex/2-API-Methods.html#YourClass_flex_multi_search'>MultiSearch</a>)</p>
+
+<h3 id='flex_slim_search_templates'>Flex Slim Search Templates</h3>
+
+<p>Slim Search Templates are just Search Templates that don&#8217;t retrieve the document <code>_source</code>. They are useful to save a little memory when the <code>_source</code> is not used directly, for example if you use <code>result.loaded_collection</code> which loads the resulting records from the DB(s).</p>
+
+<h3 id='flex_partial_templates'>Flex Partial Templates</h3>
+
+<p>(see <a href='/flex/doc/2-flex/3-Templating/6-Partials.html'>Partial Templates</a>)</p><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/2-flex">flex</a></span> &gt; <span><a href="/flex/doc/2-flex/3-Templating">Templating</a></span> &gt; <span>Templates</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

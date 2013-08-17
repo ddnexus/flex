@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - flex-scopes - Scopes
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex-scopes"><img src="https://badge.fury.io/rb/flex-scopes.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/3-flex-scopes">flex-scopes</a></span> &gt; <span>Scopes</span>
+      </div>
+      <h1 id='scopes'>Scopes</h1>
+
+<p>The <code>Flex::Scopes</code> module is included in your <code>Flex::ActiveModel</code> models, so you can just use them without the <code>include Flex::ActiveModel</code> statement. On the other hand, you can include the <code>Flex::Scopes</code> with any class that includes any Flex module, and with a simple trick, also with your <code>ActiveRecord</code> models (that defines their own <code>scope</code> method) (see <a href='/flex/doc/3-flex-scopes/2-Scopes.html#using_flexscopes_with_activerecord_models'>Using flex-scopes with ActiveRecord Models</a>) .</p>
+
+<h2 id='filter_scopes'>Filter Scopes</h2>
+
+<p>The <code>flex-scope</code> gems implements only a few of the most commonly used elasticsearch filters, plus a generic <code>filters</code> scope that allows to add any other filter not explicitly defined as a scope. All the Filter Scopes return a <code>Flex::Scope</code> object.</p>
+<table cellpadding='0' cellspacing='0' class='code-topics' id='filter-scopes'>
+  <tr>
+    <td>
+      <code>missing</code>
+    </td>
+    <td><p><a href='http://www.elasticsearch.org/guide/reference/query-dsl/missing-filter'>elasticsearch missing-filter API</a></p>
+
+<p>Accepts a single key hash or a multiple keys hash (that will be translated in a sequence of <code>term</code> calls)</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>missing</span><span class='p'>(</span><span class='ss'>:color</span><span class='p'>)</span><span class='o'>.</span><span class='n'>missing</span><span class='p'>(</span><span class='ss'>:category</span><span class='p'>)</span>
+<span class='c1'># or</span>
+<span class='n'>missing</span><span class='p'>(</span><span class='ss'>:color</span><span class='p'>,</span> <span class='ss'>:category</span><span class='p'>)</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>term</code>
+    </td>
+    <td><p><a href='http://www.elasticsearch.org/guide/reference/query-dsl/term-filter'>elasticsearch term-filter API</a></p>
+
+<p>Accepts a single key hash or a multiple keys hash (that will be translated in a sequence of <code>term</code> calls)</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>term</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>term</span><span class='p'>(</span><span class='ss'>:category</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;new&#39;</span><span class='p'>)</span>
+<span class='c1'># or simply</span>
+<span class='n'>term</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>,</span> <span class='ss'>:category</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;new&#39;</span><span class='p'>)</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>terms</code>
+    </td>
+    <td><p>An extended version of the <a href='http://www.elasticsearch.org/guide/reference/query-dsl/terms-filter'>elasticsearch terms-filter API</a></p>
+
+<p>In its basic usage it conforms to the API, but it allows also to represent the <code>term</code> and the <code>missing</code> scopes, internally translating them in a serie of multiple scopes:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># basic usage as in the API</span>
+<span class='n'>terms</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='s1'>&#39;red&#39;</span><span class='p'>,</span> <span class='s1'>&#39;blue&#39;</span><span class='o'>]</span><span class='p'>,</span> <span class='ss'>:category</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='s1'>&#39;new&#39;</span><span class='p'>,</span> <span class='s1'>&#39;used&#39;</span><span class='o'>]</span><span class='p'>)</span>
+<span class='c1'># if you pass a single value instead of an array it behaves exactly like `term`</span>
+<span class='n'>terms</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>)</span>
+<span class='c1'># if you pass a nil value it behaves exactly like `missing`</span>
+<span class='n'>terms</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>)</span>
+<span class='c1'># all together</span>
+<span class='n'>terms</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>,</span> <span class='ss'>:category</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='s1'>&#39;new&#39;</span><span class='p'>,</span> <span class='s1'>&#39;used&#39;</span><span class='o'>]</span><span class='p'>,</span> <span class='ss'>:code</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>)</span>
+<span class='c1'># is like</span>
+<span class='n'>term</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>terms</span><span class='p'>(</span><span class='ss'>:category</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='s1'>&#39;new&#39;</span><span class='p'>,</span> <span class='s1'>&#39;used&#39;</span><span class='o'>]</span><span class='p'>)</span><span class='o'>.</span><span class='n'>missing</span><span class='p'>(</span><span class='ss'>:code</span><span class='p'>)</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>range</code>
+    </td>
+    <td>
+      <p>Implements the <a href='http://www.elasticsearch.org/guide/reference/query-dsl/range-filter'>elasticsearch range-filter</a></p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>range</span><span class='p'>(</span><span class='ss'>:date</span> <span class='o'>=&gt;</span> <span class='p'>{</span> <span class='ss'>:from</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;2013-04-01&#39;</span><span class='p'>,</span>
+                 <span class='ss'>:to</span>   <span class='o'>=&gt;</span> <span class='s1'>&#39;2013-04-30&#39;</span> <span class='p'>}</span> <span class='p'>)</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>filters</code>
+    </td>
+    <td>
+      <p>This scope is a generic scope that allows to add any elasticsearch filter structure not explicitly available as a scope.</p>
+      
+      <p>Accepts a single, or an array, or a list of filter structures. For example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>filters</span><span class='p'>(</span><span class='ss'>:numeric_range</span> <span class='o'>=&gt;</span> <span class='p'>{</span> <span class='ss'>:age</span> <span class='o'>=&gt;</span> <span class='p'>{</span> <span class='ss'>:from</span> <span class='o'>=&gt;</span> <span class='mi'>10</span><span class='p'>,</span>
+                                      <span class='ss'>:to</span>   <span class='o'>=&gt;</span> <span class='mi'>20</span><span class='p'>,</span>
+                                      <span class='ss'>:include_lower</span> <span class='o'>=&gt;</span> <span class='kp'>true</span><span class='p'>,</span>
+                                      <span class='ss'>:include_upper</span> <span class='o'>=&gt;</span> <span class='kp'>false</span> <span class='p'>}</span> <span class='p'>)</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>and</code> and <code>or</code> wrappers 
+    </td>
+    <td><p>You can wrap groups of filters in <code>and</code> or <code>or</code> blocks (eventually nested) and they will be built into a final elasticsearch filter.</p>
+<div class='highlight'><pre><code class='ruby'><span class='no'>YourClass</span><span class='o'>.</span><span class='n'>or</span><span class='p'>{</span> <span class='n'>term</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>term</span><span class='p'>(</span><span class='ss'>:category</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;new&#39;</span><span class='p'>)</span> <span class='p'>}</span>
+</code></pre></div>
+<blockquote>
+<p>If you omit the wrapper for the filter scopes the <code>and</code> wrapper will be used</p>
+</blockquote>
+    </td>
+  </tr>
+</table>
+<h2 id='variable_scopes'>Variable Scopes</h2>
+
+<p>These scopes are a direct interface for the variables used to query. All the Variable Scopes return a <code>Flex::Scope</code> object.</p>
+<table cellpadding='0' cellspacing='0' class='code-topics' id='variable-scopes'>
+  <tr>
+    <td>
+      <code>query_string</code>
+    </td>
+    <td><p>This scope accepts a query string or an hash to parse as documented in <a href='http://www.elasticsearch.org/guide/reference/query-dsl/query-string-query'>elasticsearch query-string-query API</a>. If omitted it uses <code>{&#39;query&#39;: &#39;*&#39;}</code> as the default (i.e. sort of <code>match_all</code> query). It passes it as a <code>cleanable_query</code> for easier handling (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html#_cleanable_query'>:cleanable_query</a>)</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>query_string</span><span class='p'>(</span><span class='s1'>&#39;title:{Aida TO Carmen}&#39;</span><span class='p'>)</span>
+<span class='c1'># or</span>
+<span class='n'>query_string</span><span class='p'>(</span> <span class='ss'>:query</span>  <span class='o'>=&gt;</span> <span class='s1'>&#39;title:{Aida TO Carmen}&#39;</span><span class='p'>,</span>
+              <span class='ss'>:fields</span> <span class='o'>=&gt;</span> <span class='o'>[</span><span class='s1'>&#39;text&#39;</span><span class='p'>,</span> <span class='s1'>&#39;category&#39;</span><span class='o'>]</span> <span class='p'>)</span>
+</code></pre></div>
+<blockquote>
+<p>See <a href='http://lucene.apache.org/core/old_versioned_docs/versions/3_5_0/queryparsersyntax.html'>Lucene Query Parser Syntax</a></p>
+</blockquote>
+
+<blockquote>
+<p><strong>Notice</strong>: the <code>query_string</code> scope gets overriden by chaining with another <code>query_string</code> scope</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>query</code>
+    </td>
+    <td><p>Alias for <code>query_string</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>sort</code>
+    </td>
+    <td>
+      <p>This scope accepts one or an array or a list of sort structures documented as <a href='http://www.elasticsearch.org/guide/reference/api/search/sort.html'>elasticsearch sort API</a>.</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>sort</span><span class='p'>(</span><span class='ss'>:name</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;asc&#39;</span><span class='p'>)</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>fields</code>
+    </td>
+    <td>
+      <p>The fields that you want to retrieve in order to limit the size of the response</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># pass an array of fields</span>
+<span class='n'>fields</span><span class='p'>(</span><span class='o'>[</span><span class='ss'>:field_one</span><span class='p'>,</span> <span class='ss'>:field_two</span><span class='o'>]</span><span class='p'>)</span>
+<span class='c1'># or a list of fields</span>
+<span class='n'>fields</span><span class='p'>(</span><span class='ss'>:field_one</span><span class='p'>,</span> <span class='ss'>:field_two</span><span class='p'>)</span>
+</code></pre></div>
+<blockquote>
+<p>a <code>fields</code> scope used on <code>Flex::ActiveModel</code> models, freezes the returned objects (i.e. make them not editable)</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>script_fields</code>
+    </td>
+    <td>
+      <p>Implements the <a href='http://www.elasticsearch.org/guide/reference/api/search/script-fields'>elasticsearch script-fields API</a>. Adds one or more script fields to the scope.</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>script_fields</span><span class='p'>(</span> <span class='ss'>:my_field</span>       <span class='o'>=&gt;</span> <span class='s1'>&#39;script ...&#39;</span><span class='p'>,</span>                    <span class='c1'># simpler form</span>
+               <span class='ss'>:my_other_field</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='ss'>:script</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;script ...&#39;</span><span class='p'>,</span> <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span><span class='p'>}</span> <span class='p'>)</span> <span class='c1'># elasticsearch API</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>size</code>
+    </td>
+    <td>
+      <p>Limits the size of the retrieved hits</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>size</span><span class='p'>(</span><span class='mi'>5</span><span class='p'>)</span>
+<span class='c1'># same effect of</span>
+<span class='n'>params</span><span class='p'>(</span><span class='ss'>:size</span> <span class='o'>=&gt;</span> <span class='mi'>5</span><span class='p'>)</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>page</code>
+    </td>
+    <td><p>The page of the pagination. By setting this scope you get automatically set the <code>:from</code> param, consistently with the <code>:size</code> (that is usually defaulted). Very convenient when you get the page number from a pagination link). Default 1.</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>page</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span>
+</code></pre></div>
+<blockquote>
+<p>This scope is a direct interface to the <code>:page</code> special variable (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html#page'>:page</a>)</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>params</code>
+    </td>
+    <td><p>The params are a hash of key/value pairs. Flex will transform them in the query string part of the path (all what comes after the <code>?</code>).</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>params</span><span class='p'>(</span><span class='ss'>:size</span> <span class='o'>=&gt;</span> <span class='mi'>4</span><span class='p'>)</span>
+</code></pre></div>
+<blockquote>
+<p>This scope is a direct interface to the <code>:params</code> special variable (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html#params'>:params</a>)</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>index</code>
+    </td>
+    <td><p>The <code>:index</code> predefined variable</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>index</span><span class='p'>(</span><span class='s1'>&#39;my_index&#39;</span><span class='p'>)</span>
+<span class='n'>index</span><span class='p'>(</span><span class='o'>[</span><span class='s1'>&#39;my_index&#39;</span><span class='p'>,</span> <span class='s1'>&#39;my_other_index&#39;</span><span class='o'>]</span><span class='p'>)</span>
+</code></pre></div>
+<blockquote>
+<p>This scope is a direct interface to the <code>:index</code> predefined variable (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html#index'>:index</a>)</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>type</code>
+    </td>
+    <td><p>The <code>:type</code> predefined variable</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>type</span><span class='p'>(</span><span class='s1'>&#39;my_type&#39;</span><span class='p'>)</span>
+<span class='n'>type</span><span class='p'>(</span><span class='o'>[</span><span class='s1'>&#39;my_type&#39;</span><span class='p'>,</span> <span class='s1'>&#39;my_other_type&#39;</span><span class='o'>]</span><span class='p'>)</span>
+</code></pre></div>
+<blockquote>
+<p>This scope is a direct interface to the <code>:type</code> predefined variable (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html#type'>:type</a>)</p>
+</blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>variables</code>
+    </td>
+    <td>
+      <p>A generic scope usable to add variables</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># returns the same scope</span>
+<span class='n'>variables</span>
+<span class='c1'># injects new variables</span>
+<span class='n'>variables</span><span class='p'>(</span><span class='n'>a_hash</span><span class='p'>,</span> <span class='n'>another_hash</span><span class='p'>,</span> <span class='ss'>:a</span> <span class='o'>=&gt;</span> <span class='mi'>2</span><span class='p'>,</span> <span class='ss'>:b</span> <span class='o'>=&gt;</span> <span class='mi'>4</span><span class='p'>)</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>facets</code>
+    </td>
+    <td>
+      <p>Implements a generic <a href='http://www.elasticsearch.org/guide/reference/api/search/facets'>elasticsearch facets API</a> usable with all the facets (just pass the facet hash structure).</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>facets</span><span class='p'>(</span><span class='ss'>:tags</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='ss'>:term</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='ss'>:field</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;tags&#39;</span><span class='p'>}})</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>highlights</code>
+    </td>
+    <td>
+      <p>Implements the <a href='http://www.elasticsearch.org/guide/reference/api/search/highlighting'>elasticsearch highlighting API</a>.</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>highlight</span><span class='p'>(</span><span class='ss'>:fields</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='ss'>:text</span> <span class='o'>=&gt;</span> <span class='p'>{}})</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>metrics</code>
+    </td>
+    <td><p>Adds the <a href='http://www.elasticsearch.org/guide/reference/api/search/search-type'>elasticsearch search_type API</a> of type <code>count</code>. Useful when you need to query only the counts and not the actual results.</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>count_result</span> <span class='o'>=</span> <span class='n'>any_scope</span><span class='o'>.</span><span class='n'>metrics</span><span class='o'>.</span><span class='n'>all</span>
+<span class='c1'># is like</span>
+<span class='n'>count_result</span> <span class='o'>=</span> <span class='n'>any_scope</span><span class='o'>.</span><span class='n'>params</span><span class='p'>(</span><span class='ss'>:search_type</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;count&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>all</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+</table>
+<h2 id='query_scopes'>Query Scopes</h2>
+
+<p>All the Query Scopes methods actually perform the query generated by the scope and return some kind of result but not a scope object, so they are used as the last scope in the chain. They all accept a list of variables (which will be deep-merged with the variables contained in the scope itself).</p>
+
+<p>If they are called on your class directly, they first generate an empty scope without restrictions, internally using the <code>scoped</code> method (see <a href='/flex/doc/3-flex-scopes/2-Scopes.html#scoped'>scoped</a>). Depending on the method, the result may be a single document, a collection of documents, or the actual instance(s) of your class when used with <code>Flex::ActiveModel</code> models. Others allow you to count or iterate over some retrieved collection.</p>
+<table cellpadding='0' cellspacing='0' class='code-topics' id='query-scopes' style='width: 100%'>
+  <tr>
+    <td>
+      <code>find</code>
+    </td>
+    <td>
+      <p>Retrieves a single or multiple documents using their ids</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># pass a single id</span>
+<span class='n'>find</span> <span class='s1'>&#39;1Momf4s0QViv-yc7wjaDCA&#39;</span>
+<span class='c1'># or an array of ids</span>
+<span class='n'>find</span> <span class='o'>[</span><span class='s1'>&#39;1Momf4s0QViv-yc7wjaDCA&#39;</span><span class='p'>,</span> <span class='s1'>&#39;BFdIETdNQv-CuCxG_y2r8g&#39;</span><span class='o'>]</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>first</code>
+    </td>
+    <td>
+      <p>Retrieves the first document of the scope</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>red_scope</span><span class='o'>.</span><span class='n'>first</span>
+<span class='no'>MyFlexActiveModel</span><span class='o'>.</span><span class='n'>first</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>last</code>
+    </td>
+    <td>
+      <p>Retrieves the last document of the scope</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>red_scope</span><span class='o'>.</span><span class='n'>last</span>
+<span class='no'>MyFlexActiveModel</span><span class='o'>.</span><span class='n'>last</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>all</code>
+    </td>
+    <td>
+      <p>Retrieves all the documents of the scope</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>red_scope</span><span class='o'>.</span><span class='n'>all</span>
+<span class='no'>MyFlexActiveModel</span><span class='o'>.</span><span class='n'>all</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>delete</code>
+    </td>
+    <td>
+      <p>Deletes the documents of the scope</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>red_scope</span><span class='o'>.</span><span class='n'>delete</span>
+<span class='c1'># deletes all the documents</span>
+<span class='no'>MyFlexActiveModel</span><span class='o'>.</span><span class='n'>delete</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>each</code>
+    </td>
+    <td>
+      <p>Iterates over all the documents in the scope</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>red_scope</span><span class='o'>.</span><span class='n'>each</span><span class='p'>{</span><span class='o'>|</span><span class='n'>d</span><span class='o'>|</span> <span class='n'>do_something_with</span><span class='p'>(</span><span class='n'>d</span><span class='p'>)}</span>
+<span class='no'>MyFlexActiveModel</span><span class='o'>.</span><span class='n'>each</span><span class='p'>{</span><span class='o'>|</span><span class='n'>d</span><span class='o'>|</span> <span class='n'>do_something_with</span><span class='p'>(</span><span class='n'>d</span><span class='p'>)}</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>scan_all</code>
+    </td>
+    <td><p>Iterates in batches, over all the documents in the scope by using the <a href='http://www.elasticsearch.org/guide/reference/api/search/search-type'>elasticsearch search_type API</a> of type <code>scan</code></p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>red_scope</span><span class='o'>.</span><span class='n'>scan_all</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>batch</span><span class='o'>|</span>
+  <span class='n'>batch</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>d</span><span class='o'>|</span> <span class='n'>do_something_with</span><span class='p'>(</span><span class='n'>d</span><span class='p'>)}</span>
+<span class='k'>end</span>
+
+ <span class='no'>MyFlexActiveModel</span><span class='o'>.</span><span class='n'>scan_all</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>batch</span><span class='o'>|</span>
+   <span class='n'>batch</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span><span class='o'>|</span><span class='n'>d</span><span class='o'>|</span> <span class='n'>do_something_with</span><span class='p'>(</span><span class='n'>d</span><span class='p'>)}</span>
+ <span class='k'>end</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>each_batch</code>, <code>find_in_batches</code>
+    </td>
+    <td><p>Aliases for <code>scan_all</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>count</code>
+    </td>
+    <td>
+      <p>Counts the documents in the scope</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>red_scope</span><span class='o'>.</span><span class='n'>count</span>
+<span class='no'>MyFlexActiveModel</span><span class='o'>.</span><span class='n'>count</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+</table>
+<h2 id='methods'>Methods</h2>
+<table cellpadding='0' cellspacing='0' class='code-topics' id='scope-methods' style='width: 100%'>
+  <tr>
+    <td>
+      <code>scoped</code>
+    </td>
+    <td><p>This method creates a new <code>Flex::Scope</code> object, containing only the <code>:context</code> variable (i.e. your class/module). It is automatically used by all the scopes methods called directly on your class, so you probably will never need to use it directly.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>scope</code>
+    </td>
+    <td><p>This method generates a named scope in your class. It requires a symbol name as the first argument, and a scope, or a block (or <code>Proc</code>) returning a scope, as the second argument.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># scope object</span>
+<span class='n'>scope</span> <span class='ss'>:red</span><span class='p'>,</span> <span class='n'>term</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>)</span>
+<span class='c1'># block</span>
+<span class='n'>scope</span> <span class='ss'>:color</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>color</span><span class='o'>|</span>
+  <span class='n'>term</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='n'>color</span><span class='p'>)</span><span class='o'>.</span><span class='n'>sort</span><span class='p'>(</span><span class='ss'>:category</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;asc&#39;</span><span class='p'>)</span>
+<span class='k'>end</span>
+<span class='c1'># proc</span>
+<span class='n'>scope</span> <span class='ss'>:a_scope</span><span class='p'>,</span> <span class='n'>a_proc</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>scope_methods</code>
+    </td>
+    <td>
+      <p>The array of all the named scopes you defined. Mostly used internally.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>method_missing</code>
+    </td>
+    <td><p>Used to chain the scopes with other scopes, or eventually with templates defined by <code>Flex::Templates</code>.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># specially useful with variable scopes</span>
+<span class='n'>scope</span> <span class='ss'>:my_variables</span><span class='p'>,</span> <span class='n'>size</span><span class='p'>(</span><span class='mi'>5</span><span class='p'>)</span><span class='o'>.</span><span class='n'>fields</span><span class='p'>(</span><span class='ss'>:field_one</span><span class='p'>,</span> <span class='ss'>:field_two</span><span class='p'>)</span>
+
+<span class='c1'># you can call a template on any scope</span>
+<span class='n'>my_variables</span><span class='o'>.</span><span class='n'>my_template_name</span>
+
+<span class='c1'># which is like</span>
+<span class='no'>YourClass</span><span class='o'>.</span><span class='n'>my_template_name</span><span class='p'>(</span><span class='n'>my_variables</span><span class='p'>)</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+</table>
+<h2 id='using_flexscopes_with_activerecord_models'>Using flex-scopes with ActiveRecord Models</h2>
+
+<p>You must not include <code>Flex::Scopes</code> right in your <code>ActiveRecord</code> models: instead you should namespace your scopes and set the <code>context</code> to your model. For example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>MyModel</span> <span class='o'>&lt;</span> <span class='ss'>ActiveRecord</span><span class='p'>:</span><span class='ss'>:Base</span>
+  <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:ModelIndexer</span>
+
+  <span class='k'>module</span> <span class='nn'>Flex</span>
+    <span class='kp'>include</span> <span class='ss'>Flex</span><span class='p'>:</span><span class='ss'>:Scopes</span>
+    <span class='n'>flex</span><span class='o'>.</span><span class='n'>context</span> <span class='o'>=</span> <span class='no'>MyModel</span>
+    <span class='n'>scope</span> <span class='ss'>:red</span><span class='p'>,</span> <span class='n'>terms</span><span class='p'>(</span><span class='ss'>:color</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;red&#39;</span><span class='p'>)</span>
+    <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+  <span class='k'>end</span>
+
+<span class='k'>end</span>
+
+<span class='n'>total_red</span> <span class='o'>=</span> <span class='ss'>MyModel</span><span class='p'>:</span><span class='ss'>:Flex</span><span class='o'>.</span><span class='n'>red</span><span class='o'>.</span><span class='n'>count</span>
+<span class='n'>first_red</span> <span class='o'>=</span> <span class='ss'>MyModel</span><span class='p'>:</span><span class='ss'>:Flex</span><span class='o'>.</span><span class='n'>red</span><span class='o'>.</span><span class='n'>first</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Notice</strong>: When you namespace the scopes, you must set the <code>flex.context</code> with your model class.</p>
+</blockquote><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/3-flex-scopes">flex-scopes</a></span> &gt; <span>Scopes</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

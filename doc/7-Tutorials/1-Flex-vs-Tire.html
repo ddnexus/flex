@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - Why you should use Flex rather than Tire
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/7-Tutorials">Tutorials</a></span> &gt; <span>Why you should use Flex rather than Tire</span>
+      </div>
+      <h1 id='why_you_should_use_flex_rather_than_tire'>Why you should use Flex rather than Tire</h1>
+
+<p>I wrote this page because it looks like it is still not very clear what flex does and what are the differences with Tire (as you can read <a href='http://stackoverflow.com/questions/14517686/integrating-elasticsearch-with-activerecord'>here</a>), and also because I honestly think that if you are serious with elasticsearch, you have plenty of reasons to use Flex rather than Tire.</p>
+
+<blockquote>
+<p><strong>Notice</strong>: Being the author of Flex, it&#8217;s difficult not being biased, but I will try to present the facts that support my opinions. Please, correct me if I am wrong or imprecise and I will fix any eventual mistake right away. Thanks.</p>
+</blockquote>
+
+<h2 id='quick_facts_comparison_table'>Quick Facts Comparison Table</h2>
+
+<p>This is just a quick overview showing the main differences between the 2 projects: the rest of this writeup is dedicated to the detailed analysis of the differences.</p>
+<table cellpadding='0' cellspacing='0' id='comparison'>
+  <tr>
+    <th>
+      Flex
+    </th>
+    <th>
+      Tire
+    </th>
+  </tr>
+  <tr>
+    <td class='green'>
+      Implements the full elasticsearch API as ready to use methods
+    </td>
+    <td class='orange'>
+      Implements only a subset of some elasticsearch API
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Allows to compose every possible elasticsearch search query
+    </td>
+    <td class='orange'>
+      Only allows a few predetermined queries
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Expresses queries in YAML, JSON or ruby, matching 1 to 1 with the elasticsearch API
+    </td>
+    <td class='orange'>
+      Expresses queries in its own DSL, not matching with the elasticseach API
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Very configurable, detailed and easy to read logging system and debugging info
+    </td>
+    <td class='orange'>
+      Standard one-line logging
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      The original and complete elasticsearch response (extended with useful methods) is always accessible
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Uses meta-programming to automatically define query methods in your own classes, complete with variable checks and feedback
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Can reuse any fragment of any query in any other query
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Implements ActiveRecord-like scopes, for easy search and reuse in pure ruby
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Implements parent/child relationships, also polymorphic, transparently managing mapping, routing and parent
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Supports cross-syncing (i.e. you can declare that a model change will sync other models with the index)
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Implements a self-documenting tool that generates detailed documentation and usage for your custom queries
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Implements Cascading Variables, with easy interpolation, deep-merging and overwriting
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Implements a few mechanism to generate data-driven dynamic queries (with partials and pruning)
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Implements an useful backup system (binary and rake tasks), to dump, load and optionally rename any index (not only those in your apps)
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Implements live-reindexing with hot-swap of old code/index with new code/index
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Integrates with Rails with specific engine, setup generator, helpers, logger options etc.
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Integrates with elasticsearch-mapper-attachment plugin
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='green'>
+      Its development is funded by 2 sponsors
+    </td>
+    <td class='red'>
+      N/A
+    </td>
+  </tr>
+  <tr>
+    <td class='red'>
+      Does not have a dedicated testing suite yet
+    </td>
+    <td class='green'>
+      Has a dedicated testing suite
+    </td>
+  </tr>
+  <tr>
+    <td class='orange'>
+      It is still quite recent so it has a smaller user-base
+    </td>
+    <td class='green'>
+      It has been around for a few years so it has a bigger user-base
+    </td>
+  </tr>
+</table>
+<h2 id='detailed_analysis'>Detailed Analysis</h2>
+
+<h3 id='my_experience_with_tire'>My experience with Tire</h3>
+
+<p>I had to refactor a few quite similar Rails apps that were using Tire to index a few ActiveRecord and Mongoid models. At that time I didn&#8217;t have any experience with Tire, so I just assumed everything was OK and I focused only on removing the mess in the ruby code. There were lots of <code>Tire.search(&#39;lots,of,indices&#39;){lots{of{nested{blocks}}}}</code> scattered everywhere in the apps. That didn&#8217;t look nice nor easy to maintain, so as the first step, I decided to create a central module, moving all the search logic in one single place, hopefully trying to reduce the duplications with well designed methods.</p>
+
+<p>After working on that first step, the controllers were cleaner, but the search module looked like a bunch of long wrapper methods: one per each <code>Tire.search</code> calls extracted from the controllers. There was a lot of duplicated or very similar code inside that blocks, so I though I could extract the common parts to some helper method, but I soon discovered that it&#8217;s a problem with Tire.</p>
+
+<h3 id='the_tire_dsl'>The Tire DSL</h3>
+
+<p>Tire uses its own DSL to express elasticsearch queries. Cool, isn&#8217;t it? Well, in practice&#8230; it isn&#8217;t, and here&#8217;s why.</p>
+
+<h4 id='difficult_variable_interpolation'>Difficult Variable Interpolation</h4>
+
+<p>A very natural need when you search, is interpolating your variables into the elasticsearch query. With the Tire DSL you don&#8217;t have access to any variable or methods external to the search block, unless you use a cumbersome way suggested in the Tire doc. In practice you have to pass around the objects of the outer block:</p>
+
+<p><div class='highlight'><pre><code class='ruby'><span class='vi'>@query</span> <span class='o'>=</span> <span class='s1'>&#39;title:T*&#39;</span>
+<span class='no'>Tire</span><span class='o'>.</span><span class='n'>search</span> <span class='s1'>&#39;articles&#39;</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>search</span><span class='o'>|</span>
+  <span class='n'>search</span><span class='o'>.</span><span class='n'>query</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>query</span><span class='o'>|</span>
+    <span class='n'>query</span><span class='o'>.</span><span class='n'>string</span> <span class='vi'>@query</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div></p>
+
+<p>That block looks pretty verbose, isn&#8217;t it? Specially if you know that the only thing it does is generating a simple structure:</p>
+<div class='highlight'><pre><code class='ruby'><span class='p'>{</span><span class='ss'>query</span><span class='p'>:</span> <span class='p'>{</span><span class='n'>query_string</span><span class='p'>:</span> <span class='p'>{</span><span class='ss'>query</span><span class='p'>:</span> <span class='vi'>@query</span><span class='p'>}}}</span>
+</code></pre></div>
+<blockquote>
+<p>It gets even worse if you add other stuff, like order or facets, but this simple example is enough to get the point.</p>
+</blockquote>
+
+<p>The elasticsearch API is very clear and simple because it is expressed by basic data structures, that are simple to write, read and merge with variables or other structures. A ruby DSL seems just to make these simple things more difficult without adding any benefit.</p>
+
+<blockquote>
+<p>Flex variable interpolation is really a no-brainer with its simple placeholder tags, placed right in the queries where they have to be interpolated (see <a href='/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html#adding_flex_templates'>Adding Flex Templates</a>).</p>
+</blockquote>
+
+<h4 id='difficult_and_very_limited_reusability'>Difficult and Very Limited Reusability</h4>
+
+<p>Another natural need using elasticsearch would be reusing fragments of structures for many queries. With the Tire DSL you cannot merge parts of queries. You have only a very limited and vague resemblance of reusability: saving procs of boolean queries and sort of &#8220;reuse&#8221; them inside the DSL.</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>tags_query</span> <span class='o'>=</span> <span class='nb'>lambda</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>boolean</span><span class='o'>|</span>
+  <span class='n'>boolean</span><span class='o'>.</span><span class='n'>should</span> <span class='p'>{</span> <span class='n'>string</span> <span class='s1'>&#39;tags:ruby&#39;</span> <span class='p'>}</span>
+  <span class='n'>boolean</span><span class='o'>.</span><span class='n'>should</span> <span class='p'>{</span> <span class='n'>string</span> <span class='s1'>&#39;tags:java&#39;</span> <span class='p'>}</span>
+<span class='k'>end</span>
+
+<span class='n'>published_on_query</span> <span class='o'>=</span> <span class='nb'>lambda</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>boolean</span><span class='o'>|</span>
+  <span class='n'>boolean</span><span class='o'>.</span><span class='n'>must</span>   <span class='p'>{</span> <span class='n'>string</span> <span class='s1'>&#39;published_on:[2011-01-01 TO 2011-01-02]&#39;</span> <span class='p'>}</span>
+<span class='k'>end</span>
+
+<span class='no'>Tire</span><span class='o'>.</span><span class='n'>search</span> <span class='s1'>&#39;articles&#39;</span> <span class='k'>do</span>
+  <span class='n'>query</span> <span class='k'>do</span>
+    <span class='n'>boolean</span> <span class='o'>&amp;</span><span class='n'>tags_query</span>
+    <span class='n'>boolean</span> <span class='o'>&amp;</span><span class='n'>published_on_query</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>As if that alone wouldn&#8217;t be enough complex even without variables, at some point you will have also to interpolate your variables into that boolean queries by using some closure, and eventually you will have to wrap the procs in a method just to pass the variables. Ouch!</p>
+
+<blockquote>
+<p>Flex allows you to reuse any fragment of any query into any other query (see <a href='/flex/doc/2-flex/3-Templating/2-Sources.html#query_fragment_reuse'>Query Fragment Reuse</a>). You can even use chainable scopes to pure ruby reusability (see <a href='/flex/doc/3-flex-scopes'>flex-scopes</a>)</p>
+</blockquote>
+
+<h4 id='hard_coded_limitations'>Hard Coded Limitations</h4>
+
+<p>Tire creates a search object each time you search anything. The search object expects a fixed number of possible data parts and uses that parts to compose the query. That strategy has many limitations (as you have just read), but in particular, it is limited to what the search class explicitly allows and is aware of. For example, you cannot use any query not explicitly known by Tire, and if I am not mistaken, they are just about 7 at the moment of this writing, which means that you don&#8217;t have access to the 80% of the elasticsearch search queries. Besides, if you need any other elasticsearch API or feature not explicitly known by Tire, you are on your own.</p>
+
+<p>IMO Elasticsearch is very powerful and rich: limiting it is sort of defeating the very reason you choose it.</p>
+
+<blockquote>
+<p>Flex is query-agnostic: you can use it for every query, even for the queries that will be implemented in some future version of elasticsearch.</p>
+</blockquote>
+
+<h4 id='reverse_engineering_required'>Reverse Engineering Required</h4>
+
+<p>There is another flaw with the Tire DSL: often you know exactly how to express a structured elasticsearch query (and you know it because you have probably just found it in the elasticsearch doc). If you are lucky enough, that may be a query that Tire supports: great! But then you have to think about how to tell Tire to express the same structure with its own different DSL.</p>
+
+<p>For example you have to pass the index/indices as the first param, but you have to pass the type as a key/value pair in the options hash. You may also have to pass other key/values that in elasticsearch are part of the query structure itself, but in Tire have been moved to the options. Then you have to write the query in nested ruby blocks: some looks quite similar to the elasticsearch query structure, but others don&#8217;t.</p>
+
+<p>All that reverse-engineering effort&#8230; only to make Tire generate the same simple structure you wanted and knew from the beginning. That looks quite twisted to me. I often wished to get rid of Tire and get straight to elasticsearch.</p>
+
+<blockquote>
+<p>You don&#8217;t need to reverse-engineer anything with Flex, because it can express queries by using exactly the same elasticsearch structures, just easier to read, write and reuse since you can express them in <code>YAML</code> (see <a href='/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html#adding_flex_templates'>Adding Flex Templates</a>).</p>
+</blockquote>
+
+<h4 id='pros_and_cons'>Pros and Cons</h4>
+
+<p>I can guess that the goal behind the Tire DSL is simplifying the elasticsearch query structure and making it more ruby-like, so to simplify the elasticsearch structure a bit. For example with Tire you can &#8220;just&#8221; write <code>{|search| search.query {|query| query.string @query }}</code> instead of <code>{query: {query_string: {query: @query}}}</code> as you whould do with elasticsearch.</p>
+
+<blockquote>
+<p>If you are seeking simplicity, with <code>flex-scopes</code> you can just write <code>query(@query)</code> to express the same, and you can even chain it to other scopes at any time, so easily merging search criteria (see <a href='/flex/doc/3-flex-scopes'>flex-scopes</a>).</p>
+</blockquote>
+
+<p>The Tire DSL looks more verbose and less elegant of the original elasticsearch structure that it&#8217;s supposed to simplify, however, if you carefully count the brackets, you can spot that Tire saved one nesting level, so maybe that one is the advantage. Anyway, it looks like the cons are overwhelmingly more than the pros (if any). Indeed the Tire DSL forces you to renounce to a lot of benefits:</p>
+
+<ul>
+<li>lost match with the original and documented elasticsearch structure (reverse-engineering needed)</li>
+
+<li>lost direct options coming from the elasticsearch nested level that Tire removes</li>
+
+<li>lost easy variable interpolation</li>
+
+<li>lost merging and reuse of partial structures</li>
+
+<li>lost all the queries that the Tire DSL doesn&#8217;t explicitly know</li>
+</ul>
+
+<p>And if you want to have the lost benefits back (if at all possible), you end up with something a lot more complex than what Tire tries to simplify. So despite the good intentions, using a ruby DSL to manage data structures, doesn&#8217;t seem a good idea.</p>
+
+<blockquote>
+<p><strong>Notice</strong>: The <code>flex-scopes</code> gem pursues a goal quite similar to the Tire DSL: simplifying the elasticsearch query structure and making it more ruby-like. However, unlike Tire, it adds quite a few benefits, effectively simplifying your code and making it very reusable (see <a href='/flex/doc/3-flex-scopes'>flex-scopes</a>).</p>
+</blockquote>
+
+<h3 id='model_integration'>Model Integration</h3>
+
+<p>The model integration support in Tire is very basic.</p>
+
+<h4 id='no_crosssyncing'>No Cross-syncing</h4>
+
+<p>Tire does not provide any mean to cross-sync models, i.e. you may need to reindex one or more records when another record changes. With Tire, if you want to do that you must do it by yourself by using <code>:touch</code> (so re-saving the related record, which will trigger the callback that will reindex it), or you have to define your own callbacks and explicitly index the related records.</p>
+
+<p>Cross-syncing is a very useful tool when you don&#8217;t want to mirror your DBs structure into your index structure, but you want to design your index in such a way that it will be easy and efficient to search.</p>
+
+<blockquote>
+<p>Flex manages (and propagates) cross-syncing with a simple one-line declaration (see <a href='/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html'>Flex::ModelSyncer</a>)</p>
+</blockquote>
+
+<h4 id='no_parentchildren_relations'>No parent/children relations</h4>
+
+<p>Tire does not support parent/child relations. Implementing it on your own for each application that may need it, requires quite an effort: you have to set the right mapping, pass around the parent and the routing when any record in the relationship changes. If you have several models involved that may be quite time consuming and error prone.</p>
+
+<blockquote>
+<p>Flex manages all that internally: you need only to write a one-line declaration (see <a href='/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html#elasticsearch_parentchildren_relations'>Parent/Children Relations</a>)</p>
+</blockquote>
+
+<h4 id='dispersed_settings_and_mapping'>Dispersed Settings and Mapping</h4>
+
+<p>And what about defining the index settings and mappings in the model itself? Again, you have to reverse engineer the elasticsearch structure to the Tire&#8217;s own DSL in order to do that, but the real design problem here is that you should be allowed to design an optimized index structure that may be completely different from the DB/model structure.</p>
+
+<p>That suggests that the index structure should play an application-global role, rather than a local-model role, so you should be allowed to manage the index/indices centrally, in a single application-wide file, instead of being forced to manage that at the model level. And besides the design advantage, a central file would also allow less polluted models and easy sharing of common properties among different models.</p>
+
+<blockquote>
+<p>Flex allows you to map any DB structure to any index structure. It generates for you the mapping defaults that keep into consideration also parent/child relations and properties you may define in your models. However you can fine-tune them in a central <code>YAML</code> file (a sort of <code>database.yml</code> for indices).</p>
+</blockquote>
+
+<h4 id='model_centric_defaults'>Model Centric Defaults</h4>
+
+<p>Surprisingly, the Tire&#8217;s defaults generate one index per model, each index populated by one single type. That means that - by default - you have a completely <em>model-centric</em> design, instead of a more useful <em>application-centric</em> design (as already outlined in the previous topic). Beside there is another surprise if you run multiple applications that have some model class with the same name. By default, your indices will be shared among different applications because they define the same model classes. I don&#8217;t think you want to index the posts of the &#8220;Racing Forum&#8221; app in the same index of the &#8220;Furniture Forum&#8221; app just because they are both managed by a <code>Post</code> model.</p>
+
+<p>That doesn&#8217;t look like the best default design to start an application with. For example, a simple and basic &#8220;one index per app, one type per model&#8221; default would do for most apps: it would be <em>application-centric</em> and would avoid unwanted index sharing by default. Besides, that&#8217;s similar to the familiar concept &#8220;one DB per app, one table per model&#8221;.</p>
+
+<blockquote>
+<p>Flex is application-centric by default: it embraces &#8220;one index per app, one type per model&#8221; design to start with, however, if your particular app needs to split apart the index or manage the indices dynamically, it&#8217;s just a matter of adding a simple definition in the model (see <a href='/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html#overriding_flex_metafields'>Overriding Flex Metafields</a>).</p>
+</blockquote>
+
+<h3 id='flex_project'>Flex Project</h3>
+
+<p>At a certain point of that refactoring I get tired of complaining about Tire, and decided to roll up my sleeves and write an alternative. Many thanks to <a href='http://www.escalatemedia.com'>Escalate Media</a> and <a href='http://www.barquin.com'>Barquin International</a> that supported the idea of releasing it as an Open Source Software and keep sponsorizing the project.</p>
+
+<p>Here is the list of requirements for the first version of flex, and how they have been implemented.</p>
+<table cellpadding='0' cellspacing='0' id='flex_requirements'>
+  <tr>
+    <th>
+      Requirement
+    </th>
+    <th>
+      Implementation
+    </th>
+  </tr>
+  <tr>
+    <td>
+      It must cover the complete elasticsearch APIs, nothing excluded
+    </td>
+    <td>
+      Flex implements all the elasticsearch APIs as ready to use methods (see <a href='/flex/doc/2-flex/2-API-Methods.html'>API Methods</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      It must use the same elasticsearch structures to express queries (so no reverse engineer needed)
+    </td>
+    <td>The flex Template Sources use the same elasticsearch structures, just written in easier to write and read <code>YAML</code> (or <code>JSON</code> or ruby if you prefer) (see <a href='/flex/doc/2-flex/3-Templating/2-Sources.html'>Template Sources</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      The result must be the same structure returned by elasticsearch
+    </td>
+    <td>
+      Flex returns always the elasticsearch response, just extended (and custom-extendable) with useful methods (see <a href='/flex/doc/2-flex/4-Result-Extenders.html'>Result Extenders</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      It must provide an easy system to reuse part of queries into other queries
+    </td>
+    <td>You can use the native anchor/alias <code>YAML</code> capabilities to reuse query fragments, or pass structures that will be merged into the final query structure (see <a href='/flex/doc/2-flex/3-Templating/2-Sources.html'>Template Sources</a> and <a href='/flex/doc/2-flex/3-Templating/5-Interpolation.html'>Interpolation</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      It must allow easy variable interpolation into the query structure
+    </td>
+    <td>
+      Just define placeholder tags into any query, and you will have the possibility to interpolate any value in their place (see <a href='/flex/doc/2-flex/3-Templating/3-Tags.html'>Tags</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      It must allow cascading defaults (so you can set your variables at different levels in order to affect different ranges of queries)
+    </td>
+    <td>
+      Flex implements a very flexible and configurable variables system that saves you a lot of coding (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html'>Variables</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      It must automatically define custom search methods, starting from the bare query structure
+    </td>
+    <td>
+      Flex automatically defines the query methods in your classes, complete with variable checking and documentation (see <a href='/flex/doc/1-Flex-Project/2-Usage-Overview.html#4_template_based_usage'>Template Based Usage</a> and <a href='/flex/doc/2-flex/3-Templating/4-Variables.html'>Variables</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      It must keep the elasticsearch logic toghether, but separated from the app logic
+    </td>
+    <td>
+      Flex enforces a clean separation of logics through Template Sources and metaprogramming (see <a href='/flex/doc/2-flex/3-Templating/1-Templates.html'>Templates</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      It must implement a robust model integration, supporting cross-syncing and parent/child relations
+    </td>
+    <td>
+      Flex implements a very easy and declarative way to cross-sync and manage parent/child relations, also polymorphic (see <a href='/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html'>Flex::ModelSyncer</a> and <a href='/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html#elasticsearch_parentchildren_relations'>Parent/Child Relations</a>)
+    </td>
+  </tr>
+</table>
+<h3 id='migrating_from_tire_to_flex'>Migrating from Tire to Flex</h3>
+
+<p>After migrating the apps (described in the <a href='#my_experience_with_tire'>previous section</a>) from Tire to Flex, the searching code became stunnigly short: the search module shrinked down from more than 300 lines to just 4 lines! All the search logic was in a single, very readable <code>YAML</code> file of less than 100 lines. The queries were beautifully matching 1 to 1 with the elasticsearch API, and the variable interpolations were elegantly represented by simple placeholder tags, right in the queries (where they have to be interpolated). Besides, we could easily implement polymorphic parent/children relations in several models with just one line per model, and with another line we could cross-sync a few others.</p>
+
+<p>Not bad for the first version of the gem!</p>
+
+<blockquote>
+<p><strong>Notice</strong>: Migrating an app from Tire to Flex is not difficult, but the 2 interfaces are very different, so you should already have played with flex a little in order to know how to reorganize your app.</p>
+</blockquote>
+
+<h3 id='improvements_in_flex_10'>Improvements in Flex 1.0</h3>
+
+<p>Now, after one year of active usage and development, the current version of flex includes a lot of improvements and additions. Its code has been optimized and organized into 5 gems that you can use together or separately.</p>
+
+<p>It&#8217;s easier to use also for elasticsearch beginners, since it implements <code>ActiveRecord</code>-like chainable scopes for easy searching and reusability, plus the <code>ActiveModel</code> integration to manage elasticsearch as it were an <code>ActiveRecord</code> DB.</p>
+
+<p>It&#8217;s also more powerful for experts, since it covers all the elasticsearch APIs (see <a href='/flex/doc/2-flex/2-API-Methods.html'>API Methods</a>) and offers a lot of useful tools like index dumping and loading (see <a href='/flex/doc/6-flex-admin'>flex-admin</a>), a very advanced live-reindex feature (see <a href='/flex/doc/6-flex-admin/2-Live-Reindex.html'>Live Reindex</a>), very detailed debugging info, high configurable logging, a self documenting tool, a lot of out of the box integrations, and a better documentation with some tutorial (see <a href='/flex/doc/1-Flex-Project/1-Overview.html'>Project Overview</a>).</p>
+
+<blockquote>
+<p>Flex does not have a dedicated testing suite yet: its testing is still embedded in a few applications that exploit its features. If you have some spare time, please, contribute.</p>
+</blockquote>
+
+<h3 id='conclusion'>Conclusion</h3>
+
+<p>Flex is very different from Tire: it enforces almost the opposite concepts in most areas. In its basic usage it is easier to use than Tire, and in its advanced usage it implements a lot more tools and features. So which one should you choose for your elasticsearch interactions?</p>
+
+<p>I honestly don&#8217;t see any reason to choose Tire, while I see plenty of compelling reasons to choose Flex, but I may be biased, so if you have a different opinion I would like to know it and possibly learn from you. Please, don&#8217;t hesitate to send me your comments on this writeup. Thanks.</p><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/7-Tutorials">Tutorials</a></span> &gt; <span>Why you should use Flex rather than Tire</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='/flex/assets/global-9916d5b8228587acf80f3b6895466abf.css' rel='stylesheet' type='text/css' />
+<script src='/flex/assets/global-a63e4d3d89edd2025dec6b2451238b9e.js' type='text/javascript'></script>
+
+    <title>
+      FlexDoc - flex - Interpolation
+    </title>
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-42574355-2', 'ddnexus.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="page-nav" class="nocontent">
+      <ul id="nav-menu" class="menu_h_list"><li><a href="#" class="isLabel">Flex Project</a><ul><li><a href="/flex/doc/1-Flex-Project/1-Overview.html">Project Overview</a></li><li><a href="/flex/doc/1-Flex-Project/2-Usage-Overview.html">Usage Overview</a></li><li><a href="/flex/doc/1-Flex-Project/3-Configuration.html">Configuration</a></li><li><a href="/flex/doc/1-Flex-Project/4-Rake-Tasks.html">Rake Tasks</a></li></ul></li><li><a href="#" class="isLabel">flex</a><ul><li><a href="/flex/doc/2-flex/1-Overview.html">Overview</a></li><li><a href="/flex/doc/2-flex/2-API-Methods.html">API Methods</a></li><li><a href="#" class="isLabel">Templating</a><div class="arrow right"></div><ul><li><a href="/flex/doc/2-flex/3-Templating/1-Templates.html">Templates</a></li><li><a href="/flex/doc/2-flex/3-Templating/2-Sources.html">Template Sources</a></li><li><a href="/flex/doc/2-flex/3-Templating/3-Tags.html">Tags</a></li><li><a href="/flex/doc/2-flex/3-Templating/4-Variables.html">Variables</a></li><li><a href="/flex/doc/2-flex/3-Templating/5-Interpolation.html">Interpolation</a></li><li><a href="/flex/doc/2-flex/3-Templating/6-Partials.html">Partial Templates</a></li></ul></li><li><a href="/flex/doc/2-flex/4-Result-Extenders.html">Result Extenders</a></li><li><a href="/flex/doc/2-flex/5-Self-Documentation.html">Self Documentation</a></li><li><a href="/flex/doc/2-flex/6-Utility-Methods.html">Utility Methods</a></li></ul></li><li><a href="#" class="isLabel">flex-scopes</a><ul><li><a href="/flex/doc/3-flex-scopes/1-Overview.html">Overview</a></li><li><a href="/flex/doc/3-flex-scopes/2-Scopes.html">Scopes</a></li></ul></li><li><a href="#" class="isLabel">flex-models</a><ul><li><a href="/flex/doc/4-flex-models/1-Overview.html">Overview</a></li><li><a href="/flex/doc/4-flex-models/2-ActiveRecord-And-Mongoid-Integration.html">ActiveRecord And Mongoid Integration</a></li><li><a href="/flex/doc/4-flex-models/3-ActiveModel-Integration.html">ActiveModel Integration</a></li><li><a href="#" class="isLabel">Modules</a><div class="arrow right"></div><ul><li><a href="/flex/doc/4-flex-models/4-Modules/1-Flex::ModelSyncer.html">Flex::ModelSyncer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/2-Flex::ModelIndexer.html">Flex::ModelIndexer</a></li><li><a href="/flex/doc/4-flex-models/4-Modules/3-Flex::ActiveModel.html">Flex::ActiveModel</a></li></ul></li><li><a href="/flex/doc/4-flex-models/5-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-rails</a><ul><li><a href="/flex/doc/5-flex-rails/1-overview.html">Overview</a></li><li><a href="/flex/doc/5-flex-rails/2-Result-Extenders.html">Result Extenders</a></li></ul></li><li><a href="#" class="isLabel">flex-admin</a><ul><li><a href="/flex/doc/6-flex-admin/1-Binary.html">Binary</a></li><li><a href="/flex/doc/6-flex-admin/2-Live-Reindex.html">Live Reindex</a></li></ul></li><li><a href="#" class="isLabel">Tutorials</a><ul><li><a href="/flex/doc/7-Tutorials/1-Flex-vs-Tire.html">Why you should use Flex rather than Tire</a></li><li><a href="/flex/doc/7-Tutorials/2-Migrate-from-0.x.html">How to migrate from flex 0.x</a></li><li><a href="/flex/doc/7-Tutorials/3-Index-and-Search-your-Models.html">Index and Search your Models</a></li><li><a href="/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html">Index and Search External Data</a></li></ul></li></ul>
+      <div id="google-search">
+        <script type="text/javascript">
+          (function() {
+            var cx = '001168365143071728136:m_m7r3q0dhs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search>&nbsp;</gcse:search>
+      </div>
+    </div>
+    <div id="page-toc"></div>
+    <div id="content">
+      <a id="badge" href="https://badge.fury.io/rb/flex"><img src="https://badge.fury.io/rb/flex.png" /></a>
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/2-flex">flex</a></span> &gt; <span><a href="/flex/doc/2-flex/3-Templating">Templating</a></span> &gt; <span>Interpolation</span>
+      </div>
+      <h1 id='interpolation'>Interpolation</h1>
+
+<blockquote>
+<p><strong>Notice</strong>: you should know about all the Templating section before reading this (see <a href='/flex/doc/2-flex/3-Templating/1-Templates.html'>Templates</a>, <a href='/flex/doc/2-flex/3-Templating/2-Sources.html'>Template Sources</a>, <a href='/flex/doc/2-flex/3-Templating/3-Tags.html'>Tags</a> and <a href='/flex/doc/2-flex/3-Templating/4-Variables.html'>Variables</a>).</p>
+</blockquote>
+
+<p>Flex Templates describe a structure (or a partial structure) that basically reflects the elasticsearch API while tags identify the place where your app can interpolate values or other partial structures. The <em>interpolation</em> is the internal process that creates the actual structure that get sent to the elasticsearch server. This process is driven by the interpolation values, i.e. the runtime data in your application, stored into various <code>Flex::Variables</code> hashes (see <a href='/flex/doc/2-flex/3-Templating/4-Variables.html'>Variables</a>).</p>
+
+<p>For example, the following template has the tag <code>bar</code> that will be interpolated with the value passed as the <code>:bar</code> variable:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>foo</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;bar&gt;&gt;</span>
+</code></pre></div>
+<h2 id='template_interpolation'>Template Interpolation</h2>
+
+<p>The data structure sent to the elasticsearch server is dynamically modified by the kind of interpolated value present in your application. Indeed different types of values originate different kind of replacement.</p>
+<table cellpadding='0' cellspacing='0' class='code-topics' id='interpolation'>
+  <tr>
+    <th>
+      Type of Value
+    </th>
+    <th>
+      Tag Replacement
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>String and Integer</code>
+    </td>
+    <td>
+      <p>
+        <b>Value Substitution</b>
+      </p>
+      
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_template</span><span class='p'>(</span><span class='ss'>:bar</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;baz&#39;</span><span class='p'>)</span>
+</code></pre></div>
+
+      <p>
+        will result as:
+      </p>
+      
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>foo</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>baz</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Hash and Array (structures)</code>
+    </td>
+    <td>
+      <p>
+        <b>Structure Insertion</b>
+      </p>
+      
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_template</span><span class='p'>(</span><span class='ss'>:bar</span> <span class='o'>=&gt;</span> <span class='p'>{</span><span class='s1'>&#39;baz&#39;</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;quux&#39;</span><span class='p'>})</span>
+</code></pre></div>
+
+      <p>
+        will result as:
+      </p>
+      
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>my_template</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>foo</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>baz</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>quux</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>nil, false, "", {}, []</code>
+    </td>
+    <td>
+      <p>
+        <b>Branch Pruning</b>
+      </p>
+      
+<div class='highlight'><pre><code class='ruby'><span class='no'>MyClass</span><span class='o'>.</span><span class='n'>my_template</span><span class='p'>(</span><span class='ss'>:bar</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>)</span> <span class='c1'># or &#39;&#39;, [], {}</span>
+</code></pre></div>
+
+      <p>
+        will result as:
+      </p>
+      
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>a_template</span><span class='p-Indicator'>:</span>
+</code></pre></div>
+
+    </td>
+  </tr>
+</table>
+<p>The replacements for the first 2 type of values are very obvious: if you pass a string or a numeric value it will be simply substituted in place of the respective tag, if you pass any data structure it will just be inserted in place of the tag, so extending the template structure on the fly. The pruning is explained in the next section.</p>
+
+<h2 id='pruning'>Pruning</h2>
+
+<p>The pruning is a very useful feature, that makes your query much more dynamic and your templates easier to write. When a tag is evaluated as <code>nil</code>, <code>false</code>, or as an empty <code>String</code>, <code>Array</code> or <code>Hash</code> it obviously produces no output value, but it also causes the removal (pruning) of the parts of the templates that are using it. Indeed their existence wouldn&#8217;t make sense if they carry a nil/empty value. In other words a nil/empty value will not just be evaluated as a mere empty string while building the request (which would produce a malformed request), but it will actively modify the template structure, and thus the request structure itself.</p>
+
+<p>The pruning is done automatically as the last step of the interpolation. It can occur in the path or in the data tree. If the pruning occurs in the <code>path</code>: a nil tag will remove the segment where it is defined, generating a canonical path (i.e. no double slashes). For example:</p>
+<div class='highlight'><pre><code class='yaml'><span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>/&lt;&lt;index&gt;&gt;/&lt;&lt;type&gt;&gt;/_search</span>
+</code></pre></div><div class='highlight'><pre><code class='ruby'><span class='p'>{</span><span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='ss'>:type</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;b&#39;</span><span class='p'>}</span> <span class='c1'># would produce &#39;/a/b/_search</span>
+<span class='p'>{</span><span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span> <span class='ss'>:type</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;b&#39;</span><span class='p'>}</span> <span class='c1'># would produce &#39;/b/_search&#39;  (not &#39;//b/_search&#39;)</span>
+<span class='p'>{</span><span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;a&#39;</span><span class='p'>,</span> <span class='ss'>:type</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>}</span> <span class='c1'># would produce &#39;/a/_search&#39;  (not &#39;/a//_search&#39;)</span>
+<span class='p'>{</span><span class='ss'>:index</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span> <span class='ss'>:type</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>}</span> <span class='c1'># would produce &#39;/_search&#39;    (not &#39;///_search&#39;)</span>
+</code></pre></div>
+<p>If the pruning occurs in the data tree, then the entire branch that ends in a nil/empty leaf will be pruned. For example:</p>
+<div class='highlight'><pre><code class='yaml'><span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>a</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>b</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>c</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;tag_c&gt;&gt;</span>
+    <span class='l-Scalar-Plain'>d</span><span class='p-Indicator'>:</span>
+      <span class='l-Scalar-Plain'>e</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>&lt;&lt;tag_e&gt;&gt;</span>
+  <span class='l-Scalar-Plain'>f</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>12</span>
+</code></pre></div><div class='highlight'><pre><code class='ruby'><span class='p'>{</span><span class='ss'>:tag_c</span> <span class='o'>=&gt;</span> <span class='mi'>3</span><span class='p'>,</span>   <span class='ss'>:tag_e</span> <span class='o'>=&gt;</span> <span class='mi'>4</span><span class='p'>}</span>   <span class='c1'># would produce {&quot;a&quot;:{&quot;b&quot;:{&quot;c&quot;:3}, &quot;d&quot;:{&quot;e&quot;:4}}, &quot;f&quot;:12}</span>
+<span class='p'>{</span><span class='ss'>:tag_c</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span> <span class='ss'>:tag_e</span> <span class='o'>=&gt;</span> <span class='mi'>4</span><span class='p'>}</span>   <span class='c1'># would produce {&quot;a&quot;:{&quot;d&quot;:{&quot;e&quot;:4}}, &quot;f&quot;:12}</span>
+<span class='p'>{</span><span class='ss'>:tag_c</span> <span class='o'>=&gt;</span> <span class='mi'>3</span><span class='p'>,</span>   <span class='ss'>:tag_e</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>}</span> <span class='c1'># would produce {&quot;a&quot;:{&quot;b&quot;:{&quot;c&quot;:3}}, &quot;f&quot;:12}</span>
+<span class='p'>{</span><span class='ss'>:tag_c</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>,</span> <span class='ss'>:tag_e</span> <span class='o'>=&gt;</span> <span class='kp'>nil</span><span class='p'>}</span> <span class='c1'># would produce {&quot;f&quot;:12}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Notice</strong>: You can skip the pruning of arbitrary keys that are expected to containing nil/empty values by just adding them to the <code>:no_pruning</code> variable Array.</p>
+</blockquote>
+
+<p>Pruning also perform <code>compact</code> and <code>flatten</code> on <code>Array</code> values. That allows easier writing of templates that would be impossible in certain <code>YAML</code> structures, like for example extending an array with more items.</p>
+
+<p>If you want to extend the array <code>[{&quot;a&quot;:1},{&quot;b&quot;:2}]</code> with more elements in <code>{:array_tag =&gt; [{&quot;c&quot;:3},{&quot;d&quot;:4},{&quot;e&quot;:5}]}</code>, the following fragment would generate a YAML parsing error:</p>
+<div class='highlight'><pre><code class='yaml'><span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>a</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>1</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>b</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>2</span>
+<span class='l-Scalar-Plain'>&lt;&lt;array_tag&gt;&gt;</span>
+</code></pre></div>
+<p>so you can write:</p>
+<div class='highlight'><pre><code class='yaml'><span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>a</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>1</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>b</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>2</span>
+<span class='p-Indicator'>-</span> <span class='l-Scalar-Plain'>&lt;&lt;array_tag&gt;&gt;</span>
+</code></pre></div>
+<p>and the interpolation-pruning will <code>flatten</code> and <code>compact</code> the structure, resulting in the final <code>[{&quot;a&quot;:1},{&quot;b&quot;:2},{&quot;c&quot;:3},{&quot;d&quot;:4},{&quot;e&quot;:5}]</code> array.</p>
+
+<p>Pruning is very useful when you have queries that should be generated dynamically based on values that may or may not be defined, for example boolean queries or facets. With pruning you have just to pass empty values (or don&#8217;t pass the value at all) in order to build and send pruned requests that matches the values you passed. Besides, by pairing auto-pruning with partials templates you can generate highly dynamic data driven queries with just a few lines of yaml.</p>
+
+<h2 id='partial_template_interpolation'>Partial Template Interpolation</h2>
+
+<p>(see <a href='/flex/doc/2-flex/3-Templating/6-Partials.html#partial_tempate_interpolation'>Partial Tempate Interpolation</a>)</p>
+
+<h2 id='variable_check'>Variable Check</h2>
+
+<p>The interpolation process is aware of the required or optional variables. It raises an error if you miss any required variable when you call a flex-generated method.</p><br />
+      <div class="breadcrumb nocontent">
+        <span><a href="/flex/doc">FlexDoc</a></span> &gt; <span><a href="/flex/doc/2-flex">flex</a></span> &gt; <span><a href="/flex/doc/2-flex/3-Templating">Templating</a></span> &gt; <span>Interpolation</span>
+      </div>
+    </div>
+    <div id="footer" class="nocontent">
+      Copyright &copy; 2012-2013 by <a href="mailto://dd.nexus@gmail.com">Domizio Demichelis</a> &mdash; Sponsored by <a href="http://www.escalatemedia.com">Escalate Media</a> and <a href="http://www.barquin.com">Barquin International</a>
+    </div>
+  </body>
+</html>
