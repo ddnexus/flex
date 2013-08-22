@@ -45,6 +45,7 @@ require 'flex/utility_methods'
 require 'progressbar'
 require 'flex/prog_bar'
 require 'flex/deprecation'
+require 'flex/live_reindex_base'
 
 require 'flex/api_stubs'
 require 'flex/tasks'

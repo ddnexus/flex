@@ -32,7 +32,7 @@ module Flex
 
     def reindex_active_models(opts={})
 
-      raise NotImplementedError, 'Flex::LiveReindex.reindex_models requires the "flex-admin" gem. PLease, install it.' \
+      raise NotImplementedError, 'Flex::LiveReindex.reindex_models requires the "flex-admin" gem. Please, install it.' \
             unless defined?(Flex::Admin)
 
       yield self if block_given?
