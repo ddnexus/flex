@@ -10,6 +10,8 @@ begin
     exit(1)
   end
 
+  version = ''
+
   gems.each do |gem_name|
     FileUtils.chdir(gem_name) do
       system %(gem build #{gem_name}.gemspec)

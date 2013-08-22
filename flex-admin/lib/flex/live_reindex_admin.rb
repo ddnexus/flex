@@ -1,3 +1,6 @@
+# ensure to load it before overriding it
+require 'flex/live_reindex_base'
+
 module Flex
   # private module
   module LiveReindex
@@ -43,8 +46,6 @@ module Flex
       end
 
     end
-
-    extend self
 
     def on_reindex(&block)
       @reindex = block
