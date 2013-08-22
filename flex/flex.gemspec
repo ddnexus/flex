@@ -34,6 +34,6 @@ Upgrading Tutorial: http://ddnexus.github.io/flex/doc/7-Tutorials/2-Migrate-from
 ________________________________________________________________________________
 EOM
   s.add_runtime_dependency     'multi_json',  '>= 1.3.4'
-  s.add_runtime_dependency     'progressbar', '>= 0.11.0', '~> 0.12.0'
+  s.add_runtime_dependency     'progressbar', '0.12.0'
   s.add_runtime_dependency     'dye',         '~> 0.1.4'
 end
