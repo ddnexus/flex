@@ -23,7 +23,7 @@ module Flex
       case
       when is_context_scope?(meth)
         deep_merge self[:context].send(meth, *args, &block)
-      when is_self_context_scope?(meth)
+      when is_self_scope?(meth)
         deep_merge self[:self_context].send(meth, *args, &block)
       when is_template?(meth)
         self[:context].send(meth, deep_merge(*args), &block)
