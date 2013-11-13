@@ -35,7 +35,7 @@ module Flex
     end
 
     def is_scope?(name)
-      self[:context].scope_methods.include?(name.to_sym)
+      self[:context].respond_to?(:scope_methods) && self[:context].scope_methods.include?(name.to_sym)
     end
 
   end
