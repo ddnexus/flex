@@ -26,7 +26,7 @@ The Flex documentation is very complete and detailed, so starting from the right
 
 ### For Elasticsearch Beginners
 
-1. You may want to start with the [Index and Search External Data](http://ddnexus.github.io/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.md) tutorial, since it practically doesn't require any elasticsearch knowledge. It will show you how to build your own search application with just a few lines of code. You will crawl a site, extract its content and build a simple user interface to search it with elasticsearch.
+1. You may want to start with the [Index and Search External Data](http://ddnexus.github.io/flex/doc/7-Tutorials/4-Index-and-Search-External-Data.html) tutorial, since it practically doesn't require any elasticsearch knowledge. It will show you how to build your own search application with just a few lines of code. You will crawl a site, extract its content and build a simple user interface to search it with elasticsearch.
 
 2. Then you may want to read the [Usage Overview](http://ddnexus.github.io/flex/doc/1-Flex-Project/2-Usage-Overview.html) page. Follow the links from there in order to dig into the topics that interest you.
 
