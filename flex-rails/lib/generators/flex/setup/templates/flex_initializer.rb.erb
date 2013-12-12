@@ -1,4 +1,4 @@
-# see the detailed Configuration documentation at http://ddnexus.github.io/flex/doc/1-Global-Doc/3-Configuration.html
+# see the detailed Configuration documentation at http://ddnexus.github.io/flex/doc/1-Flex-Project/3-Configuration.html
 
 Flex::Configuration.configure do |config|
 
@@ -12,14 +12,14 @@ Flex::Configuration.configure do |config|
   config.result_extenders |= [ <%= "#{@extender_name}" %> ]
 
   # Add the default variables here:
-  # see also the details Variables documentation at http://ddnexus.github.io/flex/doc/2-flex/2-Templating/4-Variables.html
+  # see also the details Variables documentation at http://ddnexus.github.io/flex/doc/2-flex/3-Templating/4-Variables.html
   # config.variables.deep_merge! :index    => 'my_index',
   #                              :type     => 'project',
   #                              :anything => 'anything
 
   # used by the live-reindex feature
   # if you change it you must deploy the change first, then you can live-reindex in any next deploy
-  # read the documentation at http://ddnexus.github.io/flex/doc/2-flex/7-Live-Reindex.html#flexconfigurationapp_id
+  # read the documentation at http://ddnexus.github.io/flex/doc/6-flex-admin/2-Live-Reindex.html#flexconfigurationapp_id
   config.app_id = '<%= Time.now.strftime('%Y%m%d%H%M%S_') + Rails.application.class.name.split('::').first.underscore %>_' + Rails.env
 
   # used by the live-reindex feature
@@ -27,7 +27,7 @@ Flex::Configuration.configure do |config|
   # config.redis = Redis.new(:host => somehost, :port: 6379, :db = 1)
 
 
-  # Logger variables: see http://ddnexus.github.io/flex/doc/1-Global-Doc/3-Configuration.html
+  # Logger variables: see http://ddnexus.github.io/flex/doc/1-Flex-Project/3-Configuration.html
   # config.logger.debug_variables = false
   # config.logger.debug_request   = false
   # config.logger.debug_result    = false
